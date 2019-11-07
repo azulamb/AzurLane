@@ -1,27 +1,23 @@
-/// <reference path="./KansenData.ts" />
-/// <reference path="./kansen-list.ts" />
-//// <reference path="./ex-select.ts" />
+/// <reference path="./section-pages.ts" />
+/// <reference path="./AppPointCalc.ts" />
 
 interface AppConfig
 {
-	list: HTMLElement;
-	output: HTMLTextAreaElement;
+	pc: AppPointCalcConfig;
+}
+
+function PositiveNumber( value: number|string|null )
+{
+	if ( !value ) { return 0; }
+	value = typeof value === 'string' ? parseInt( value ) : Math.floor( value );
+	if ( value < 0 ) { return 0; }
+	return value;
 }
 
 class App
 {
-	private data: KansenData;
-	constructor( config: AppConfig, kansen: Kansen[] )
+	constructor( config: AppConfig )
 	{
-		this.data = new KansenData( kansen );
-
-		this.data.render( config.list );
-
-		config.list.addEventListener( 'add', ( event: AddKansenEvent ) =>
-		{
-			this.data.add( event.detail );
-			const data = this.data.output();
-			config.output.textContent = 'const KANSEN = ' + JSON.stringify( data.list ).replace( /(\[|\}\,)/g, '$1\n' ).replace( /\"([^\"]*?)\"\:/g, "$1:" ) + ';';
-		} );
+		const pc = new AppPointCalc( config.pc );
 	}
 }

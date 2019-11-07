@@ -2,7 +2,7 @@
 <html lang="ja" style="font-size:20px;">
 <head>
 	<meta charset="utf-8">
-	<title>List</title>
+	<title>AzurLane Support Tools</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="icon" href="./favicon.ico" type="image/vnd.microsoft.icon">
@@ -12,21 +12,61 @@
 	<link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-precomposed.png">
 	<script src="./app.js" defer></script>
 	<style>
-article { max-width: 600px; margin: auto; }
-textarea { display: block; width: 100%; height: 8rem; box-sizing: border-box; }
-kansen-list { --label-rarity: "レア"; --label-camps: "陣営"; --camps-royal: "ロイヤル"; }
+:root{--header-height:2rem;}
+html{height:100%;}
+body{height:100%;box-sizing:border-box;padding-top:var(--header-height);position:relative;margin:0;}
+header{position:absolute;left:0;top:0;width:100%;height:var(--header-height);overflow:hidden;}
+section{max-width:600px;height:100%;overflow:auto;margin:auto;display:none;}
+section.show{display:block;}
+	</style>
+	<style>
+.word::before{display:inline;}
+.title_eventperiod::before{content:"Event period";}
+.title_targetpoints::before{content:"Target points";}
+.title_nowpoints::before{content:"Now points";}
+.title_dailymispoints::before{content:"Daily mission points";}
+.title_earnpoints::before{content:"Earn points";}
+.title_resultdailyearnpoints::before{content:"Necessary daily earn points";}
+.title_resultdailylaps::before{content:"Necessary daily laps";}
+	</style>
+	<style>
+[lang="ja"] .title_eventperiod::before{content:"イベント期間";}
+[lang="ja"] .title_targetpoints::before{content:"目標ポイント";}
+[lang="ja"] .title_nowpoints::before{content:"現在のポイント";}
+[lang="ja"] .title_dailymispoints::before{content:"デイリーミッションで貰えるポイント";}
+[lang="ja"] .title_earnpoints::before{content:"対象の周回ステージで得られるポイント";}
+[lang="ja"] .title_resultdailyearnpoints::before{content:"1日に周回で稼ぐポイント";}
+[lang="ja"] .title_resultdailylaps::before{content:"1日の周回数";}
 	</style>
 	<script>
-const KANSEN = [
-	{ id: 1, name: '汎用型ブリ', rarity: 'SR', camps: 'OTHER', lv: 100, star: 4, convert: 0 },
-	{ id: 2, name: '試作型ブリMkII', rarity: 'SSR', camps: 'OTHER', lv: 100, star: 5, convert: 0 },
-];
 	</script>
 </head>
 <body>
-	<article>
-		<kansen-list id="list"></kansen-list>
-		<textarea id="output"></textarea>
-	</article>
+	<header>
+		<section-pages></section-pages>
+	</header>
+	<section data-title="Top">
+	</section>
+	<section data-title="Point calc">
+		<dl>
+			<dt class="word title_eventperiod"></dt>
+			<dd><calendar-input id="pc_begin" left></calendar-input>～<calendar-input id="pc_end"></calendar-input></dd>
+			<dt class="word title_targetpoints"></dt>
+			<dd><input id="pc_target" type="number" placeholder="Target points" /></dd>
+			<dt class="word title_nowpoints"></dt>
+			<dd><input id="pc_points" type="number" placeholder="Now points" /></dd>
+			<dt class="word title_dailymispoints"></dt>
+			<dd><input id="pc_dailypt" type="number" placeholder="Daily mission points" /></dd>
+			<dt class="word title_earnpoints"></dt>
+			<dd><input id="pc_earnpt" type="number" placeholder="Earn points" /></dd>
+		</dl>
+		<hr>
+		<dl>
+			<dt class="word title_resultdailyearnpoints"></dt>
+			<dd id="pc_result_dailypt"></dd>
+			<dt class="word title_resultdailylaps"></dt>
+			<dd id="pc_result_dailylaps"></dd>
+		</dl>
+	</section>
 </body>
 </html>

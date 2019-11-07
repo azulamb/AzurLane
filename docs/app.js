@@ -1,528 +1,401 @@
-class KansenData {
-    constructor(kansen) {
-        this.kansen = kansen;
+((script, init) => {
+    if (document.readyState !== 'loading') {
+        return init(script);
     }
-    search(kansen) {
-        for (let k of this.target.children) {
-            if (k.cid === kansen.id) {
-                return k;
-            }
+    document.addEventListener('DOMContentLoaded', () => { init(script); });
+})(document.currentScript, (script) => {
+    ((component, tagname = 'section-pages') => {
+        if (customElements.get(tagname)) {
+            return;
         }
-        return new (customElements.get('kansen-item'))();
-    }
-    add(kansen) {
-        let add = false;
-        if (this.kansen.filter((k) => { return kansen.id === k.id; }).length <= 0) {
-            this.kansen.push(kansen);
-            add = true;
-            this.kansen.sort((a, b) => { return a.id - b.id; });
-            this.calc();
-        }
-        const item = this.search(kansen);
-        item.cid = kansen.id;
-        item.cname = kansen.name;
-        item.rarity = kansen.rarity;
-        item.camps = kansen.camps;
-        item.lv = kansen.lv;
-        item.star = kansen.star;
-        if (add) {
-            this.target.appendChild(item);
-        }
-        return item;
-    }
-    render(target) {
-        this.target = target;
-        this.kansen.forEach((kansen) => {
-            this.target.appendChild(this.add(kansen));
-        });
-        this.calc();
-    }
-    calc() {
-        this.camps = Object.keys(KansenCamps).reduce((obj, key) => {
-            const data = { all: 0, member: 0, limit: 0, lvmax: 0, point: 0 };
-            obj[key] = data;
-            return obj;
-        }, {});
-        this.kansen.forEach((kansen) => {
-            const data = this.camps[kansen.camps];
-            ++data.all;
-            if (kansen.lv <= 0) {
-                return;
-            }
-            ++data.member;
-            if (MaxRarity(kansen.rarity, kansen.id) <= kansen.star) {
-                ++data.limit;
-            }
-            if (kansen.lv < 120) {
-                return;
-            }
-            ++data.lvmax;
-        });
-        Object.keys(this.camps).forEach((key) => {
-            const camp = this.camps[key];
-            camp.point = (camp.member + camp.limit + camp.limit) * 10;
-        });
-        console.log(this.camps);
-    }
-    output() {
-        return { list: this.kansen };
-    }
-}
-class ListItem extends HTMLElement {
-    constructor() {
-        super();
-        const shadow = this.attachShadow({ mode: 'open' });
-        const style = document.createElement('style');
-        style.textContent =
-            [
-                ':host { display: block; }',
-                ':host > div { display: grid; grid-template-rows: 1fr; grid-template-columns: 2rem 2rem 2rem 1fr 2rem 4rem; }',
-                ':host > div > div { grid-row: 1 / 2; }',
-                ':host > div > div:nth-child( 1 ) { grid-column: 1 / 2; }',
-                ':host > div > div:nth-child( 2 ) { grid-column: 2 / 3; }',
-                ':host > div > div:nth-child( 3 ) { grid-column: 3 / 4; }',
-                ':host > div > div:nth-child( 4 ) { grid-column: 4 / 5; }',
-                ':host > div > div:nth-child( 5 ) { grid-column: 5 / 6; }',
-                ':host > div > div:nth-child( 6 ) { grid-column: 6 / 7; }',
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
+        constructor() {
+            super();
+            const style = document.createElement('style');
+            style.textContent = [
+                ':host{--base-back:lightgray;--base-front:black;--select-back:white;--base-front:black;display:block;}',
+                'button{background-color:var(--base-back);color:var(--base-front);border:none;outline:none;cursor:pointer;}',
+                '.show{background-color:var(--select-back);color:var(--select-front);}',
             ].join('');
-        const id = document.createElement('div');
-        const camps = document.createElement('div');
-        const rarity = document.createElement('div');
-        const name = document.createElement('div');
-        const lv = document.createElement('div');
-        const star = document.createElement('div');
-        const contents = document.createElement('div');
-        contents.appendChild(id);
-        contents.appendChild(camps);
-        contents.appendChild(rarity);
-        contents.appendChild(name);
-        contents.appendChild(lv);
-        contents.appendChild(star);
-        shadow.appendChild(style);
-        shadow.appendChild(contents);
-        this.init(shadow);
-    }
-    init(shadow) { }
-}
-(() => {
-    class KansenCampsSymbol extends HTMLElement {
-        static Init(tagname = 'kansen-camps') { if (customElements.get(tagname)) {
-            return;
-        } customElements.define(tagname, this); }
-        constructor() {
-            super();
-            const shadow = this.attachShadow({ mode: 'open' });
-            const style = document.createElement('style');
-            style.textContent =
-                [
-                    ':host { display: block; }',
-                    ':host > span { display: block; opacity: 0; }',
-                ].join('');
-            const text = document.createElement('span');
-            text.appendChild(document.createElement('slot'));
-            shadow.appendChild(style);
-            shadow.appendChild(text);
-            this.update();
-        }
-        update() {
-            this.textContent = this.getAttribute('value');
-        }
-        convertCamps(value) {
-            if (KansenCamps[value] !== undefined) {
-                return value;
-            }
-            return 'OTHER';
-        }
-        get value() { return this.convertCamps(this.getAttribute('value')); }
-        set value(value) { this.setAttribute('value', this.convertCamps(value)); }
-        static get observedAttributes() { return ['value']; }
-        attributeChangedCallback(attrName, oldVal, newVal) {
-            if (oldVal === newVal) {
-                return;
-            }
-            this.update();
-        }
-    }
-    KansenCampsSymbol.Init();
-})();
-(() => {
-    class KansenRaritySymbol extends HTMLElement {
-        static Init(tagname = 'kansen-rarity') { if (customElements.get(tagname)) {
-            return;
-        } customElements.define(tagname, this); }
-        constructor() {
-            super();
-            const shadow = this.attachShadow({ mode: 'open' });
-            const style = document.createElement('style');
-            style.textContent =
-                [
-                    ':host { display: block; }',
-                    ':host > span { display: block; opacity: 0; }',
-                ].join('');
-            const text = document.createElement('span');
-            text.appendChild(document.createElement('slot'));
-            shadow.appendChild(style);
-            shadow.appendChild(text);
-            this.update();
-        }
-        update() {
-            this.textContent = this.getAttribute('value');
-        }
-        convertRarity(value) {
-            if (KansenRarity[value] !== undefined) {
-                return value;
-            }
-            return 'UNKNOWN';
-        }
-        get value() { return this.convertRarity(this.getAttribute('rarity')); }
-        set value(value) { this.setAttribute('value', this.convertRarity(value)); }
-        static get observedAttributes() { return ['value']; }
-        attributeChangedCallback(attrName, oldVal, newVal) {
-            if (oldVal === newVal) {
-                return;
-            }
-            this.update();
-        }
-    }
-    KansenRaritySymbol.Init();
-})();
-function MaxRarity(rarity, id) {
-    const r = KansenRarity[rarity];
-    if (!r) {
-        return 4;
-    }
-    if (id <= 2) {
-        return r - 1;
-    }
-    return r;
-}
-(() => {
-    class KansenStarSymbol extends HTMLElement {
-        static Init(tagname = 'kansen-star') { if (customElements.get(tagname)) {
-            return;
-        } customElements.define(tagname, this); }
-        constructor() {
-            super();
-            const shadow = this.attachShadow({ mode: 'open' });
-            const style = document.createElement('style');
-            style.textContent =
-                [
-                    ':host { display: block; }',
-                ].join('');
+            this.list = document.createElement('div');
             const contents = document.createElement('div');
-            contents.appendChild(document.createElement('slot'));
+            contents.appendChild(this.list);
+            const shadow = this.attachShadow({ mode: 'open' });
             shadow.appendChild(style);
             shadow.appendChild(contents);
             this.update();
         }
-        maxRarity() {
-            return MaxRarity(this.getAttribute('rarity'), parseInt(this.getAttribute('cid') || '0'));
-        }
-        renderStar(num, star) {
-            if (num <= 0) {
-                return '';
-            }
-            return star.repeat(num);
-        }
         update() {
-            const max = this.maxRarity();
-            const star = this.value;
-            this.textContent = this.renderStar(star, '★') + this.renderStar(max - star, '☆');
-        }
-        positiveNumber(value) {
-            const num = typeof value === 'number' ? value : parseInt(value || '');
-            return 0 < num ? num : 0;
-        }
-        get value() { return this.positiveNumber(this.getAttribute('value')); }
-        set value(value) { this.setAttribute('value', this.positiveNumber(value) + ''); }
-        static get observedAttributes() { return ['value', 'cid', 'camps']; }
-        attributeChangedCallback(attrName, oldVal, newVal) {
-            if (oldVal === newVal) {
-                return;
+            const children = this.list.children;
+            let selected = null;
+            for (let i = children.length - 1; 0 <= i; --i) {
+                if (children[i].classList.contains('show')) {
+                    selected = children[i].textContent;
+                }
+                this.list.removeChild(children[i]);
             }
-            this.update();
-        }
-    }
-    KansenStarSymbol.Init();
-})();
-(() => {
-    class KansenItem extends ListItem {
-        static Init(tagname = 'kansen-item') { if (customElements.get(tagname)) {
-            return;
-        } customElements.define(tagname, this); }
-        init(shadow) {
-            const style = shadow.querySelector('style');
-            style.textContent = style.textContent +
-                [
-                    ':host > div > div:first-child, :host > div > div:nth-child(5) { text-align: right; }',
-                ].join('');
-            const contents = shadow.querySelectorAll('div > div');
-            this.colmuns =
-                {
-                    id: contents[0],
-                    name: contents[3],
-                    rarity: contents[2],
-                    camps: contents[1],
-                    lv: contents[4],
-                    star: contents[5],
-                    convert: null,
-                };
-            const camps = new (customElements.get('kansen-camps'))();
-            this.colmuns.camps.appendChild(camps);
-            this.colmuns.camps = camps;
-            const rarity = new (customElements.get('kansen-rarity'))();
-            this.colmuns.rarity.appendChild(rarity);
-            this.colmuns.rarity = rarity;
-            const star = new (customElements.get('kansen-star'))();
-            this.colmuns.star.appendChild(star);
-            this.colmuns.star = star;
-            this.update();
-        }
-        update() {
-            this.colmuns.id.textContent = this.getAttribute('cid');
-            this.colmuns.name.textContent = this.getAttribute('cname');
-            this.colmuns.rarity.value = this.getAttribute('rarity');
-            this.colmuns.camps.value = this.getAttribute('camps');
-            this.colmuns.lv.textContent = this.getAttribute('lv');
-            this.colmuns.star.setAttribute('cid', this.getAttribute('cid') || '');
-            this.colmuns.star.setAttribute('rarity', this.getAttribute('rarity') || '');
-            this.colmuns.star.setAttribute('value', this.getAttribute('star') || '');
-        }
-        positiveNumber(value) {
-            const num = typeof value === 'number' ? value : parseInt(value || '');
-            return 0 < num ? num : 0;
-        }
-        get cid() { return this.positiveNumber(this.getAttribute('cid')); }
-        set cid(value) { this.setAttribute('cid', this.positiveNumber(value) + ''); }
-        get cname() { return this.getAttribute('cname') || ''; }
-        set cname(value) { this.setAttribute('cname', value); }
-        get rarity() { return this.colmuns.rarity.value; }
-        set rarity(value) {
-            this.colmuns.rarity.value = value;
-            this.setAttribute('rarity', this.colmuns.rarity.value);
-        }
-        get camps() { return this.colmuns.camps.value; }
-        set camps(value) {
-            this.colmuns.camps.value = value;
-            this.setAttribute('camps', this.colmuns.camps.value);
-        }
-        get lv() { return this.positiveNumber(this.getAttribute('lv')); }
-        set lv(value) { this.setAttribute('lv', this.positiveNumber(value) + ''); }
-        get star() { return this.colmuns.rarity.value; }
-        set star(value) {
-            this.colmuns.star.value = value;
-            this.setAttribute('star', this.colmuns.star.value + '');
-        }
-        static get observedAttributes() { return ['cid', 'cname', 'rarity', 'camps', 'lv', 'star']; }
-        attributeChangedCallback(attrName, oldVal, newVal) {
-            if (oldVal === newVal) {
-                return;
-            }
-            this.update();
-        }
-    }
-    Promise.all([
-        customElements.whenDefined('kansen-camps'),
-        customElements.whenDefined('kansen-rarity'),
-        customElements.whenDefined('kansen-star'),
-    ]).then(() => { KansenItem.Init(); });
-})();
-(() => {
-    function ToLower(value) {
-        return value.replace(/[A-Z]/g, (c) => { return String.fromCharCode(c.charCodeAt(0) | 32); });
-    }
-    class SortHeader extends ListItem {
-        static Init(tagname = 'sort-header') { if (customElements.get(tagname)) {
-            return;
-        } customElements.define(tagname, this); }
-        createButton(key) {
-            const button = document.createElement('button');
-            button.classList.add(key);
-            button.addEventListener('click', () => {
-                this.dispatchEvent(new Event('sort_' + key));
-            });
-            return button;
-        }
-        init(shadow) {
-            const style = shadow.querySelector('style');
-            style.textContent = style.textContent +
-                [
-                    ':host { height: 1rem; }',
-                    'button { display: block; cursor: pointer; border: none; background: transparent; width: 100%; padding: 0; overflow: hidden; line-height: 1rem; }',
-                    'button.id:before { content: var( --label-id ); }',
-                    'button.name:before { content: var( --label-name ); }',
-                    'button.rarity:before { content: var( --label-rarity ); }',
-                    'button.camps:before { content: var( --label-camps ); }',
-                    'button.lv:before { content: var( --label-lv ); }',
-                    'button.star:before { content: var( --label-star ); }',
-                ].join('');
-            const contents = shadow.querySelectorAll('div > div');
-            contents[0].appendChild(this.createButton('id'));
-            contents[1].appendChild(this.createButton('camps'));
-            contents[2].appendChild(this.createButton('rarity'));
-            contents[3].appendChild(this.createButton('name'));
-            contents[4].appendChild(this.createButton('lv'));
-            contents[5].appendChild(this.createButton('star'));
-        }
-    }
-    class AddItem extends ListItem {
-        static Init(tagname = 'add-item') { if (customElements.get(tagname)) {
-            return;
-        } customElements.define(tagname, this); }
-        numberInput(key) {
-            const input = document.createElement('input');
-            input.id = key;
-            input.type = 'number';
-            return input;
-        }
-        textInput(key) {
-            const input = document.createElement('input');
-            input.id = key;
-            input.type = 'text';
-            return input;
-        }
-        selectInput(key, values) {
-            const select = document.createElement('select');
-            select.id = key;
-            values.forEach((key) => {
-                const option = document.createElement('option');
-                option.value = key;
-                select.appendChild(option);
-            });
-            return select;
-        }
-        init(shadow) {
-            this.shadow = shadow;
-            const style = shadow.querySelector('style');
-            style.textContent = style.textContent +
-                [
-                    ':host { height: 1rem; }',
-                    'input, select { display: block; width: 100%; }',
-                    'select { height: 100%; }',
-                ].join('');
-            const rarity = Object.keys(KansenRarity).sort((a, b) => { return KansenRarity[a] - KansenRarity[b]; });
-            const contents = shadow.querySelectorAll('div > div');
-            contents[0].appendChild(this.numberInput('id'));
-            contents[1].appendChild(this.selectInput('camps', Object.keys(KansenCamps).sort((a, b) => { return KansenCamps[a] - KansenCamps[b]; })));
-            contents[2].appendChild(this.selectInput('rarity', rarity));
-            contents[3].appendChild(this.textInput('name'));
-            contents[4].appendChild(this.numberInput('lv'));
-            contents[5].appendChild(this.selectInput('star', Array.from({ length: KansenRarity[rarity[rarity.length - 1]] }, (v, i) => { return (i + 1) + ''; })));
-        }
-        getText(key) {
-            return this.shadow.getElementById(key).value;
-        }
-        selectedValue(key) {
-            const select = this.shadow.getElementById(key);
-            return select.children[select.selectedIndex].value;
-        }
-        update(style) {
-            this.shadow.querySelectorAll('select').forEach((select) => {
-                for (let option of select.children) {
-                    const value = option.value;
-                    option.textContent = style.getPropertyValue('--' + select.id + '-' + ToLower(value)).replace(/\"/g, '') || value;
+            const pages = [];
+            document.querySelectorAll('section').forEach((section) => {
+                const title = section.dataset.title;
+                if (!title) {
+                    return;
+                }
+                const button = document.createElement('button');
+                button.textContent = title;
+                button.addEventListener('click', () => {
+                    for (let page of pages) {
+                        if (page.page === section) {
+                            button.classList.add('show');
+                            section.classList.add('show');
+                        }
+                        else {
+                            page.button.classList.remove('show');
+                            page.page.classList.remove('show');
+                        }
+                    }
+                });
+                pages.push({ button: button, page: section });
+                this.list.appendChild(button);
+                if (title === selected) {
+                    button.click();
+                    selected = '';
                 }
             });
-        }
-        output() {
-            const kansen = {
-                id: parseInt(this.getText('id')),
-                name: this.getText('name'),
-                rarity: this.selectedValue('rarity'),
-                camps: this.selectedValue('camps'),
-                lv: parseInt(this.getText('lv')),
-                star: parseInt(this.selectedValue('star')),
-                convert: 0,
-            };
-            if (!Number.isFinite(kansen.id)) {
-                kansen.id = 0;
+            if (selected === null && 0 < pages.length) {
+                pages[0].button.click();
             }
-            if (!Number.isFinite(kansen.lv)) {
-                kansen.lv = 1;
-            }
-            return kansen;
         }
+    }, script.dataset.tagname);
+});
+((script, init) => {
+    if (document.readyState !== 'loading') {
+        return init(script);
     }
-    class KansenList extends HTMLElement {
-        static Init(tagname = 'kansen-list') { if (customElements.get(tagname)) {
+    document.addEventListener('DOMContentLoaded', () => { init(script); });
+})(document.currentScript, (script) => {
+    function ValueToDate(value) {
+        const date = new Date(value || '');
+        return date.toString() === 'Invalid Date' ? new Date() : date;
+    }
+    function ValueToDateString(value) {
+        const date = ValueToDate(value);
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    }
+    ((component, tagname = 'calendar-box') => {
+        if (customElements.get(tagname)) {
             return;
-        } customElements.define(tagname, this); }
+        }
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
         constructor() {
             super();
-            const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
-            style.textContent =
-                [
-                    ':host { display: block; }',
-                    ':host { --label-id: "ID"; --label-name: "Name"; --label-rarity: "Rarity"; --label-camps: "Camps"; --label-lv: "Lv"; --label-star: "Star"; }',
-                    this.selectStyle('rarity', Object.keys(KansenRarity)),
-                    this.selectStyle('camps', Object.keys(KansenCamps)),
-                ].join('');
-            console.log(getComputedStyle(document.body).getPropertyValue('--rarity-unknown'));
-            console.log('[--rarity-unknown]', getComputedStyle(this).getPropertyValue('--rarity-unknown'));
-            console.log('[--rarity-unknown]', this.style.getPropertyValue('--rarity-unknown'));
-            const header = new (customElements.get('sort-header'))();
-            this.additem = new (customElements.get('add-item'))();
-            const button = document.createElement('button');
-            button.textContent = 'Add';
-            button.addEventListener('click', () => {
-                this.dispatchEvent(new CustomEvent('add', { detail: this.additem.output() }));
+            style.textContent = [
+                ':host{display:block;--size:1.5em;--back:white;--none-back:lightgray;--select-back:khaki;--sun:"Su";--mon:"Mo";--tue:"Tu";--wed:"We";--thu:"Th";--fri:"Fr";--sat:"Sa";}',
+                ':host > div{background:var(--none-back);border:1px solid;gap:1px;display:grid;grid-template-columns:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
+                ':host > div[data-week="4"]{grid-template-rows:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
+                ':host > div[data-week="5"]{grid-template-rows:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
+                ':host > div[data-week="6"]{grid-template-rows:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
+                'button{border:none;box-sizing:content-box;padding:0;height:100%;width:100%;outline:none;cursor:pointer;}',
+                'button,span{background:var(--back);font-size:calc(var(--size) * 0.5);}',
+                'button:not([data-date]){border:none;margin:0;}',
+                '.selected{background:var(--select-back);}',
+                ':host > div > button:nth-child(2){grid-area:1 / 2 / 1 / 7;}',
+                ':host > div > button:nth-child(1){grid-area:1 / 1;}',
+                ':host > div > button:nth-child(1)::after{content:"◀";}',
+                ':host > div > button:nth-child(3){grid-area:1 / 7;}',
+                ':host > div > button:nth-child(3)::after{content:"▶";}',
+                ':host > div > span{display:flex;align-items:center;justify-content:center;overflow:hidden;}',
+                '.sun::after{content:var(--sun);display:inline;}',
+                '.mon::after{content:var(--mon);display:inline;}',
+                '.tue::after{content:var(--tue);display:inline;}',
+                '.wed::after{content:var(--wed);display:inline;}',
+                '.thu::after{content:var(--thu);display:inline;}',
+                '.fri::after{content:var(--fri);display:inline;}',
+                '.sat::after{content:var(--sat);display:inline;}',
+            ].join('');
+            this.dateview = document.createElement('button');
+            const prev = document.createElement('button');
+            prev.addEventListener('click', () => { this.prev(); });
+            const next = document.createElement('button');
+            next.addEventListener('click', () => { this.next(); });
+            this.contents = document.createElement('div');
+            this.contents.addEventListener('click', (event) => { event.stopPropagation(); });
+            this.contents.appendChild(prev);
+            this.contents.appendChild(this.dateview);
+            this.contents.appendChild(next);
+            ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].forEach((name) => {
+                const week = document.createElement('span');
+                week.classList.add(name);
+                this.contents.appendChild(week);
             });
+            const shadow = this.attachShadow({ mode: 'open' });
             shadow.appendChild(style);
-            shadow.appendChild(header);
-            shadow.appendChild(document.createElement('slot'));
-            shadow.appendChild(this.additem);
-            shadow.appendChild(button);
-            this.update();
+            shadow.appendChild(this.contents);
+            this.update(this.getAttribute('value'), true);
         }
-        selectStyle(base, values) {
-            return ':host { ' + values.map((value) => {
-                return '--' + base + '-' + ToLower(value) + ': "' + (value === 'UNKNOWN' ? '--' : value) + '"';
-            }).join('; ') + '; }';
+        selectDay(date, button) {
+            this.contents.querySelectorAll('button.selected').forEach((button) => { button.classList.remove('selected'); });
+            (button ? [button] : this.contents.querySelectorAll(`button[data-date="${date}"]`)).forEach((button) => {
+                button.classList.add('selected');
+            });
+            if (!button) {
+                return;
+            }
+            this.updateDate(date);
         }
-        update() {
-            this.additem.update(getComputedStyle(this));
+        updateDate(date) {
+            this.setAttribute('value', date);
+            const data = { date: date };
+            const event = new CustomEvent('change', { detail: data });
+            this.dispatchEvent(event);
         }
+        update(value, updatedate) {
+            const date = ValueToDateString(value);
+            if (date && this.showdate === date) {
+                return;
+            }
+            const d = new Date(date);
+            const ym = d.getFullYear() + '-' + (d.getMonth() + 1);
+            if (this.dateview.textContent === ym) {
+                this.selectDay(date);
+            }
+            else {
+                this.dateview.textContent = ym;
+                const base = this.dateview.textContent + '-';
+                const children = this.contents.querySelectorAll('button[data-date]');
+                children.forEach((day) => {
+                    this.contents.removeChild(day);
+                });
+                let week = new Date(d.getFullYear(), d.getMonth(), 1).getDay();
+                const end = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+                let h = 3;
+                const selectdate = updatedate ? date : this.value;
+                for (let day = 1; day <= end; ++day) {
+                    const button = document.createElement('button');
+                    button.dataset.date = base + day;
+                    if (button.dataset.date === selectdate) {
+                        button.classList.add('selected');
+                    }
+                    button.textContent = day + '';
+                    button.style.gridArea = h + ' / ' + (++week);
+                    button.addEventListener('click', () => { this.selectDay(button.dataset.date, button); });
+                    this.contents.appendChild(button);
+                    if (7 <= week) {
+                        if (day === end) {
+                            break;
+                        }
+                        ++h;
+                        week = 0;
+                    }
+                }
+                this.contents.dataset.week = (h - 2) + '';
+            }
+            this.showdate = date;
+            if (updatedate) {
+                this.updateDate(date);
+            }
+        }
+        change(diffmonth) {
+            const month = typeof diffmonth === 'number' ? Math.floor(diffmonth) : parseInt(diffmonth + '');
+            if (!month) {
+                return;
+            }
+            const now = new Date(this.showdate);
+            const date = new Date(now.getFullYear(), now.getMonth() + month, 1);
+            const day = Math.min(now.getDate(), new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate());
+            this.update(`${date.getFullYear()}-${date.getMonth() + 1}-${day}`, false);
+        }
+        prev() { return this.change(-1); }
+        next() { return this.change(1); }
+        get value() { return this.getAttribute('value') || ''; }
+        set value(value) { this.update(value, true); }
+        static get observedAttributes() { return ['value']; }
+        attributeChangedCallback(attrName, oldVal, newVal) {
+            if (oldVal === newVal) {
+                return;
+            }
+            this.update(newVal, true);
+        }
+    }, script.dataset.tagname);
+});
+((script, init) => {
+    const calname = script.dataset.tagname || 'calendar-box';
+    customElements.whenDefined(calname).then(() => {
+        init(script, calname);
+    });
+})(document.currentScript, (script, calname) => {
+    function ValueToDate(value) {
+        const date = new Date(value || '');
+        return date.toString() === 'Invalid Date' ? new Date() : date;
     }
-    SortHeader.Init();
-    AddItem.Init();
-    Promise.all([
-        customElements.whenDefined('kansen-item'),
-        customElements.whenDefined('sort-header'),
-        customElements.whenDefined('add-item'),
-    ]).then(() => { KansenList.Init(); });
-})();
-class App {
-    constructor(config, kansen) {
-        this.data = new KansenData(kansen);
-        this.data.render(config.list);
-        config.list.addEventListener('add', (event) => {
-            this.data.add(event.detail);
-            const data = this.data.output();
-            config.output.textContent = 'const KANSEN = ' + JSON.stringify(data.list).replace(/(\[|\}\,)/g, '$1\n').replace(/\"([^\"]*?)\"\:/g, "$1:") + ';';
-        });
+    function ValueToDateString(value) {
+        const date = ValueToDate(value);
+        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    }
+    function CreateCalendar() {
+        return new (customElements.get(calname))();
+    }
+    ((component, tagname = 'calendar-input') => {
+        if (customElements.get(tagname)) {
+            return;
+        }
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
+        constructor() {
+            super();
+            const style = document.createElement('style');
+            style.textContent = [
+                ':host{display:inline-block;--icon:"📅";--z-index:9999;}',
+                ':host > div{position:relative;padding-right:1.2rem;}',
+                ':host > div > button{position:absolute;top:0;right:0;cursor:pointer;padding:0;width:1.2rem;height:1.2rem;box-sizing:border-box;}',
+                'button::after{content:var(--icon);display:inline;}',
+                ':host > div > div{position:absolute;z-index:var(--z-index);display:none;}',
+                ':host([show]) > div > div{display:block;}',
+                ':host(:not([left])) > div > div{right:0;}',
+                ':host([top]) > div > div{bottom:100%;}',
+            ].join('');
+            this.datevalue = document.createElement('span');
+            const button = document.createElement('button');
+            button.addEventListener('click', () => {
+                this.toggle();
+            });
+            this.calendar = CreateCalendar();
+            this.calendar.addEventListener('change', (event) => {
+                this.value = event.detail.date;
+                this.hide();
+            });
+            const cbox = document.createElement('div');
+            cbox.appendChild(this.calendar);
+            const contents = document.createElement('div');
+            contents.appendChild(this.datevalue);
+            contents.appendChild(cbox);
+            contents.appendChild(button);
+            const shadow = this.attachShadow({ mode: 'open' });
+            shadow.appendChild(style);
+            shadow.appendChild(contents);
+            this.value = this.getAttribute('value') || '';
+        }
+        update(value) {
+            const date = ValueToDateString(value);
+            if (this.datevalue.textContent === date) {
+                return;
+            }
+            this.datevalue.textContent = date;
+            this.calendar.value = date;
+        }
+        show() { this.setAttribute('show', ''); }
+        hide() { this.removeAttribute('show'); }
+        toggle() { this[this.hasAttribute('show') ? 'hide' : 'show'](); }
+        get value() { return this.calendar.value; }
+        set value(value) { this.update(value); }
+        get disable() { return this.hasAttribute('disable'); }
+        set disable(value) { if (value) {
+            this.setAttribute('disable', '');
+        }
+        else {
+            this.removeAttribute('disable');
+        } }
+        get left() { return this.hasAttribute('left'); }
+        set left(value) { if (value) {
+            this.setAttribute('left', '');
+        }
+        else {
+            this.removeAttribute('left');
+        } }
+        get top() { return this.hasAttribute('top'); }
+        set top(value) { if (value) {
+            this.setAttribute('top', '');
+        }
+        else {
+            this.removeAttribute('top');
+        } }
+    }, script.dataset.tagname);
+});
+class AppPointCalc {
+    constructor(config) {
+        this.config = config;
+        config.begin.addEventListener('change', () => { this.calc(); });
+        config.end.addEventListener('change', () => { this.calc(); });
+        config.target.addEventListener('change', () => { this.calc(); });
+        config.points.addEventListener('change', () => { this.calc(); });
+        config.dailypt.addEventListener('change', () => { this.calc(); });
+        config.earnpt.addEventListener('change', () => { this.calc(); });
+    }
+    begin() { return new Date(this.config.begin.value); }
+    end() { return new Date(this.config.end.value); }
+    targetPoints() { return PositiveNumber(this.config.target.value); }
+    nowPoints() { return PositiveNumber(this.config.points.value); }
+    dailyPoints() { return PositiveNumber(this.config.dailypt.value); }
+    earnPoints() { return PositiveNumber(this.config.earnpt.value); }
+    maxDate(a, b) { return a.getTime() < b.getTime() ? b : a; }
+    getDays(a, b) {
+        const secs = Math.floor(Math.abs(a.getTime() - b.getTime()) / 1000);
+        console.log(secs, a.getTime(), b.getTime());
+        const days = Math.floor(secs / (60 * 60 * 24));
+        return days + (secs % (60 * 60 * 24) ? 1 : 0);
+    }
+    calc() {
+        console.log(this.config.begin.value, this.config.end.value);
+        const target = this.targetPoints();
+        if (target <= 0) {
+            return;
+        }
+        const now = new Date();
+        const end = this.end();
+        const begin = now.getTime() < end.getTime() ? this.maxDate(this.begin(), now) : this.begin();
+        const days = this.getDays(begin, end);
+        console.log(days, begin, end);
+        if (days <= 0) {
+            return;
+        }
+        const nowpoint = this.nowPoints();
+        if (days == 1) {
+            this.config.result_dailypt.textContent = (target - nowpoint) + '';
+            return;
+        }
+        const mission = this.dailyPoints();
+        const needdaily = (target - nowpoint - mission * (days - 1)) / days;
+        this.config.result_dailypt.textContent = needdaily + '';
+        const earn = this.earnPoints();
+        if (earn <= 0) {
+            return;
+        }
+        this.config.result_dailylaps.textContent = (needdaily / earn) + '';
     }
 }
-const KansenRarity = {
-    UNKNOWN: 0,
-    N: 4,
-    R: 5,
-    SR: 5,
-    SSR: 6,
-    UR: 6,
-    PR: 6,
-    DR: 6,
-};
-const KansenCamps = {
-    OTHER: 0,
-    UNION: 1,
-    ROYAL: 2,
-};
+function PositiveNumber(value) {
+    if (!value) {
+        return 0;
+    }
+    value = typeof value === 'string' ? parseInt(value) : Math.floor(value);
+    if (value < 0) {
+        return 0;
+    }
+    return value;
+}
+class App {
+    constructor(config) {
+        const pc = new AppPointCalc(config.pc);
+    }
+}
 document.addEventListener('DOMContentLoaded', () => {
-    customElements.whenDefined('kansen-list').then(() => {
+    Promise.all([
+        customElements.whenDefined('calendar-input'),
+    ]).then(() => {
         const app = new App({
-            list: document.getElementById('list'),
-            output: document.getElementById('output'),
-        }, KANSEN);
+            pc: {
+                begin: document.getElementById('pc_begin'),
+                end: document.getElementById('pc_end'),
+                target: document.getElementById('pc_target'),
+                points: document.getElementById('pc_points'),
+                dailypt: document.getElementById('pc_dailypt'),
+                earnpt: document.getElementById('pc_earnpt'),
+                result_dailypt: document.getElementById('pc_result_dailypt'),
+                result_dailylaps: document.getElementById('pc_result_dailylaps'),
+            },
+        });
     });
+    document.body.lang = ((nav) => { return nav.userLanguage || nav.language || nav.browserLanguage; })(window.navigator);
 });

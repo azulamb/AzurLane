@@ -1,32 +1,28 @@
 /// <reference path="./App.ts" />
 
-declare const KANSEN: Kansen[];
-const KansenRarity: RARITY_STAR =
-{
-	UNKNOWN: 0,
-	N: 4,
-	R: 5,
-	SR: 5,
-	SSR: 6,
-	UR: 6,
-	PR: 6,
-	DR: 6,
-};
-const KansenCamps: CAMPS_ORDER =
-{
-	OTHER: 0,
-	UNION: 1,
-	ROYAL: 2,
-}
-
 document.addEventListener( 'DOMContentLoaded', () =>
 {
-	customElements.whenDefined( 'kansen-list' ).then( () =>
+	Promise.all(
+	[
+		customElements.whenDefined( 'calendar-input' ),
+	] ).then( () =>
 	{
 		const app = new App(
 		{
-			list: <HTMLElement>document.getElementById( 'list' ),
-			output: <HTMLTextAreaElement>document.getElementById( 'output' ),
-		}, KANSEN );
+			//list: <HTMLElement>document.getElementById( 'list' ),
+			//output: <HTMLTextAreaElement>document.getElementById( 'output' ),
+			pc:
+			{
+				begin: <CalendarInputElement>document.getElementById( 'pc_begin' ),
+				end: <CalendarInputElement>document.getElementById( 'pc_end' ),
+				target: <HTMLInputElement>document.getElementById( 'pc_target' ),
+				points: <HTMLInputElement>document.getElementById( 'pc_points' ),
+				dailypt: <HTMLInputElement>document.getElementById( 'pc_dailypt' ),
+				earnpt: <HTMLInputElement>document.getElementById( 'pc_earnpt' ),
+				result_dailypt: <HTMLInputElement>document.getElementById( 'pc_result_dailypt' ),
+				result_dailylaps: <HTMLInputElement>document.getElementById( 'pc_result_dailylaps' ),
+			},
+		} );
 	} );
+	document.body.lang = ( ( nav ) => { return nav.userLanguage || nav.language || nav.browserLanguage; } )( <any>window.navigator );
 } );
