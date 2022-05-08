@@ -2,9 +2,11 @@
     if (document.readyState !== 'loading') {
         return init(script);
     }
-    document.addEventListener('DOMContentLoaded', () => { init(script); });
+    document.addEventListener('DOMContentLoaded', () => {
+        init(script);
+    });
 })(document.currentScript, (script) => {
-    ((component, tagname = 'section-pages') => {
+    ((component, tagname = 'input-slider') => {
         if (customElements.get(tagname)) {
             return;
         }
@@ -12,58 +14,176 @@
     })(class extends HTMLElement {
         constructor() {
             super();
-            const style = document.createElement('style');
-            style.textContent = [
-                ':host{--base-back:lightgray;--base-front:black;--select-back:white;--base-front:black;display:block;}',
-                'button{background-color:var(--base-back);color:var(--base-front);border:none;outline:none;cursor:pointer;}',
-                '.show{background-color:var(--select-back);color:var(--select-front);}',
-            ].join('');
-            this.list = document.createElement('div');
-            const contents = document.createElement('div');
-            contents.appendChild(this.list);
             const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { display: inline-block; --input-size: 3rem; }',
+                ':host > div { display: grid; grid-template-columns: 1fr var(--input-size); width: 100%; height: 100%; }',
+                ':host > div > input { font-size: 1em; }',
+            ].join('');
+            this.slider = document.createElement('input');
+            this.slider.type = 'range';
+            this.input = document.createElement('input');
+            this.input.type = 'number';
+            if (this.hasAttribute('min')) {
+                this.input.min = this.getAttribute('min');
+                this.slider.min = this.input.min;
+            }
+            if (this.hasAttribute('max')) {
+                this.input.max = this.getAttribute('max');
+                this.slider.max = this.input.max;
+            }
+            if (this.hasAttribute('step')) {
+                this.input.step = this.getAttribute('step');
+                this.slider.step = this.input.step;
+            }
+            if (this.hasAttribute('value')) {
+                this.input.value = this.getAttribute('value');
+                this.slider.value = this.input.value;
+            }
+            else {
+                this.input.value = this.slider.value;
+            }
+            if (this.hasAttribute('disabled')) {
+                this.input.disabled = true;
+                this.slider.disabled = true;
+            }
+            (() => {
+                let timer = 0;
+                const onChange = () => {
+                    if (timer) {
+                        clearTimeout(timer);
+                    }
+                    timer = setTimeout(() => {
+                        timer = 0;
+                        this.dispatchEvent(new CustomEvent('change'));
+                    }, 0);
+                };
+                this.slider.addEventListener('change', () => {
+                    this.value = this.slider.value;
+                    onChange();
+                });
+                this.input.addEventListener('change', () => {
+                    this.value = this.input.value;
+                    onChange();
+                });
+            })();
+            const contents = document.createElement('div');
+            contents.appendChild(this.slider);
+            contents.appendChild(this.input);
             shadow.appendChild(style);
             shadow.appendChild(contents);
-            this.update();
         }
-        update() {
-            const children = this.list.children;
-            let selected = null;
-            for (let i = children.length - 1; 0 <= i; --i) {
-                if (children[i].classList.contains('show')) {
-                    selected = children[i].textContent;
-                }
-                this.list.removeChild(children[i]);
+        get min() {
+            return parseFloat(this.input.min || '') || 1;
+        }
+        set min(value) {
+            const setValue = value + '';
+            let change = false;
+            if (this.input.min !== setValue) {
+                this.input.min = setValue;
+                change = true;
             }
-            const pages = [];
-            document.querySelectorAll('section').forEach((section) => {
-                const title = section.dataset.title;
-                if (!title) {
-                    return;
-                }
-                const button = document.createElement('button');
-                button.textContent = title;
-                button.addEventListener('click', () => {
-                    for (let page of pages) {
-                        if (page.page === section) {
-                            button.classList.add('show');
-                            section.classList.add('show');
-                        }
-                        else {
-                            page.button.classList.remove('show');
-                            page.page.classList.remove('show');
-                        }
-                    }
-                });
-                pages.push({ button: button, page: section });
-                this.list.appendChild(button);
-                if (title === selected) {
-                    button.click();
-                    selected = '';
-                }
-            });
-            if (selected === null && 0 < pages.length) {
-                pages[0].button.click();
+            if (this.slider.min !== setValue) {
+                this.slider.min = setValue;
+                change = true;
+            }
+            if (change) {
+                this.setAttribute('min', setValue);
+            }
+        }
+        get max() {
+            return parseFloat(this.input.max || '') || 1;
+        }
+        set max(value) {
+            const setValue = value + '';
+            let change = false;
+            if (this.input.max !== setValue) {
+                this.input.max = setValue;
+                change = true;
+            }
+            if (this.slider.max !== setValue) {
+                this.slider.max = setValue;
+                change = true;
+            }
+            if (change) {
+                this.setAttribute('max', setValue);
+            }
+        }
+        get step() {
+            return parseFloat(this.input.value || '') || 1;
+        }
+        set step(value) {
+            const setValue = value + '';
+            let change = false;
+            if (this.input.step !== setValue) {
+                this.input.step = setValue;
+                change = true;
+            }
+            if (this.slider.step !== setValue) {
+                this.slider.step = setValue;
+                change = true;
+            }
+            if (change) {
+                this.setAttribute('step', setValue);
+            }
+        }
+        get value() {
+            return parseFloat(this.input.value || '') || 1;
+        }
+        set value(value) {
+            const setValue = value + '';
+            let change = false;
+            if (this.input.value !== setValue) {
+                this.input.value = setValue;
+                change = true;
+            }
+            if (this.slider.value !== setValue) {
+                this.slider.value = setValue;
+                change = true;
+            }
+            if (change) {
+                this.setAttribute('value', setValue);
+            }
+        }
+        get disabled() {
+            return this.hasAttribute('disabled');
+        }
+        set disabled(value) {
+            if (!value) {
+                this.input.disabled = false;
+                this.slider.disabled = false;
+                this.removeAttribute('disabled');
+            }
+            else {
+                this.input.disabled = true;
+                this.slider.disabled = true;
+                this.setAttribute('disabled', '');
+            }
+        }
+        static get observedAttributes() {
+            return ['min', 'max', 'step', 'disabled', 'value'];
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) {
+                return;
+            }
+            switch (name) {
+                case 'min':
+                    this.min = newValue;
+                    break;
+                case 'max':
+                    this.max = newValue;
+                    break;
+                case 'step':
+                    this.step = newValue;
+                    break;
+                case 'value':
+                    this.value = newValue;
+                    break;
+                case 'disabled':
+                    this.disabled = this.hasAttribute('disabled');
+                    break;
             }
         }
     }, script.dataset.tagname);
@@ -72,17 +192,11 @@
     if (document.readyState !== 'loading') {
         return init(script);
     }
-    document.addEventListener('DOMContentLoaded', () => { init(script); });
+    document.addEventListener('DOMContentLoaded', () => {
+        init(script);
+    });
 })(document.currentScript, (script) => {
-    function ValueToDate(value) {
-        const date = new Date(value || '');
-        return date.toString() === 'Invalid Date' ? new Date() : date;
-    }
-    function ValueToDateString(value) {
-        const date = ValueToDate(value);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    }
-    ((component, tagname = 'calendar-box') => {
+    ((component, tagname = 'date-time') => {
         if (customElements.get(tagname)) {
             return;
         }
@@ -90,154 +204,130 @@
     })(class extends HTMLElement {
         constructor() {
             super();
-            const style = document.createElement('style');
-            style.textContent = [
-                ':host{display:block;--size:1.5em;--back:white;--none-back:lightgray;--select-back:khaki;--sun:"Su";--mon:"Mo";--tue:"Tu";--wed:"We";--thu:"Th";--fri:"Fr";--sat:"Sa";}',
-                ':host > div{background:var(--none-back);border:1px solid;gap:1px;display:grid;grid-template-columns:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
-                ':host > div[data-week="4"]{grid-template-rows:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
-                ':host > div[data-week="5"]{grid-template-rows:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
-                ':host > div[data-week="6"]{grid-template-rows:var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size) var(--size);}',
-                'button{border:none;box-sizing:content-box;padding:0;height:100%;width:100%;outline:none;cursor:pointer;}',
-                'button,span{background:var(--back);font-size:calc(var(--size) * 0.5);}',
-                'button:not([data-date]){border:none;margin:0;}',
-                '.selected{background:var(--select-back);}',
-                ':host > div > button:nth-child(2){grid-area:1 / 2 / 1 / 7;}',
-                ':host > div > button:nth-child(1){grid-area:1 / 1;}',
-                ':host > div > button:nth-child(1)::after{content:"◀";}',
-                ':host > div > button:nth-child(3){grid-area:1 / 7;}',
-                ':host > div > button:nth-child(3)::after{content:"▶";}',
-                ':host > div > span{display:flex;align-items:center;justify-content:center;overflow:hidden;}',
-                '.sun::after{content:var(--sun);display:inline;}',
-                '.mon::after{content:var(--mon);display:inline;}',
-                '.tue::after{content:var(--tue);display:inline;}',
-                '.wed::after{content:var(--wed);display:inline;}',
-                '.thu::after{content:var(--thu);display:inline;}',
-                '.fri::after{content:var(--fri);display:inline;}',
-                '.sat::after{content:var(--sat);display:inline;}',
-            ].join('');
-            this.dateview = document.createElement('button');
-            const prev = document.createElement('button');
-            prev.addEventListener('click', () => { this.prev(); });
-            const next = document.createElement('button');
-            next.addEventListener('click', () => { this.next(); });
-            this.contents = document.createElement('div');
-            this.contents.addEventListener('click', (event) => { event.stopPropagation(); });
-            this.contents.appendChild(prev);
-            this.contents.appendChild(this.dateview);
-            this.contents.appendChild(next);
-            ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].forEach((name) => {
-                const week = document.createElement('span');
-                week.classList.add(name);
-                this.contents.appendChild(week);
-            });
             const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { display: inline-block; }',
+                ':host > div { display: grid; grid-template-columns: 5fr 1fr 3fr 1fr 3fr 1fr 3fr 1fr 3fr 1fr 3fr; text-align: center; position: relative; }',
+                ':host([year][second]) > div { grid-template-columns: 3fr 1fr 3fr 1fr 3fr 1fr 3fr; }',
+                ':host([year]:not([second])) > div { grid-template-columns: 3fr 1fr 3fr 1fr 3fr 1fr 3fr 1fr 3fr; }',
+                ':host([second]:not([year])) > div { grid-template-columns: 5fr 1fr 3fr 1fr 3fr 1fr 3fr 1fr 3fr; }',
+                ':host([year]) > div > .year { display: none; position: absolute; }',
+                ':host([second]) > div > .second { display: none; position: absolute; }',
+            ].join('');
+            this.showYear = document.createElement('div');
+            this.showYear.classList.add('year');
+            this.showMonth = document.createElement('div');
+            this.showDay = document.createElement('div');
+            this.showHour = document.createElement('div');
+            this.showMinute = document.createElement('div');
+            this.showSecond = document.createElement('div');
+            this.showSecond.classList.add('second');
+            this.separates = [
+                document.createElement('span'),
+                document.createElement('span'),
+                document.createElement('span'),
+                document.createElement('span'),
+            ];
+            for (let i = 0; i < 2; ++i) {
+                this.separates[i].textContent = '/';
+                this.separates[i + 2].textContent = ':';
+            }
+            this.separates[0].classList.add('year');
+            this.separates[3].classList.add('second');
+            const space = document.createElement('span');
+            space.textContent = ' ';
+            const contents = document.createElement('div');
+            contents.appendChild(this.showYear);
+            contents.appendChild(this.separates[0]);
+            contents.appendChild(this.showMonth);
+            contents.appendChild(this.separates[1]);
+            contents.appendChild(this.showDay);
+            contents.appendChild(space);
+            contents.appendChild(this.showHour);
+            contents.appendChild(this.separates[2]);
+            contents.appendChild(this.showMinute);
+            contents.appendChild(this.separates[3]);
+            contents.appendChild(this.showSecond);
+            this.datetime = new Date();
+            this.updateDatetime();
             shadow.appendChild(style);
-            shadow.appendChild(this.contents);
-            this.update(this.getAttribute('value'), true);
+            shadow.appendChild(contents);
         }
-        selectDay(date, button) {
-            this.contents.querySelectorAll('button.selected').forEach((button) => { button.classList.remove('selected'); });
-            (button ? [button] : this.contents.querySelectorAll(`button[data-date="${date}"]`)).forEach((button) => {
-                button.classList.add('selected');
-            });
-            if (!button) {
-                return;
-            }
-            this.updateDate(date);
+        updateDatetime() {
+            const pad = this.fillzero ? 2 : 1;
+            this.showYear.textContent = this.datetime.getFullYear() + '';
+            this.showMonth.textContent = `${this.datetime.getMonth() + 1}`.padStart(pad, '0');
+            this.showDay.textContent = `${this.datetime.getDate()}`.padStart(pad, '0');
+            this.showHour.textContent = `${this.datetime.getHours()}`.padStart(pad, '0');
+            this.showMinute.textContent = `${this.datetime.getMinutes()}`.padStart(pad, '0');
+            this.showSecond.textContent = `${this.datetime.getSeconds()}`.padStart(pad, '0');
         }
-        updateDate(date) {
-            this.setAttribute('value', date);
-            const data = { date: date };
-            const event = new CustomEvent('change', { detail: data });
-            this.dispatchEvent(event);
+        get value() {
+            return this.datetime;
         }
-        update(value, updatedate) {
-            const date = ValueToDateString(value);
-            if (date && this.showdate === date) {
-                return;
-            }
-            const d = new Date(date);
-            const ym = d.getFullYear() + '-' + (d.getMonth() + 1);
-            if (this.dateview.textContent === ym) {
-                this.selectDay(date);
+        set value(value) {
+            this.datetime = new Date(value);
+            this.updateDatetime();
+        }
+        get fillzero() {
+            return this.hasAttribute('fillzero');
+        }
+        set fillzero(value) {
+            if (!value) {
+                this.removeAttribute('fillzero');
             }
             else {
-                this.dateview.textContent = ym;
-                const base = this.dateview.textContent + '-';
-                const children = this.contents.querySelectorAll('button[data-date]');
-                children.forEach((day) => {
-                    this.contents.removeChild(day);
-                });
-                let week = new Date(d.getFullYear(), d.getMonth(), 1).getDay();
-                const end = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
-                let h = 3;
-                const selectdate = updatedate ? date : this.value;
-                for (let day = 1; day <= end; ++day) {
-                    const button = document.createElement('button');
-                    button.dataset.date = base + day;
-                    if (button.dataset.date === selectdate) {
-                        button.classList.add('selected');
-                    }
-                    button.textContent = day + '';
-                    button.style.gridArea = h + ' / ' + (++week);
-                    button.addEventListener('click', () => { this.selectDay(button.dataset.date, button); });
-                    this.contents.appendChild(button);
-                    if (7 <= week) {
-                        if (day === end) {
-                            break;
-                        }
-                        ++h;
-                        week = 0;
-                    }
-                }
-                this.contents.dataset.week = (h - 2) + '';
-            }
-            this.showdate = date;
-            if (updatedate) {
-                this.updateDate(date);
+                this.setAttribute('fillzero', '');
             }
         }
-        change(diffmonth) {
-            const month = typeof diffmonth === 'number' ? Math.floor(diffmonth) : parseInt(diffmonth + '');
-            if (!month) {
-                return;
-            }
-            const now = new Date(this.showdate);
-            const date = new Date(now.getFullYear(), now.getMonth() + month, 1);
-            const day = Math.min(now.getDate(), new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate());
-            this.update(`${date.getFullYear()}-${date.getMonth() + 1}-${day}`, false);
+        get year() {
+            return this.hasAttribute('year');
         }
-        prev() { return this.change(-1); }
-        next() { return this.change(1); }
-        get value() { return this.getAttribute('value') || ''; }
-        set value(value) { this.update(value, true); }
-        static get observedAttributes() { return ['value']; }
-        attributeChangedCallback(attrName, oldVal, newVal) {
-            if (oldVal === newVal) {
+        set year(value) {
+            if (!value) {
+                this.removeAttribute('year');
+            }
+            else {
+                this.setAttribute('year', '');
+            }
+        }
+        get second() {
+            return this.hasAttribute('second');
+        }
+        set second(value) {
+            if (!value) {
+                this.removeAttribute('second');
+            }
+            else {
+                this.setAttribute('second', '');
+            }
+        }
+        static get observedAttributes() {
+            return ['value', 'fillzero'];
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) {
                 return;
             }
-            this.update(newVal, true);
+            if (name === 'value') {
+                this.value = newValue;
+            }
+            else {
+                this.updateDatetime();
+            }
         }
     }, script.dataset.tagname);
 });
 ((script, init) => {
-    const calname = script.dataset.tagname || 'calendar-box';
-    customElements.whenDefined(calname).then(() => {
-        init(script, calname);
+    Promise.all([
+        customElements.whenDefined('input-slider'),
+        customElements.whenDefined('date-time'),
+    ]).then(() => {
+        init(script);
     });
-})(document.currentScript, (script, calname) => {
-    function ValueToDate(value) {
-        const date = new Date(value || '');
-        return date.toString() === 'Invalid Date' ? new Date() : date;
-    }
-    function ValueToDateString(value) {
-        const date = ValueToDate(value);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-    }
-    function CreateCalendar() {
-        return new (customElements.get(calname))();
-    }
-    ((component, tagname = 'calendar-input') => {
+})(document.currentScript, (script) => {
+    ((component, tagname = 'calc-time') => {
         if (customElements.get(tagname)) {
             return;
         }
@@ -245,157 +335,485 @@
     })(class extends HTMLElement {
         constructor() {
             super();
-            const style = document.createElement('style');
-            style.textContent = [
-                ':host{display:inline-block;--icon:"📅";--z-index:9999;}',
-                ':host > div{position:relative;padding-right:1.2rem;}',
-                ':host > div > button{position:absolute;top:0;right:0;cursor:pointer;padding:0;width:1.2rem;height:1.2rem;box-sizing:border-box;}',
-                'button::after{content:var(--icon);display:inline;}',
-                ':host > div > div{position:absolute;z-index:var(--z-index);display:none;}',
-                ':host([show]) > div > div{display:block;}',
-                ':host(:not([left])) > div > div{right:0;}',
-                ':host([top]) > div > div{bottom:100%;}',
-            ].join('');
-            this.datevalue = document.createElement('span');
-            const button = document.createElement('button');
-            button.addEventListener('click', () => {
-                this.toggle();
-            });
-            this.calendar = CreateCalendar();
-            this.calendar.addEventListener('change', (event) => {
-                this.value = event.detail.date;
-                this.hide();
-            });
-            const cbox = document.createElement('div');
-            cbox.appendChild(this.calendar);
-            const contents = document.createElement('div');
-            contents.appendChild(this.datevalue);
-            contents.appendChild(cbox);
-            contents.appendChild(button);
             const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { display: block; }',
+                ':host > div { display: grid; grid-template-columns: 6rem 1fr 5rem 7rem; }',
+                ':host > div > input-slider { --input-size: 5rem; }',
+            ].join('');
+            const label = document.createElement('div');
+            label.appendChild(document.createElement('slot'));
+            this.slider = new (customElements.get('input-slider'))();
+            this.slider.step = 1;
+            this.slider.value = 0;
+            if (this.hasAttribute('max')) {
+                this.slider.max = parseInt(this.getAttribute('max') || '') || 1;
+            }
+            this.complete = new (customElements.get('date-time'))();
+            this.complete.fillzero = true;
+            this.complete.year = true;
+            this.complete.second = true;
+            const timelimit = document.createElement('div');
+            timelimit.style.textAlign = 'center';
+            timelimit.textContent = '到達時間';
+            this.updateTime();
+            this.slider.addEventListener('change', () => {
+                this.updateTime();
+            });
+            const contents = document.createElement('div');
+            contents.appendChild(label);
+            contents.appendChild(this.slider);
+            contents.appendChild(timelimit);
+            contents.appendChild(this.complete);
             shadow.appendChild(style);
             shadow.appendChild(contents);
-            this.value = this.getAttribute('value') || '';
         }
-        update(value) {
-            const date = ValueToDateString(value);
-            if (this.datevalue.textContent === date) {
+        updateTime() {
+            const value = this.max - this.value;
+            const mins = value / this.add * this.mins;
+            const date = new Date();
+            date.setMinutes(date.getMinutes() + mins);
+            this.complete.value = date;
+        }
+        get max() {
+            return this.slider.max;
+        }
+        set max(value) {
+            this.slider.max = value;
+        }
+        get mins() {
+            return parseInt(this.getAttribute('mins') || '') || 1;
+        }
+        set mins(value) {
+            this.setAttribute('mins', value + '');
+        }
+        get add() {
+            return parseInt(this.getAttribute('add') || '') || 1;
+        }
+        set add(value) {
+            this.setAttribute('add', value + '');
+        }
+        get value() {
+            return this.slider.value;
+        }
+        set value(value) {
+            this.slider.value = value;
+        }
+        static get observedAttributes() {
+            return ['max', 'value'];
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) {
                 return;
             }
-            this.datevalue.textContent = date;
-            this.calendar.value = date;
+            switch (name) {
+                case 'max':
+                    this.max = newValue;
+                    break;
+                case 'value':
+                    this.value = newValue;
+                    break;
+            }
         }
-        show() { this.setAttribute('show', ''); }
-        hide() { this.removeAttribute('show'); }
-        toggle() { this[this.hasAttribute('show') ? 'hide' : 'show'](); }
-        get value() { return this.calendar.value; }
-        set value(value) { this.update(value); }
-        get disable() { return this.hasAttribute('disable'); }
-        set disable(value) { if (value) {
-            this.setAttribute('disable', '');
-        }
-        else {
-            this.removeAttribute('disable');
-        } }
-        get left() { return this.hasAttribute('left'); }
-        set left(value) { if (value) {
-            this.setAttribute('left', '');
-        }
-        else {
-            this.removeAttribute('left');
-        } }
-        get top() { return this.hasAttribute('top'); }
-        set top(value) { if (value) {
-            this.setAttribute('top', '');
-        }
-        else {
-            this.removeAttribute('top');
-        } }
     }, script.dataset.tagname);
 });
-class AppPointCalc {
-    constructor(config) {
-        this.config = config;
-        config.begin.addEventListener('change', () => { this.calc(); });
-        config.end.addEventListener('change', () => { this.calc(); });
-        config.target.addEventListener('change', () => { this.calc(); });
-        config.points.addEventListener('change', () => { this.calc(); });
-        config.dailypt.addEventListener('change', () => { this.calc(); });
-        config.earnpt.addEventListener('change', () => { this.calc(); });
+((script, init) => {
+    if (document.readyState !== 'loading') {
+        return init(script);
     }
-    begin() { return new Date(this.config.begin.value); }
-    end() { return new Date(this.config.end.value); }
-    targetPoints() { return PositiveNumber(this.config.target.value); }
-    nowPoints() { return PositiveNumber(this.config.points.value); }
-    dailyPoints() { return PositiveNumber(this.config.dailypt.value); }
-    earnPoints() { return PositiveNumber(this.config.earnpt.value); }
-    maxDate(a, b) { return a.getTime() < b.getTime() ? b : a; }
-    getDays(a, b) {
-        const secs = Math.floor(Math.abs(a.getTime() - b.getTime()) / 1000);
-        console.log(secs, a.getTime(), b.getTime());
-        const days = Math.floor(secs / (60 * 60 * 24));
-        return days + (secs % (60 * 60 * 24) ? 1 : 0);
+    document.addEventListener('DOMContentLoaded', () => {
+        init(script);
+    });
+})(document.currentScript, (script) => {
+    ((component, tagname = 'skill-book') => {
+        if (customElements.get(tagname)) {
+            return;
+        }
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
+        constructor() {
+            super();
+            const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { display: block; }',
+                ':host > div { display: grid; grid-template-columns: 1.5em 1fr 2em 4em 1em 3em 1em 4em 1em 3em 1em; }',
+                ':host > div > div:nth-child(n+3) { text-align: right; }',
+                '#icon { width: 1em; height: 1em; }',
+                ':host([rarelity="2"]) #name::after { content: "2"; }',
+                ':host([rarelity="3"]) #name::after { content: "3"; }',
+                ':host([rarelity="4"]) #name::after { content: "4"; }',
+                ':host #name::after { content: "1"; }',
+                '#hours::after { content: "h"; }',
+                '.sub::after { content: "-"; }',
+                '.add::after { content: "+"; }',
+            ].join('');
+            const icon = document.createElement('div');
+            icon.id = 'icon';
+            const name = document.createElement('div');
+            name.id = 'name';
+            name.textContent = '教科書T';
+            this.hoursArea = document.createElement('div');
+            this.hoursArea.id = 'hours';
+            this.expArea = document.createElement('div');
+            this.bonusArea = document.createElement('div');
+            this.books = document.createElement('input');
+            this.books.type = 'number';
+            this.books.min = '0';
+            this.books.max = '185';
+            this.books.value = '0';
+            this.books.addEventListener('change', (event) => {
+                this.onChange(event);
+            });
+            const subBook = document.createElement('button');
+            subBook.classList.add('sub');
+            subBook.addEventListener('click', (event) => {
+                const count = parseInt(this.books.value);
+                if (parseInt(this.books.min) < count) {
+                    this.books.value = `${count - 1}`;
+                }
+                this.onChange(event);
+            });
+            const addBook = document.createElement('button');
+            addBook.classList.add('add');
+            addBook.addEventListener('click', (event) => {
+                const count = parseInt(this.books.value);
+                if (count < parseInt(this.books.max)) {
+                    this.books.value = `${count + 1}`;
+                }
+                this.onChange(event);
+            });
+            this.booksBonus = document.createElement('input');
+            this.booksBonus.type = 'number';
+            this.booksBonus.min = '0';
+            this.booksBonus.max = '124';
+            this.booksBonus.value = '0';
+            this.booksBonus.addEventListener('change', (event) => {
+                this.onChange(event);
+            });
+            const subBookBonus = document.createElement('button');
+            subBookBonus.classList.add('sub');
+            subBookBonus.addEventListener('click', (event) => {
+                const count = parseInt(this.booksBonus.value);
+                if (parseInt(this.booksBonus.min) < count) {
+                    this.booksBonus.value = `${count - 1}`;
+                }
+                this.onChange(event);
+            });
+            const addBookBonus = document.createElement('button');
+            addBookBonus.classList.add('add');
+            addBookBonus.addEventListener('click', (event) => {
+                const count = parseInt(this.booksBonus.value);
+                if (count < parseInt(this.booksBonus.max)) {
+                    this.booksBonus.value = `${count + 1}`;
+                }
+                this.onChange(event);
+            });
+            const contents = document.createElement('div');
+            contents.appendChild(icon);
+            contents.appendChild(name);
+            contents.appendChild(this.hoursArea);
+            contents.appendChild(this.expArea);
+            contents.appendChild(subBook);
+            contents.appendChild(this.books);
+            contents.appendChild(addBook);
+            contents.appendChild(this.bonusArea);
+            contents.appendChild(subBookBonus);
+            contents.appendChild(this.booksBonus);
+            contents.appendChild(addBookBonus);
+            shadow.appendChild(style);
+            shadow.appendChild(contents);
+        }
+        onChange(event) {
+            event.stopPropagation();
+            this.dispatchEvent(new CustomEvent('change'));
+        }
+        get rarelity() {
+            return parseInt(this.getAttribute('rarelity') || '') || 1;
+        }
+        set rarelity(value) {
+            this.setAttribute('rarelity', value + '');
+        }
+        get hours() {
+            return parseInt(this.getAttribute('hours') || '') || 1;
+        }
+        set hours(value) {
+            this.setAttribute('hours', value + '');
+            this.hoursArea.textContent = value + '';
+        }
+        get exp() {
+            return parseInt(this.getAttribute('exp') || '') || 100;
+        }
+        set exp(value) {
+            this.setAttribute('exp', value + '');
+            this.expArea.textContent = value + '';
+        }
+        get bonus() {
+            return parseInt(this.getAttribute('bonus') || '') || 100;
+        }
+        set bonus(value) {
+            this.setAttribute('bonus', value + '');
+            this.bonusArea.textContent = value + '';
+        }
+        get totalHours() {
+            const total = parseInt(this.books.value) + parseInt(this.booksBonus.value);
+            return total * this.hours;
+        }
+        get totalExp() {
+            return parseInt(this.books.value) * this.exp + parseInt(this.booksBonus.value) * this.bonus;
+        }
+    }, script.dataset.tagname);
+});
+((script, init) => {
+    if (document.readyState !== 'loading') {
+        return init(script);
     }
-    calc() {
-        console.log(this.config.begin.value, this.config.end.value);
-        const target = this.targetPoints();
-        if (target <= 0) {
+    document.addEventListener('DOMContentLoaded', () => {
+        init(script);
+    });
+})(document.currentScript, (script) => {
+    ((component, tagname = 'skill-exp') => {
+        if (customElements.get(tagname)) {
             return;
         }
-        const now = new Date();
-        const end = this.end();
-        const begin = now.getTime() < end.getTime() ? this.maxDate(this.begin(), now) : this.begin();
-        const days = this.getDays(begin, end);
-        console.log(days, begin, end);
-        if (days <= 0) {
-            return;
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
+        constructor() {
+            super();
+            const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { display: block; --bar-0: hsl(90, 50%, 50%); --bar-1: hsl(80, 50%, 50%); --bar-2: hsl(70, 50%, 50%); --bar-3: hsl(60, 50%, 50%); --bar-4: hsl(50, 50%, 50%); --bar-5: hsl(40, 50%, 50%); --bar-6: hsl(30, 50%, 50%); --bar-7: hsl(20, 50%, 50%); --bar-8: hsl(10, 50%, 50%); --bar-9: hsl(0, 50%, 50%); }',
+                ':host > div {}',
+                '#values { display: grid; grid-template-columns: 10em 10em 3em 1em 4em 1fr 3.5em; }',
+                '#hours::before { content: "合計教育時間:"; }',
+                '#hours::after { content: "h"; }',
+                '.text.skill::before { content: "現在のスキル経験値："; }',
+                '.text.skilladd::before { content: "+"; }',
+                '[data-status="equal"] { color: blue; }',
+                '[data-status="over"] { color: red; }',
+                '#exp { text-align: right; }',
+                '#exp::before { content: "獲得経験値:"; }',
+                '#total::before { content: "/"; }',
+                '#bar { display: grid; width: 100%; height: 1em; position: relative; --gauge: 100%; }',
+                '#bar::after { content: ""; display: block; width: var(--gauge); height: 100%; position: absolute; right: 0; background: rgba(0, 0, 0, 0.5); transition: width 0.1s; }',
+            ].join('');
+            this.hours = document.createElement('div');
+            this.hours.id = 'hours';
+            this.hours.textContent = '0';
+            this.lv = document.createElement('select');
+            this.lv.addEventListener('change', () => {
+                this.update();
+            });
+            this.nowExp = document.createElement('input');
+            this.nowExp.type = 'number';
+            this.nowExp.min = '0';
+            this.nowExp.max = '5800';
+            this.nowExp.step = '1';
+            this.nowExp.value = '0';
+            this.nowExp.addEventListener('change', () => {
+                this.update();
+            });
+            this.expArea = document.createElement('div');
+            this.expArea.id = 'exp';
+            this.totalArea = document.createElement('div');
+            this.totalArea.id = 'total';
+            this.totalArea.textContent = '1';
+            const skillTitle = document.createElement('div');
+            skillTitle.classList.add('text', 'skill');
+            const skillAdd = document.createElement('div');
+            skillAdd.classList.add('text', 'skilladd');
+            const values = document.createElement('div');
+            values.id = 'values';
+            values.appendChild(this.hours);
+            values.appendChild(skillTitle);
+            values.appendChild(this.lv);
+            values.appendChild(skillAdd);
+            values.appendChild(this.nowExp);
+            values.appendChild(this.expArea);
+            values.appendChild(this.totalArea);
+            this.bar = document.createElement('div');
+            this.bar.id = 'bar';
+            const slot = document.createElement('slot');
+            slot.addEventListener('slotchange', (event) => {
+                for (const child of this.children) {
+                    child.removeEventListener('change', onChange);
+                    child.addEventListener('change', onChange);
+                }
+            });
+            const books = document.createElement('div');
+            books.appendChild(slot);
+            const contents = document.createElement('div');
+            contents.appendChild(values);
+            contents.appendChild(this.bar);
+            contents.appendChild(books);
+            const onChange = () => {
+                this.update();
+            };
+            shadow.appendChild(style);
+            shadow.appendChild(contents);
         }
-        const nowpoint = this.nowPoints();
-        if (days == 1) {
-            this.config.result_dailypt.textContent = (target - nowpoint) + '';
-            return;
+        update() {
+            let hours = 0;
+            let exp = parseInt(this.lv.options[this.lv.selectedIndex].value) + parseInt(this.nowExp.value);
+            const total = parseInt(this.totalArea.textContent || '');
+            for (const child of this.children) {
+                const book = child;
+                if (!book.totalHours) {
+                    continue;
+                }
+                hours += book.totalHours;
+                exp += book.totalExp;
+            }
+            this.bar.style.setProperty('--gauge', `calc(100% * ${total - exp} / ${total})`);
+            if (exp === total) {
+                this.expArea.dataset.status = 'equal';
+            }
+            else if (total < exp) {
+                this.expArea.dataset.status = 'over';
+            }
+            else {
+                this.expArea.dataset.status = '';
+            }
+            this.hours.textContent = hours + '';
+            this.expArea.textContent = exp + '';
         }
-        const mission = this.dailyPoints();
-        const needdaily = (target - nowpoint - mission * (days - 1)) / days;
-        this.config.result_dailypt.textContent = needdaily + '';
-        const earn = this.earnPoints();
-        if (earn <= 0) {
-            return;
+        updateBaseExp(exps) {
+            let total = 0;
+            this.lv.innerHTML = '';
+            const lv = document.createElement('option');
+            lv.value = '0';
+            lv.textContent = 'LV 1';
+            this.lv.appendChild(lv);
+            this.bar.innerHTML = '';
+            this.bar.style.gridTemplateColumns = exps.split(',').map((str, index) => {
+                const exp = parseInt(str);
+                total += exp;
+                const bar = document.createElement('div');
+                bar.style.background = `var(--bar-${index})`;
+                this.bar.appendChild(bar);
+                const lv = document.createElement('option');
+                lv.value = total + '';
+                lv.textContent = `LV ${index + 2}`;
+                this.lv.appendChild(lv);
+                return `${exp}fr`;
+            }).join(' ');
+            this.totalArea.textContent = total + '';
         }
-        this.config.result_dailylaps.textContent = (needdaily / earn) + '';
-    }
+        get exp() {
+            return (this.getAttribute('exp') || '').split(',').map((v) => {
+                return parseInt(v);
+            });
+        }
+        set exp(value) {
+            this.setAttribute('exp', value.join(','));
+        }
+        static get observedAttributes() {
+            return ['exp'];
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) {
+                return;
+            }
+            if (name === 'exp') {
+                this.updateBaseExp(newValue);
+            }
+            this.update();
+        }
+    }, script.dataset.tagname);
+});
+function DrawPartsLvUp(parent) {
+    setTimeout(() => {
+        PARTS_LVUP.forEach((item, index) => {
+            const table = document.createElement('table');
+            table.classList.add('list');
+            const caption = document.createElement('caption');
+            caption.classList.add(`rarelity${item.rarelity}`);
+            caption.textContent = (0 < index && item.rarelity + 1 !== PARTS_LVUP[index - 1].rarelity)
+                ? `★${item.rarelity}～★${PARTS_LVUP[index - 1].rarelity - 1} 装備`
+                : `★${item.rarelity} 装備`;
+            table.appendChild(caption);
+            const tr = document.createElement('tr');
+            [
+                'LV',
+                'パーツ',
+                '個数',
+                '資金',
+                '累計',
+            ].forEach((title) => {
+                const td = document.createElement('td');
+                td.textContent = title;
+                tr.appendChild(td);
+            });
+            const thead = document.createElement('thead');
+            thead.appendChild(tr);
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            table.appendChild(tbody);
+            let lv = 0;
+            let total = 0;
+            item.list.forEach((item) => {
+                total += item.money;
+                const tr = document.createElement('tr');
+                tr.classList.add(`rarelity${item.rarelity}`);
+                [
+                    `+${++lv}`,
+                    PARTS_NAMES[item.rarelity - 1],
+                    item.num,
+                    item.money,
+                    total,
+                ].forEach((data) => {
+                    const td = document.createElement('td');
+                    td.textContent = data + '';
+                    tr.appendChild(td);
+                });
+                tr.children[1].classList.add('parts');
+                tbody.appendChild(tr);
+                if (item.ex) {
+                    tr.children[0].rowSpan = 2;
+                    tr.children[3].rowSpan = 2;
+                    tr.children[4].rowSpan = 2;
+                    const trEx = document.createElement('tr');
+                    trEx.classList.add(`rarelity${item.ex.rarelity}`);
+                    [
+                        PARTS_NAMES[item.ex.rarelity],
+                        item.ex.num,
+                    ].forEach((data) => {
+                        const td = document.createElement('td');
+                        td.textContent = data + '';
+                        trEx.appendChild(td);
+                    });
+                    trEx.children[0].classList.add('parts', 'ex');
+                    tbody.appendChild(trEx);
+                }
+            });
+            parent.appendChild(table);
+        });
+    }, 0);
 }
-function PositiveNumber(value) {
-    if (!value) {
-        return 0;
-    }
-    value = typeof value === 'string' ? parseInt(value) : Math.floor(value);
-    if (value < 0) {
-        return 0;
-    }
-    return value;
+function DrawSkillLvUp(parent) {
+    setTimeout(() => {
+        parent.exp = SKILL_EXP;
+        BOOKS.forEach((item) => {
+            const book = new (customElements.get('skill-book'))();
+            book.rarelity = item.rarelity;
+            book.hours = item.hours;
+            book.exp = item.exp;
+            book.bonus = item.bonus;
+            parent.appendChild(book);
+        });
+    }, 0);
 }
-class App {
-    constructor(config) {
-        const pc = new AppPointCalc(config.pc);
-    }
-}
-document.addEventListener('DOMContentLoaded', () => {
-    Promise.all([
-        customElements.whenDefined('calendar-input'),
-    ]).then(() => {
-        const app = new App({
-            pc: {
-                begin: document.getElementById('pc_begin'),
-                end: document.getElementById('pc_end'),
-                target: document.getElementById('pc_target'),
-                points: document.getElementById('pc_points'),
-                dailypt: document.getElementById('pc_dailypt'),
-                earnpt: document.getElementById('pc_earnpt'),
-                result_dailypt: document.getElementById('pc_result_dailypt'),
-                result_dailylaps: document.getElementById('pc_result_dailylaps'),
-            },
+Promise.all([
+    customElements.whenDefined('skill-book'),
+    customElements.whenDefined('skill-exp'),
+]).then(() => {
+    document.querySelectorAll('header > button').forEach((button) => {
+        button.addEventListener('click', () => {
+            document.body.dataset.page = button.id;
         });
     });
-    document.body.lang = ((nav) => { return nav.userLanguage || nav.language || nav.browserLanguage; })(window.navigator);
+    DrawSkillLvUp(document.getElementById('skill_lvup'));
+    DrawPartsLvUp(document.getElementById('parts_lvup'));
 });
