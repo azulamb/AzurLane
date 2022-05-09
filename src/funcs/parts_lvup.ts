@@ -13,7 +13,7 @@ function DrawPartsLvUp(parent: HTMLElement) {
 	setTimeout(() => {
 		PARTS_LVUP.forEach((item, index) => {
 			const table = document.createElement('table');
-			table.classList.add('list');
+			table.classList.add('parts');
 
 			const caption = document.createElement('caption');
 			caption.classList.add(`rarelity${item.rarelity}`);
@@ -22,18 +22,18 @@ function DrawPartsLvUp(parent: HTMLElement) {
 				: `★${item.rarelity} 装備`;
 			table.appendChild(caption);
 
-			const tr = document.createElement('tr');
-			[
-				'LV',
-				'パーツ',
-				'個数',
-				'資金',
-				'累計',
-			].forEach((title) => {
-				const td = document.createElement('td');
-				td.textContent = title;
-				tr.appendChild(td);
-			});
+			const tr = Common.tr(
+				{},
+				...[
+					'LV',
+					'パーツ',
+					'個数',
+					'資金',
+					'累計',
+				].map((title) => {
+					return Common.td(title);
+				}),
+			);
 			const thead = document.createElement('thead');
 			thead.appendChild(tr);
 			table.appendChild(thead);
@@ -46,20 +46,18 @@ function DrawPartsLvUp(parent: HTMLElement) {
 			item.list.forEach((item) => {
 				total += item.money;
 
-				const tr = document.createElement('tr');
-				tr.classList.add(`rarelity${item.rarelity}`);
-
-				[
-					`+${++lv}`,
-					PARTS_NAMES[item.rarelity - 1],
-					item.num,
-					item.money,
-					total,
-				].forEach((data) => {
-					const td = document.createElement('td');
-					td.textContent = data + '';
-					tr.appendChild(td);
-				});
+				const tr = Common.tr(
+					{ class: `rarelity${item.rarelity}` },
+					...[
+						`+${++lv}`,
+						PARTS_NAMES[item.rarelity - 1],
+						item.num,
+						item.money,
+						total,
+					].map((data) => {
+						return Common.td(data + '');
+					}),
+				);
 
 				(<HTMLTableCellElement> tr.children[1]).classList.add('parts');
 				tbody.appendChild(tr);
@@ -69,17 +67,15 @@ function DrawPartsLvUp(parent: HTMLElement) {
 					(<HTMLTableCellElement> tr.children[3]).rowSpan = 2;
 					(<HTMLTableCellElement> tr.children[4]).rowSpan = 2;
 
-					const trEx = document.createElement('tr');
-					trEx.classList.add(`rarelity${item.ex.rarelity}`);
-
-					[
-						PARTS_NAMES[item.ex.rarelity],
-						item.ex.num,
-					].forEach((data) => {
-						const td = document.createElement('td');
-						td.textContent = data + '';
-						trEx.appendChild(td);
-					});
+					const trEx = Common.tr(
+						{ class: `rarelity${item.ex.rarelity}` },
+						...[
+							PARTS_NAMES[item.ex.rarelity],
+							item.ex.num,
+						].map((data) => {
+							return Common.td(data + '');
+						}),
+					);
 
 					(<HTMLTableCellElement> trEx.children[0]).classList.add('parts', 'ex');
 					tbody.appendChild(trEx);

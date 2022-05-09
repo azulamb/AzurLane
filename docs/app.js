@@ -1,3 +1,116 @@
+const Common = {
+    tr: (option, ...columns) => {
+        const tr = document.createElement('tr');
+        if (option) {
+            if (option.class) {
+                const list = typeof option.class === 'string' ? [option.class] : option.class;
+                tr.classList.add(...list);
+            }
+        }
+        columns.forEach((td) => {
+            tr.appendChild(td);
+        });
+        return tr;
+    },
+    td: (content, option) => {
+        const td = document.createElement('td');
+        td.textContent = content;
+        if (option) {
+            if (option.class) {
+                const list = typeof option.class === 'string' ? [option.class] : option.class;
+                td.classList.add(...list);
+            }
+            if (option.colSpan) {
+                td.colSpan = option.colSpan;
+            }
+            if (option.rowSpan) {
+                td.rowSpan = option.rowSpan;
+            }
+        }
+        return td;
+    },
+};
+((script, init) => {
+    if (document.readyState !== 'loading') {
+        return init(script);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        init(script);
+    });
+})(document.currentScript, (script) => {
+    ((component, tagname = 'section-pages') => {
+        if (customElements.get(tagname)) {
+            return;
+        }
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
+        constructor() {
+            super();
+            const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { --header: 2rem; --front-color: black; --back-color: white; --tab-back: lightgray; --tab-active: white; --tab-inactive: gray; --home-size: 2rem; --home-icon: ""; display: block; width: 100%; height: 100%; }',
+                ':host > div { display: grid; grid-template-rows: var(--header) 1fr; width: 100%; height: 100%; background: var(--back-color); color: var(--front-color); }',
+                ':host > div > header { display: flex; background: var(--tab-back); }',
+                ':host > div > header > a { display: block; width: var(--home-size); height: 100%; background-image: var(--home-icon); background-size: cover; }',
+                ':host > div > header > button { display: block; cursor: pointer; border: 0; border-radius: 0.5em 0.5em 0 0; padding: 0 1em; background:var(--tab-inactive); }',
+                ':host > div > header > button.show { background: var(--tab-active); }',
+                ':host > div > div { overflow: auto; }',
+                '::slotted(section:not(.show)) { display: none; }',
+            ].join('');
+            this.home = document.createElement('a');
+            this.home.href = this.getAttribute('home') || '/';
+            const header = document.createElement('header');
+            header.appendChild(this.home);
+            const slot = document.createElement('slot');
+            slot.addEventListener('slotchange', () => {
+                header.querySelectorAll('button').forEach((button) => {
+                    header.removeChild(button);
+                });
+                const main = this.getAttribute('main') || '';
+                for (const page of this.children) {
+                    const tab = document.createElement('button');
+                    tab.textContent = page.dataset.name || '';
+                    if (!tab.textContent) {
+                        continue;
+                    }
+                    tab.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        for (const page of this.children) {
+                            page.classList.remove('show');
+                        }
+                        page.classList.add('show');
+                        for (const tab of header.children) {
+                            tab.classList.remove('show');
+                        }
+                        tab.classList.add('show');
+                    });
+                    header.appendChild(tab);
+                    if (page.id && page.id === main) {
+                        page.classList.add('show');
+                        tab.classList.add('show');
+                    }
+                }
+            });
+            const pages = document.createElement('div');
+            pages.appendChild(slot);
+            const contents = document.createElement('div');
+            contents.appendChild(header);
+            contents.appendChild(pages);
+            shadow.appendChild(style);
+            shadow.appendChild(contents);
+        }
+        static get observedAttributes() {
+            return ['home'];
+        }
+        attributeChangedCallback(name, oldValue, newValue) {
+            if (oldValue === newValue) {
+                return;
+            }
+            this.home.href = newValue || '/';
+        }
+    }, script.dataset.tagname);
+});
 ((script, init) => {
     if (document.readyState !== 'loading') {
         return init(script);
@@ -723,75 +836,6 @@
         }
     }, script.dataset.tagname);
 });
-function DrawPartsLvUp(parent) {
-    setTimeout(() => {
-        PARTS_LVUP.forEach((item, index) => {
-            const table = document.createElement('table');
-            table.classList.add('list');
-            const caption = document.createElement('caption');
-            caption.classList.add(`rarelity${item.rarelity}`);
-            caption.textContent = (0 < index && item.rarelity + 1 !== PARTS_LVUP[index - 1].rarelity)
-                ? `★${item.rarelity}～★${PARTS_LVUP[index - 1].rarelity - 1} 装備`
-                : `★${item.rarelity} 装備`;
-            table.appendChild(caption);
-            const tr = document.createElement('tr');
-            [
-                'LV',
-                'パーツ',
-                '個数',
-                '資金',
-                '累計',
-            ].forEach((title) => {
-                const td = document.createElement('td');
-                td.textContent = title;
-                tr.appendChild(td);
-            });
-            const thead = document.createElement('thead');
-            thead.appendChild(tr);
-            table.appendChild(thead);
-            const tbody = document.createElement('tbody');
-            table.appendChild(tbody);
-            let lv = 0;
-            let total = 0;
-            item.list.forEach((item) => {
-                total += item.money;
-                const tr = document.createElement('tr');
-                tr.classList.add(`rarelity${item.rarelity}`);
-                [
-                    `+${++lv}`,
-                    PARTS_NAMES[item.rarelity - 1],
-                    item.num,
-                    item.money,
-                    total,
-                ].forEach((data) => {
-                    const td = document.createElement('td');
-                    td.textContent = data + '';
-                    tr.appendChild(td);
-                });
-                tr.children[1].classList.add('parts');
-                tbody.appendChild(tr);
-                if (item.ex) {
-                    tr.children[0].rowSpan = 2;
-                    tr.children[3].rowSpan = 2;
-                    tr.children[4].rowSpan = 2;
-                    const trEx = document.createElement('tr');
-                    trEx.classList.add(`rarelity${item.ex.rarelity}`);
-                    [
-                        PARTS_NAMES[item.ex.rarelity],
-                        item.ex.num,
-                    ].forEach((data) => {
-                        const td = document.createElement('td');
-                        td.textContent = data + '';
-                        trEx.appendChild(td);
-                    });
-                    trEx.children[0].classList.add('parts', 'ex');
-                    tbody.appendChild(trEx);
-                }
-            });
-            parent.appendChild(table);
-        });
-    }, 0);
-}
 function DrawSkillLvUp(parent) {
     setTimeout(() => {
         parent.exp = SKILL_EXP;
@@ -805,15 +849,136 @@ function DrawSkillLvUp(parent) {
         });
     }, 0);
 }
+const RARELITY_LIST = ['N', 'R', 'SR', 'SSR', 'UR'];
+function DrawAwaking(parent) {
+    setTimeout(() => {
+        const total = {};
+        const tbody = document.createElement('tbody');
+        const theadLine = Common.tr({}, Common.td('', { colSpan: 2 }), ...RARELITY_LIST.map((rarelity) => {
+            return Common.td(rarelity);
+        }));
+        AWAKING.forEach((item, index) => {
+            const chips = Common.tr({});
+            const arrays = 4 <= index ? Common.tr({}) : null;
+            const money = Common.tr({});
+            chips.appendChild(Common.td(`LV ${100 + (index + 1) * 5}`, { rowSpan: 4 <= index ? 3 : 2 }));
+            chips.appendChild(Common.td('Ⅰ'));
+            chips.classList.add('chips');
+            if (arrays) {
+                arrays.appendChild(Common.td('Ⅱ'));
+                arrays.classList.add('arrays');
+            }
+            money.appendChild(Common.td('資金'));
+            money.classList.add('money');
+            RARELITY_LIST.forEach((rarelity) => {
+                const data = item[rarelity];
+                chips.appendChild(Common.td(data.chips + '', { class: ['rarelity', `back_${rarelity}`] }));
+                if (arrays) {
+                    arrays.appendChild(Common.td(data.arrays + '', { class: ['rarelity', `back_${rarelity}`] }));
+                }
+                money.appendChild(Common.td(data.money + '', { class: ['rarelity', `back_${rarelity}`] }));
+                if (!total[rarelity]) {
+                    total[rarelity] = {
+                        chips: 0,
+                        arrays: 0,
+                        money: 0,
+                    };
+                }
+                total[rarelity].chips += data.chips;
+                total[rarelity].arrays += data.arrays || 0;
+                total[rarelity].money += data.money;
+            });
+            tbody.appendChild(chips);
+            if (arrays) {
+                tbody.appendChild(arrays);
+            }
+            tbody.appendChild(money);
+            tbody.appendChild(Common.tr({ class: 'line' }, Common.td('', { colSpan: 2 + RARELITY_LIST.length })));
+        });
+        const chips = Common.tr({ class: 'chips' }, Common.td('累計', { rowSpan: 3 }), Common.td('Ⅰ'));
+        const arrays = Common.tr({ class: 'arrays' }, Common.td('Ⅱ'));
+        const money = Common.tr({ class: 'money' }, Common.td('資金'));
+        tbody.appendChild(chips);
+        tbody.appendChild(arrays);
+        tbody.appendChild(money);
+        RARELITY_LIST.forEach((rarelity) => {
+            const data = total[rarelity];
+            chips.appendChild(Common.td(data.chips + '', { class: ['rarelity', `back_${rarelity}`] }));
+            arrays.appendChild(Common.td(data.arrays + '', { class: ['rarelity', `back_${rarelity}`] }));
+            money.appendChild(Common.td(data.money + '', { class: ['rarelity', `back_${rarelity}`] }));
+        });
+        const thead = document.createElement('thead');
+        thead.appendChild(theadLine);
+        const table = document.createElement('table');
+        table.classList.add('awaking');
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        parent.appendChild(table);
+    }, 0);
+}
+function DrawPartsLvUp(parent) {
+    setTimeout(() => {
+        PARTS_LVUP.forEach((item, index) => {
+            const table = document.createElement('table');
+            table.classList.add('parts');
+            const caption = document.createElement('caption');
+            caption.classList.add(`rarelity${item.rarelity}`);
+            caption.textContent = (0 < index && item.rarelity + 1 !== PARTS_LVUP[index - 1].rarelity)
+                ? `★${item.rarelity}～★${PARTS_LVUP[index - 1].rarelity - 1} 装備`
+                : `★${item.rarelity} 装備`;
+            table.appendChild(caption);
+            const tr = Common.tr({}, ...[
+                'LV',
+                'パーツ',
+                '個数',
+                '資金',
+                '累計',
+            ].map((title) => {
+                return Common.td(title);
+            }));
+            const thead = document.createElement('thead');
+            thead.appendChild(tr);
+            table.appendChild(thead);
+            const tbody = document.createElement('tbody');
+            table.appendChild(tbody);
+            let lv = 0;
+            let total = 0;
+            item.list.forEach((item) => {
+                total += item.money;
+                const tr = Common.tr({ class: `rarelity${item.rarelity}` }, ...[
+                    `+${++lv}`,
+                    PARTS_NAMES[item.rarelity - 1],
+                    item.num,
+                    item.money,
+                    total,
+                ].map((data) => {
+                    return Common.td(data + '');
+                }));
+                tr.children[1].classList.add('parts');
+                tbody.appendChild(tr);
+                if (item.ex) {
+                    tr.children[0].rowSpan = 2;
+                    tr.children[3].rowSpan = 2;
+                    tr.children[4].rowSpan = 2;
+                    const trEx = Common.tr({ class: `rarelity${item.ex.rarelity}` }, ...[
+                        PARTS_NAMES[item.ex.rarelity],
+                        item.ex.num,
+                    ].map((data) => {
+                        return Common.td(data + '');
+                    }));
+                    trEx.children[0].classList.add('parts', 'ex');
+                    tbody.appendChild(trEx);
+                }
+            });
+            parent.appendChild(table);
+        });
+    }, 0);
+}
 Promise.all([
     customElements.whenDefined('skill-book'),
     customElements.whenDefined('skill-exp'),
 ]).then(() => {
-    document.querySelectorAll('header > button').forEach((button) => {
-        button.addEventListener('click', () => {
-            document.body.dataset.page = button.id;
-        });
-    });
     DrawSkillLvUp(document.getElementById('skill_lvup'));
+    DrawAwaking(document.getElementById('awaking'));
     DrawPartsLvUp(document.getElementById('parts_lvup'));
 });
