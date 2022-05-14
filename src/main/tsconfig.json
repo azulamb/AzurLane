@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"outFile": "../docs/app.js",
+		"outFile": "../../docs/app.js",
 		"module": "amd",
 		"target": "es2017",
 		"moduleResolution": "node",
@@ -12,7 +12,7 @@
 		"sourceMap": false
 	},
 	"include": [
-		"./types.d.ts",
+		"../types.d.ts",
 		"./index.ts"
 	]
 }

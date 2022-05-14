@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja" style="font-size:20px;">
+<head>
+	<meta charset="utf-8">
+	<title>AzurLane Support Tools</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+	<link href="../style.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" sizes="152x152" href="../apple-touch-icon-precomposed.png">
+	<script src="./app.js" defer></script>
+	<style>
+section-pages{--home-icon: url(../favicon.svg);}
+table.meowfficers tbody td{text-align:center;}
+table.meowfficers tbody td.icon{background-size: contain;background-position:center;background-repeat:no-repeat;}
+table.meowfficers tbody td.Justice{background-image: url(./Justice.png);}
+table.meowfficers tbody td.Antenna{background-image: url(./Antenna.png);}
+table.meowfficers tbody td.Bunny{background-image: url(./Bunny.png);}
+table.meowfficers tbody td.Eagle{background-image: url(./Eagle.png);}
+table.meowfficers tbody td.Lady{background-image: url(./Lady.png);}
+table.meowfficers tbody td.SG{background-image: url(./SG.png);}
+table.meowfficers tbody td.Lime{background-image: url(./Lime.png);}
+table.meowfficers tbody td.Pound{background-image: url(./Pound.png);}
+table.meowfficers tbody td.Pepper{background-image: url(./Pepper.png);}
+table.meowfficers tbody td.Soup{background-image: url(./Soup.png);}
+table.meowfficers tbody td.Marble{background-image: url(./Marble.png);}
+table.meowfficers tbody td.Ark{background-image: url(./Ark.png);}
+table.meowfficers tbody td.Rose{background-image: url(./Rose.png);}
+table.meowfficers tbody td.Bugles{background-image: url(./Bugles.png);}
+table.meowfficers tbody td.Bishamaru{background-image: url(./Bishamaru.png);}
+table.meowfficers tbody td.Takemaru{background-image: url(./Takemaru.png);}
+table.meowfficers tbody td.Jiromaru{background-image: url(./Jiromaru.png);}
+table.meowfficers tbody td.Yoshimaru{background-image: url(./Yoshimaru.png);}
+table.meowfficers tbody td.Asamaru{background-image: url(./Asamaru.png);}
+table.meowfficers tbody td.Katsumaru{background-image: url(./Katsumaru.png);}
+table.meowfficers tbody td.Steel{background-image: url(./Steel.png);}
+table.meowfficers tbody td.Oscar{background-image: url(./Oscar.png);}
+table.meowfficers tbody td.Potato{background-image: url(./Potato.png);}
+table.meowfficers tbody td.Edelweiss{background-image: url(./Edelweiss.png);}
+table.meowfficers tbody td.Gral{background-image: url(./Gral.png);}
+table.meowfficers tbody td.Tofu{background-image: url(./Tofu.png);}
+table.meowfficers tbody td.Beer{background-image: url(./Beer.png);}
+table.meowfficers tbody td.abilities{text-align:left;}
+table.meowfficers meowfficer-ability{--size:3rem;}
+table.meowfficers td.name { width: 6rem; }
+table.meowfficers td.nation { width: 4rem; }
+table.meowfficers td.type { width: 3rem; }
+table.meowfficers td.ship { width: 3rem; }
+table.meowfficers td.EagleUnion::after{content:'ユニオン';}
+table.meowfficers td.RoyalNavy::after{content:'ロイヤル';}
+table.meowfficers td.IronBlood::after{content:'鉄血';}
+table.meowfficers td.SakuraEmpire::after{content:'重桜';}
+table.meowfficers td.type1::after{content:'参謀';background:#82a3f5;border-radius:0.2rem;padding:0.2rem 0.4rem;display:inline-block;}
+table.meowfficers td.type2::after{content:'指揮';background:#ef6e7a;border-radius:0.2rem;padding:0.2rem 0.4rem;display:inline-block;}
+table.meowfficers td.destroyer::after{content:'駆逐';}
+table.meowfficers td.cruiser::after{content:'巡洋';}
+table.meowfficers td.battleship::after{content:'戦艦';}
+table.meowfficers td.carrier::after{content:'空母';}
+table.meowfficers td.submarine::after{content:'潜水';}
+	</style>
+	<script>
+const MEOWFFICERS_SKILL = {
+	SilentHunter: { name: '静寂のシュトース', },
+	IronbottomTailSwipe: { name: '鉄底尻尾突', },
+	PawsOfFury: { name: '反撃毛玉拳', },
+	UnsinkableOscar: { name: '根性のぐりゅっく', },
+	ChurchillsBlessing: { name: 'ロイヤルタッチ', },
+	'31KnotsOfJustice': { name: '31ぶんぶん', },
+	RuleBritannya: { name: 'ロイヤルケーキ', },
+	Snipurr: { name: 'RDぼこぼこ', },
+};
+const MEOWFFICERS = {
+	Justice: { name: 'ジャスティス', rarelity: 'SSR', type: 2, target: 'destroyer', nation: 'EagleUnion', logistics: { min: 44, max: 144 }, directives: { min: 52, max: 171 }, tactics: { min: 52, max: 171 }, skill: '31KnotsOfJustice', abilities: ['OfficerDestroyer', 'EngineerDestroyer', 'AntiAirVanguard', 'LookoutVanguard', 'TorpedoDestroyer', 'HelmsmanSmall', 'ArtilleryDestroyer', 'LoadingDestroyer', 'SonarVanguard', 'OfficerUnion', 'HeartOfTheTorpedo', 'WindsAlacrity', 'Miracle', 'Destiny', 'RisingStar'] },
+	Antenna: { name: 'アンテナ', rarelity: 'SSR', type: 0, target: 'battleship', nation: 'EagleUnion', logistics: { min: 43, max: 141 }, directives: { min: 64, max: 210 }, tactics: { min: 55, max: 180 }, skill: 'Snipurr', abilities: ['AntiAirVanguard', 'LookoutMain', 'AntiAirMain', 'OfficerBattleship', 'EngineerBattleship', 'ArtilleryMain', 'OfficerUnion', 'ArtilleryCruiser', 'TirelessWarrior', 'Destiny', 'RisingStar', 'MountainsTenacity', 'SoulfulWarrior'] },
+	Lime: { name: 'ライム', rarelity: 'SSR', type: 1, target: 'battleship', nation: 'RoyalNavy', logistics: { min: 	55, max: 180 }, directives: { min: 52, max: 171 }, tactics: { min: 58, max: 190 }, skill: 'ChurchillsBlessing', abilities: ['LookoutVanguard', 'TorpedoDestroyer', 'AntiAirVanguard', 'HelmsmanSmall', 'OfficerBattleship', 'EngineerBattleship', 'ArtilleryMain', 'LoadingBattleship', 'AntiAirMain', 'HelmsmanLarge', 'OfficerRoyal', 'RisingStar', 'SoulfulWarrior', 'MountainsTenacity', 'TirelessWarrior', 'Destiny'] },
+	Pound: { name: 'パウンド', rarelity: 'SSR', type: 2, target: 'battleship', nation: 'RoyalNavy', logistics: { min: 67, max: 220 }, directives: { min: 59, max: 194 }, tactics: { min: 36, max: 118 }, skill: 'RuleBritannya', abilities: ['LoadingBattleship', 'ArtilleryCruiser', 'ArtilleryMain', 'AntiAirMain', 'OfficerBattleship', 'EngineerBattleship', 'LookoutMain', 'OfficerRoyal', 'SonarVanguard', 'SonarMain', 'LoadingDestroyer', 'HelmsmanSmall', 'RisingStar', 'Destiny', 'ForestsSerenity', 'WindsAlacrity'] },
+	Takemaru: { name: 'タケマル', rarelity: 'SSR', type: 2, target: 'cruiser', nation: 'SakuraEmpire', logistics: { min: 30, max: 98 }, directives: { min: 62, max: 203 }, tactics: { min: 66, max: 217 }, skill: 'SilentHunter', abilities: ['TorpedoCruiser', 'ArtilleryCruiser', 'LoadingCruiser', 'OfficerCruiser', 'TirelessWarrior', 'OfficerBattleship', 'LoadingBattleship', 'OfficerSakura', 'RisingStar', 'Destiny', 'HeartOfTheTorpedo', 'ArtilleryMain', 'LoadingDestroyer', 'LookoutVanguard'] },
+	Bishamaru: { name: 'ビシャマル', rarelity: 'SSR', type: 1, target: 'carrier', nation: 'SakuraEmpire', logistics: { min: 38, max: 125 }, directives: { min: 49, max: 161 }, tactics: { min: 68, max: 223 }, skill: 'PawsOfFury', abilities: ['HelmsmanMedium', 'ArtilleryCruiser', 'EngineerCruiser', 'OfficerCruiser', 'LoadingCruiser', 'TorpedoCruiser', 'OfficerSakura', 'EngineerCarrier', 'AviationCarrier', 'OfficerCarrier', 'Mechanic', 'SonarMain', 'LookoutMain', 'AntiAirMain', 'FlamesAggression', 'AcePilot', 'RisingStar', 'Destiny'] },
+	Steel: { name: 'しゅている', rarelity: 'SSR', type: 0, target: 'submarine', nation: 'IronBlood', logistics: { min: 40, max: 131 }, directives: { min: 66, max: 217 }, tactics: { min: 52, max: 171 }, skill: 'SilentHunter', abilities: ['HelmsmanSmall', 'TorpedoSS', 'LoadingSubmarine', 'EngineerSS', 'LookoutSubmarine', 'OfficerSubmarine', 'OfficerIronBlood', 'RisingStar', 'Destiny', 'FlamesAggression', 'AlphaWolf', 'Miracle'] },
+	Oscar: { name: 'おすかー', rarelity: 'SSR', type: 1, target: 'battleship', nation: 'IronBlood', logistics: { min: 37, max: 101 }, directives: { min: 66, max: 217 }, tactics: { min: 54, max: 177 }, skill: 'UnsinkableOscar', abilities: ['OfficerIronBlood', 'EngineerBattleship', 'ArtilleryMain', 'LookoutMain', 'OfficerBattleship', 'LoadingBattleship', 'HelmsmanLarge', 'OfficerCruiser', 'LoadingCruiser', 'MountainsTenacity', 'FlamesAggression', 'SoulfulWarrior'] },
+	//{ name: '', rarelity: 2, type: , target: '', nation: '', logistics: { min: , max:  }, directives: { min: , max:  }, tactics: { min: , max:  }, skill: '', abilities: [] },
+};
+	</script>
+</head>
+<body data-page="values">
+	<section-pages main="page_meowfficers" home="../">
+		<a href="../#page_home">このサイトについて</a>
+		<a href="../">値一覧</a>
+		<section id="page_meowfficers" data-name="オフニャ">
+			<div id="meowfficers"></div>
+		</section>
+	</section-pages>
+</body>
+</html>

@@ -6,22 +6,13 @@
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+	<link href="./style.css" rel="stylesheet">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-precomposed.png">
 	<script src="./app.js" defer></script>
 	<style>
-:root{--back-base:#0c428d;--back-main:#729ee1;--back-inactive:#547dbb;--link-color:#262e8d;--color-N:189,189,189;--color-R:126,197,250;--color-SR:186,164,249;--color-SSR:251,232,99;--color-UR:255,255,255;}
-html{height:100%;}
-body{height:100%;margin:0;}
-a{color:var(--link-color);}
-section-pages{--back-color:var(--back-main);--tab-back:var(--back-base);--tab-active:var(--back-main);--tab-inactive:var(--back-inactive);--home-icon: url(./favicon.svg);}
-section{box-sizing:border-box;padding:1rem;}
-table{margin:1rem auto;}
-table thead tr{background:rgba(12,66,141,0.35);}
-table thead tr td{text-align:center;min-width:3rem;}
-table tbody td{text-align:right;}
-table tr.line td{height:0.1rem;background:rgba(12,66,141,0.35);}
+section-pages{--home-icon: url(./favicon.svg);}
 table.awaking tr.money{background:rgb(255,223,0,0.5);}
 table.parts caption::after{content:'';display:inline-block;width:1rem;height:1rem;background-size:cover;}
 table.parts caption.rarelity1::after{background-image:url(./resource/box_t1.png);}
@@ -38,11 +29,6 @@ table.parts tr.rarelity3 td.parts::after{background-image:url(./resource/parts_t
 table.parts tr.rarelity4 td.parts::after{background-image:url(./resource/parts_t4.png);}
 table.parts tr.rarelity4 td.parts.ex::after{background-image:url(./resource/parts_t4_ex.png);width:1rem;}
 table.parts tr.rarelity5 td.parts.ex::after{background-image:url(./resource/parts_t5_ex.png);width:1rem;}
-.back_N{background:rgba(var(--color-N),0.5);}
-.back_R{background:rgba(var(--color-R),0.5);}
-.back_SR{background:rgba(var(--color-SR),0.5);}
-.back_SSR{background:rgba(var(--color-SSR),0.5);}
-.back_UR{background:rgba(var(--color-UR),0.5);}
 	</style>
 	<script>
 const BOOKS = [
@@ -164,40 +150,6 @@ const PARTS_LVUP = [
 		],
 	},
 ];
-const MEOWFFICERS_SKILL = {
-	'SilentHunter': { name: '静寂のシュトース', },
-	'IronbottomTailSwipe': { name: '鉄底尻尾突', },
-};
-const MEOWFFICERS_ABILITY = {
-	RookieHelmsmanSmall: { name: '操舵手・小型艦', },
-	TorpedoRookieCruiser: { name: '新人水雷士・巡洋', },
-	TorpedoRookieSS: { name: '新人水雷士・潜水', },
-	LoadingRookieDestroyer: { name: '新人装填手・駆逐', },
-	LoadingRookieCruiser: { name: '新人装填手・巡洋', },
-	LoadingRookieBattleship: { name: '新人装填手・戦艦', },
-	LoadingRookieSubmarine: { name: '新人装填手・潜水', },
-	RookieEngineerSS: { name: '新人機関士・潜水', },
-	RookieLookoutVanguard: { name: '新人見張員・前衛', },
-	RookieLookoutSubmarine: { name: '新人見張員・巡洋', },
-	RookieOfficerCruiser: { name: '新人機関士・巡洋', },
-	RookieOfficerBattleship: { name: '新人参謀・戦艦', },
-	RookieOfficerSubmarine: { name: '新人参謀・潜水', },
-	RookieOfficerIronBlood: { name: '新人参謀・鉄血', },
-	RookieOfficerSakura: { name: '新人参謀・重桜', },
-	ArtilleryRookieCruiser: { name: '新人砲術士・巡洋', },
-	ArtilleryRookieMain: { name: '新人砲術士・主力', },
-	TirelessWarrior: { name: '', },
-	HeartOfTheTorpedo: { name: '', },
-	AlphaWolf: { name: 'ウルフハウンド', },
-	RisingStar: { name: 'ニュースター', },
-	Destiny: { name: 'デスティニー', },
-	FlamesAggression: { name: '侵椋すること火の如く', },
-	Miracle: { name: 'ミラクル', },
-};
-const MEOWFFICERS = [
-	{ name: 'Steel', rarelity: 3, type: 0, target: 'submarine', nation: 'IronBlood', logistics: { min: 40, max: 131 }, directives: { min: 66, max: 217 }, tactics: { min: 52, max: 171 }, skill: 'SilentHunter', abilities: ['RookieHelmsmanSmall', 'TorpedoRookieSS', 'LoadingRookieSubmarine', 'RookieEngineerSS', 'RookieLookoutSubmarine', 'RookieOfficerSubmarine', 'RookieOfficerIronBlood', 'RisingStar', 'Destiny', 'FlamesAggression', 'AlphaWolf', 'Miracle'] },
-	{ name: 'Takemaru', rarelity: 3, type: 2, target: 'cruiser', nation: 'SakuraEmpire', logistics: { min: 30, max: 98 }, directives: { min: 62, max: 203 }, tactics: { min: 66, max: 217 }, skill: 'SilentHunter', abilities: ['TorpedoRookieCruiser', 'ArtilleryRookieCruiser', 'LoadingRookieCruiser', 'RookieOfficerCruiser', 'TirelessWarrior', 'RookieOfficerBattleship', 'LoadingRookieBattleship', 'RookieOfficerSakura', 'RisingStar', 'Destiny', 'HeartOfTheTorpedo', 'ArtilleryRookieMain', 'LoadingRookieDestroyer', 'RookieLookoutVanguard'] },
-];
 	</script>
 </head>
 <body data-page="values">
@@ -233,6 +185,7 @@ const MEOWFFICERS = [
 			<h3>パーツ強化</h3>
 			<div id="parts_lvup"></div>
 		</section>
+		<a href="./meowfficers/">オフニャ</a>
 	</section-pages>
 </body>
 </html>

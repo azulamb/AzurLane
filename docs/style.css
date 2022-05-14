@@ -1,0 +1,16 @@
+:root{--back-base:#0c428d;--back-main:#729ee1;--back-inactive:#547dbb;--link-color:#262e8d;--color-N:189,189,189;--color-R:126,197,250;--color-SR:186,164,249;--color-SSR:251,232,99;--color-UR:255,255,255;}
+html{height:100%;}
+body{height:100%;margin:0;}
+a{color:var(--link-color);}
+section-pages{--back-color:var(--back-main);--tab-back:var(--back-base);--tab-active:var(--back-main);--tab-inactive:var(--back-inactive);}
+section{box-sizing:border-box;padding:1rem;}
+table{margin:1rem auto;}
+table thead tr{background:rgba(12,66,141,0.35);}
+table thead tr td{text-align:center;min-width:3rem;}
+table tbody td{text-align:right;}
+table tr.line td{height:0.1rem;background:rgba(12,66,141,0.35);}
+.back_N{background:rgba(var(--color-N),0.5);}
+.back_R{background:rgba(var(--color-R),0.5);}
+.back_SR{background:rgba(var(--color-SR),0.5);}
+.back_SSR{background:rgba(var(--color-SSR),0.5);}
+.back_UR{background:rgba(var(--color-UR),0.5);}

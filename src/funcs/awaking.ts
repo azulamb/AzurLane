@@ -1,4 +1,5 @@
-type RARELITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
+/// <reference path="../types.d.ts" />
+
 const RARELITY_LIST: RARELITY[] = ['N', 'R', 'SR', 'SSR', 'UR'];
 declare const AWAKING: {
 	[K in RARELITY]: {

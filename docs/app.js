@@ -14,7 +14,12 @@ const Common = {
     },
     td: (content, option) => {
         const td = document.createElement('td');
-        td.textContent = content;
+        if (typeof content === 'string') {
+            td.textContent = content;
+        }
+        else {
+            td.appendChild(content);
+        }
         if (option) {
             if (option.class) {
                 const list = typeof option.class === 'string' ? [option.class] : option.class;
@@ -52,13 +57,16 @@ const Common = {
                 ':host { --header: 2rem; --front-color: black; --back-color: white; --tab-back: lightgray; --tab-active: white; --tab-inactive: gray; --home-size: 2rem; --home-icon: ""; display: block; width: 100%; height: 100%; }',
                 ':host > div { display: grid; grid-template-rows: var(--header) 1fr; width: 100%; height: 100%; background: var(--back-color); color: var(--front-color); }',
                 ':host > div > header { display: flex; background: var(--tab-back); }',
-                ':host > div > header > a { display: block; width: var(--home-size); height: 100%; background-image: var(--home-icon); background-size: cover; }',
-                ':host > div > header > button { display: block; cursor: pointer; border: 0; border-radius: 0.5em 0.5em 0 0; padding: 0 1em; background:var(--tab-inactive); }',
-                ':host > div > header > button.show { background: var(--tab-active); }',
+                ':host > div > header > a#home { display: block; width: var(--home-size); height: 100%; background-image: var(--home-icon); background-size: cover; }',
+                ':host > div > header > a:not(#home) { text-decoration: none; color: var(--front-color); }',
+                ':host > div > header > button, :host > div > header > a:not(#home) { display: block; cursor: pointer; border: 0; border-radius: 0.5em 0.5em 0 0; padding: 0 1em; background:var(--tab-inactive); font-size: 1em; line-height: var(--header); }',
+                ':host > div > header > button.show, :host > div > header > a:not(#home).show { background: var(--tab-active); }',
                 ':host > div > div { overflow: auto; }',
-                '::slotted(section:not(.show)) { display: none; }',
+                '::slotted(*) { display: none; }',
+                '::slotted(section.show) { display: block; }',
             ].join('');
             this.home = document.createElement('a');
+            this.home.id = "home";
             this.home.href = this.getAttribute('home') || '/';
             const header = document.createElement('header');
             header.appendChild(this.home);
@@ -67,8 +75,28 @@ const Common = {
                 header.querySelectorAll('button').forEach((button) => {
                     header.removeChild(button);
                 });
+                header.querySelectorAll('a:not(#home)').forEach((button) => {
+                    header.removeChild(button);
+                });
+                if (location.hash) {
+                    this.setAttribute('main', location.hash);
+                    location.hash = '';
+                }
                 const main = this.getAttribute('main') || '';
                 for (const page of this.children) {
+                    console.log(page);
+                    if (page.tagName === 'A') {
+                        const link = document.createElement('a');
+                        link.href = page.href;
+                        link.innerHTML = page.innerHTML;
+                        header.appendChild(link);
+                        if (page.id && page.id === main) {
+                            link.classList.add('show');
+                        }
+                        continue;
+                    }
+                    else if (page.tagName !== 'SECTION') {
+                    }
                     const tab = document.createElement('button');
                     tab.textContent = page.dataset.name || '';
                     if (!tab.textContent) {
@@ -975,6 +1003,7 @@ function DrawPartsLvUp(parent) {
     }, 0);
 }
 Promise.all([
+    customElements.whenDefined('section-pages'),
     customElements.whenDefined('skill-book'),
     customElements.whenDefined('skill-exp'),
 ]).then(() => {

@@ -12,9 +12,13 @@ const Common = {
 		});
 		return tr;
 	},
-	td: (content: string, option?: { class?: string | string[]; colSpan?: number; rowSpan?: number }) => {
+	td: (content: string | HTMLElement, option?: { class?: string | string[]; colSpan?: number; rowSpan?: number }) => {
 		const td = document.createElement('td');
-		td.textContent = content;
+		if (typeof content === 'string') {
+			td.textContent = content;
+		} else {
+			td.appendChild(content);
+		}
 		if (option) {
 			if (option.class) {
 				const list = typeof option.class === 'string' ? [option.class] : option.class;

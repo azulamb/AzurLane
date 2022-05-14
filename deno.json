@@ -1,6 +1,8 @@
 {
 	"tasks": {
-		"build": "tsc -p ./src/"
+		"build_main": "tsc -p ./src/main",
+		"build_meowfficer": "tsc -p ./src/meowfficer",
+		"build": "deno task build_main & deno task build_meowfficer"
 	},
 	"lint": {
 		"files": {
