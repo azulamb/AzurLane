@@ -2,7 +2,6 @@
 /// <reference path="../components/section-pages.ts" />
 /// <reference path="../components/calc-time.ts" />
 /// <reference path="../components/skill-book.ts" />
-/// <reference path="../components/skill-exp.ts" />
 /// <reference path="../funcs/skill_lvup.ts" />
 /// <reference path="../funcs/awaking.ts" />
 /// <reference path="../funcs/parts_lvup.ts" />

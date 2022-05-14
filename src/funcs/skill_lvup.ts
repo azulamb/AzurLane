@@ -1,3 +1,5 @@
+/// <reference path="../components/skill-exp.ts" />
+
 declare const SKILL_EXP: number[];
 declare const BOOKS: {
 	rarelity: number;

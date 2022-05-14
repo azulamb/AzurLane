@@ -273,7 +273,7 @@ class Meowfficer {
 	static sort(parent: HTMLElement) {
 		const list: { order: number; element: HTMLElement }[] = [];
 		for (const child of parent.children) {
-			const ma = (<MeowfficerAbilityElement> child.querySelector('meowfficer-ability')) || child;
+			const ma = <MeowfficerAbilityElement> (child.querySelector('meowfficer-ability') || child);
 			if (!ma) {
 				continue;
 			}
@@ -359,10 +359,10 @@ interface MeowfficerAbilityElement extends HTMLElement {
 					`${name}[type="FlamesAggression"] { --option-name: "火"; --option-color: #c46161; }`,
 					`${name}[type="MountainsTenacity"] { --option-name: "山"; --option-color: #b89361; }`,
 					...Meowfficer.ABILITIES.map((ability) => {
-						return (ability.lv <= 0 ? [0] : [1, 2, 3]).map((lv: 0 | 1 | 2 | 3) => {
+						return (ability.lv <= 0 ? [0] : [1, 2, 3]).map((lv) => {
 							return `${name}[type="${ability.type}"]${ability.target ? `[target="${ability.target}"]` : ''}${
 								ability.lv && 1 < lv ? `[lv="${lv}"]` : ''
-							} { --icon: url( ${base}${Meowfficer.convertName(ability, lv)}.png ); }`;
+							} { --icon: url( ${base}${Meowfficer.convertName(ability, <0 | 1 | 2 | 3>lv)}.png ); }`;
 						}).join('\n');
 					}),
 				].join('\n');
@@ -408,7 +408,7 @@ interface MeowfficerAbilityElement extends HTMLElement {
 			}
 
 			get type() {
-				const type = <MEOWFFICERS_TYPE> this.getAttribute('type') || '';
+				const type = <MEOWFFICERS_TYPE> (this.getAttribute('type') || '');
 				if (!Meowfficer.TYPES.includes(type)) {
 					return '';
 				}
@@ -421,7 +421,7 @@ interface MeowfficerAbilityElement extends HTMLElement {
 			}
 
 			get target() {
-				const target = <MEOWFFICERS_TARGET> this.getAttribute('target') || '';
+				const target = <MEOWFFICERS_TARGET> (this.getAttribute('target') || '');
 				if (!Meowfficer.TARGETS.includes(target)) {
 					return '';
 				}

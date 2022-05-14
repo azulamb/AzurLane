@@ -1,3 +1,5 @@
+/// <reference path="./skill-book.ts" />
+
 /* */
 
 interface SkillExpElement extends HTMLElement {
