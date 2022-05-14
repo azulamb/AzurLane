@@ -66,7 +66,7 @@ const Common = {
                 '::slotted(section.show) { display: block; }',
             ].join('');
             this.home = document.createElement('a');
-            this.home.id = "home";
+            this.home.id = 'home';
             this.home.href = this.getAttribute('home') || '/';
             const header = document.createElement('header');
             header.appendChild(this.home);

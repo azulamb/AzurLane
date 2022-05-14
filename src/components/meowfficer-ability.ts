@@ -362,7 +362,7 @@ interface MeowfficerAbilityElement extends HTMLElement {
 						return (ability.lv <= 0 ? [0] : [1, 2, 3]).map((lv) => {
 							return `${name}[type="${ability.type}"]${ability.target ? `[target="${ability.target}"]` : ''}${
 								ability.lv && 1 < lv ? `[lv="${lv}"]` : ''
-							} { --icon: url( ${base}${Meowfficer.convertName(ability, <0 | 1 | 2 | 3>lv)}.png ); }`;
+							} { --icon: url( ${base}${Meowfficer.convertName(ability, <0 | 1 | 2 | 3> lv)}.png ); }`;
 						}).join('\n');
 					}),
 				].join('\n');

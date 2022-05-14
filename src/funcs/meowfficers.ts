@@ -1,5 +1,6 @@
 /// <reference path="../types.d.ts" />
 /// <reference path="../components/meowfficer-ability.ts" />
+/// <reference path="../components/ship-type.ts" />
 
 type NATIONS = 'IronBlood';
 declare const MEOWFFICERS_SKILL: {};
@@ -8,13 +9,14 @@ declare const MEOWFFICERS: {
 		name: string;
 		rarelity: RARELITY;
 		type: 0 | 1 | 2; // 無・参謀・指揮
-		target: 'destroyer' | 'cruiser' | 'battleship' | 'carrier' | 'submarine';
+		target: 'Destroyer' | 'Cruiser' | 'Battleship' | 'Carrier' | 'Submarine';
 		nation: NATIONS;
 		logistics: { min: number; max: number };
 		tactics: { min: number; max: number };
 		directives: { min: number; max: number };
 		skill: string;
 		abilities: string[];
+		abilities2?: string[];
 	};
 };
 
@@ -30,19 +32,24 @@ function DrawMeowfficers(parent: HTMLElement) {
 		}
 		return meowfficerAbility;
 	};
-	setTimeout(() => {
+	Promise.all([
+		customElements.whenDefined('meowfficer-ability'),
+		customElements.whenDefined('ship-type'),
+	]).then(() => {
 		const tbody = document.createElement('tbody');
 
 		Object.keys(MEOWFFICERS).forEach((name) => {
 			const data = MEOWFFICERS[name];
 			const abilities = Common.td('', { class: 'abilities' });
+			const shipType = new (<{new(): ShipTypeElement}>customElements.get('ship-type'))();
+			shipType.type = data.target;
 			const tr = Common.tr(
 				{ class: ['rarelity', `back_${data.rarelity}`] },
 				Common.td('', { class: ['icon', name] }),
 				Common.td(data.name),
 				Common.td('', { class: data.nation }),
 				Common.td('', { class: `type${data.type}` }),
-				Common.td('', { class: `${data.target}` }),
+				Common.td(shipType),
 				abilities,
 			);
 			data.abilities.forEach((ability) => {
@@ -55,6 +62,18 @@ function DrawMeowfficers(parent: HTMLElement) {
 				button.option = true;
 				abilities.appendChild(button);
 			});
+			if( data.abilities2 ) {
+				data.abilities2.forEach((ability) => {
+					const data = Meowfficer.search(ability);
+					if (!data) {
+						return;
+					}
+					const button = createMeowfficerAbility(data, 2);
+					button.title = Meowfficer.convertNameJa(data, 2);
+					button.option = true;
+					abilities.appendChild(button);
+				});
+			}
 			Meowfficer.sort(abilities);
 
 			tbody.appendChild(tr);
@@ -87,7 +106,7 @@ function DrawMeowfficers(parent: HTMLElement) {
 				const icon = createMeowfficerAbility(ability, max === 1 ? 0 : <1 | 2 | 3> lv);
 				const name = Meowfficer.convertName(ability, <0 | 1 | 2 | 3> lv);
 				abilities.appendChild(Common.tr(
-					{class: name},
+					{ class: name },
 					Common.td(icon),
 					//Common.td(name),
 					Common.td(Meowfficer.convertNameJa(ability, <0 | 1 | 2 | 3> lv)),
@@ -97,5 +116,5 @@ function DrawMeowfficers(parent: HTMLElement) {
 		Meowfficer.sort(abilities);
 
 		parent.appendChild(abilities);
-	}, 0);
+	});
 }

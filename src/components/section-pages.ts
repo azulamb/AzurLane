@@ -40,7 +40,7 @@ interface SectionPageElement extends HTMLElement {
 				].join('');
 
 				this.home = document.createElement('a');
-				this.home.id = "home";
+				this.home.id = 'home';
 				this.home.href = this.getAttribute('home') || '/';
 				const header = document.createElement('header');
 				header.appendChild(this.home);
@@ -60,7 +60,7 @@ interface SectionPageElement extends HTMLElement {
 					});
 					const main = this.getAttribute('main') || '';
 					for (const page of this.children) {
-						if(page.tagName === 'A') {
+						if (page.tagName === 'A') {
 							// Link
 							const link = document.createElement('a');
 							link.href = (<HTMLAnchorElement> page).href;
@@ -70,7 +70,7 @@ interface SectionPageElement extends HTMLElement {
 								link.classList.add('show');
 							}
 							continue;
-						} else if(page.tagName !== 'SECTION') {
+						} else if (page.tagName !== 'SECTION') {
 							// Not page.
 						}
 
