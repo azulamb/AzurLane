@@ -70,6 +70,10 @@ const Common = {
             this.home.href = this.getAttribute('home') || '/';
             const header = document.createElement('header');
             header.appendChild(this.home);
+            if (location.hash) {
+                this.setAttribute('main', location.hash.substring(1));
+                history.replaceState('', document.title, location.pathname + location.search);
+            }
             const slot = document.createElement('slot');
             slot.addEventListener('slotchange', () => {
                 header.querySelectorAll('button').forEach((button) => {
@@ -78,13 +82,8 @@ const Common = {
                 header.querySelectorAll('a:not(#home)').forEach((button) => {
                     header.removeChild(button);
                 });
-                if (location.hash) {
-                    this.setAttribute('main', location.hash);
-                    location.hash = '';
-                }
                 const main = this.getAttribute('main') || '';
                 for (const page of this.children) {
-                    console.log(page);
                     if (page.tagName === 'A') {
                         const link = document.createElement('a');
                         link.href = page.href;
