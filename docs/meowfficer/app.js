@@ -394,9 +394,9 @@ Meowfficer.NAME_DATA = {
             const name = STYLE.dataset.name;
             STYLE.innerHTML = [
                 `${name}[type="Loading"] { --option-name: "装"; --option-color: #5a5a5a; }`,
-                `${name}:host([type="Lookout"] { --option-name: "見"; --option-color: #5a5a5a; }`,
+                `${name}[type="Lookout"] { --option-name: "見"; --option-color: #5a5a5a; }`,
                 `${name}[type="Helmsman"] { --option-name: "操"; --option-color: #5a5a5a; }`,
-                `${name}[type="Officer"]:not([target="Union"]):not([target="Royal"]):not([target="Sakura"]):not([target="IronBlood"])) { --option-name: "参"; --option-color: #5a5a5a; }`,
+                `${name}[type="Officer"]:not([target="Union"]):not([target="Royal"]):not([target="Sakura"]):not([target="IronBlood"]) { --option-name: "参"; --option-color: #5a5a5a; }`,
                 `${name}[type="BestFriend"] { --option-name: "友"; --option-color: #5a5a5a; }`,
                 `${name}[type="RisingStar"] { --option-name: "星"; --option-color: #5a5a5a; }`,
                 `${name}[type="Miracle"] { --option-name: "奇"; --option-color: #5a5a5a; }`,
