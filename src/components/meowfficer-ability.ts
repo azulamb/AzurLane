@@ -1,6 +1,8 @@
 /* */
 
-type MEOWFFICERS_LV = 'Rookie' | 'Adept' | 'Ace';
+type MEOWFFICERS_LV = MEOWFFICERS_LV1 | MEOWFFICERS_LV2;
+type MEOWFFICERS_LV1 = 'Rookie' | 'Adept' | 'Ace';
+type MEOWFFICERS_LV2 = 'Rookie' | 'Elite' | 'Chief';
 type MEOWFFICERS_TYPE =
 	| 'Artillery'
 	| 'Torpedo'
@@ -52,7 +54,9 @@ interface MEOWFFICERS_ABILITY {
 }
 
 class Meowfficer {
-	static LV: MEOWFFICERS_LV[] = ['Rookie', 'Adept', 'Ace'];
+	static LV: MEOWFFICERS_LV[] = ['Rookie', 'Adept', 'Elite', 'Ace', 'Chief'];
+	static LV1: MEOWFFICERS_LV1[] = ['Rookie', 'Adept', 'Ace'];
+	static LV2: MEOWFFICERS_LV2[] = ['Rookie', 'Elite', 'Chief'];
 	static TYPES: MEOWFFICERS_TYPE[] = [
 		'Officer',
 		'Artillery',
@@ -105,20 +109,20 @@ class Meowfficer {
 		{ type: 'Sonar', target: 'Vanguard', name: 'TLS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Lookout', target: 'Vanguard', name: 'LTS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Helmsman', target: 'Small', name: 'LTS', name_ja: 'T・S', lv: 3 },
-		{ type: 'Officer', target: 'Destroyer', name: 'LTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Destroyer', name: 'lTS', name_ja: 'OT・S', lv: 3 },
 		{ type: 'Artillery', target: 'Destroyer', name: 'TLS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Torpedo', target: 'Destroyer', name: 'TLS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Loading', target: 'Destroyer', name: 'TLS', name_ja: 'rT・S', lv: 3 },
 		{ type: 'Engineer', target: 'Destroyer', name: 'LTS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Helmsman', target: 'Medium', name: 'LTS', name_ja: 'T・S', lv: 3 },
-		{ type: 'Officer', target: 'Cruiser', name: 'LTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Cruiser', name: 'lTS', name_ja: 'OT・S', lv: 3 },
 		{ type: 'Artillery', target: 'Cruiser', name: 'TLS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Torpedo', target: 'Cruiser', name: 'TLS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Loading', target: 'Cruiser', name: 'TLS', name_ja: 'rT・S', lv: 3 },
 		{ type: 'Engineer', target: 'Cruiser', name: 'LTS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Torpedo', target: 'SS', name: 'TLS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Engineer', target: 'SS', name: 'LTS', name_ja: 'LT・S', lv: 3 },
-		{ type: 'Officer', target: 'Submarine', name: 'LTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Submarine', name: 'lTS', name_ja: 'OT・S', lv: 3 },
 		{ type: 'Loading', target: 'Submarine', name: 'TLS', name_ja: 'rT・S', lv: 3 },
 		{ type: 'Lookout', target: 'Submarine', name: 'LTS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Artillery', target: 'Main', name: 'TLS', name_ja: 'LT・S', lv: 3 },
@@ -126,19 +130,19 @@ class Meowfficer {
 		{ type: 'Sonar', target: 'Main', name: 'TLS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Lookout', target: 'Main', name: 'LTS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Helmsman', target: 'Large', name: 'LTS', name_ja: 'T・S', lv: 3 },
-		{ type: 'Officer', target: 'Battleship', name: 'LTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Battleship', name: 'lTS', name_ja: 'OT・S', lv: 3 },
 		{ type: 'Loading', target: 'Battleship', name: 'TLS', name_ja: 'rT・S', lv: 3 },
 		{ type: 'Engineer', target: 'Battleship', name: 'LTS', name_ja: 'LT・S', lv: 3 },
-		{ type: 'Officer', target: 'Carrier', name: 'LTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Carrier', name: 'lTS', name_ja: 'OT・S', lv: 3 },
 		{ type: 'Aviation', target: 'Carrier', name: 'TLS', name_ja: 'aT・S', lv: 3 },
 		{ type: 'Engineer', target: 'Carrier', name: 'LTS', name_ja: 'LT・S', lv: 3 },
 		{ type: 'Aviation', target: 'Special', name: 'TLS', name_ja: 'aT・S', lv: 3 },
 		{ type: 'Loading', target: 'Special', name: 'TLS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Engineer', target: 'Special', name: 'LTS', name_ja: 'LT・S', lv: 3 },
-		{ type: 'Officer', target: 'Union', name: 'LTS', name_ja: 'OT・S', lv: 3 },
-		{ type: 'Officer', target: 'Royal', name: 'LTS', name_ja: 'OT・S', lv: 3 },
-		{ type: 'Officer', target: 'Sakura', name: 'LTS', name_ja: 'OT・S', lv: 3 },
-		{ type: 'Officer', target: 'IronBlood', name: 'LTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Union', name: 'lTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Royal', name: 'lTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'Sakura', name: 'lTS', name_ja: 'OT・S', lv: 3 },
+		{ type: 'Officer', target: 'IronBlood', name: 'lTS', name_ja: 'OT・S', lv: 3 },
 		{ type: 'Mechanic', name: 'LT', name_ja: 'lT', lv: 3 },
 		{ type: 'TirelessWarrior', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'SoulfulWarrior', name: 'T', name_ja: 'T', lv: 0 },
@@ -228,7 +232,9 @@ class Meowfficer {
 		return ability.name.split('').map((type) => {
 			switch (type) {
 				case 'L':
-					return this.LV[0 < lv ? lv - 1 : lv];
+					return this.LV1[0 < lv ? lv - 1 : lv];
+				case 'l':
+					return this.LV2[0 < lv ? lv - 1 : lv];
 				case 'T':
 					return ability.type;
 				case 'S':
