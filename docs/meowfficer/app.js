@@ -2,6 +2,9 @@ const Common = {
     tr: (option, ...columns) => {
         const tr = document.createElement('tr');
         if (option) {
+            if (option.id) {
+                tr.id = option.id;
+            }
             if (option.class) {
                 const list = typeof option.class === 'string' ? [option.class] : option.class;
                 tr.classList.add(...list);
@@ -15,7 +18,12 @@ const Common = {
     td: (content, option) => {
         const td = document.createElement('td');
         if (typeof content === 'string') {
-            td.textContent = content;
+            if (option && option.isHTML) {
+                td.innerHTML = content;
+            }
+            else {
+                td.textContent = content;
+            }
         }
         else {
             td.appendChild(content);
@@ -185,7 +193,22 @@ class Meowfficer {
             .replace('T', this.getAbilityName(ability.type, lv))
             .replace('S', ability.target ? this.NAME_DATA.S[ability.target] : '');
     }
-    static sort(parent) {
+    static getSkillInfo(ability, lv) {
+        const info = this.ABILITY_INFO[ability.type + (ability.target || '')];
+        if (!info) {
+            return '';
+        }
+        if (lv <= 0) {
+            return info.text;
+        }
+        const values = info.values || [];
+        --lv;
+        return info.text
+            .replace('X', `<span>${values[lv]}</span>`)
+            .replace('Y', `<span>${values[3 + lv]}</span>`)
+            .replace('Z', `<span>${values[6 + lv]}</span>`);
+    }
+    static sort(parent, option) {
         const list = [];
         for (const child of parent.children) {
             const ma = (child.querySelector('meowfficer-ability') || child);
@@ -197,9 +220,18 @@ class Meowfficer {
                 list.push({ order: order, element: child });
             }
         }
-        list.sort((a, b) => {
-            return a.order - b.order;
-        });
+        if (option) {
+            if (option.reverse) {
+                list.sort((a, b) => {
+                    return b.order - a.order;
+                });
+            }
+        }
+        else {
+            list.sort((a, b) => {
+                return a.order - b.order;
+            });
+        }
         for (const item of list) {
             parent.appendChild(item.element);
         }
@@ -209,22 +241,6 @@ Meowfficer.LV = ['Rookie', 'Adept', 'Elite', 'Ace', 'Chief'];
 Meowfficer.LV1 = ['Rookie', 'Adept', 'Ace'];
 Meowfficer.LV2 = ['Rookie', 'Elite', 'Chief'];
 Meowfficer.TYPES = [
-    'Officer',
-    'Artillery',
-    'Torpedo',
-    'Aviation',
-    'AntiAir',
-    'Sonar',
-    'Loading',
-    'Lookout',
-    'Helmsman',
-    'Mechanic',
-    'Engineer',
-    'TirelessWarrior',
-    'SoulfulWarrior',
-    'HeartOfTheTorpedo',
-    'AcePilot',
-    'AlphaWolf',
     'BestFriend',
     'RisingStar',
     'Miracle',
@@ -233,6 +249,22 @@ Meowfficer.TYPES = [
     'ForestsSerenity',
     'FlamesAggression',
     'MountainsTenacity',
+    'Officer',
+    'Artillery',
+    'Torpedo',
+    'Aviation',
+    'Mechanic',
+    'AntiAir',
+    'Sonar',
+    'Loading',
+    'Lookout',
+    'Helmsman',
+    'Engineer',
+    'TirelessWarrior',
+    'SoulfulWarrior',
+    'HeartOfTheTorpedo',
+    'AcePilot',
+    'AlphaWolf',
 ];
 Meowfficer.TARGETS = [
     'Vanguard',
@@ -253,6 +285,14 @@ Meowfficer.TARGETS = [
     'IronBlood',
 ];
 Meowfficer.ABILITIES = [
+    { type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'AntiAir', target: 'Vanguard', name: 'TLS', name_ja: 'T・S', lv: 3 },
     { type: 'Sonar', target: 'Vanguard', name: 'TLS', name_ja: 'lT・S', lv: 3 },
     { type: 'Lookout', target: 'Vanguard', name: 'LTS', name_ja: 'lT・S', lv: 3 },
@@ -282,6 +322,7 @@ Meowfficer.ABILITIES = [
     { type: 'Loading', target: 'Battleship', name: 'TLS', name_ja: 'rT・S', lv: 3 },
     { type: 'Engineer', target: 'Battleship', name: 'LTS', name_ja: 'LT・S', lv: 3 },
     { type: 'Officer', target: 'Carrier', name: 'lTS', name_ja: 'OT・S', lv: 3 },
+    { type: 'Mechanic', name: 'LT', name_ja: 'lT', lv: 3 },
     { type: 'Aviation', target: 'Carrier', name: 'TLS', name_ja: 'aT・S', lv: 3 },
     { type: 'Engineer', target: 'Carrier', name: 'LTS', name_ja: 'LT・S', lv: 3 },
     { type: 'Aviation', target: 'Special', name: 'TLS', name_ja: 'aT・S', lv: 3 },
@@ -291,21 +332,66 @@ Meowfficer.ABILITIES = [
     { type: 'Officer', target: 'Royal', name: 'lTS', name_ja: 'OT・S', lv: 3 },
     { type: 'Officer', target: 'Sakura', name: 'lTS', name_ja: 'OT・S', lv: 3 },
     { type: 'Officer', target: 'IronBlood', name: 'lTS', name_ja: 'OT・S', lv: 3 },
-    { type: 'Mechanic', name: 'LT', name_ja: 'lT', lv: 3 },
     { type: 'TirelessWarrior', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'SoulfulWarrior', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'HeartOfTheTorpedo', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'AcePilot', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'AlphaWolf', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
 ];
+Meowfficer.ABILITY_INFO = {
+    OfficerDestroyer: { text: '<span>駆逐</span>の雷装がXアップ、装填がYアップ', values: [8, 11, 16, 4, 5, 8] },
+    OfficerCruiser: { text: '<span>軽巡</span>、<span>重巡</span>、<span>超巡</span>の火力がXアップ、<span>軽巡</span>、<span>重巡</span>の雷装がXアップ', values: [5, 7, 10] },
+    OfficerBattleship: { text: '<span>巡戦</span>、<span>戦艦</span>の耐久がXアップ、火力がYアップ', values: [50, 70, 100, 8, 11, 16] },
+    OfficerCarrier: { text: '</span>空母</span>の航空がXアップ、装填がYアップ', values: [10, 14, 20, 3, 4, 6] },
+    OfficerSubmarine: { text: '<span>潜水艦</span>、<span>潜水空母</span>の雷装がXアップ、装填がYアップ', values: [10, 14, 20, 3, 4, 6] },
+    OfficerUnion: { text: '<span>ユニオン</span>の対空がXアップ、航空がYアップ、装填がZアップ', values: [8, 11, 16, 8, 11, 16, 3, 4, 6] },
+    OfficerRoyal: { text: '<span>ロイヤル</span>の火力がXアップ、対空がYアップ、回避がZアップ', values: [7, 10, 14, 8, 11, 16, 1, 2, 3] },
+    OfficerSakura: { text: '<span>重桜</span>の雷装がXアップ、航空がYアップ、回避がZアップ', values: [8, 11, 16, 6, 8, 12, 1, 2, 3] },
+    OfficerIronBlood: { text: '<span>鉄血</span>の火力がXアップ、雷装がYアップ、命中がZアップ', values: [6, 8, 12, 7, 10, 14, 1, 2, 3] },
+    ArtilleryDestroyer: { text: '<span>駆逐</span>の火力がXアップ', values: [3, 4, 6] },
+    ArtilleryCruiser: { text: '<span>軽巡</span>、<span>重巡</span>、<span>超巡</span>の火力がXアップ', values: [5, 7, 10] },
+    ArtilleryMain: { text: '<span>巡戦</span>、<span>戦艦</span>、<span>航戦</span>、モニターの火力がXアップ', values: [8, 11, 16] },
+    TorpedoDestroyer: { text: '<span>駆逐</span>の雷装がXアップ', values: [10, 14, 20] },
+    TorpedoCruiser: { text: '<span>軽巡</span>、<span>重巡</span>の雷装がXアップ', values: [6, 8, 12] },
+    TorpedoSS: { text: '<span>潜水艦</span>、<span>潜水空母</span>の雷装がXアップ', values: [10, 14, 20] },
+    AviationCarrier: { text: '<span>軽母</span>、<span>空母</span>の航空がXアップ', values: [10, 14, 20] },
+    AviationSpecial: { text: '<span>航戦</span>の航空がXアップ', values: [5, 7, 10] },
+    AntiAirVanguard: { text: '<span>前衛</span>の対空がXアップ', values: [8, 11, 16] },
+    AntiAirMain: { text: '<span>主力</span>の対空がXアップ', values: [10, 14, 20] },
+    SonarVanguard: { text: '<span>前衛</span>の対潜がXアップ', values: [4, 5, 8] },
+    SonarMain: { text: '<span>主力</span>の対潜がXアップ', values: [3, 4, 6] },
+    LoadingDestroyer: { text: '	<span>駆逐</span>の装填がXアップ', values: [5, 7, 10] },
+    LoadingCruiser: { text: '<span>軽巡</span>、<span>重巡</span>、<span>超巡</span>の装填がXアップ', values: [4, 5, 8] },
+    LoadingBattleship: { text: '<span>戦艦</span>、<span>巡戦</span>、<span>航戦</span>の装填がXアップ', values: [3, 4, 6] },
+    LoadingSubmarine: { text: '<span>潜水艦</span>、<span>潜水空母</span>の装填がXアップ', values: [3, 4, 6] },
+    LoadingSpecial: { text: '<span>モニター</span>、<span>工作艦</span>の装填がXアップ', values: [3, 4, 6] },
+    Mechanic: { text: '<span>軽母</span>、<span>空母</span>の装填がXアップ', values: [3, 4, 6] },
+    LookoutVanguard: { text: '<span>前衛</span>の命中がXアップ', values: [3, 4, 6] },
+    LookoutMain: { text: '<span>主力</span>の命中がXアップ', values: [1, 2, 3] },
+    LookoutSubmarine: { text: '<span>潜水艦</span>、<span>潜水空母</span>の命中がXアップ', values: [2, 3, 5] },
+    HelmsmanSmall: { text: '<span>潜水艦</span>、<span>潜水空母</span>、<span>駆逐</span>の回避がXアップ', values: [5, 7, 10] },
+    HelmsmanMedium: { text: '<span>軽巡</span>、<span>重巡</span>、<span>軽母</span>、<span>モニター</span>、<span>工作艦</span>の回避がXアップ', values: [3, 4, 6] },
+    HelmsmanLarge: { text: '<span>戦艦</span>、<span>巡戦</span>、<span>空母</span>、<span>航戦</span>、<span>超巡</span>の回避がXアップ', values: [1, 2, 3] },
+    EngineerDestroyer: { text: '<span>駆逐</span>の耐久がXアップ', values: [30, 42, 60] },
+    EngineerCruiser: { text: '<span>軽巡</span>、<span>重巡</span>、<span>超巡</span>の耐久がXアップ', values: [50, 70, 100] },
+    EngineerBattleship: { text: '<span>巡戦</span>、<span>戦艦</span>、<span>航戦</span>の耐久がXアップ', values: [60, 84, 120] },
+    EngineerCarrier: { text: '<span>軽母</span>、<span>空母</span>の耐久がXアップ', values: [50, 70, 100] },
+    EngineerSS: { text: '<span>潜水艦</span>、<span>潜水空母</span>の耐久がXアップ', values: [25, 35, 50] },
+    EngineerSpecial: { text: '<span>モニター</span>、<span>工作艦</span>の耐久がXアップ', values: [40, 56, 80] },
+    TirelessWarrior: { text: '<span>軽巡</span>、<span>重巡</span>の火力が10アップ、装填が12アップ' },
+    SoulfulWarrior: { text: '<span>巡戦</span>、<span>戦艦</span>の火力が15アップ、クリティカル率が3%アップ' },
+    HeartOfTheTorpedo: { text: '<span>駆逐</span>、<span>軽巡</span>の雷装が15アップ、魚雷クリティカル率が3%アップ' },
+    AcePilot: { text: '<span>空母</span>の航空が15アップ、装填が8アップ' },
+    AlphaWolf: { text: '<span>潜水艦</span>、<span>潜水空母</span>の雷装が15アップ、装填が8アップ' },
+    BestFriend: { text: 'オフニャ強化素材として使われる時に獲得する経験値+10%' },
+    RisingStar: { text: '自分が戦闘で入手する経験値+10%' },
+    Miracle: { text: '<span>艦隊全員</span>の運が5アップ' },
+    Destiny: { text: '<span>艦隊全員</span>の火力・雷装・航空が10アップ。運が3ダウン' },
+    WindsAlacrity: { text: '<span>艦隊</span>の速力が3アップ' },
+    ForestsSerenity: { text: '<span>艦隊全員</span>の対空・対潜が15アップ。命中・回避が3アップ' },
+    FlamesAggression: { text: '<span>艦隊全員</span>の与えるダメージが3%アップ' },
+    MountainsTenacity: { text: '<span>艦隊全員</span>の被ダメージが3%ダウン' },
+};
 Meowfficer.NAME_DATA = {
     L: ['新人', '熟練'],
     l: ['新人', '熟練', '達人'],
@@ -479,7 +565,7 @@ Meowfficer.NAME_DATA = {
             }
         }
         get order() {
-            const target = this.target ? Meowfficer.TARGETS.indexOf(this.target) : Meowfficer.TARGETS.length;
+            const target = this.target ? Meowfficer.TARGETS.indexOf(this.target) + 1 : 0;
             const type = this.type ? Meowfficer.TYPES.indexOf(this.type) : 0;
             return target * 1000 + type * 10 + this.lv;
         }
@@ -504,10 +590,22 @@ Meowfficer.NAME_DATA = {
 })(document.currentScript, (script) => {
     const SHIP_TYPES = [
         'Destroyer',
-        'Cruiser', 'LightCruiser', 'HeavyCruiser', 'LargeCruiser',
-        'Battlecruiser', 'Battleship',
-        'LightCarrier', 'Carrier', 'LightAircraftCarrier', 'AircraftCarrier', 'AviationBattleship', 'SubmarineCarrier',
-        'Monitor', 'Submarine', 'Repair', 'Munition'
+        'Cruiser',
+        'LightCruiser',
+        'HeavyCruiser',
+        'LargeCruiser',
+        'Battlecruiser',
+        'Battleship',
+        'LightCarrier',
+        'Carrier',
+        'LightAircraftCarrier',
+        'AircraftCarrier',
+        'AviationBattleship',
+        'SubmarineCarrier',
+        'Monitor',
+        'Submarine',
+        'Repair',
+        'Munition',
     ];
     ((component, tagname = 'ship-type') => {
         if (customElements.get(tagname)) {
@@ -627,6 +725,10 @@ function DrawMeowfficers(parent) {
                 const button = createMeowfficerAbility(data);
                 button.title = Meowfficer.convertNameJa(data, data.lv ? 1 : 0);
                 button.option = true;
+                const name = Meowfficer.convertName(data, data.lv ? 1 : 0);
+                button.addEventListener('click', () => {
+                    document.getElementById(name).scrollIntoView({ behavior: 'smooth' });
+                });
                 abilities.appendChild(button);
             });
             if (data.abilities2) {
@@ -638,6 +740,10 @@ function DrawMeowfficers(parent) {
                     const button = createMeowfficerAbility(data, 2);
                     button.title = Meowfficer.convertNameJa(data, 2);
                     button.option = true;
+                    const name = Meowfficer.convertName(data, 2);
+                    button.addEventListener('click', () => {
+                        document.getElementById(name).scrollIntoView({ behavior: 'smooth' });
+                    });
                     abilities.appendChild(button);
                 });
             }
@@ -653,12 +759,13 @@ function DrawMeowfficers(parent) {
         table.appendChild(tbody);
         parent.appendChild(table);
         const abilities = document.createElement('table');
+        abilities.classList.add('abilities');
         Meowfficer.ABILITIES.forEach((ability) => {
             const max = 0 < ability.lv ? 3 : 1;
             for (let lv = 1; lv <= max; ++lv) {
                 const icon = createMeowfficerAbility(ability, max === 1 ? 0 : lv);
                 const name = Meowfficer.convertName(ability, lv);
-                abilities.appendChild(Common.tr({ class: name }, Common.td(icon), Common.td(Meowfficer.convertNameJa(ability, lv))));
+                abilities.appendChild(Common.tr({ id: name, class: name }, Common.td(icon), Common.td(Meowfficer.convertNameJa(ability, lv)), Common.td(Meowfficer.getSkillInfo(ability, lv), { isHTML: true })));
             }
         });
         Meowfficer.sort(abilities);

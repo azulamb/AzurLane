@@ -2,6 +2,9 @@ const Common = {
     tr: (option, ...columns) => {
         const tr = document.createElement('tr');
         if (option) {
+            if (option.id) {
+                tr.id = option.id;
+            }
             if (option.class) {
                 const list = typeof option.class === 'string' ? [option.class] : option.class;
                 tr.classList.add(...list);
@@ -15,7 +18,12 @@ const Common = {
     td: (content, option) => {
         const td = document.createElement('td');
         if (typeof content === 'string') {
-            td.textContent = content;
+            if (option && option.isHTML) {
+                td.innerHTML = content;
+            }
+            else {
+                td.textContent = content;
+            }
         }
         else {
             td.appendChild(content);

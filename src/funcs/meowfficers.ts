@@ -41,7 +41,7 @@ function DrawMeowfficers(parent: HTMLElement) {
 		Object.keys(MEOWFFICERS).forEach((name) => {
 			const data = MEOWFFICERS[name];
 			const abilities = Common.td('', { class: 'abilities' });
-			const shipType = new (<{new(): ShipTypeElement}>customElements.get('ship-type'))();
+			const shipType = new (<{ new (): ShipTypeElement }> customElements.get('ship-type'))();
 			shipType.type = data.target;
 			const tr = Common.tr(
 				{ class: ['rarelity', `back_${data.rarelity}`] },
@@ -60,9 +60,13 @@ function DrawMeowfficers(parent: HTMLElement) {
 				const button = createMeowfficerAbility(data);
 				button.title = Meowfficer.convertNameJa(data, data.lv ? 1 : 0);
 				button.option = true;
+				const name = Meowfficer.convertName(data, data.lv ? 1 : 0);
+				button.addEventListener('click', () => {
+					(<HTMLElement> document.getElementById(name)).scrollIntoView({ behavior: 'smooth' });
+				});
 				abilities.appendChild(button);
 			});
-			if( data.abilities2 ) {
+			if (data.abilities2) {
 				data.abilities2.forEach((ability) => {
 					const data = Meowfficer.search(ability);
 					if (!data) {
@@ -71,6 +75,10 @@ function DrawMeowfficers(parent: HTMLElement) {
 					const button = createMeowfficerAbility(data, 2);
 					button.title = Meowfficer.convertNameJa(data, 2);
 					button.option = true;
+					const name = Meowfficer.convertName(data, 2);
+					button.addEventListener('click', () => {
+						(<HTMLElement> document.getElementById(name)).scrollIntoView({ behavior: 'smooth' });
+					});
 					abilities.appendChild(button);
 				});
 			}
@@ -100,16 +108,17 @@ function DrawMeowfficers(parent: HTMLElement) {
 		parent.appendChild(table);
 
 		const abilities = document.createElement('table');
+		abilities.classList.add('abilities');
 		Meowfficer.ABILITIES.forEach((ability) => {
 			const max = 0 < ability.lv ? 3 : 1;
 			for (let lv = 1; lv <= max; ++lv) {
 				const icon = createMeowfficerAbility(ability, max === 1 ? 0 : <1 | 2 | 3> lv);
 				const name = Meowfficer.convertName(ability, <0 | 1 | 2 | 3> lv);
 				abilities.appendChild(Common.tr(
-					{ class: name },
+					{ id: name, class: name },
 					Common.td(icon),
-					//Common.td(name),
 					Common.td(Meowfficer.convertNameJa(ability, <0 | 1 | 2 | 3> lv)),
+					Common.td(Meowfficer.getSkillInfo(ability, <0 | 1 | 2 | 3> lv), { isHTML: true }),
 				));
 			}
 		});

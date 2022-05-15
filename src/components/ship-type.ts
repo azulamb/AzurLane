@@ -14,10 +14,22 @@ interface ShipTypeElement extends HTMLElement {
 })(<HTMLScriptElement> document.currentScript, (script: HTMLScriptElement) => {
 	const SHIP_TYPES: (SHIP_TYPE | 'Cruiser' | 'LightCarrier' | 'Carrier')[] = [
 		'Destroyer',
-		'Cruiser', 'LightCruiser', 'HeavyCruiser', 'LargeCruiser',
-		'Battlecruiser', 'Battleship',
-		'LightCarrier', 'Carrier', 'LightAircraftCarrier', 'AircraftCarrier', 'AviationBattleship', 'SubmarineCarrier',
-		'Monitor', 'Submarine', 'Repair', 'Munition'
+		'Cruiser',
+		'LightCruiser',
+		'HeavyCruiser',
+		'LargeCruiser',
+		'Battlecruiser',
+		'Battleship',
+		'LightCarrier',
+		'Carrier',
+		'LightAircraftCarrier',
+		'AircraftCarrier',
+		'AviationBattleship',
+		'SubmarineCarrier',
+		'Monitor',
+		'Submarine',
+		'Repair',
+		'Munition',
 	];
 	((component, tagname = 'ship-type') => {
 		if (customElements.get(tagname)) {
@@ -221,7 +233,7 @@ interface ShipTypeElement extends HTMLElement {
 			}
 
 			get type() {
-				return <SHIP_TYPE>this.getAttribute('type') || '';
+				return <SHIP_TYPE> this.getAttribute('type') || '';
 			}
 			set type(value) {
 				if (SHIP_TYPES.includes(value)) {

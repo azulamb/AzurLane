@@ -1,7 +1,10 @@
 const Common = {
-	tr: (option: { class?: string | string[] }, ...columns: HTMLTableCellElement[]) => {
+	tr: (option: { id?: string; class?: string | string[] }, ...columns: HTMLTableCellElement[]) => {
 		const tr = document.createElement('tr');
 		if (option) {
+			if (option.id) {
+				tr.id = option.id;
+			}
 			if (option.class) {
 				const list = typeof option.class === 'string' ? [option.class] : option.class;
 				tr.classList.add(...list);
@@ -12,10 +15,14 @@ const Common = {
 		});
 		return tr;
 	},
-	td: (content: string | HTMLElement, option?: { class?: string | string[]; colSpan?: number; rowSpan?: number }) => {
+	td: (content: string | HTMLElement, option?: { class?: string | string[]; colSpan?: number; rowSpan?: number; isHTML?: boolean }) => {
 		const td = document.createElement('td');
 		if (typeof content === 'string') {
-			td.textContent = content;
+			if (option && option.isHTML) {
+				td.innerHTML = content;
+			} else {
+				td.textContent = content;
+			}
 		} else {
 			td.appendChild(content);
 		}
