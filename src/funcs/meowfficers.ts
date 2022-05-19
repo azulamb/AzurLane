@@ -1,20 +1,21 @@
 /// <reference path="../types.d.ts" />
+/// <reference path="../funcs/Common.ts" />
 /// <reference path="../components/meowfficer-ability.ts" />
 /// <reference path="../components/ship-type.ts" />
 
 type NATIONS = 'IronBlood';
-declare const MEOWFFICERS_SKILL: {};
 declare const MEOWFFICERS: {
 	[keys: string]: {
 		name: string;
 		rarelity: RARELITY;
 		type: 0 | 1 | 2; // 無・参謀・指揮
+		siren?: 0 | 1 | 2; // 無・参謀・指揮
 		target: 'Destroyer' | 'Cruiser' | 'Battleship' | 'Carrier' | 'Submarine';
 		nation: NATIONS;
 		logistics: { min: number; max: number };
 		tactics: { min: number; max: number };
 		directives: { min: number; max: number };
-		skill: string;
+		skill: MEOWFFICER_SKILLS;
 		abilities: string[];
 		abilities2?: string[];
 	};
