@@ -45,16 +45,15 @@ Promise.all([
 					if (result === 'denied') {
 						throw new Error('Denied');
 					}
-					console.log(result);
-					const data = {
-						icon: './favicon.svg',
-						body: 'test',
-						vibrate: true,
-					};
+					const timestamp = Date.now() + 10000;
 					const notification = new Notification('title', {
 						icon: './favicon.svg',
 						body: 'test',
 						vibrate: 5,
+						timestamp: timestamp,
+					});
+					notification.addEventListener('click', () => {
+						window.open('https://azulamb.github.io/AzurLane/');
 					});
 				}).catch((error) => {
 					console.error(error);
