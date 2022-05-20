@@ -39,8 +39,13 @@ function DrawMeowfficers(parent: HTMLElement) {
 	]).then(() => {
 		const tbody = document.createElement('tbody');
 
+		const SP = [
+			//'BestFriend', 'RisingStar', 'Miracle',
+			'WindsAlacrity', 'ForestsSerenity', 'FlamesAggression', 'MountainsTenacity', 'Destiny',
+		];
 		Object.keys(MEOWFFICERS).forEach((name) => {
 			const data = MEOWFFICERS[name];
+			const sp = Common.td('', { class: ['abilities', 'sp'] });
 			const abilities = Common.td('', { class: 'abilities' });
 			const shipType = new (<{ new (): ShipTypeElement }> customElements.get('ship-type'))();
 			shipType.type = data.target;
@@ -51,6 +56,7 @@ function DrawMeowfficers(parent: HTMLElement) {
 				Common.td('', { class: data.nation }),
 				Common.td('', { class: `type${data.type}` }),
 				Common.td(shipType),
+				sp,
 				abilities,
 			);
 			data.abilities.forEach((ability) => {
@@ -84,6 +90,15 @@ function DrawMeowfficers(parent: HTMLElement) {
 				});
 			}
 			Meowfficer.sort(abilities);
+			const list = [];
+			for (const ability of abilities.children) {
+				if (SP.includes((<MeowfficerAbilityElement> ability).type)) {
+					list.push(ability);
+				}
+			}
+			for (const button of list) {
+				sp.appendChild(button);
+			}
 
 			tbody.appendChild(tr);
 		});
@@ -95,7 +110,7 @@ function DrawMeowfficers(parent: HTMLElement) {
 			Common.td('所属', { class: 'nation' }),
 			Common.td('タイプ', { class: 'type' }),
 			Common.td('艦種', { class: 'ship' }),
-			Common.td('初期アビリティ'),
+			Common.td('初期アビリティ', { colSpan: 2 }),
 		);
 
 		const thead = document.createElement('thead');

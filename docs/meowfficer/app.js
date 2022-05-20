@@ -241,14 +241,6 @@ Meowfficer.LV = ['Rookie', 'Adept', 'Elite', 'Ace', 'Chief'];
 Meowfficer.LV1 = ['Rookie', 'Adept', 'Ace'];
 Meowfficer.LV2 = ['Rookie', 'Elite', 'Chief'];
 Meowfficer.TYPES = [
-    'BestFriend',
-    'RisingStar',
-    'Miracle',
-    'Destiny',
-    'WindsAlacrity',
-    'ForestsSerenity',
-    'FlamesAggression',
-    'MountainsTenacity',
     'Officer',
     'Artillery',
     'Torpedo',
@@ -265,6 +257,14 @@ Meowfficer.TYPES = [
     'HeartOfTheTorpedo',
     'AcePilot',
     'AlphaWolf',
+    'WindsAlacrity',
+    'ForestsSerenity',
+    'FlamesAggression',
+    'MountainsTenacity',
+    'BestFriend',
+    'RisingStar',
+    'Miracle',
+    'Destiny',
 ];
 Meowfficer.TARGETS = [
     'Vanguard',
@@ -370,7 +370,7 @@ Meowfficer.MEOWFFICERS_SKILL = {
             'オフニャ弾幕Ⅰをオフニャ弾幕Ⅱに強化する',
         ],
         siren: [
-            '指揮ニャとして装備されている場合、装備艦隊の駆逐艦の雷槍を上昇させる（効果小・効果は指揮補助ステータスによる）'
+            '指揮ニャとして装備されている場合、装備艦隊の駆逐艦の雷槍を上昇させる（効果小・効果は指揮補助ステータスによる）',
         ],
     },
     NineLives: {
@@ -414,7 +414,7 @@ Meowfficer.MEOWFFICERS_SKILL = {
             '参謀ニャとして装備されている場合、艦隊のロイヤル艦船の火力がアップ（効果小、戦術補助のステータスによる）',
         ],
         siren: [
-            '参謀ニャとして装備されている場合、装備艦隊の戦艦・巡洋戦艦・航空戦艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）'
+            '参謀ニャとして装備されている場合、装備艦隊の戦艦・巡洋戦艦・航空戦艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）',
         ],
     },
     TiddlesLegacy: {
@@ -426,7 +426,7 @@ Meowfficer.MEOWFFICERS_SKILL = {
         ],
         siren: [
             '',
-            '敵偵察艦隊が装備艦隊周辺2マス以内に存在する場合、装備艦隊の駆逐艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）'
+            '敵偵察艦隊が装備艦隊周辺2マス以内に存在する場合、装備艦隊の駆逐艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）',
         ],
     },
     BellyFlopBombardment: {
@@ -495,7 +495,7 @@ Meowfficer.MEOWFFICERS_SKILL = {
             '参謀ニャとして装備されている場合、装備艦隊の軽巡・重巡・超巡の火力を上昇させる（効果小・効果は指揮補助ステータスによる）',
         ],
         siren: [
-            '参謀ニャとして装備されている場合、装備艦隊の軽巡・重巡・超巡の回避を上昇させる（効果小・効果は兵站補助ステータスによる）'
+            '参謀ニャとして装備されている場合、装備艦隊の軽巡・重巡・超巡の回避を上昇させる（効果小・効果は兵站補助ステータスによる）',
         ],
     },
     BattleshipBoost: {
@@ -548,14 +548,6 @@ Meowfficer.MEOWFFICERS_SKILL = {
     },
 };
 Meowfficer.ABILITIES = [
-    { type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
-    { type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'AntiAir', target: 'Vanguard', name: 'TLS', name_ja: 'T・S', lv: 3 },
     { type: 'Sonar', target: 'Vanguard', name: 'TLS', name_ja: 'lT・S', lv: 3 },
     { type: 'Lookout', target: 'Vanguard', name: 'LTS', name_ja: 'lT・S', lv: 3 },
@@ -600,6 +592,14 @@ Meowfficer.ABILITIES = [
     { type: 'HeartOfTheTorpedo', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'AcePilot', name: 'T', name_ja: 'T', lv: 0 },
     { type: 'AlphaWolf', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
+    { type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
 ];
 Meowfficer.ABILITY_INFO = {
     OfficerDestroyer: { text: '<span>駆逐</span>の雷装がXアップ、装填がYアップ', values: [8, 11, 16, 4, 5, 8] },
@@ -828,7 +828,7 @@ Meowfficer.NAME_DATA = {
             }
         }
         get order() {
-            const target = this.target ? Meowfficer.TARGETS.indexOf(this.target) + 1 : 0;
+            const target = this.target ? Meowfficer.TARGETS.indexOf(this.target) + 1 : Meowfficer.TARGETS.length;
             const type = this.type ? Meowfficer.TYPES.indexOf(this.type) : 0;
             return target * 1000 + type * 10 + this.lv;
         }
@@ -974,12 +974,16 @@ function DrawMeowfficers(parent) {
         customElements.whenDefined('ship-type'),
     ]).then(() => {
         const tbody = document.createElement('tbody');
+        const SP = [
+            'WindsAlacrity', 'ForestsSerenity', 'FlamesAggression', 'MountainsTenacity', 'Destiny',
+        ];
         Object.keys(MEOWFFICERS).forEach((name) => {
             const data = MEOWFFICERS[name];
+            const sp = Common.td('', { class: ['abilities', 'sp'] });
             const abilities = Common.td('', { class: 'abilities' });
             const shipType = new (customElements.get('ship-type'))();
             shipType.type = data.target;
-            const tr = Common.tr({ class: ['rarelity', `back_${data.rarelity}`] }, Common.td('', { class: ['icon', name] }), Common.td(data.name), Common.td('', { class: data.nation }), Common.td('', { class: `type${data.type}` }), Common.td(shipType), abilities);
+            const tr = Common.tr({ class: ['rarelity', `back_${data.rarelity}`] }, Common.td('', { class: ['icon', name] }), Common.td(data.name), Common.td('', { class: data.nation }), Common.td('', { class: `type${data.type}` }), Common.td(shipType), sp, abilities);
             data.abilities.forEach((ability) => {
                 const data = Meowfficer.search(ability);
                 if (!data) {
@@ -1011,9 +1015,18 @@ function DrawMeowfficers(parent) {
                 });
             }
             Meowfficer.sort(abilities);
+            const list = [];
+            for (const ability of abilities.children) {
+                if (SP.includes(ability.type)) {
+                    list.push(ability);
+                }
+            }
+            for (const button of list) {
+                sp.appendChild(button);
+            }
             tbody.appendChild(tr);
         });
-        const header = Common.tr({}, Common.td(''), Common.td('名前', { class: 'name' }), Common.td('所属', { class: 'nation' }), Common.td('タイプ', { class: 'type' }), Common.td('艦種', { class: 'ship' }), Common.td('初期アビリティ'));
+        const header = Common.tr({}, Common.td(''), Common.td('名前', { class: 'name' }), Common.td('所属', { class: 'nation' }), Common.td('タイプ', { class: 'type' }), Common.td('艦種', { class: 'ship' }), Common.td('初期アビリティ', { colSpan: 2 }));
         const thead = document.createElement('thead');
         thead.appendChild(header);
         const table = document.createElement('table');

@@ -86,14 +86,6 @@ class Meowfficer {
 	static LV1: MEOWFFICERS_LV1[] = ['Rookie', 'Adept', 'Ace'];
 	static LV2: MEOWFFICERS_LV2[] = ['Rookie', 'Elite', 'Chief'];
 	static TYPES: MEOWFFICERS_TYPE[] = [
-		'BestFriend',
-		'RisingStar',
-		'Miracle',
-		'Destiny',
-		'WindsAlacrity',
-		'ForestsSerenity',
-		'FlamesAggression',
-		'MountainsTenacity',
 		'Officer',
 		'Artillery',
 		'Torpedo',
@@ -110,6 +102,14 @@ class Meowfficer {
 		'HeartOfTheTorpedo',
 		'AcePilot',
 		'AlphaWolf',
+		'WindsAlacrity',
+		'ForestsSerenity',
+		'FlamesAggression',
+		'MountainsTenacity',
+		'BestFriend',
+		'RisingStar',
+		'Miracle',
+		'Destiny',
 	];
 	static TARGETS: MEOWFFICERS_TARGET[] = [
 		'Vanguard',
@@ -219,7 +219,7 @@ class Meowfficer {
 				'オフニャ弾幕Ⅰをオフニャ弾幕Ⅱに強化する',
 			],
 			siren: [
-				'指揮ニャとして装備されている場合、装備艦隊の駆逐艦の雷槍を上昇させる（効果小・効果は指揮補助ステータスによる）'
+				'指揮ニャとして装備されている場合、装備艦隊の駆逐艦の雷槍を上昇させる（効果小・効果は指揮補助ステータスによる）',
 			],
 		},
 		NineLives: {
@@ -263,7 +263,7 @@ class Meowfficer {
 				'参謀ニャとして装備されている場合、艦隊のロイヤル艦船の火力がアップ（効果小、戦術補助のステータスによる）',
 			],
 			siren: [
-				'参謀ニャとして装備されている場合、装備艦隊の戦艦・巡洋戦艦・航空戦艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）'
+				'参謀ニャとして装備されている場合、装備艦隊の戦艦・巡洋戦艦・航空戦艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）',
 			],
 		},
 		TiddlesLegacy: {
@@ -275,7 +275,7 @@ class Meowfficer {
 			],
 			siren: [
 				'',
-				'敵偵察艦隊が装備艦隊周辺2マス以内に存在する場合、装備艦隊の駆逐艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）'
+				'敵偵察艦隊が装備艦隊周辺2マス以内に存在する場合、装備艦隊の駆逐艦の回避を上昇させる（効果小・効果は兵站補助ステータスによる）',
 			],
 		},
 		BellyFlopBombardment: {
@@ -345,7 +345,7 @@ class Meowfficer {
 				'参謀ニャとして装備されている場合、装備艦隊の軽巡・重巡・超巡の火力を上昇させる（効果小・効果は指揮補助ステータスによる）',
 			],
 			siren: [
-				'参謀ニャとして装備されている場合、装備艦隊の軽巡・重巡・超巡の回避を上昇させる（効果小・効果は兵站補助ステータスによる）'
+				'参謀ニャとして装備されている場合、装備艦隊の軽巡・重巡・超巡の回避を上昇させる（効果小・効果は兵站補助ステータスによる）',
 			],
 		},
 		BattleshipBoost: {
@@ -398,14 +398,6 @@ class Meowfficer {
 		},
 	};
 	static ABILITIES: MEOWFFICERS_ABILITY[] = [
-		{ type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'AntiAir', target: 'Vanguard', name: 'TLS', name_ja: 'T・S', lv: 3 },
 		{ type: 'Sonar', target: 'Vanguard', name: 'TLS', name_ja: 'lT・S', lv: 3 },
 		{ type: 'Lookout', target: 'Vanguard', name: 'LTS', name_ja: 'lT・S', lv: 3 },
@@ -450,6 +442,14 @@ class Meowfficer {
 		{ type: 'HeartOfTheTorpedo', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'AcePilot', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'AlphaWolf', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
 	];
 	static ABILITY_INFO: {
 		[keys: string]: {
@@ -813,7 +813,7 @@ interface MeowfficerAbilityElement extends HTMLElement {
 			get order() {
 				// [MEOWFFICERS_TARGET] [MEOWFFICERS_TYPE] [MEOWFFICERS_LV]
 				// TT                   tt                 l
-				const target = this.target ? Meowfficer.TARGETS.indexOf(this.target) + 1 : 0;
+				const target = this.target ? Meowfficer.TARGETS.indexOf(this.target) + 1 : Meowfficer.TARGETS.length;
 				const type = this.type ? Meowfficer.TYPES.indexOf(this.type) : 0;
 				return target * 1000 + type * 10 + this.lv;
 			}
