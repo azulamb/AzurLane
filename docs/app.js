@@ -487,7 +487,7 @@ const Common = {
             const style = document.createElement('style');
             style.innerHTML = [
                 ':host { display: block; }',
-                ':host > div { display: grid; grid-template-columns: 6rem 1fr 5rem 7rem; }',
+                ':host > div { display: grid; grid-template-columns: 7rem 1fr 5rem 7rem; }',
                 ':host > div > input-slider { --input-size: 5rem; }',
             ].join('');
             const label = document.createElement('div');
@@ -495,6 +495,9 @@ const Common = {
             this.slider = new (customElements.get('input-slider'))();
             this.slider.step = 1;
             this.slider.value = 0;
+            if (this.hasAttribute('value')) {
+                this.slider.value = parseInt(this.getAttribute('value') || '') || 0;
+            }
             if (this.hasAttribute('max')) {
                 this.slider.max = parseInt(this.getAttribute('max') || '') || 1;
             }
@@ -518,10 +521,12 @@ const Common = {
             shadow.appendChild(contents);
         }
         updateTime() {
-            const value = this.max - this.value;
-            const mins = value / this.add * this.mins;
             const date = new Date();
-            date.setMinutes(date.getMinutes() + mins);
+            const value = this.max - this.value;
+            if (0 < value) {
+                const mins = value / this.add * this.mins;
+                date.setMinutes(date.getMinutes() + mins);
+            }
             this.complete.value = date;
         }
         get max() {
@@ -549,7 +554,7 @@ const Common = {
             this.slider.value = value;
         }
         static get observedAttributes() {
-            return ['max', 'value'];
+            return ['max', 'value', 'add'];
         }
         attributeChangedCallback(name, oldValue, newValue) {
             if (oldValue === newValue) {
@@ -559,10 +564,14 @@ const Common = {
                 case 'max':
                     this.max = newValue;
                     break;
+                case 'add':
+                    this.add = newValue;
+                    break;
                 case 'value':
                     this.value = newValue;
                     break;
             }
+            this.updateTime();
         }
     }, script.dataset.tagname);
 });
@@ -1014,6 +1023,56 @@ Promise.all([
     customElements.whenDefined('skill-book'),
     customElements.whenDefined('skill-exp'),
 ]).then(() => {
+    ((parent) => {
+        setTimeout(() => {
+            const condition = parent.querySelector('calc-time');
+            let nowPlace = 2;
+            let nowMarriage = 0;
+            const Update = () => {
+                condition.max = nowPlace <= 2 ? 119 : 150;
+                if (condition.max < condition.value) {
+                    condition.value = condition.max;
+                }
+                condition.add = nowPlace + nowMarriage;
+            };
+            for (const place of parent.querySelectorAll('input[name="place"]')) {
+                place.addEventListener('change', () => {
+                    nowPlace = parseInt(place.value);
+                    Update();
+                });
+            }
+            for (const marriage of parent.querySelectorAll('input[name="marriage"]')) {
+                marriage.addEventListener('change', () => {
+                    nowMarriage = parseInt(marriage.value);
+                    Update();
+                });
+            }
+        }, 0);
+    })(document.getElementById('condition'));
+    ((parent) => {
+        setTimeout(() => {
+            parent.querySelector('button').addEventListener('click', () => {
+                Notification.requestPermission().then((result) => {
+                    if (result === 'denied') {
+                        throw new Error('Denied');
+                    }
+                    console.log(result);
+                    const data = {
+                        icon: './favicon.svg',
+                        body: 'test',
+                        vibrate: true,
+                    };
+                    const notification = new Notification('title', {
+                        icon: './favicon.svg',
+                        body: 'test',
+                        vibrate: 5,
+                    });
+                }).catch((error) => {
+                    console.error(error);
+                });
+            });
+        }, 0);
+    })(document.getElementById('notification'));
     DrawSkillLvUp(document.getElementById('skill_lvup'));
     DrawAwaking(document.getElementById('awaking'));
     DrawPartsLvUp(document.getElementById('parts_lvup'));

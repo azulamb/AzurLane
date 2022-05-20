@@ -29,6 +29,9 @@ table.parts tr.rarelity3 td.parts::after{background-image:url(./resource/parts_t
 table.parts tr.rarelity4 td.parts::after{background-image:url(./resource/parts_t4.png);}
 table.parts tr.rarelity4 td.parts.ex::after{background-image:url(./resource/parts_t4_ex.png);width:1rem;}
 table.parts tr.rarelity5 td.parts.ex::after{background-image:url(./resource/parts_t5_ex.png);width:1rem;}
+#condition > div{display:flex;gap:0 1rem;padding-left:7rem;}
+#condition > div > div:first-child::before{content:'居場所:';}
+#condition > div > div:last-child::before{content:'ケッコン:';}
 	</style>
 	<script>
 const BOOKS = [
@@ -173,6 +176,24 @@ const PARTS_LVUP = [
 			<calc-time max="3600" mins="60" add="96">燃料</calc-time>
 			<calc-time max="12000" mins="60" add="324">資金</calc-time>
 			<calc-time max="90" mins="300" add="1" value="50">好感度</calc-time>
+			<div id="condition">
+				<calc-time max="119" mins="6" add="2" value="119">コンディション</calc-time>
+				<div>
+					<div>
+						<label><input type="radio" name="place" value="2" checked>通常</label>
+						<label><input type="radio" name="place" value="4">寮舎(1F)</label>
+						<label><input type="radio" name="place" value="5">寮舎(2F)</label>
+					</div>
+					<div>
+						<label><input type="radio" name="marriage" value="0" checked>未婚</label>
+						<label><input type="radio" name="marriage" value="1">既婚</label>
+					</div>
+				</div>
+			</div>
+			<div id="notification" style="display:none">
+				<button>通知</button>
+			</div>
+
 			<h2>消費値</h2>
 			<h3>スキル</h3>
 			<div>

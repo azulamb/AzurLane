@@ -34,7 +34,7 @@ interface CalcTimeElement extends HTMLElement {
 				const style = document.createElement('style');
 				style.innerHTML = [
 					':host { display: block; }',
-					':host > div { display: grid; grid-template-columns: 6rem 1fr 5rem 7rem; }',
+					':host > div { display: grid; grid-template-columns: 7rem 1fr 5rem 7rem; }',
 					':host > div > input-slider { --input-size: 5rem; }',
 				].join('');
 
@@ -44,6 +44,9 @@ interface CalcTimeElement extends HTMLElement {
 				this.slider = new (<{ new (): InputSliderElement }> customElements.get('input-slider'))();
 				this.slider.step = 1;
 				this.slider.value = 0;
+				if (this.hasAttribute('value')) {
+					this.slider.value = parseInt(this.getAttribute('value') || '') || 0;
+				}
 				if (this.hasAttribute('max')) {
 					this.slider.max = parseInt(this.getAttribute('max') || '') || 1;
 				}
@@ -74,10 +77,12 @@ interface CalcTimeElement extends HTMLElement {
 			}
 
 			protected updateTime() {
-				const value = this.max - this.value;
-				const mins = value / this.add * this.mins;
 				const date = new Date();
-				date.setMinutes(date.getMinutes() + mins);
+				const value = this.max - this.value;
+				if (0 < value) {
+					const mins = value / this.add * this.mins;
+					date.setMinutes(date.getMinutes() + mins);
+				}
 				this.complete.value = date;
 			}
 
@@ -110,7 +115,7 @@ interface CalcTimeElement extends HTMLElement {
 			}
 
 			static get observedAttributes() {
-				return ['max', 'value'];
+				return ['max', 'value', 'add'];
 			}
 
 			attributeChangedCallback(name: string, oldValue: any, newValue: any) {
@@ -121,10 +126,14 @@ interface CalcTimeElement extends HTMLElement {
 					case 'max':
 						this.max = newValue;
 						break;
+					case 'add':
+						this.add = newValue;
+						break;
 					case 'value':
 						this.value = newValue;
 						break;
 				}
+				this.updateTime();
 			}
 		},
 		script.dataset.tagname,

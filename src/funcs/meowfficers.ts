@@ -41,7 +41,11 @@ function DrawMeowfficers(parent: HTMLElement) {
 
 		const SP = [
 			//'BestFriend', 'RisingStar', 'Miracle',
-			'WindsAlacrity', 'ForestsSerenity', 'FlamesAggression', 'MountainsTenacity', 'Destiny',
+			'WindsAlacrity',
+			'ForestsSerenity',
+			'FlamesAggression',
+			'MountainsTenacity',
+			'Destiny',
 		];
 		Object.keys(MEOWFFICERS).forEach((name) => {
 			const data = MEOWFFICERS[name];
