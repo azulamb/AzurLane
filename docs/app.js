@@ -765,6 +765,7 @@ const Common = {
                 tag: this.tag,
             });
             if (this.sound) {
+                this.audio.currentTime = 0;
                 this.audio.play();
             }
             notification.addEventListener('click', () => {
