@@ -528,6 +528,7 @@ const Common = {
                 date.setMinutes(date.getMinutes() + mins);
             }
             this.complete.value = date;
+            this.dispatchEvent(new CustomEvent('change', { detail: new Date(date) }));
         }
         get max() {
             return this.slider.max;
@@ -552,6 +553,9 @@ const Common = {
         }
         set value(value) {
             this.slider.value = value;
+        }
+        get date() {
+            return this.complete.value;
         }
         static get observedAttributes() {
             return ['max', 'value', 'add'];
@@ -719,6 +723,158 @@ const Common = {
         }
         get totalExp() {
             return parseInt(this.books.value) * this.exp + parseInt(this.booksBonus.value) * this.bonus;
+        }
+    }, script.dataset.tagname);
+});
+((script, init) => {
+    if (document.readyState !== 'loading') {
+        return init(script);
+    }
+    document.addEventListener('DOMContentLoaded', () => {
+        init(script);
+    });
+})(document.currentScript, (script) => {
+    class MyNotification {
+        constructor() {
+            this.second = 60;
+            this.list = [];
+        }
+        request() {
+            return Notification.requestPermission().then((result) => {
+                if (result === 'denied' || result === 'default') {
+                    throw new Error('Denied');
+                }
+            });
+        }
+        notification() {
+            const notification = new Notification('title', {
+                icon: location.href + 'favicon.svg',
+                body: 'test',
+                vibrate: 5,
+            });
+            notification.addEventListener('click', () => {
+                window.open(location.href);
+            });
+        }
+        add(input, time) {
+            this.list.push({
+                input: input,
+                time: time,
+            });
+            input.addEventListener('change', () => {
+                this.onChange();
+            });
+            time.addEventListener('change', () => {
+                this.onChange();
+            });
+        }
+        onChange() {
+        }
+        onUpdate() {
+            console.log('timer');
+        }
+        start(worker) {
+            if (!worker) {
+                throw new Error('No worker.');
+            }
+            this.worker = new Worker(worker);
+            this.worker.onmessage = (e) => {
+                this.onUpdate();
+            };
+            this.worker.postMessage({ second: this.second });
+        }
+        stop() {
+            if (!this.worker) {
+                return;
+            }
+            this.worker.terminate();
+            this.worker = null;
+        }
+    }
+    ((component, tagname = 'notification-like') => {
+        if (customElements.get(tagname)) {
+            return;
+        }
+        customElements.define(tagname, component);
+    })(class extends HTMLElement {
+        constructor() {
+            super();
+            this.lists = [];
+            this.notification = new MyNotification();
+            const shadow = this.attachShadow({ mode: 'open' });
+            const style = document.createElement('style');
+            style.innerHTML = [
+                ':host { display: block; }',
+                ':host > div > div#ui.ready > div:first-child{ display: none; }',
+                ':host > div > div#ui:not(.ready) > div:last-child { display: none; }',
+                'label { user-select: none; }',
+                'button { cursor: pointer; }',
+                '.title::before { content: "通知設定:"; }',
+                '#notification::before { content: "Start"; }',
+                '#notification.on::before { content: "Stop"; }',
+            ].join('');
+            const open = (() => {
+                const button = document.createElement('button');
+                button.textContent = '通知';
+                button.addEventListener('click', () => {
+                    this.requestNotification().then(() => {
+                        ui.classList.add('ready');
+                    }).catch((error) => {
+                        console.error(error);
+                    });
+                });
+                const contents = document.createElement('div');
+                contents.appendChild(button);
+                return contents;
+            })();
+            open.style.display = 'none';
+            const config = (() => {
+                for (const item of this.querySelectorAll('calc-time')) {
+                    this.lists.push(item);
+                }
+                const list = document.createElement('div');
+                this.lists.forEach((item) => {
+                    const input = document.createElement('input');
+                    input.type = 'checkbox';
+                    const label = document.createElement('label');
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(item.textContent || ''));
+                    this.notification.add(input, item);
+                    list.appendChild(label);
+                });
+                const title = document.createElement('div');
+                title.classList.add('title');
+                const button = document.createElement('button');
+                button.id = 'notification';
+                button.addEventListener('click', () => {
+                    button.classList.toggle('on');
+                    if (button.classList.contains('on')) {
+                        this.notification.start(this.getAttribute('worker') || '');
+                    }
+                    else {
+                        this.notification.stop();
+                    }
+                });
+                const contents = document.createElement('div');
+                contents.appendChild(title);
+                contents.appendChild(list);
+                contents.appendChild(button);
+                return contents;
+            })();
+            const ui = document.createElement('div');
+            ui.id = 'ui';
+            ui.appendChild(open);
+            ui.appendChild(config);
+            const slot = document.createElement('div');
+            slot.appendChild(document.createElement('slot'));
+            const contents = document.createElement('div');
+            contents.appendChild(slot);
+            contents.appendChild(ui);
+            shadow.appendChild(style);
+            shadow.appendChild(contents);
+        }
+        requestNotification() {
+            return this.notification.request();
         }
     }, script.dataset.tagname);
 });
@@ -1049,29 +1205,6 @@ Promise.all([
             }
         }, 0);
     })(document.getElementById('condition'));
-    ((parent) => {
-        setTimeout(() => {
-            parent.querySelector('button').addEventListener('click', () => {
-                Notification.requestPermission().then((result) => {
-                    if (result === 'denied') {
-                        throw new Error('Denied');
-                    }
-                    const timestamp = Date.now() + 10000;
-                    const notification = new Notification('title', {
-                        icon: './favicon.svg',
-                        body: 'test',
-                        vibrate: 5,
-                        timestamp: timestamp,
-                    });
-                    notification.addEventListener('click', () => {
-                        window.open('https://azulamb.github.io/AzurLane/');
-                    });
-                }).catch((error) => {
-                    console.error(error);
-                });
-            });
-        }, 0);
-    })(document.getElementById('notification'));
     DrawSkillLvUp(document.getElementById('skill_lvup'));
     DrawAwaking(document.getElementById('awaking'));
     DrawPartsLvUp(document.getElementById('parts_lvup'));

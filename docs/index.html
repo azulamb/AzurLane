@@ -172,27 +172,26 @@ const PARTS_LVUP = [
 		</section>
 		<section id="page_values" data-name="値一覧">
 			<h2>回復値</h2>
-			<calc-time max="200" mins="10" add="1">指揮官力</calc-time>
-			<calc-time max="3600" mins="60" add="96">燃料</calc-time>
-			<calc-time max="12000" mins="60" add="324">資金</calc-time>
-			<calc-time max="90" mins="300" add="1" value="50">好感度</calc-time>
-			<div id="condition">
-				<calc-time max="119" mins="6" add="2" value="119">コンディション</calc-time>
-				<div>
+			<notification-like worker="./timer.js">
+				<calc-time max="200" mins="10" add="1">指揮官力</calc-time>
+				<calc-time max="3600" mins="60" add="96">燃料</calc-time>
+				<calc-time max="12000" mins="60" add="324">資金</calc-time>
+				<calc-time max="90" mins="300" add="1" value="50">好感度</calc-time>
+				<div id="condition">
+					<calc-time max="119" mins="6" add="2" value="119">コンディション</calc-time>
 					<div>
-						<label><input type="radio" name="place" value="2" checked>通常</label>
-						<label><input type="radio" name="place" value="4">寮舎(1F)</label>
-						<label><input type="radio" name="place" value="5">寮舎(2F)</label>
-					</div>
-					<div>
-						<label><input type="radio" name="marriage" value="0" checked>未婚</label>
-						<label><input type="radio" name="marriage" value="1">既婚</label>
+						<div>
+							<label><input type="radio" name="place" value="2" checked>通常</label>
+							<label><input type="radio" name="place" value="4">寮舎(1F)</label>
+							<label><input type="radio" name="place" value="5">寮舎(2F)</label>
+						</div>
+						<div>
+							<label><input type="radio" name="marriage" value="0" checked>未婚</label>
+							<label><input type="radio" name="marriage" value="1">既婚</label>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="notification" style="display:none">
-				<button>通知</button>
-			</div>
+			</notification-like>
 
 			<h2>消費値</h2>
 			<h3>スキル</h3>

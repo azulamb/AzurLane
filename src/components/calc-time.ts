@@ -6,6 +6,7 @@ interface CalcTimeElement extends HTMLElement {
 	mins: number;
 	add: number;
 	value: number;
+	readonly date: Date;
 }
 
 ((script, init) => {
@@ -84,6 +85,7 @@ interface CalcTimeElement extends HTMLElement {
 					date.setMinutes(date.getMinutes() + mins);
 				}
 				this.complete.value = date;
+				this.dispatchEvent(new CustomEvent('change', { detail: new Date(date) }));
 			}
 
 			get max() {
@@ -112,6 +114,10 @@ interface CalcTimeElement extends HTMLElement {
 			}
 			set value(value) {
 				this.slider.value = value;
+			}
+
+			get date() {
+				return this.complete.value;
 			}
 
 			static get observedAttributes() {

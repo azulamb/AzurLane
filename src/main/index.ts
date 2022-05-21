@@ -2,6 +2,7 @@
 /// <reference path="../components/section-pages.ts" />
 /// <reference path="../components/calc-time.ts" />
 /// <reference path="../components/skill-book.ts" />
+/// <reference path="../components/notification-like.ts" />
 /// <reference path="../funcs/skill_lvup.ts" />
 /// <reference path="../funcs/awaking.ts" />
 /// <reference path="../funcs/parts_lvup.ts" />
@@ -38,29 +39,6 @@ Promise.all([
 			}
 		}, 0);
 	})(<HTMLElement> document.getElementById('condition'));
-	((parent) => {
-		setTimeout(() => {
-			(<HTMLButtonElement> parent.querySelector('button')).addEventListener('click', () => {
-				Notification.requestPermission().then((result) => {
-					if (result === 'denied') {
-						throw new Error('Denied');
-					}
-					const timestamp = Date.now() + 10000;
-					const notification = new Notification('title', {
-						icon: './favicon.svg',
-						body: 'test',
-						vibrate: 5,
-						timestamp: timestamp,
-					});
-					notification.addEventListener('click', () => {
-						window.open('https://azulamb.github.io/AzurLane/');
-					});
-				}).catch((error) => {
-					console.error(error);
-				});
-			});
-		}, 0);
-	})(<HTMLElement> document.getElementById('notification'));
 	DrawSkillLvUp(<SkillExpElement> document.getElementById('skill_lvup'));
 	DrawAwaking(<SkillExpElement> document.getElementById('awaking'));
 	DrawPartsLvUp(<HTMLElement> document.getElementById('parts_lvup'));
