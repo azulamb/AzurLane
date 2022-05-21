@@ -739,8 +739,7 @@ const Common = {
             this.second = 60;
             this.list = [];
             this.audio = audio;
-            location.
-                this.tag = [location.host, location.pathname].join('_').replace(/.+\/\(.+)/, '$1').replace(/[\/\.]/g, '_');
+            this.tag = [location.host, location.pathname].join('_').replace(/.+\/\/(.+)/, '$1').replace(/[\/\.]/g, '_').replace(/_$/, '');
         }
         request() {
             return Notification.requestPermission().then((result) => {
