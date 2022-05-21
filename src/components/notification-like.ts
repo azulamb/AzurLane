@@ -13,6 +13,7 @@ interface NotificationLikeElement extends HTMLElement {
 		protected audio: HTMLAudioElement;
 		protected worker: Worker;
 		public second = 60;
+		public icon = '';
 		public tag: string;
 		public sound = true;
 		protected active = true;
@@ -39,7 +40,7 @@ interface NotificationLikeElement extends HTMLElement {
 
 		public notification() {
 			const notification = new Notification('AzurLane Tools', {
-				icon: location.href + 'favicon.svg',
+				icon: this.icon,
 				body: '時間が来ました',
 				vibrate: [200, 200, 400],
 				renotify: true,
@@ -125,6 +126,7 @@ interface NotificationLikeElement extends HTMLElement {
 
 				const audio = new Audio(this.getAttribute('alarm') || '');
 				this.notification = new MyNotification(audio);
+				this.notification.icon = this.getAttribute('icon') || '';
 
 				const shadow = this.attachShadow({ mode: 'open' });
 
@@ -165,7 +167,6 @@ interface NotificationLikeElement extends HTMLElement {
 
 					return contents;
 				})();
-				//open.style.display = 'none';
 
 				const config = (() => {
 					for (const item of this.querySelectorAll('calc-time')) {

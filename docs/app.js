@@ -737,6 +737,7 @@ const Common = {
     class MyNotification {
         constructor(audio) {
             this.second = 60;
+            this.icon = '';
             this.sound = true;
             this.active = true;
             this.list = [];
@@ -758,7 +759,7 @@ const Common = {
         }
         notification() {
             const notification = new Notification('AzurLane Tools', {
-                icon: location.href + 'favicon.svg',
+                icon: this.icon,
                 body: '時間が来ました',
                 vibrate: [200, 200, 400],
                 renotify: true,
@@ -832,6 +833,7 @@ const Common = {
             this.lists = [];
             const audio = new Audio(this.getAttribute('alarm') || '');
             this.notification = new MyNotification(audio);
+            this.notification.icon = this.getAttribute('icon') || '';
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
             style.innerHTML = [
