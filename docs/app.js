@@ -739,6 +739,8 @@ const Common = {
             this.second = 60;
             this.list = [];
             this.audio = audio;
+            location.
+                this.tag = [location.host, location.pathname].join('_').replace(/.+\/\(.+)/, '$1').replace(/[\/\.]/g, '_');
         }
         request() {
             return Notification.requestPermission().then((result) => {
@@ -753,12 +755,9 @@ const Common = {
                 body: '時間が来ました',
                 vibrate: [200, 200, 400],
                 renotify: true,
-                requireInteraction: true,
+                tag: this.tag,
             });
             this.audio.play;
-            notification.addEventListener('click', () => {
-                window.open(location.href);
-            });
         }
         add(input, time) {
             this.list.push({

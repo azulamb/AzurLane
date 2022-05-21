@@ -13,10 +13,12 @@ interface NotificationLikeElement extends HTMLElement {
 		protected audio: HTMLAudioElement;
 		protected worker: Worker;
 		public second = 60;
+		public tag: string;
 		protected list: { input: HTMLInputElement; time: CalcTimeElement }[] = [];
 
 		constructor(audio: HTMLAudioElement) {
 			this.audio = audio;
+			this.tag = [location.host, location.pathname].join('_').replace(/.+\/\/(.+)/, '$1').replace(/[\/\.]/g, '_').replace(/_$/, '');
 		}
 
 		public request() {
@@ -31,14 +33,15 @@ interface NotificationLikeElement extends HTMLElement {
 			const notification = new Notification('通知', {
 				icon: location.href + 'favicon.svg',
 				body: '時間が来ました',
-				vibrate: [200, 200, 400 ],
+				vibrate: [200, 200, 400],
 				renotify: true,
-				requireInteraction: true,
+				//requireInteraction: true,
+				tag: this.tag,
 			});
 			this.audio.play;
-			notification.addEventListener('click', () => {
+			/*notification.addEventListener('click', () => {
 				window.open(location.href);
-			});
+			});*/
 		}
 
 		public add(input: HTMLInputElement, time: CalcTimeElement) {
@@ -106,7 +109,7 @@ interface NotificationLikeElement extends HTMLElement {
 			constructor() {
 				super();
 
-				const audio = new Audio(this.getAttribute('alarm')||'');
+				const audio = new Audio(this.getAttribute('alarm') || '');
 				this.notification = new MyNotification(audio);
 
 				const shadow = this.attachShadow({ mode: 'open' });
