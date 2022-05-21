@@ -483,6 +483,7 @@ const Common = {
     })(class extends HTMLElement {
         constructor() {
             super();
+            this.enable = true;
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
             style.innerHTML = [
@@ -776,25 +777,18 @@ const Common = {
             });
         }
         add(input, time) {
-            this.list.push({
-                input: input,
-                time: time,
-            });
+            this.list.push(time);
+            time.enable = input.checked;
             input.addEventListener('change', () => {
-                this.onChange();
+                time.enable = input.checked;
             });
-            time.addEventListener('change', () => {
-                this.onChange();
-            });
-        }
-        onChange() {
         }
         onUpdate() {
             const now = Date.now();
             let list = [];
             for (const item of this.list) {
-                if (item.input.checked) {
-                    const time = item.time.date.getTime();
+                if (item.enable) {
+                    const time = item.date.getTime();
                     if (now <= time && time <= now + (this.second) * 1000) {
                         list.push(item);
                     }
@@ -830,7 +824,7 @@ const Common = {
     })(class extends HTMLElement {
         constructor() {
             super();
-            this.lists = [];
+            this.list = [];
             const audio = new Audio(this.getAttribute('alarm') || '');
             this.notification = new MyNotification(audio);
             this.notification.icon = this.getAttribute('icon') || '';
@@ -870,14 +864,12 @@ const Common = {
             })();
             const config = (() => {
                 for (const item of this.querySelectorAll('calc-time')) {
-                    this.lists.push(item);
+                    this.list.push(item);
                 }
                 const list = document.createElement('div');
-                const checks = [];
-                this.lists.forEach((item) => {
+                this.list.forEach((item) => {
                     const input = document.createElement('input');
                     input.type = 'checkbox';
-                    checks.push(input);
                     const label = document.createElement('label');
                     label.appendChild(input);
                     label.appendChild(document.createTextNode(item.textContent || ''));
@@ -897,8 +889,8 @@ const Common = {
                 button.id = 'notification';
                 button.addEventListener('click', () => {
                     if (!button.classList.contains('on')) {
-                        const checked = checks.filter((item) => {
-                            return item.checked;
+                        const checked = this.list.filter((item) => {
+                            return item.enable;
                         });
                         if (checked.length <= 0) {
                             alert('通知設定が未選択です');

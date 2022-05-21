@@ -1,3 +1,5 @@
+/// <reference path="./calc-time.ts" />
+
 interface NotificationLikeElement extends HTMLElement {
 }
 
@@ -17,7 +19,7 @@ interface NotificationLikeElement extends HTMLElement {
 		public tag: string;
 		public sound = true;
 		protected active = true;
-		protected list: { input: HTMLInputElement; time: CalcTimeElement }[] = [];
+		protected list: DateElement[] = [];
 
 		constructor(audio: HTMLAudioElement) {
 			this.audio = audio;
@@ -60,27 +62,19 @@ interface NotificationLikeElement extends HTMLElement {
 		}
 
 		public add(input: HTMLInputElement, time: CalcTimeElement) {
-			this.list.push({
-				input: input,
-				time: time,
-			});
+			this.list.push(time);
+			time.enable = input.checked;
 			input.addEventListener('change', () => {
-				this.onChange();
+				time.enable = input.checked;
 			});
-			time.addEventListener('change', () => {
-				this.onChange();
-			});
-		}
-
-		protected onChange() {
 		}
 
 		protected onUpdate() {
 			const now = Date.now();
 			let list = [];
 			for (const item of this.list) {
-				if (item.input.checked) {
-					const time = item.time.date.getTime();
+				if (item.enable) {
+					const time = item.date.getTime();
 					if (now <= time && time <= now + (this.second) * 1000) {
 						list.push(item);
 					}
@@ -119,7 +113,7 @@ interface NotificationLikeElement extends HTMLElement {
 	})(
 		class extends HTMLElement implements NotificationLikeElement {
 			protected notification: MyNotification;
-			protected lists: CalcTimeElement[] = [];
+			protected list: CalcTimeElement[] = [];
 
 			constructor() {
 				super();
@@ -170,15 +164,13 @@ interface NotificationLikeElement extends HTMLElement {
 
 				const config = (() => {
 					for (const item of this.querySelectorAll('calc-time')) {
-						this.lists.push(<CalcTimeElement> item);
+						this.list.push(<CalcTimeElement> item);
 					}
 
 					const list = document.createElement('div');
-					const checks: HTMLInputElement[] = [];
-					this.lists.forEach((item) => {
+					this.list.forEach((item) => {
 						const input = document.createElement('input');
 						input.type = 'checkbox';
-						checks.push(input);
 
 						const label = document.createElement('label');
 						label.appendChild(input);
@@ -205,8 +197,8 @@ interface NotificationLikeElement extends HTMLElement {
 					button.addEventListener('click', () => {
 						if (!button.classList.contains('on')) {
 							// Start
-							const checked = checks.filter((item) => {
-								return item.checked;
+							const checked = this.list.filter((item) => {
+								return item.enable;
 							});
 							if (checked.length <= 0) {
 								alert('通知設定が未選択です');

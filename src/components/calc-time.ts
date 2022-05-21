@@ -1,12 +1,11 @@
 /// <reference path="./input-slider.ts" />
 /// <reference path="./date-time.ts" />
 
-interface CalcTimeElement extends HTMLElement {
+interface CalcTimeElement extends DateElement {
 	max: number;
 	mins: number;
 	add: number;
 	value: number;
-	readonly date: Date;
 }
 
 ((script, init) => {
@@ -24,8 +23,9 @@ interface CalcTimeElement extends HTMLElement {
 		customElements.define(tagname, component);
 	})(
 		class extends HTMLElement implements CalcTimeElement {
-			private slider: InputSliderElement;
-			private complete: DateTimeElement;
+			protected slider: InputSliderElement;
+			protected complete: DateTimeElement;
+			public enable: boolean = true;
 
 			constructor() {
 				super();

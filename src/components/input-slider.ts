@@ -23,8 +23,8 @@ interface InputSliderElement extends HTMLElement {
 		customElements.define(tagname, component);
 	})(
 		class extends HTMLElement implements InputSliderElement {
-			private slider: HTMLInputElement;
-			private input: HTMLInputElement;
+			protected slider: HTMLInputElement;
+			protected input: HTMLInputElement;
 
 			constructor() {
 				super();
