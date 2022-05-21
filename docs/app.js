@@ -843,10 +843,10 @@ const Common = {
                 'button { cursor: pointer; --back-color: var( --end-color ); background: var( --back-color ); border: none; border-radius: 0.1rem; color: #fff; padding: 0.2rem 0.6rem; }',
                 'button:not(.on) { --back-color: var( --start-color ); }',
                 '.title::before { content: "通知設定:"; }',
-                '#notification::before { content: "開始"; }',
-                '#notification.on::before { content: "停止"; }',
-                '#sound::before { content: "音声ON"; }',
-                '#sound:not(.on)::before { content: "音声OFF"; }',
+                '#notification::before { content: "通知の開始"; }',
+                '#notification.on::before { content: "通知の停止"; }',
+                '#sound::before { content: "音声:有効"; }',
+                '#sound:not(.on)::before { content: "音声:無効"; }',
             ].join('');
             const open = (() => {
                 const button = document.createElement('button');
@@ -909,13 +909,13 @@ const Common = {
             })();
             const ui = document.createElement('div');
             ui.id = 'ui';
-            ui.appendChild(document.createElement('hr'));
             ui.appendChild(open);
             ui.appendChild(config);
             const slot = document.createElement('div');
             slot.appendChild(document.createElement('slot'));
             const contents = document.createElement('div');
             contents.appendChild(slot);
+            contents.appendChild(document.createElement('hr'));
             contents.appendChild(ui);
             shadow.appendChild(style);
             shadow.appendChild(contents);
