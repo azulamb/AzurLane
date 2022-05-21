@@ -47,6 +47,7 @@ interface NotificationLikeElement extends HTMLElement {
 				tag: this.tag,
 			});
 			if (this.sound) {
+				this.audio.currentTime = 0;
 				this.audio.play();
 			}
 			notification.addEventListener('click', () => {
