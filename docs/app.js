@@ -873,9 +873,11 @@ const Common = {
                     this.lists.push(item);
                 }
                 const list = document.createElement('div');
+                const checks = [];
                 this.lists.forEach((item) => {
                     const input = document.createElement('input');
                     input.type = 'checkbox';
+                    checks.push(input);
                     const label = document.createElement('label');
                     label.appendChild(input);
                     label.appendChild(document.createTextNode(item.textContent || ''));
@@ -894,13 +896,20 @@ const Common = {
                 const button = document.createElement('button');
                 button.id = 'notification';
                 button.addEventListener('click', () => {
-                    button.classList.toggle('on');
-                    if (button.classList.contains('on')) {
+                    if (!button.classList.contains('on')) {
+                        const checked = checks.filter((item) => {
+                            return item.checked;
+                        });
+                        if (checked.length <= 0) {
+                            alert('通知設定が未選択です');
+                            return;
+                        }
                         this.notification.start(this.getAttribute('worker') || '');
                     }
                     else {
                         this.notification.stop();
                     }
+                    button.classList.toggle('on');
                 });
                 const contents = document.createElement('div');
                 contents.appendChild(title);

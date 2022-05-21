@@ -174,9 +174,11 @@ interface NotificationLikeElement extends HTMLElement {
 					}
 
 					const list = document.createElement('div');
+					const checks: HTMLInputElement[] = [];
 					this.lists.forEach((item) => {
 						const input = document.createElement('input');
 						input.type = 'checkbox';
+						checks.push(input);
 
 						const label = document.createElement('label');
 						label.appendChild(input);
@@ -201,14 +203,21 @@ interface NotificationLikeElement extends HTMLElement {
 					const button = document.createElement('button');
 					button.id = 'notification';
 					button.addEventListener('click', () => {
-						button.classList.toggle('on');
-						if (button.classList.contains('on')) {
+						if (!button.classList.contains('on')) {
 							// Start
+							const checked = checks.filter((item) => {
+								return item.checked;
+							});
+							if (checked.length <= 0) {
+								alert('通知設定が未選択です');
+								return;
+							}
 							this.notification.start(this.getAttribute('worker') || '');
 						} else {
 							// Stop
 							this.notification.stop();
 						}
+						button.classList.toggle('on');
 					});
 
 					const contents = document.createElement('div');
