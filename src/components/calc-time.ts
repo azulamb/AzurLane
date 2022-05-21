@@ -25,7 +25,7 @@ interface CalcTimeElement extends DateElement {
 		class extends HTMLElement implements CalcTimeElement {
 			protected slider: InputSliderElement;
 			protected complete: DateTimeElement;
-			public enable: boolean = true;
+			public enable: boolean = false;
 
 			constructor() {
 				super();

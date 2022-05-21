@@ -172,6 +172,8 @@ interface NotificationLikeElement extends HTMLElement {
 						const input = document.createElement('input');
 						input.type = 'checkbox';
 
+						item.enable = false;
+
 						const label = document.createElement('label');
 						label.appendChild(input);
 						label.appendChild(document.createTextNode(item.textContent || ''));
