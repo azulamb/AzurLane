@@ -6,7 +6,7 @@ onmessage = (event) => {
 		if (timer) {
 			clearInterval(timer);
 		}
-		setInterval(() => {
+		timer = setInterval(() => {
 			postMessage(null);
 		}, second * 1000);
 	} else {
