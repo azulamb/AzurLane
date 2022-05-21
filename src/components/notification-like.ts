@@ -14,11 +14,19 @@ interface NotificationLikeElement extends HTMLElement {
 		protected worker: Worker;
 		public second = 60;
 		public tag: string;
+		public sound = true;
+		protected active = true;
 		protected list: { input: HTMLInputElement; time: CalcTimeElement }[] = [];
 
 		constructor(audio: HTMLAudioElement) {
 			this.audio = audio;
 			this.tag = [location.host, location.pathname].join('_').replace(/.+\/\/(.+)/, '$1').replace(/[\/\.]/g, '_').replace(/_$/, '');
+			window.addEventListener('focus', () => {
+				this.active = true;
+			});
+			window.addEventListener('blur', () => {
+				this.active = false;
+			});
 		}
 
 		public request() {
@@ -30,7 +38,7 @@ interface NotificationLikeElement extends HTMLElement {
 		}
 
 		public notification() {
-			const notification = new Notification('通知', {
+			const notification = new Notification('AzurLane Tools', {
 				icon: location.href + 'favicon.svg',
 				body: '時間が来ました',
 				vibrate: [200, 200, 400],
@@ -38,10 +46,15 @@ interface NotificationLikeElement extends HTMLElement {
 				//requireInteraction: true,
 				tag: this.tag,
 			});
-			this.audio.play();
-			/*notification.addEventListener('click', () => {
-				window.open(location.href);
-			});*/
+			if (this.sound) {
+				this.audio.play();
+			}
+			notification.addEventListener('click', () => {
+				if (this.active) {
+					return;
+				}
+				//window.open(location.href);
+			});
 		}
 
 		public add(input: HTMLInputElement, time: CalcTimeElement) {
@@ -116,14 +129,19 @@ interface NotificationLikeElement extends HTMLElement {
 
 				const style = document.createElement('style');
 				style.innerHTML = [
-					':host { display: block; }',
-					':host > div > div#ui.ready > div:first-child{ display: none; }',
+					':host { display: block; --start-color: #0c860c; --end-color: #d25f5f; }',
+					':host > div > div#ui:not(.ready) > div:first-child { display: flex; gap: 0.5rem; }',
+					':host > div > div#ui.ready > div:first-child { display: none; }',
+					':host > div > div#ui.ready > div:last-child { display: flex; gap: 0.5rem; }',
 					':host > div > div#ui:not(.ready) > div:last-child { display: none; }',
 					'label { user-select: none; }',
-					'button { cursor: pointer; }',
+					'button { cursor: pointer; --back-color: var( --end-color ); background: var( --back-color ); border: none; border-radius: 0.1rem; color: #fff; padding: 0.2rem 0.6rem; }',
+					'button:not(.on) { --back-color: var( --start-color ); }',
 					'.title::before { content: "通知設定:"; }',
-					'#notification::before { content: "Start"; }',
-					'#notification.on::before { content: "Stop"; }',
+					'#notification::before { content: "開始"; }',
+					'#notification.on::before { content: "停止"; }',
+					'#sound::before { content: "音声ON"; }',
+					'#sound:not(.on)::before { content: "音声OFF"; }',
 				].join('');
 
 				const open = (() => {
@@ -137,12 +155,16 @@ interface NotificationLikeElement extends HTMLElement {
 						});
 					});
 
+					const info = document.createElement('span');
+					info.textContent = '通知はこのページを開いたままにしておくことで機能します。またいつでも停止することが可能です。';
+
 					const contents = document.createElement('div');
 					contents.appendChild(button);
+					contents.appendChild(info);
 
 					return contents;
 				})();
-				open.style.display = 'none';
+				//open.style.display = 'none';
 
 				const config = (() => {
 					for (const item of this.querySelectorAll('calc-time')) {
@@ -166,6 +188,14 @@ interface NotificationLikeElement extends HTMLElement {
 					const title = document.createElement('div');
 					title.classList.add('title');
 
+					const sound = document.createElement('button');
+					sound.id = 'sound';
+					sound.classList[this.notification.sound ? 'add' : 'remove']('on');
+					sound.addEventListener('click', () => {
+						sound.classList.toggle('on');
+						this.notification.sound = sound.classList.contains('on');
+					});
+
 					const button = document.createElement('button');
 					button.id = 'notification';
 					button.addEventListener('click', () => {
@@ -182,6 +212,7 @@ interface NotificationLikeElement extends HTMLElement {
 					const contents = document.createElement('div');
 					contents.appendChild(title);
 					contents.appendChild(list);
+					contents.appendChild(sound);
 					contents.appendChild(button);
 					contents.appendChild(audio);
 
@@ -190,6 +221,7 @@ interface NotificationLikeElement extends HTMLElement {
 
 				const ui = document.createElement('div');
 				ui.id = 'ui';
+				ui.appendChild(document.createElement('hr'));
 				ui.appendChild(open);
 				ui.appendChild(config);
 
