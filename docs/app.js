@@ -756,7 +756,7 @@ const Common = {
                 renotify: true,
                 tag: this.tag,
             });
-            this.audio.play;
+            this.audio.play();
         }
         add(input, time) {
             this.list.push({
