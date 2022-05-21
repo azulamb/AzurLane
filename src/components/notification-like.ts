@@ -10,9 +10,14 @@ interface NotificationLikeElement extends HTMLElement {
 	});
 })(<HTMLScriptElement> document.currentScript, (script: HTMLScriptElement) => {
 	class MyNotification {
+		protected audio: HTMLAudioElement;
 		protected worker: Worker;
 		public second = 60;
 		protected list: { input: HTMLInputElement; time: CalcTimeElement }[] = [];
+
+		constructor(audio: HTMLAudioElement) {
+			this.audio = audio;
+		}
 
 		public request() {
 			return Notification.requestPermission().then((result) => {
@@ -26,8 +31,11 @@ interface NotificationLikeElement extends HTMLElement {
 			const notification = new Notification('通知', {
 				icon: location.href + 'favicon.svg',
 				body: '時間が来ました',
-				vibrate: 5,
+				vibrate: [200, 200, 400 ],
+				renotify: true,
+				requireInteraction: true,
 			});
+			this.audio.play;
 			notification.addEventListener('click', () => {
 				window.open(location.href);
 			});
@@ -98,7 +106,8 @@ interface NotificationLikeElement extends HTMLElement {
 			constructor() {
 				super();
 
-				this.notification = new MyNotification();
+				const audio = new Audio(this.getAttribute('alarm')||'');
+				this.notification = new MyNotification(audio);
 
 				const shadow = this.attachShadow({ mode: 'open' });
 
@@ -171,6 +180,7 @@ interface NotificationLikeElement extends HTMLElement {
 					contents.appendChild(title);
 					contents.appendChild(list);
 					contents.appendChild(button);
+					contents.appendChild(audio);
 
 					return contents;
 				})();

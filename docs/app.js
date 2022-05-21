@@ -735,9 +735,10 @@ const Common = {
     });
 })(document.currentScript, (script) => {
     class MyNotification {
-        constructor() {
+        constructor(audio) {
             this.second = 60;
             this.list = [];
+            this.audio = audio;
         }
         request() {
             return Notification.requestPermission().then((result) => {
@@ -750,8 +751,11 @@ const Common = {
             const notification = new Notification('通知', {
                 icon: location.href + 'favicon.svg',
                 body: '時間が来ました',
-                vibrate: 5,
+                vibrate: [200, 200, 400],
+                renotify: true,
+                requireInteraction: true,
             });
+            this.audio.play;
             notification.addEventListener('click', () => {
                 window.open(location.href);
             });
@@ -812,7 +816,8 @@ const Common = {
         constructor() {
             super();
             this.lists = [];
-            this.notification = new MyNotification();
+            const audio = new Audio(this.getAttribute('alarm') || '');
+            this.notification = new MyNotification(audio);
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
             style.innerHTML = [
@@ -871,6 +876,7 @@ const Common = {
                 contents.appendChild(title);
                 contents.appendChild(list);
                 contents.appendChild(button);
+                contents.appendChild(audio);
                 return contents;
             })();
             const ui = document.createElement('div');
