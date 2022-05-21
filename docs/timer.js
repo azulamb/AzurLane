@@ -3,7 +3,6 @@ onmessage = (event) => {
 	const second = event.data.second;
 	if (second) {
 		// Start
-		postMessage();
 		if (timer) {
 			clearInterval(timer);
 		}
