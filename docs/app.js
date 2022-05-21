@@ -747,9 +747,9 @@ const Common = {
             });
         }
         notification() {
-            const notification = new Notification('title', {
+            const notification = new Notification('通知', {
                 icon: location.href + 'favicon.svg',
-                body: 'test',
+                body: '時間が来ました',
                 vibrate: 5,
             });
             notification.addEventListener('click', () => {
@@ -771,7 +771,19 @@ const Common = {
         onChange() {
         }
         onUpdate() {
-            console.log('timer');
+            const now = Date.now();
+            let list = [];
+            for (const item of this.list) {
+                if (item.input.checked) {
+                    const time = item.time.date.getTime();
+                    if (now <= time && time <= now + (this.second) * 1000) {
+                        list.push(item);
+                    }
+                }
+            }
+            if (0 < list.length) {
+                this.notification();
+            }
         }
         start(worker) {
             if (!worker) {
