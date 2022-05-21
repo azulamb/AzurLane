@@ -38,7 +38,7 @@ interface NotificationLikeElement extends HTMLElement {
 				//requireInteraction: true,
 				tag: this.tag,
 			});
-			this.audio.play;
+			this.audio.play();
 			/*notification.addEventListener('click', () => {
 				window.open(location.href);
 			});*/
