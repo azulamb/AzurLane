@@ -111,7 +111,7 @@ interface CalcTimeElement extends DateNotificationElement {
 				const value = this.max - this.value;
 				const date = new Date(this.base);
 				if (0 < value) {
-					const mins = value / this.add * this.mins;
+					const mins = Math.floor(value / this.add * this.mins);
 					date.setMinutes(date.getMinutes() + mins);
 				}
 				this.complete.value = date;
