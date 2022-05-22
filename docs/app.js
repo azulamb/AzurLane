@@ -621,7 +621,8 @@ class WebWorkerNotification {
             if (this.max < this.value + count) {
                 count = this.max - this.value;
             }
-            this.base.setMinutes(this.base.getMinutes() + count * mins);
+            this.base = new Date(this.complete.value);
+            this.base.setMinutes(this.base.getMinutes() + (this.max - count) * mins);
             this.value = this.value + count;
             this.updateView();
         }
