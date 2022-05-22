@@ -483,7 +483,7 @@ const Common = {
     })(class extends HTMLElement {
         constructor() {
             super();
-            this.enable = true;
+            this.enable = false;
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
             style.innerHTML = [
@@ -521,15 +521,37 @@ const Common = {
             shadow.appendChild(style);
             shadow.appendChild(contents);
         }
+        update() {
+            if (this.max - this.value <= 0) {
+                return;
+            }
+            const now = new Date();
+            const diffMins = Math.floor((now.getTime() - this.base.getTime()) / 60000);
+            const mins = this.mins;
+            if (diffMins < mins) {
+                return;
+            }
+            let count = Math.floor(diffMins / mins);
+            if (this.max < this.value + count) {
+                count = this.max - this.value;
+            }
+            this.base.setMinutes(this.base.getMinutes() + count);
+            this.value += this.value + count;
+            this.updateView();
+        }
         updateTime() {
-            const date = new Date();
+            this.base = new Date();
+            this.updateView();
+        }
+        updateView() {
             const value = this.max - this.value;
+            const date = new Date(this.base);
             if (0 < value) {
                 const mins = value / this.add * this.mins;
-                date.setMinutes(date.getMinutes() + mins);
+                date.setMinutes(this.base.getMinutes() + mins);
             }
             this.complete.value = date;
-            this.dispatchEvent(new CustomEvent('change', { detail: new Date(date) }));
+            this.dispatchEvent(new CustomEvent('change', { detail: date }));
         }
         get max() {
             return this.slider.max;
@@ -739,7 +761,7 @@ const Common = {
         constructor(audio) {
             this.second = 60;
             this.icon = '';
-            this.sound = true;
+            this.sound = false;
             this.active = true;
             this.list = [];
             this.audio = audio;
@@ -766,10 +788,7 @@ const Common = {
                 renotify: true,
                 tag: this.tag,
             });
-            if (this.sound) {
-                this.audio.currentTime = 0;
-                this.audio.play();
-            }
+            this.play();
             notification.addEventListener('click', () => {
                 if (this.active) {
                     return;
@@ -792,6 +811,7 @@ const Common = {
                     if (now <= time && time <= now + (this.second) * 1000) {
                         list.push(item);
                     }
+                    item.update();
                 }
             }
             if (0 < list.length) {
@@ -814,6 +834,13 @@ const Common = {
             }
             this.worker.terminate();
             this.worker = null;
+        }
+        play() {
+            if (!this.sound) {
+                return;
+            }
+            this.audio.currentTime = 0;
+            this.audio.play();
         }
     }
     ((component, tagname = 'notification-like') => {
@@ -870,6 +897,7 @@ const Common = {
                 this.list.forEach((item) => {
                     const input = document.createElement('input');
                     input.type = 'checkbox';
+                    item.enable = false;
                     const label = document.createElement('label');
                     label.appendChild(input);
                     label.appendChild(document.createTextNode(item.textContent || ''));
@@ -884,6 +912,9 @@ const Common = {
                 sound.addEventListener('click', () => {
                     sound.classList.toggle('on');
                     this.notification.sound = sound.classList.contains('on');
+                    if (this.notification.sound) {
+                        this.notification.play();
+                    }
                 });
                 const button = document.createElement('button');
                 button.id = 'notification';

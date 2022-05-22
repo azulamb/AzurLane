@@ -17,7 +17,7 @@ interface NotificationLikeElement extends HTMLElement {
 		public second = 60;
 		public icon = '';
 		public tag: string;
-		public sound = true;
+		public sound = false;
 		protected active = true;
 		protected list: DateElement[] = [];
 
@@ -49,10 +49,7 @@ interface NotificationLikeElement extends HTMLElement {
 				//requireInteraction: true,
 				tag: this.tag,
 			});
-			if (this.sound) {
-				this.audio.currentTime = 0;
-				this.audio.play();
-			}
+			this.play();
 			notification.addEventListener('click', () => {
 				if (this.active) {
 					return;
@@ -78,6 +75,7 @@ interface NotificationLikeElement extends HTMLElement {
 					if (now <= time && time <= now + (this.second) * 1000) {
 						list.push(item);
 					}
+					item.update();
 				}
 			}
 			if (0 < list.length) {
@@ -102,6 +100,14 @@ interface NotificationLikeElement extends HTMLElement {
 			}
 			this.worker.terminate();
 			this.worker = <any> null;
+		}
+
+		public play() {
+			if (!this.sound) {
+				return;
+			}
+			this.audio.currentTime = 0;
+			this.audio.play();
 		}
 	}
 
@@ -192,6 +198,9 @@ interface NotificationLikeElement extends HTMLElement {
 					sound.addEventListener('click', () => {
 						sound.classList.toggle('on');
 						this.notification.sound = sound.classList.contains('on');
+						if (this.notification.sound) {
+							this.notification.play();
+						}
 					});
 
 					const button = document.createElement('button');

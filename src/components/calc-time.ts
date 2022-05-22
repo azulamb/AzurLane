@@ -6,6 +6,7 @@ interface CalcTimeElement extends DateElement {
 	mins: number;
 	add: number;
 	value: number;
+	update(): void;
 }
 
 ((script, init) => {
@@ -25,6 +26,7 @@ interface CalcTimeElement extends DateElement {
 		class extends HTMLElement implements CalcTimeElement {
 			protected slider: InputSliderElement;
 			protected complete: DateTimeElement;
+			protected base: Date;
 			public enable: boolean = false;
 
 			constructor() {
@@ -77,15 +79,42 @@ interface CalcTimeElement extends DateElement {
 				shadow.appendChild(contents);
 			}
 
+			public update() {
+				if (this.max - this.value <= 0) {
+					return;
+				}
+				const now = new Date();
+				const diffMins = Math.floor((now.getTime() - this.base.getTime()) / 60000);
+				const mins = this.mins;
+				if (diffMins < mins) {
+					// No update.
+					return;
+				}
+				let count = Math.floor(diffMins / mins);
+				if (this.max < this.value + count) {
+					count = this.max - this.value;
+				}
+
+				this.base.setMinutes(this.base.getMinutes() + count);
+				this.value += this.value + count;
+
+				this.updateView();
+			}
+
 			protected updateTime() {
-				const date = new Date();
+				this.base = new Date();
+				this.updateView();
+			}
+
+			protected updateView() {
 				const value = this.max - this.value;
+				const date = new Date(this.base);
 				if (0 < value) {
 					const mins = value / this.add * this.mins;
-					date.setMinutes(date.getMinutes() + mins);
+					date.setMinutes(this.base.getMinutes() + mins);
 				}
 				this.complete.value = date;
-				this.dispatchEvent(new CustomEvent('change', { detail: new Date(date) }));
+				this.dispatchEvent(new CustomEvent('change', { detail: date }));
 			}
 
 			get max() {

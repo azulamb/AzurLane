@@ -18,4 +18,5 @@ type SHIP_TYPE =
 interface DateElement extends HTMLElement {
 	readonly date: Date;
 	enable: boolean;
+	update(): void;
 }
