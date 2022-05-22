@@ -535,8 +535,8 @@ const Common = {
             if (this.max < this.value + count) {
                 count = this.max - this.value;
             }
-            this.base.setMinutes(this.base.getMinutes() + count);
-            this.value += this.value + count;
+            this.base.setMinutes(this.base.getMinutes() + diffMins);
+            this.value = this.value + count;
             this.updateView();
         }
         updateTime() {
