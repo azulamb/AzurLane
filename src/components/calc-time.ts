@@ -1,7 +1,8 @@
+/// <reference path="../funcs/ww_notification.ts" />
 /// <reference path="./input-slider.ts" />
 /// <reference path="./date-time.ts" />
 
-interface CalcTimeElement extends DateElement {
+interface CalcTimeElement extends DateNotificationElement {
 	max: number;
 	mins: number;
 	add: number;
@@ -95,7 +96,7 @@ interface CalcTimeElement extends DateElement {
 					count = this.max - this.value;
 				}
 
-				this.base.setMinutes(this.base.getMinutes() + diffMins);
+				this.base.setMinutes(this.base.getMinutes() + count * mins);
 				this.value = this.value + count;
 
 				this.updateView();
@@ -111,7 +112,7 @@ interface CalcTimeElement extends DateElement {
 				const date = new Date(this.base);
 				if (0 < value) {
 					const mins = value / this.add * this.mins;
-					date.setMinutes(this.base.getMinutes() + mins);
+					date.setMinutes(date.getMinutes() + mins);
 				}
 				this.complete.value = date;
 				this.dispatchEvent(new CustomEvent('change', { detail: date }));

@@ -14,9 +14,3 @@ type SHIP_TYPE =
 	| 'Submarine'
 	| 'Repair'
 	| 'Munition';
-
-interface DateElement extends HTMLElement {
-	readonly date: Date;
-	enable: boolean;
-	update(): void;
-}

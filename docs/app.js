@@ -146,6 +146,92 @@ const Common = {
         }
     }, script.dataset.tagname);
 });
+class WebWorkerNotification {
+    constructor(audio) {
+        this.second = 60;
+        this.icon = '';
+        this.sound = false;
+        this.active = true;
+        this.list = [];
+        this.audio = audio;
+        this.tag = [location.host, location.pathname].join('_').replace(/.+\/\/(.+)/, '$1').replace(/[\/\.]/g, '_').replace(/_$/, '');
+        window.addEventListener('focus', () => {
+            this.active = true;
+        });
+        window.addEventListener('blur', () => {
+            this.active = false;
+        });
+    }
+    request() {
+        return Notification.requestPermission().then((result) => {
+            if (result === 'denied' || result === 'default') {
+                throw new Error('Denied');
+            }
+        });
+    }
+    notification() {
+        const notification = new Notification('AzurLane Tools', {
+            icon: this.icon,
+            body: '時間が来ました',
+            vibrate: [200, 200, 400],
+            renotify: true,
+            tag: this.tag,
+        });
+        this.play();
+        notification.addEventListener('click', () => {
+            if (this.active) {
+                return;
+            }
+        });
+    }
+    add(input, time) {
+        this.list.push(time);
+        time.enable = input.checked;
+        input.addEventListener('change', () => {
+            time.enable = input.checked;
+        });
+    }
+    onUpdate() {
+        const now = Date.now();
+        let list = [];
+        for (const item of this.list) {
+            if (item.enable) {
+                const time = item.date.getTime();
+                if (now <= time && time <= now + (this.second) * 1000) {
+                    list.push(item);
+                }
+                item.update();
+            }
+        }
+        if (0 < list.length) {
+            this.notification();
+        }
+    }
+    start(worker) {
+        if (!worker) {
+            throw new Error('No worker.');
+        }
+        this.worker = new Worker(worker);
+        this.worker.onmessage = (event) => {
+            this.onUpdate();
+        };
+        this.worker.postMessage({ second: this.second });
+    }
+    stop() {
+        if (!this.worker) {
+            return;
+        }
+        this.worker.terminate();
+        this.worker = null;
+    }
+    play() {
+        if (!this.sound) {
+            return;
+        }
+        this.audio.currentTime = 0;
+        this.audio.play();
+    }
+}
 ((script, init) => {
     if (document.readyState !== 'loading') {
         return init(script);
@@ -535,7 +621,7 @@ const Common = {
             if (this.max < this.value + count) {
                 count = this.max - this.value;
             }
-            this.base.setMinutes(this.base.getMinutes() + diffMins);
+            this.base.setMinutes(this.base.getMinutes() + count * mins);
             this.value = this.value + count;
             this.updateView();
         }
@@ -548,7 +634,7 @@ const Common = {
             const date = new Date(this.base);
             if (0 < value) {
                 const mins = value / this.add * this.mins;
-                date.setMinutes(this.base.getMinutes() + mins);
+                date.setMinutes(date.getMinutes() + mins);
             }
             this.complete.value = date;
             this.dispatchEvent(new CustomEvent('change', { detail: date }));
@@ -757,92 +843,6 @@ const Common = {
         init(script);
     });
 })(document.currentScript, (script) => {
-    class MyNotification {
-        constructor(audio) {
-            this.second = 60;
-            this.icon = '';
-            this.sound = false;
-            this.active = true;
-            this.list = [];
-            this.audio = audio;
-            this.tag = [location.host, location.pathname].join('_').replace(/.+\/\/(.+)/, '$1').replace(/[\/\.]/g, '_').replace(/_$/, '');
-            window.addEventListener('focus', () => {
-                this.active = true;
-            });
-            window.addEventListener('blur', () => {
-                this.active = false;
-            });
-        }
-        request() {
-            return Notification.requestPermission().then((result) => {
-                if (result === 'denied' || result === 'default') {
-                    throw new Error('Denied');
-                }
-            });
-        }
-        notification() {
-            const notification = new Notification('AzurLane Tools', {
-                icon: this.icon,
-                body: '時間が来ました',
-                vibrate: [200, 200, 400],
-                renotify: true,
-                tag: this.tag,
-            });
-            this.play();
-            notification.addEventListener('click', () => {
-                if (this.active) {
-                    return;
-                }
-            });
-        }
-        add(input, time) {
-            this.list.push(time);
-            time.enable = input.checked;
-            input.addEventListener('change', () => {
-                time.enable = input.checked;
-            });
-        }
-        onUpdate() {
-            const now = Date.now();
-            let list = [];
-            for (const item of this.list) {
-                if (item.enable) {
-                    const time = item.date.getTime();
-                    if (now <= time && time <= now + (this.second) * 1000) {
-                        list.push(item);
-                    }
-                    item.update();
-                }
-            }
-            if (0 < list.length) {
-                this.notification();
-            }
-        }
-        start(worker) {
-            if (!worker) {
-                throw new Error('No worker.');
-            }
-            this.worker = new Worker(worker);
-            this.worker.onmessage = (e) => {
-                this.onUpdate();
-            };
-            this.worker.postMessage({ second: this.second });
-        }
-        stop() {
-            if (!this.worker) {
-                return;
-            }
-            this.worker.terminate();
-            this.worker = null;
-        }
-        play() {
-            if (!this.sound) {
-                return;
-            }
-            this.audio.currentTime = 0;
-            this.audio.play();
-        }
-    }
     ((component, tagname = 'notification-like') => {
         if (customElements.get(tagname)) {
             return;
@@ -853,7 +853,7 @@ const Common = {
             super();
             this.list = [];
             const audio = new Audio(this.getAttribute('alarm') || '');
-            this.notification = new MyNotification(audio);
+            this.notification = new WebWorkerNotification(audio);
             this.notification.icon = this.getAttribute('icon') || '';
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
