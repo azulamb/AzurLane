@@ -25,6 +25,7 @@ interface CalcTimeElement extends DateNotificationElement {
 		customElements.define(tagname, component);
 	})(
 		class extends HTMLElement implements CalcTimeElement {
+			protected disableChange = false;
 			protected slider: InputSliderElement;
 			protected complete: DateTimeElement;
 			protected base: Date;
@@ -67,6 +68,10 @@ interface CalcTimeElement extends DateNotificationElement {
 				this.updateTime();
 
 				this.slider.addEventListener('change', () => {
+					if (this.disableChange) {
+						this.disableChange = false;
+						return;
+					}
 					this.updateTime();
 				});
 
@@ -100,6 +105,7 @@ interface CalcTimeElement extends DateNotificationElement {
 				const date = new Date(this.complete.value);
 				date.setMinutes(date.getMinutes() - (this.max - count) * mins);
 				this.base = date;
+				this.disableChange = true;
 				this.value = this.value + count;
 
 				this.updateView();

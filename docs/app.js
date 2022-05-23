@@ -569,6 +569,7 @@ class WebWorkerNotification {
     })(class extends HTMLElement {
         constructor() {
             super();
+            this.disableChange = false;
             this.enable = false;
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
@@ -597,6 +598,10 @@ class WebWorkerNotification {
             timelimit.textContent = '到達時間';
             this.updateTime();
             this.slider.addEventListener('change', () => {
+                if (this.disableChange) {
+                    this.disableChange = false;
+                    return;
+                }
                 this.updateTime();
             });
             const contents = document.createElement('div');
@@ -624,6 +629,7 @@ class WebWorkerNotification {
             const date = new Date(this.complete.value);
             date.setMinutes(date.getMinutes() - (this.max - count) * mins);
             this.base = date;
+            this.disableChange = true;
             this.value = this.value + count;
             this.updateView();
         }
