@@ -626,11 +626,11 @@ class WebWorkerNotification {
             if (this.max < this.value + count) {
                 count = this.max - this.value;
             }
-            const date = new Date(this.complete.value);
-            date.setMinutes(date.getMinutes() - (this.max - count) * mins);
+            const date = new Date(this.base);
+            date.setMinutes(date.getMinutes() + count * mins);
             this.base = date;
             this.disableChange = true;
-            this.value = this.value + count;
+            this.value = this.value + count * this.add;
             this.updateView();
         }
         updateTime() {
