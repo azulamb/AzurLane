@@ -29,9 +29,10 @@ table.parts tr.rarelity3 td.parts::after{background-image:url(./resource/parts_t
 table.parts tr.rarelity4 td.parts::after{background-image:url(./resource/parts_t4.png);}
 table.parts tr.rarelity4 td.parts.ex::after{background-image:url(./resource/parts_t4_ex.png);width:1rem;}
 table.parts tr.rarelity5 td.parts.ex::after{background-image:url(./resource/parts_t5_ex.png);width:1rem;}
-#condition > div{display:flex;gap:0 1rem;padding-left:7rem;}
+#condition > div{display:flex;gap:0 2rem;padding-left:7rem;}
 #condition > div > div:first-child::before{content:'居場所:';}
 #condition > div > div:last-child::before{content:'ケッコン:';}
+#freet_force > check-box { display: block; }
 notification-like{--start-color:var(--back-base);}
 	</style>
 	<script>
@@ -154,6 +155,26 @@ const PARTS_LVUP = [
 		],
 	},
 ];
+const FLEET_FORCE = [
+	{id: 'yamashiro', name: '山城'},
+	{id: 'mogami', name: '最上' },
+	{id: 'husou', name: '扶桑' },
+	{id: 'ise', name: '伊勢' },
+	{id: 'hyuga', name: '日向' },
+	{id: 'sandiego', name: 'サンディエゴ' },
+	{id: 'warspite', name: 'ウォースパイト' },
+	{id: 'koeln', name: 'ケルン' },
+	{id: 'london', name: 'ロンドン' },
+	{id: 'amazon', name: 'アマゾン' },
+	{id: 'helena', name: 'ヘレナ' },
+	{id: 'pamiatmerkuria', name: 'パーミャチ・メルクーリヤ' },
+	{id: 'independence', name: 'インディペンデンス' },
+	{id: 'kasumi', name: '霞' },
+	{id: 'yudacho', name: '夕立' },
+	{id: 'anshan', name: '鞍山' },
+	{id: 'changchun', name: '長春' },
+	{id: 'unicorn', name: 'ユニコーン' },
+];
 	</script>
 </head>
 <body data-page="values">
@@ -207,6 +228,10 @@ const PARTS_LVUP = [
 			<div id="parts_lvup"></div>
 		</section>
 		<a href="./meowfficer/">オフニャ</a>
+		<section id="page_memo" data-name="メモ">
+			<h2>艦隊戦力5人目</h2>
+			<div id="freet_force"></div>
+		</section>
 	</section-pages>
 </body>
 </html>

@@ -6,6 +6,7 @@
 /// <reference path="../funcs/skill_lvup.ts" />
 /// <reference path="../funcs/awaking.ts" />
 /// <reference path="../funcs/parts_lvup.ts" />
+/// <reference path="../funcs/freet_force.ts" />
 
 Promise.all([
 	customElements.whenDefined('section-pages'),
@@ -42,4 +43,5 @@ Promise.all([
 	DrawSkillLvUp(<SkillExpElement> document.getElementById('skill_lvup'));
 	DrawAwaking(<SkillExpElement> document.getElementById('awaking'));
 	DrawPartsLvUp(<HTMLElement> document.getElementById('parts_lvup'));
+	DrawFreetForce(<HTMLElement> document.getElementById('freet_force'));
 });
