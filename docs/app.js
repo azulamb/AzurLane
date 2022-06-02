@@ -1284,6 +1284,7 @@ function DrawPartsLvUp(parent) {
             const style = document.createElement('style');
             style.innerHTML = [
                 ':host { display: inline-block; --selected: #0075fc; --color: white; --border: 1px solid #767676; }',
+                ':host(:hover) { background: rgba(125, 125, 125, 0.3); }',
                 ':host > label { display: grid; grid-template-columns: 1em 1fr; user-select: none; align-items: center; gap: 8px; }',
                 ':host > label > button { display: block; box-sizing: border-box; width: 100%; padding: 0; border: var(--border); border-radius: 2px; position: relative; }',
                 ':host > label > button::before { content: ""; display: block; width: 100%; padding-top: 100%; }',
