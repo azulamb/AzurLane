@@ -40,8 +40,10 @@ Promise.all([
 			}
 		}, 0);
 	})(<HTMLElement> document.getElementById('condition'));
-	DrawSkillLvUp(<SkillExpElement> document.getElementById('skill_lvup'));
-	DrawAwaking(<SkillExpElement> document.getElementById('awaking'));
-	DrawPartsLvUp(<HTMLElement> document.getElementById('parts_lvup'));
-	DrawFreetForce(<HTMLElement> document.getElementById('freet_force'));
+	setTimeout(() => {
+		DrawSkillLvUp(<SkillExpElement> document.getElementById('skill_lvup'));
+		DrawAwaking(<SkillExpElement> document.getElementById('awaking'));
+		DrawPartsLvUp(<HTMLElement> document.getElementById('parts_lvup'));
+		DrawFreetForce(<HTMLElement> document.getElementById('freet_force'));
+	}, 100);
 });

@@ -1055,5 +1055,7 @@ function DrawMeowfficers(parent) {
 Promise.all([
     customElements.whenDefined('section-pages'),
 ]).then(() => {
-    DrawMeowfficers(document.getElementById('meowfficers'));
+    setTimeout(() => {
+        DrawMeowfficers(document.getElementById('meowfficers'));
+    }, 100);
 });

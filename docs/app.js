@@ -1423,8 +1423,10 @@ Promise.all([
             }
         }, 0);
     })(document.getElementById('condition'));
-    DrawSkillLvUp(document.getElementById('skill_lvup'));
-    DrawAwaking(document.getElementById('awaking'));
-    DrawPartsLvUp(document.getElementById('parts_lvup'));
-    DrawFreetForce(document.getElementById('freet_force'));
+    setTimeout(() => {
+        DrawSkillLvUp(document.getElementById('skill_lvup'));
+        DrawAwaking(document.getElementById('awaking'));
+        DrawPartsLvUp(document.getElementById('parts_lvup'));
+        DrawFreetForce(document.getElementById('freet_force'));
+    }, 100);
 });

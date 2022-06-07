@@ -446,10 +446,10 @@ class Meowfficer {
 		{ type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'MountainsTenacity', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
+		{ type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'BestFriend', name: 'T', name_ja: 'T', lv: 0 },
 		{ type: 'RisingStar', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'Miracle', name: 'T', name_ja: 'T', lv: 0 },
-		{ type: 'Destiny', name: 'T', name_ja: 'T', lv: 0 },
 	];
 	static ABILITY_INFO: {
 		[keys: string]: {
@@ -542,14 +542,14 @@ class Meowfficer {
 			HeartOfTheTorpedo: '水雷魂',
 			AcePilot: 'エースパイロット',
 			AlphaWolf: 'ウルフハウンド',
-			BestFriend: 'ベストフレンド',
-			RisingStar: 'ニュースター',
-			Miracle: 'ミラクル',
-			Destiny: 'デスティニー',
 			WindsAlacrity: '疾きこと風の如く',
 			ForestsSerenity: '徐かなること林の如く',
 			FlamesAggression: '侵掠すること火の如く',
 			MountainsTenacity: '動かざること山の如し',
+			Miracle: 'ミラクル',
+			Destiny: 'デスティニー',
+			BestFriend: 'ベストフレンド',
+			RisingStar: 'ニュースター',
 		},
 		S: {
 			Vanguard: '前衛',

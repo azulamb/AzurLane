@@ -4,5 +4,7 @@
 Promise.all([
 	customElements.whenDefined('section-pages'),
 ]).then(() => {
-	DrawMeowfficers(<HTMLElement> document.getElementById('meowfficers'));
+	setTimeout(() => {
+		DrawMeowfficers(<HTMLElement> document.getElementById('meowfficers'));
+	}, 100);
 });
