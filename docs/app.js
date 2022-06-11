@@ -57,6 +57,7 @@ const Common = {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        home;
         constructor() {
             super();
             const shadow = this.attachShadow({ mode: 'open' });
@@ -147,12 +148,15 @@ const Common = {
     }, script.dataset.tagname);
 });
 class WebWorkerNotification {
+    audio;
+    worker;
+    second = 60;
+    icon = '';
+    tag;
+    sound = false;
+    active = true;
+    list = [];
     constructor(audio) {
-        this.second = 60;
-        this.icon = '';
-        this.sound = false;
-        this.active = true;
-        this.list = [];
         this.audio = audio;
         this.tag = [location.host, location.pathname].join('_').replace(/.+\/\/(.+)/, '$1').replace(/[\/\.]/g, '_').replace(/_$/, '');
         window.addEventListener('focus', () => {
@@ -246,6 +250,8 @@ class WebWorkerNotification {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        slider;
+        input;
         constructor() {
             super();
             const shadow = this.attachShadow({ mode: 'open' });
@@ -436,6 +442,14 @@ class WebWorkerNotification {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        datetime;
+        showYear;
+        showMonth;
+        showDay;
+        showHour;
+        showMinute;
+        showSecond;
+        separates;
         constructor() {
             super();
             const shadow = this.attachShadow({ mode: 'open' });
@@ -567,10 +581,13 @@ class WebWorkerNotification {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        disableChange = false;
+        slider;
+        complete;
+        base;
+        enable = false;
         constructor() {
             super();
-            this.disableChange = false;
-            this.enable = false;
             const shadow = this.attachShadow({ mode: 'open' });
             const style = document.createElement('style');
             style.innerHTML = [
@@ -710,6 +727,11 @@ class WebWorkerNotification {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        hoursArea;
+        expArea;
+        bonusArea;
+        books;
+        booksBonus;
         constructor() {
             super();
             const shadow = this.attachShadow({ mode: 'open' });
@@ -857,9 +879,10 @@ class WebWorkerNotification {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        notification;
+        list = [];
         constructor() {
             super();
-            this.list = [];
             const audio = new Audio(this.getAttribute('alarm') || '');
             this.notification = new WebWorkerNotification(audio);
             this.notification.icon = this.getAttribute('icon') || '';
@@ -982,6 +1005,12 @@ class WebWorkerNotification {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        bar;
+        lv;
+        nowExp;
+        hours;
+        expArea;
+        totalArea;
         constructor() {
             super();
             const shadow = this.attachShadow({ mode: 'open' });
@@ -1185,7 +1214,7 @@ function DrawAwaking(parent) {
             tbody.appendChild(money);
             tbody.appendChild(Common.tr({ class: 'line' }, Common.td('', { colSpan: 2 + RARELITY_LIST.length })));
         });
-        const chips = Common.tr({ class: 'chips' }, Common.td('累計', { rowSpan: 3 }), Common.td('Ⅰ'));
+        const chips = Common.tr({ class: 'chips' }, Common.td('合計', { rowSpan: 3 }), Common.td('Ⅰ'));
         const arrays = Common.tr({ class: 'arrays' }, Common.td('Ⅱ'));
         const money = Common.tr({ class: 'money' }, Common.td('資金'));
         tbody.appendChild(chips);
@@ -1201,6 +1230,70 @@ function DrawAwaking(parent) {
         thead.appendChild(theadLine);
         const table = document.createElement('table');
         table.classList.add('awaking');
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        parent.appendChild(table);
+    }, 0);
+}
+function AugmentModules(parent) {
+    setTimeout(() => {
+        const total = {
+            R: { exp: 0, money: 0, core: 0 },
+            SR: { exp: 0, money: 0, core: 0 },
+            SSR: { exp: 0, money: 0, core: 0 },
+        };
+        const tbody = document.createElement('tbody');
+        const theadLine = Common.tr({}, Common.td('LV', { rowSpan: 2 }), ...['R', 'SR', 'SSR'].map((rarelity) => {
+            return Common.td(rarelity, { colSpan: 3 });
+        }));
+        const subTheadLine = Common.tr({}, ...['経験値', '資金', 'ｺｱ', '経験値', '資金', 'ｺｱ', '経験値', '資金', 'ｺｱ'].map((title, index) => {
+            return Common.td(title, index % 3 === 2 ? { class: 'core' } : undefined);
+        }));
+        const SP_TITLE = {
+            0: '作成',
+            11: '進化',
+        };
+        AUGMENT_MODULE_LVUP.forEach((item, index) => {
+            if (0 < index) {
+                total.R.exp += item.R.exp;
+                total.R.money += item.R.money;
+                total.R.core += item.R.core || 0;
+                if (item.SR) {
+                    total.SR.exp += item.SR.exp;
+                    total.SR.money += item.SR.money;
+                    total.SR.core += item.SR.core || 0;
+                }
+                if (item.SSR) {
+                    total.SSR.exp += item.SSR.exp;
+                    total.SSR.money += item.SSR.money;
+                    total.SSR.core += item.SSR.core || 0;
+                }
+            }
+            const tr = Common.tr({}, Common.td(SP_TITLE[index] || `${index}`), Common.td(`${item.R.exp}`), Common.td(`${item.R.money}`, { class: 'money' }), Common.td(item.R.core ? `${item.R.core}` : '', { class: 'core' }), Common.td(item.SR ? `${item.SR.exp}` : ''), Common.td(item.SR ? `${item.SR.money}` : '', { class: 'money' }), Common.td(item.SR?.core ? `${item.SR.core}` : '', { class: 'core' }), Common.td(item.SSR ? `${item.SSR.exp}` : ''), Common.td(item.SSR ? `${item.SSR.money}` : '', { class: 'money' }), Common.td(item.SSR?.core ? `${item.SSR.core}` : '', { class: 'core' }));
+            tbody.appendChild(tr);
+            if (SP_TITLE[index]) {
+                tbody.appendChild(Common.tr({ class: 'line' }, Common.td('', { colSpan: 10 })));
+            }
+            else if (index === AUGMENT_MODULE_LVUP.length - 2) {
+                tbody.appendChild(Common.tr({}, Common.td('強化合計'), Common.td(`${total.R.exp}`), Common.td(`${total.R.money}`, { class: 'money' }), Common.td(total.R.core ? `${total.R.core}` : '', { class: 'core' }), Common.td(`${total.SR.exp}`), Common.td(`${total.SR.money}`, { class: 'money' }), Common.td(total.SR.core ? `${total.SR.core}` : '', { class: 'core' }), Common.td(`${total.SSR.exp}`), Common.td(`${total.SSR.money}`, { class: 'money' }), Common.td(total.SSR.core ? `${total.SSR.core}` : '', { class: 'core' })));
+                tbody.appendChild(Common.tr({ class: 'line' }, Common.td('', { colSpan: 10 })));
+            }
+        });
+        total.R.exp += AUGMENT_MODULE_LVUP[0].R.exp;
+        total.R.money += AUGMENT_MODULE_LVUP[0].R.money;
+        total.R.core += AUGMENT_MODULE_LVUP[0].R?.core || 0;
+        total.SR.exp += AUGMENT_MODULE_LVUP[0].SR?.exp || 0;
+        total.SR.money += AUGMENT_MODULE_LVUP[0].SR?.money || 0;
+        total.SR.core += AUGMENT_MODULE_LVUP[0].SR?.core || 0;
+        total.SSR.exp += AUGMENT_MODULE_LVUP[0].SSR?.exp || 0;
+        total.SSR.money += AUGMENT_MODULE_LVUP[0].SSR?.money || 0;
+        total.SSR.core += AUGMENT_MODULE_LVUP[0].SSR?.core || 0;
+        tbody.appendChild(Common.tr({}, Common.td('合計'), Common.td(`${total.R.exp}`), Common.td(`${total.R.money}`, { class: 'money' }), Common.td(`${total.R.core}`, { class: 'core' }), Common.td(`${total.SR.exp}`), Common.td(`${total.SR.money}`, { class: 'money' }), Common.td(`${total.SR.core}`, { class: 'core' }), Common.td(`${total.SSR.exp}`), Common.td(`${total.SSR.money}`, { class: 'money' }), Common.td(`${total.SSR.core}`, { class: 'core' })));
+        const thead = document.createElement('thead');
+        thead.appendChild(theadLine);
+        thead.appendChild(subTheadLine);
+        const table = document.createElement('table');
+        table.classList.add('augment_module_lvup');
         table.appendChild(thead);
         table.appendChild(tbody);
         parent.appendChild(table);
@@ -1222,7 +1315,7 @@ function DrawPartsLvUp(parent) {
                 'パーツ',
                 '個数',
                 '資金',
-                '累計',
+                '合計',
             ].map((title) => {
                 return Common.td(title);
             }));
@@ -1278,6 +1371,7 @@ function DrawPartsLvUp(parent) {
         }
         customElements.define(tagname, component);
     })(class extends HTMLElement {
+        check;
         constructor() {
             super();
             const shadow = this.attachShadow({ mode: 'open' });
@@ -1380,7 +1474,7 @@ function DrawPartsLvUp(parent) {
         }
     }, script.dataset.tagname);
 });
-function DrawFreetForce(parent) {
+function DrawFleetForce(parent) {
     customElements.whenDefined('check-box').then(() => {
         FLEET_FORCE.forEach((chara) => {
             const checkbox = new (customElements.get('check-box'))();
@@ -1427,6 +1521,7 @@ Promise.all([
         DrawSkillLvUp(document.getElementById('skill_lvup'));
         DrawAwaking(document.getElementById('awaking'));
         DrawPartsLvUp(document.getElementById('parts_lvup'));
-        DrawFreetForce(document.getElementById('freet_force'));
+        AugmentModules(document.getElementById('augment_modules'));
+        DrawFleetForce(document.getElementById('freet_force'));
     }, 100);
 });

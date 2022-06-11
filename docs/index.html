@@ -14,6 +14,8 @@
 	<style>
 section-pages{--home-icon: url(./favicon.svg);}
 table.awaking tr.money{background:rgb(255,223,0,0.5);}
+table.augment_module_lvup td.money{background:rgb(255,223,0,0.5);}
+table.augment_module_lvup td.core{min-width:1.5rem;text-align:center;}
 table.parts caption::after{content:'';display:inline-block;width:1rem;height:1rem;background-size:cover;}
 table.parts caption.rarelity1::after{background-image:url(./resource/box_t1.png);}
 table.parts caption.rarelity3::after{background-image:url(./resource/box_t2.png);}
@@ -80,6 +82,93 @@ const AWAKING = [
 		SSR: { money: 3000, chips: 300, arrays: 150 },
 		UR: { money: 4500, chips: 450, arrays: 225 },
 	},
+];
+const AUGMENT_MODULE_LVUP = [
+	{
+		R: { exp: 250, money: 700, core: 2 },
+		SR: { exp: 2000, money: 2800, core: 4 },
+		SSR: { exp: 3000, money: 10000, core: 15 },
+	},
+	{
+		R: { exp: 20, money: 20 },
+		SR: { exp: 60, money: 40 },
+		SSR: { exp: 240, money: 200 },
+	},
+	{
+		R: { exp: 30, money: 40 },
+		SR: { exp: 90, money: 80 },
+		SSR: { exp: 360, money: 400 },
+	},
+	{
+		R: { exp: 40, money: 60 },
+		SR: { exp: 120, money: 120 },
+		SSR: { exp: 480, money: 600 },
+	},
+	{
+		R: { exp: 50, money: 80 },
+		SR: { exp: 150, money: 160 },
+		SSR: { exp: 600, money: 800 },
+	},
+	{
+		R: { exp: 60, money: 100 },
+		SR: { exp: 180, money: 200 },
+		SSR: { exp: 720, money: 1000 },
+	},
+	{
+		R: { exp: 80, money: 120 },
+		SR: { exp:240 , money: 240 },
+		SSR: { exp: 960, money: 1200 },
+	},
+	{
+		R: { exp: 110, money: 140 },
+		SR: { exp: 330, money: 280 },
+		SSR: { exp: 1320, money: 1400 },
+	},
+	{
+		R: { exp: 150, money: 160 },
+		SR: { exp: 450, money: 320 },
+		SSR: { exp: 1800, money: 1600 },
+	},
+	{
+		R: { exp: 200, money: 180 },
+		SR: { exp: 600, money: 360 },
+		SSR: { exp: 2400, money: 1800 },
+	},
+	{
+		R: { exp: 260, money: 200 },
+		SR: { exp: 780, money: 400 },
+		SSR: { exp: 3120, money: 2000 },
+	},
+	{
+		R: { exp: 750, money: 1000, core: 2 },
+	},
+];
+const AUGMENT_MODULES_ITEMS = [
+	{ name: '強化石T1', exp: 10 },
+	{ name: '強化石T2', exp: 100 },
+	{ name: '強化石T3', exp: 1000 },
+	{ name: '特殊装備R', lv: 0, exp: 150 },
+	{ name: '特殊装備R', lv: 1, exp: 210 },
+	{ name: '特殊装備R', lv: 2, exp: 270 },
+	{ name: '特殊装備R', lv: 3, exp: 330 },
+	{ name: '特殊装備R', lv: 4, exp: 390 },
+	{ name: '特殊装備R', lv: 5, exp: 450 },
+	{ name: '特殊装備R', lv: 6, exp: 510 },
+	{ name: '特殊装備R', lv: 7, exp: 570 },
+	{ name: '特殊装備R', lv: 8, exp: 630 },
+	{ name: '特殊装備R', lv: 9, exp: 690 },
+	{ name: '特殊装備R', lv: 10, exp: 750 },
+	{ name: '特殊装備SR', lv: 0, exp: 1200 },
+	{ name: '特殊装備SR', lv: 1, exp: 1380 },
+	{ name: '特殊装備SR', lv: 2, exp: 1560 },
+	{ name: '特殊装備SR', lv: 3, exp: 1740 },
+	{ name: '特殊装備SR', lv: 4, exp: 1920 },
+	{ name: '特殊装備SR', lv: 5, exp: 2100 },
+	{ name: '特殊装備SR', lv: 6, exp: 2280 },
+	{ name: '特殊装備SR', lv: 7, exp: 2460 },
+	{ name: '特殊装備SR', lv: 8, exp: 2640 },
+	{ name: '特殊装備SR', lv: 9, exp: 2820 },
+	{ name: '特殊装備SR', lv: 10, exp: 3000 },
 ];
 const PARTS_NAMES = ['T1', 'T2', 'T3', 'T4', '試作型兵装改造資材', '特装型兵装改造資材'];
 const PARTS_LVUP = [
@@ -235,6 +324,9 @@ const FLEET_FORCE = [
 
 			<h3>認識覚醒</h3>
 			<div id="awaking"></div>
+
+			<h3>特殊装備</h3>
+			<div id="augment_modules"></div>
 
 			<h3>パーツ強化</h3>
 			<div id="parts_lvup"></div>

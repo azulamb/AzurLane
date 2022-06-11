@@ -29,7 +29,7 @@ function DrawPartsLvUp(parent: HTMLElement) {
 					'パーツ',
 					'個数',
 					'資金',
-					'累計',
+					'合計',
 				].map((title) => {
 					return Common.td(title);
 				}),

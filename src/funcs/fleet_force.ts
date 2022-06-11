@@ -2,7 +2,7 @@
 
 declare const FLEET_FORCE: { id: string; name: string }[];
 
-function DrawFreetForce(parent: HTMLElement) {
+function DrawFleetForce(parent: HTMLElement) {
 	customElements.whenDefined('check-box').then(() => {
 		FLEET_FORCE.forEach((chara) => {
 			const checkbox = new (<{ new (): CheckBoxElement }> customElements.get('check-box'))();

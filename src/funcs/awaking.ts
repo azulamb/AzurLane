@@ -70,7 +70,7 @@ function DrawAwaking(parent: HTMLElement) {
 
 		const chips = Common.tr(
 			{ class: 'chips' },
-			Common.td('累計', { rowSpan: 3 }),
+			Common.td('合計', { rowSpan: 3 }),
 			Common.td('Ⅰ'),
 		);
 		const arrays = Common.tr(
