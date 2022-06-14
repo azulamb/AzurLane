@@ -94,10 +94,10 @@ function DrawMeowfficers(parent: HTMLElement) {
 				});
 			}
 			Meowfficer.sort(abilities);
-			const list = [];
+			const list: MeowfficerAbilityElement[] = [];
 			for (const ability of abilities.children) {
 				if (SP.includes((<MeowfficerAbilityElement> ability).type)) {
-					list.push(ability);
+					list.push(<MeowfficerAbilityElement> ability);
 				}
 			}
 			for (const button of list) {

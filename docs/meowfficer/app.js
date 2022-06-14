@@ -151,22 +151,40 @@ class Meowfficer {
     static LV = ['Rookie', 'Adept', 'Elite', 'Ace', 'Chief'];
     static LV1 = ['Rookie', 'Adept', 'Ace'];
     static LV2 = ['Rookie', 'Elite', 'Chief'];
+    static TARGETS = [
+        'Vanguard',
+        'Small',
+        'Destroyer',
+        'Medium',
+        'Cruiser',
+        'SS',
+        'Submarine',
+        'Large',
+        'Main',
+        'Battleship',
+        'Carrier',
+        'Special',
+        'Union',
+        'Royal',
+        'Sakura',
+        'IronBlood',
+    ];
     static TYPES = [
+        'Sonar',
+        'HeartOfTheTorpedo',
         'Officer',
         'Artillery',
         'Torpedo',
         'Aviation',
         'Mechanic',
+        'AcePilot',
         'AntiAir',
-        'Sonar',
         'Loading',
         'Lookout',
-        'Helmsman',
         'Engineer',
+        'Helmsman',
         'TirelessWarrior',
         'SoulfulWarrior',
-        'HeartOfTheTorpedo',
-        'AcePilot',
         'AlphaWolf',
         'WindsAlacrity',
         'ForestsSerenity',
@@ -176,24 +194,6 @@ class Meowfficer {
         'RisingStar',
         'Miracle',
         'Destiny',
-    ];
-    static TARGETS = [
-        'Vanguard',
-        'Small',
-        'Destroyer',
-        'Medium',
-        'Cruiser',
-        'SS',
-        'Submarine',
-        'Main',
-        'Large',
-        'Battleship',
-        'Carrier',
-        'Special',
-        'Union',
-        'Royal',
-        'Sakura',
-        'IronBlood',
     ];
     static MEOWFFICERS_SKILL = {
         SilentHunter: {
@@ -459,8 +459,8 @@ class Meowfficer {
         },
     };
     static ABILITIES = [
-        { type: 'AntiAir', target: 'Vanguard', name: 'TLS', name_ja: 'T・S', lv: 3 },
         { type: 'Sonar', target: 'Vanguard', name: 'TLS', name_ja: 'lT・S', lv: 3 },
+        { type: 'AntiAir', target: 'Vanguard', name: 'TLS', name_ja: 'T・S', lv: 3 },
         { type: 'Lookout', target: 'Vanguard', name: 'LTS', name_ja: 'lT・S', lv: 3 },
         { type: 'Helmsman', target: 'Small', name: 'LTS', name_ja: 'T・S', lv: 3 },
         { type: 'Officer', target: 'Destroyer', name: 'lTS', name_ja: 'OT・S', lv: 3 },
@@ -468,6 +468,7 @@ class Meowfficer {
         { type: 'Torpedo', target: 'Destroyer', name: 'TLS', name_ja: 'LT・S', lv: 3 },
         { type: 'Loading', target: 'Destroyer', name: 'TLS', name_ja: 'rT・S', lv: 3 },
         { type: 'Engineer', target: 'Destroyer', name: 'LTS', name_ja: 'LT・S', lv: 3 },
+        { type: 'HeartOfTheTorpedo', target: 'Medium', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'Helmsman', target: 'Medium', name: 'LTS', name_ja: 'T・S', lv: 3 },
         { type: 'Officer', target: 'Cruiser', name: 'lTS', name_ja: 'OT・S', lv: 3 },
         { type: 'Artillery', target: 'Cruiser', name: 'TLS', name_ja: 'LT・S', lv: 3 },
@@ -476,21 +477,25 @@ class Meowfficer {
         { type: 'Engineer', target: 'Cruiser', name: 'LTS', name_ja: 'LT・S', lv: 3 },
         { type: 'Torpedo', target: 'SS', name: 'TLS', name_ja: 'LT・S', lv: 3 },
         { type: 'Engineer', target: 'SS', name: 'LTS', name_ja: 'LT・S', lv: 3 },
+        { type: 'TirelessWarrior', target: 'Cruiser', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'Officer', target: 'Submarine', name: 'lTS', name_ja: 'OT・S', lv: 3 },
         { type: 'Loading', target: 'Submarine', name: 'TLS', name_ja: 'rT・S', lv: 3 },
         { type: 'Lookout', target: 'Submarine', name: 'LTS', name_ja: 'lT・S', lv: 3 },
+        { type: 'AlphaWolf', target: 'Submarine', name: 'T', name_ja: 'T', lv: 0 },
+        { type: 'Helmsman', target: 'Large', name: 'LTS', name_ja: 'T・S', lv: 3 },
+        { type: 'Sonar', target: 'Main', name: 'TLS', name_ja: 'lT・S', lv: 3 },
         { type: 'Artillery', target: 'Main', name: 'TLS', name_ja: 'LT・S', lv: 3 },
         { type: 'AntiAir', target: 'Main', name: 'TLS', name_ja: 'T・S', lv: 3 },
-        { type: 'Sonar', target: 'Main', name: 'TLS', name_ja: 'lT・S', lv: 3 },
         { type: 'Lookout', target: 'Main', name: 'LTS', name_ja: 'lT・S', lv: 3 },
-        { type: 'Helmsman', target: 'Large', name: 'LTS', name_ja: 'T・S', lv: 3 },
         { type: 'Officer', target: 'Battleship', name: 'lTS', name_ja: 'OT・S', lv: 3 },
         { type: 'Loading', target: 'Battleship', name: 'TLS', name_ja: 'rT・S', lv: 3 },
         { type: 'Engineer', target: 'Battleship', name: 'LTS', name_ja: 'LT・S', lv: 3 },
+        { type: 'SoulfulWarrior', target: 'Battleship', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'Officer', target: 'Carrier', name: 'lTS', name_ja: 'OT・S', lv: 3 },
-        { type: 'Mechanic', name: 'LT', name_ja: 'lT', lv: 3 },
+        { type: 'Mechanic', target: 'Carrier', name: 'LT', name_ja: 'lT', lv: 3 },
         { type: 'Aviation', target: 'Carrier', name: 'TLS', name_ja: 'aT・S', lv: 3 },
         { type: 'Engineer', target: 'Carrier', name: 'LTS', name_ja: 'LT・S', lv: 3 },
+        { type: 'AcePilot', target: 'Carrier', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'Aviation', target: 'Special', name: 'TLS', name_ja: 'aT・S', lv: 3 },
         { type: 'Loading', target: 'Special', name: 'TLS', name_ja: 'lT・S', lv: 3 },
         { type: 'Engineer', target: 'Special', name: 'LTS', name_ja: 'LT・S', lv: 3 },
@@ -498,11 +503,6 @@ class Meowfficer {
         { type: 'Officer', target: 'Royal', name: 'lTS', name_ja: 'OT・S', lv: 3 },
         { type: 'Officer', target: 'Sakura', name: 'lTS', name_ja: 'OT・S', lv: 3 },
         { type: 'Officer', target: 'IronBlood', name: 'lTS', name_ja: 'OT・S', lv: 3 },
-        { type: 'TirelessWarrior', name: 'T', name_ja: 'T', lv: 0 },
-        { type: 'SoulfulWarrior', name: 'T', name_ja: 'T', lv: 0 },
-        { type: 'HeartOfTheTorpedo', name: 'T', name_ja: 'T', lv: 0 },
-        { type: 'AcePilot', name: 'T', name_ja: 'T', lv: 0 },
-        { type: 'AlphaWolf', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'WindsAlacrity', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'ForestsSerenity', name: 'T', name_ja: 'T', lv: 0 },
         { type: 'FlamesAggression', name: 'T', name_ja: 'T', lv: 0 },
@@ -664,7 +664,7 @@ class Meowfficer {
             .replace('S', ability.target ? this.NAME_DATA.S[ability.target] : '');
     }
     static getSkillInfo(ability, lv) {
-        const info = this.ABILITY_INFO[ability.type + (ability.target || '')];
+        const info = this.ABILITY_INFO[ability.type + (ability.target || '')] || this.ABILITY_INFO[ability.type];
         if (!info) {
             return '';
         }
