@@ -26,7 +26,14 @@ const Common = {
             }
         }
         else {
-            td.appendChild(content);
+            if (Array.isArray(content)) {
+                for (const element of content) {
+                    td.appendChild(element);
+                }
+            }
+            else {
+                td.appendChild(content);
+            }
         }
         if (option) {
             if (option.class) {
@@ -741,9 +748,9 @@ class WebWorkerNotification {
                 ':host > div { display: grid; grid-template-columns: 1.5em 1fr 2em 4em 1em 3em 1em 4em 1em 3em 1em; }',
                 ':host > div > div:nth-child(n+3) { text-align: right; }',
                 '#icon { width: 1em; height: 1em; }',
-                ':host([rarelity="2"]) #name::after { content: "2"; }',
-                ':host([rarelity="3"]) #name::after { content: "3"; }',
-                ':host([rarelity="4"]) #name::after { content: "4"; }',
+                ':host([rarity="2"]) #name::after { content: "2"; }',
+                ':host([rarity="3"]) #name::after { content: "3"; }',
+                ':host([rarity="4"]) #name::after { content: "4"; }',
                 ':host #name::after { content: "1"; }',
                 '#hours::after { content: "h"; }',
                 '.sub::after { content: "-"; }',
@@ -829,11 +836,11 @@ class WebWorkerNotification {
             event.stopPropagation();
             this.dispatchEvent(new CustomEvent('change'));
         }
-        get rarelity() {
-            return parseInt(this.getAttribute('rarelity') || '') || 1;
+        get rarity() {
+            return parseInt(this.getAttribute('rarity') || '') || 1;
         }
-        set rarelity(value) {
-            this.setAttribute('rarelity', value + '');
+        set rarity(value) {
+            this.setAttribute('rarity', value + '');
         }
         get hours() {
             return parseInt(this.getAttribute('hours') || '') || 1;
@@ -1160,7 +1167,7 @@ function DrawSkillLvUp(parent) {
         parent.exp = SKILL_EXP;
         BOOKS.forEach((item) => {
             const book = new (customElements.get('skill-book'))();
-            book.rarelity = item.rarelity;
+            book.rarity = item.rarity;
             book.hours = item.hours;
             book.exp = item.exp;
             book.bonus = item.bonus;
@@ -1168,13 +1175,13 @@ function DrawSkillLvUp(parent) {
         });
     }, 0);
 }
-const RARELITY_LIST = ['N', 'R', 'SR', 'SSR', 'UR'];
+const RARITY_LIST = ['N', 'R', 'SR', 'SSR', 'UR'];
 function DrawAwaking(parent) {
     setTimeout(() => {
         const total = {};
         const tbody = document.createElement('tbody');
-        const theadLine = Common.tr({}, Common.td('', { colSpan: 2 }), ...RARELITY_LIST.map((rarelity) => {
-            return Common.td(rarelity);
+        const theadLine = Common.tr({}, Common.td('', { colSpan: 2 }), ...RARITY_LIST.map((rarity) => {
+            return Common.td(rarity);
         }));
         AWAKING.forEach((item, index) => {
             const chips = Common.tr({});
@@ -1189,30 +1196,30 @@ function DrawAwaking(parent) {
             }
             money.appendChild(Common.td('資金'));
             money.classList.add('money');
-            RARELITY_LIST.forEach((rarelity) => {
-                const data = item[rarelity];
-                chips.appendChild(Common.td(data.chips + '', { class: ['rarelity', `back_${rarelity}`] }));
+            RARITY_LIST.forEach((rarity) => {
+                const data = item[rarity];
+                chips.appendChild(Common.td(data.chips + '', { class: ['rarity', `back_${rarity}`] }));
                 if (arrays) {
-                    arrays.appendChild(Common.td(data.arrays + '', { class: ['rarelity', `back_${rarelity}`] }));
+                    arrays.appendChild(Common.td(data.arrays + '', { class: ['rarity', `back_${rarity}`] }));
                 }
-                money.appendChild(Common.td(data.money + '', { class: ['rarelity', `back_${rarelity}`] }));
-                if (!total[rarelity]) {
-                    total[rarelity] = {
+                money.appendChild(Common.td(data.money + '', { class: ['rarity', `back_${rarity}`] }));
+                if (!total[rarity]) {
+                    total[rarity] = {
                         chips: 0,
                         arrays: 0,
                         money: 0,
                     };
                 }
-                total[rarelity].chips += data.chips;
-                total[rarelity].arrays += data.arrays || 0;
-                total[rarelity].money += data.money;
+                total[rarity].chips += data.chips;
+                total[rarity].arrays += data.arrays || 0;
+                total[rarity].money += data.money;
             });
             tbody.appendChild(chips);
             if (arrays) {
                 tbody.appendChild(arrays);
             }
             tbody.appendChild(money);
-            tbody.appendChild(Common.tr({ class: 'line' }, Common.td('', { colSpan: 2 + RARELITY_LIST.length })));
+            tbody.appendChild(Common.tr({ class: 'line' }, Common.td('', { colSpan: 2 + RARITY_LIST.length })));
         });
         const chips = Common.tr({ class: 'chips' }, Common.td('合計', { rowSpan: 3 }), Common.td('Ⅰ'));
         const arrays = Common.tr({ class: 'arrays' }, Common.td('Ⅱ'));
@@ -1220,11 +1227,11 @@ function DrawAwaking(parent) {
         tbody.appendChild(chips);
         tbody.appendChild(arrays);
         tbody.appendChild(money);
-        RARELITY_LIST.forEach((rarelity) => {
-            const data = total[rarelity];
-            chips.appendChild(Common.td(data.chips + '', { class: ['rarelity', `back_${rarelity}`] }));
-            arrays.appendChild(Common.td(data.arrays + '', { class: ['rarelity', `back_${rarelity}`] }));
-            money.appendChild(Common.td(data.money + '', { class: ['rarelity', `back_${rarelity}`] }));
+        RARITY_LIST.forEach((rarity) => {
+            const data = total[rarity];
+            chips.appendChild(Common.td(data.chips + '', { class: ['rarity', `back_${rarity}`] }));
+            arrays.appendChild(Common.td(data.arrays + '', { class: ['rarity', `back_${rarity}`] }));
+            money.appendChild(Common.td(data.money + '', { class: ['rarity', `back_${rarity}`] }));
         });
         const thead = document.createElement('thead');
         thead.appendChild(theadLine);
@@ -1243,8 +1250,8 @@ function AugmentModules(parent) {
             SSR: { exp: 0, money: 0, core: 0 },
         };
         const tbody = document.createElement('tbody');
-        const theadLine = Common.tr({}, Common.td('LV', { rowSpan: 2 }), ...['R', 'SR', 'SSR'].map((rarelity) => {
-            return Common.td(rarelity, { colSpan: 3 });
+        const theadLine = Common.tr({}, Common.td('LV', { rowSpan: 2 }), ...['R', 'SR', 'SSR'].map((rarity) => {
+            return Common.td(rarity, { colSpan: 3 });
         }));
         const subTheadLine = Common.tr({}, ...['経験値', '資金', 'ｺｱ', '経験値', '資金', 'ｺｱ', '経験値', '資金', 'ｺｱ'].map((title, index) => {
             return Common.td(title, index % 3 === 2 ? { class: 'core' } : undefined);
@@ -1305,10 +1312,10 @@ function DrawPartsLvUp(parent) {
             const table = document.createElement('table');
             table.classList.add('parts');
             const caption = document.createElement('caption');
-            caption.classList.add(`rarelity${item.rarelity}`);
-            caption.textContent = (0 < index && item.rarelity + 1 !== PARTS_LVUP[index - 1].rarelity)
-                ? `★${item.rarelity}～★${PARTS_LVUP[index - 1].rarelity - 1} 装備`
-                : `★${item.rarelity} 装備`;
+            caption.classList.add(`rarity${item.rarity}`);
+            caption.textContent = (0 < index && item.rarity + 1 !== PARTS_LVUP[index - 1].rarity)
+                ? `★${item.rarity}～★${PARTS_LVUP[index - 1].rarity - 1} 装備`
+                : `★${item.rarity} 装備`;
             table.appendChild(caption);
             const tr = Common.tr({}, ...[
                 'LV',
@@ -1328,9 +1335,9 @@ function DrawPartsLvUp(parent) {
             let total = 0;
             item.list.forEach((item) => {
                 total += item.money;
-                const tr = Common.tr({ class: `rarelity${item.rarelity}` }, ...[
+                const tr = Common.tr({ class: `rarity${item.rarity}` }, ...[
                     `+${++lv}`,
-                    PARTS_NAMES[item.rarelity - 1],
+                    PARTS_NAMES[item.rarity - 1],
                     item.num,
                     item.money,
                     total,
@@ -1343,8 +1350,8 @@ function DrawPartsLvUp(parent) {
                     tr.children[0].rowSpan = 2;
                     tr.children[3].rowSpan = 2;
                     tr.children[4].rowSpan = 2;
-                    const trEx = Common.tr({ class: `rarelity${item.ex.rarelity}` }, ...[
-                        PARTS_NAMES[item.ex.rarelity],
+                    const trEx = Common.tr({ class: `rarity${item.ex.rarity}` }, ...[
+                        PARTS_NAMES[item.ex.rarity],
                         item.ex.num,
                     ].map((data) => {
                         return Common.td(data + '');

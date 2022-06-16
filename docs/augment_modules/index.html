@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja" style="font-size:20px;">
+<head>
+	<meta charset="utf-8">
+	<title>AzurLane Support Tools</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+	<link href="../style.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" sizes="152x152" href="../apple-touch-icon-precomposed.png">
+	<script src="./app.js" defer></script>
+	<style>
+section-pages{--home-icon: url(../favicon.svg);}
+.general_augment_modules tbody tr td{text-align:left;}
+.general_augment_modules tbody tr td.center{text-align:center;}
+.general_augment_modules tbody tr td:first-child div{width:3rem;height:3rem;object-fit:cover;background-size:11rem;background-position:center;background-repeat:no-repeat;border-radius:0.4rem;}
+.general_augment_modules tbody tr td h5{margin:0;}
+.general_augment_modules tbody tr:nth-child(even){background:rgb(255,255,255,0.25);}
+.Kunai{background-image:url(Kunai_t1.png);}
+.Dagger{background-image:url(Dagger_t1.png);}
+.Scepter{background-image:url(Scepter_t1.png);}
+.HuntingBow{background-image:url(HuntingBow_t1.png);}
+.Bowgun{background-image:url(Bowgun_t1.png);}
+.OfficersSword{background-image:url(OfficersSword_t1.png);}
+.Lance{background-image:url(Lance_t1.png);}
+.GreatSword{background-image:url(GreatSword_t1.png);}
+.Crossbow{background-image:url(Crossbow_t1.png);}
+.Sword{background-image:url(Sword_t1.png);}
+.Hammer{background-image:url(Hammer_t1.png);}
+.DualSword{background-image:url(DualSword_t1.png);}
+	</style>
+	<script>
+const GENERAL_AUGMENT_MODULES = [
+	{ id: 'Kunai', name: '饅頭クナイ', skill: 'k0', types: ['SubmarineCarrier', 'Submarine'] },
+	{ id: 'Dagger', name: '饅頭ダガー', skill: 'k1', types: ['SubmarineCarrier', 'Submarine'] },
+	{ id: 'Scepter', name: '饅頭セプター', skill: 'k2', types: ['LightCarrier', 'Carrier'] },
+	{ id: 'HuntingBow', name: '饅頭ハンターボウ', skill: 'k3', types: ['LightCarrier', 'Carrier'] },
+	{ id: 'Bowgun', name: '饅頭ボウガン', skill: 'k4', types: ['BattleCruiser', 'Battleship', 'AviationBattleship'] },
+	{ id: 'OfficersSword', name: '饅頭オフィサーソード', skill: 'k5', types: ['BattleCruiser', 'Battleship', 'AviationBattleship'] },
+	{ id: 'Lance', name: '饅頭ランス', skill: 'k6', types: ['HeavyCruiser', 'LargeCruiser'] },
+	{ id: 'GreatSword', name: '饅頭バスターソード', skill: 'k7', effect: 'area', types: ['HeavyCruiser', 'LargeCruiser'] },
+	{ id: 'Crossbow', name: '饅頭クロスボウ', skill: 'k8', types: ['LightCruiser'] },
+	{ id: 'Sword', name: '饅頭ソード', skill: 'k9', effect: 'diffusion', types: ['LightCruiser'] },
+	{ id: 'Hammer', name: '饅頭ハンマー', skill: 'k9', effect: 'diffusion', types: ['Destroyer'] },
+	{ id: 'DualSword', name: '饅頭ダブルソード', skill: 'k7', effect: 'area', types: ['Destroyer'] },
+];
+	</script>
+</head>
+<body data-page="values">
+	<section-pages main="page_augment_modules" home="../">
+		<a href="../#page_home">このサイトについて</a>
+		<a href="../">値一覧</a>
+		<a href="../meowfficer/">オフニャ</a>
+		<section id="page_augment_modules" data-name="特殊装備">
+			<div id="general_augment_modules"></div>
+		</section>
+		<a href="../#page_memo">メモ</a>
+	</section-pages>
+</body>
+</html>

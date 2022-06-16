@@ -7,7 +7,7 @@ type NATIONS = 'IronBlood';
 declare const MEOWFFICERS: {
 	[keys: string]: {
 		name: string;
-		rarelity: RARELITY;
+		rarity: RARITY;
 		type: 0 | 1 | 2; // 無・参謀・指揮
 		siren?: 0 | 1 | 2; // 無・参謀・指揮
 		target: 'Destroyer' | 'Cruiser' | 'Battleship' | 'Carrier' | 'Submarine';
@@ -54,7 +54,7 @@ function DrawMeowfficers(parent: HTMLElement) {
 			const shipType = new (<{ new (): ShipTypeElement }> customElements.get('ship-type'))();
 			shipType.type = data.target;
 			const tr = Common.tr(
-				{ class: ['rarelity', `back_${data.rarelity}`] },
+				{ class: ['rarity', `back_${data.rarity}`] },
 				Common.td('', { class: ['icon', name] }),
 				Common.td(data.name),
 				Common.td('', { class: data.nation }),

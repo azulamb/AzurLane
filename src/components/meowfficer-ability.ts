@@ -92,14 +92,14 @@ class Meowfficer {
 		'Medium',
 		'Cruiser',
 
-		'SS',
-		'Submarine',
-
 		'Large',
 		'Main',
 		'Battleship',
 		'Carrier',
 		'Special',
+
+		'SS',
+		'Submarine',
 
 		'Union',
 		'Royal',

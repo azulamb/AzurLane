@@ -17,20 +17,20 @@ table.awaking tr.money{background:rgb(255,223,0,0.5);}
 table.augment_module_lvup td.money{background:rgb(255,223,0,0.5);}
 table.augment_module_lvup td.core{min-width:1.5rem;text-align:center;}
 table.parts caption::after{content:'';display:inline-block;width:1rem;height:1rem;background-size:cover;}
-table.parts caption.rarelity1::after{background-image:url(./resource/box_t1.png);}
-table.parts caption.rarelity3::after{background-image:url(./resource/box_t2.png);}
-table.parts caption.rarelity4::after{background-image:url(./resource/box_t3.png);}
-table.parts caption.rarelity5::after{background-image:url(./resource/box_t4.png);}
-table.parts caption.rarelity6::after{background-image:url(./resource/box_t5.png);}
+table.parts caption.rarity1::after{background-image:url(./resource/box_t1.png);}
+table.parts caption.rarity3::after{background-image:url(./resource/box_t2.png);}
+table.parts caption.rarity4::after{background-image:url(./resource/box_t3.png);}
+table.parts caption.rarity5::after{background-image:url(./resource/box_t4.png);}
+table.parts caption.rarity6::after{background-image:url(./resource/box_t5.png);}
 table.parts thead tr td{min-width:3rem;}
 table.parts tbody tr:nth-child(odd), table.parts tbody tr:last-child:nth-child(n+10){background:rgb(255,255,255,0.25);}
 table.parts td.parts::after{content:'';display:inline-block;width:5rem;height:1rem;background-size:cover;}
-table.parts tr.rarelity1 td.parts::after{background-image:url(./resource/parts_t1.png);}
-table.parts tr.rarelity2 td.parts::after{background-image:url(./resource/parts_t2.png);}
-table.parts tr.rarelity3 td.parts::after{background-image:url(./resource/parts_t3.png);}
-table.parts tr.rarelity4 td.parts::after{background-image:url(./resource/parts_t4.png);}
-table.parts tr.rarelity4 td.parts.ex::after{background-image:url(./resource/parts_t4_ex.png);width:1rem;}
-table.parts tr.rarelity5 td.parts.ex::after{background-image:url(./resource/parts_t5_ex.png);width:1rem;}
+table.parts tr.rarity1 td.parts::after{background-image:url(./resource/parts_t1.png);}
+table.parts tr.rarity2 td.parts::after{background-image:url(./resource/parts_t2.png);}
+table.parts tr.rarity3 td.parts::after{background-image:url(./resource/parts_t3.png);}
+table.parts tr.rarity4 td.parts::after{background-image:url(./resource/parts_t4.png);}
+table.parts tr.rarity4 td.parts.ex::after{background-image:url(./resource/parts_t4_ex.png);width:1rem;}
+table.parts tr.rarity5 td.parts.ex::after{background-image:url(./resource/parts_t5_ex.png);width:1rem;}
 #condition > div{display:flex;gap:0 2rem;padding-left:7rem;}
 #condition > div > div:first-child::before{content:'居場所:';}
 #condition > div > div:last-child::before{content:'ケッコン:';}
@@ -40,10 +40,10 @@ notification-like{--start-color:var(--back-base);}
 	</style>
 	<script>
 const BOOKS = [
-	{ rarelity: 4, hours: 12, exp: 1500, bonus: 3000 },
-	{ rarelity: 3, hours: 8, exp: 800, bonus: 1200 },
-	{ rarelity: 2, hours: 4, exp: 300, bonus: 450 },
-	{ rarelity: 1, hours: 2, exp: 100, bonus: 150 },
+	{ rarity: 4, hours: 12, exp: 1500, bonus: 3000 },
+	{ rarity: 3, hours: 8, exp: 800, bonus: 1200 },
+	{ rarity: 2, hours: 4, exp: 300, bonus: 450 },
+	{ rarity: 1, hours: 2, exp: 100, bonus: 150 },
 ];
 const SKILL_EXP = [ 100, 200, 400, 800, 1400, 2200, 3200, 4400, 5800 ];
 const AWAKING = [
@@ -173,75 +173,75 @@ const AUGMENT_MODULES_ITEMS = [
 const PARTS_NAMES = ['T1', 'T2', 'T3', 'T4', '試作型兵装改造資材', '特装型兵装改造資材'];
 const PARTS_LVUP = [
 	{
-		rarelity: 6,
+		rarity: 6,
 		list: [
-			{ rarelity: 1, num: 3, money: 60 },
-			{ rarelity: 1, num: 9, money: 180 },
-			{ rarelity: 1, num: 15, money: 300 },
-			{ rarelity: 2, num: 24, money: 480 },
-			{ rarelity: 2, num: 33, money: 660 },
-			{ rarelity: 2, num: 42, money: 840 },
-			{ rarelity: 3, num: 54, money: 1080 },
-			{ rarelity: 3, num: 66, money: 1320 },
-			{ rarelity: 3, num: 78, money: 1560 },
-			{ rarelity: 3, num: 90, money: 1800 },
-			{ rarelity: 4, num: 105, money: 2100 },
-			{ rarelity: 4, num: 120, money: 2400 },
-			{ rarelity: 4, num: 135, money: 2700, ex: { rarelity: 5, num: 5 } },
+			{ rarity: 1, num: 3, money: 60 },
+			{ rarity: 1, num: 9, money: 180 },
+			{ rarity: 1, num: 15, money: 300 },
+			{ rarity: 2, num: 24, money: 480 },
+			{ rarity: 2, num: 33, money: 660 },
+			{ rarity: 2, num: 42, money: 840 },
+			{ rarity: 3, num: 54, money: 1080 },
+			{ rarity: 3, num: 66, money: 1320 },
+			{ rarity: 3, num: 78, money: 1560 },
+			{ rarity: 3, num: 90, money: 1800 },
+			{ rarity: 4, num: 105, money: 2100 },
+			{ rarity: 4, num: 120, money: 2400 },
+			{ rarity: 4, num: 135, money: 2700, ex: { rarity: 5, num: 5 } },
 		],
 	},
 	{
-		rarelity: 5,
+		rarity: 5,
 		list: [
-			{ rarelity: 1, num: 2, money: 30 },
-			{ rarelity: 1, num: 5, money: 90 },
-			{ rarelity: 1, num: 8, money: 150 },
-			{ rarelity: 2, num: 12, money: 240 },
-			{ rarelity: 2, num: 16, money: 330 },
-			{ rarelity: 2, num: 21, money: 420 },
-			{ rarelity: 3, num: 27, money: 540 },
-			{ rarelity: 3, num: 33, money: 660 },
-			{ rarelity: 3, num: 39, money: 780 },
-			{ rarelity: 3, num: 45, money: 900 },
-			{ rarelity: 4, num: 35, money: 800 },
-			{ rarelity: 4, num: 40, money: 1000 },
-			{ rarelity: 4, num: 45, money: 1200, ex: { rarelity: 4, num: 5 } },
+			{ rarity: 1, num: 2, money: 30 },
+			{ rarity: 1, num: 5, money: 90 },
+			{ rarity: 1, num: 8, money: 150 },
+			{ rarity: 2, num: 12, money: 240 },
+			{ rarity: 2, num: 16, money: 330 },
+			{ rarity: 2, num: 21, money: 420 },
+			{ rarity: 3, num: 27, money: 540 },
+			{ rarity: 3, num: 33, money: 660 },
+			{ rarity: 3, num: 39, money: 780 },
+			{ rarity: 3, num: 45, money: 900 },
+			{ rarity: 4, num: 35, money: 800 },
+			{ rarity: 4, num: 40, money: 1000 },
+			{ rarity: 4, num: 45, money: 1200, ex: { rarity: 4, num: 5 } },
 		],
 	},
 	{
-		rarelity: 4,
+		rarity: 4,
 		list: [
-			{ rarelity: 1, num: 1, money: 20 },
-			{ rarelity: 1, num: 3, money: 60 },
-			{ rarelity: 1, num: 5, money: 100 },
-			{ rarelity: 2, num: 8, money: 160 },
-			{ rarelity: 2, num: 11, money: 220 },
-			{ rarelity: 2, num: 14, money: 280 },
-			{ rarelity: 3, num: 18, money: 360 },
-			{ rarelity: 3, num: 22, money: 440 },
-			{ rarelity: 3, num: 26, money: 520 },
-			{ rarelity: 3, num: 30, money: 600 },
-			{ rarelity: 4, num: 35, money: 700, ex: { rarelity: 4, num: 1 } },
+			{ rarity: 1, num: 1, money: 20 },
+			{ rarity: 1, num: 3, money: 60 },
+			{ rarity: 1, num: 5, money: 100 },
+			{ rarity: 2, num: 8, money: 160 },
+			{ rarity: 2, num: 11, money: 220 },
+			{ rarity: 2, num: 14, money: 280 },
+			{ rarity: 3, num: 18, money: 360 },
+			{ rarity: 3, num: 22, money: 440 },
+			{ rarity: 3, num: 26, money: 520 },
+			{ rarity: 3, num: 30, money: 600 },
+			{ rarity: 4, num: 35, money: 700, ex: { rarity: 4, num: 1 } },
 		],
 	},
 	{
-		rarelity: 3,
+		rarity: 3,
 		list: [
-			{ rarelity: 1, num: 1, money: 20 },
-			{ rarelity: 1, num: 3, money: 60 },
-			{ rarelity: 1, num: 5, money: 100 },
-			{ rarelity: 2, num: 8, money: 160 },
-			{ rarelity: 2, num: 11, money: 220 },
-			{ rarelity: 2, num: 14, money: 280 },
-			{ rarelity: 3, num: 18, money: 360 },
+			{ rarity: 1, num: 1, money: 20 },
+			{ rarity: 1, num: 3, money: 60 },
+			{ rarity: 1, num: 5, money: 100 },
+			{ rarity: 2, num: 8, money: 160 },
+			{ rarity: 2, num: 11, money: 220 },
+			{ rarity: 2, num: 14, money: 280 },
+			{ rarity: 3, num: 18, money: 360 },
 		],
 	},
 	{
-		rarelity: 1,
+		rarity: 1,
 		list: [
-			{ rarelity: 1, num: 1, money: 20 },
-			{ rarelity: 1, num: 3, money: 60 },
-			{ rarelity: 1, num: 5, money: 100 },
+			{ rarity: 1, num: 1, money: 20 },
+			{ rarity: 1, num: 3, money: 60 },
+			{ rarity: 1, num: 5, money: 100 },
 		],
 	},
 ];
@@ -332,6 +332,7 @@ const FLEET_FORCE = [
 			<div id="parts_lvup"></div>
 		</section>
 		<a href="./meowfficer/">オフニャ</a>
+		<a href="./augment_modules/">特殊装備</a>
 		<section id="page_memo" data-name="メモ">
 			<h2>艦隊戦力5人目</h2>
 			<div id="freet_force"></div>

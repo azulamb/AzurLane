@@ -1,7 +1,7 @@
 /* */
 
 interface SkillBookElement extends HTMLElement {
-	rarelity: number;
+	rarity: number;
 	hours: number;
 	exp: number;
 	bonus: number;
@@ -41,9 +41,9 @@ interface SkillBookElement extends HTMLElement {
 					':host > div { display: grid; grid-template-columns: 1.5em 1fr 2em 4em 1em 3em 1em 4em 1em 3em 1em; }',
 					':host > div > div:nth-child(n+3) { text-align: right; }',
 					'#icon { width: 1em; height: 1em; }',
-					':host([rarelity="2"]) #name::after { content: "2"; }',
-					':host([rarelity="3"]) #name::after { content: "3"; }',
-					':host([rarelity="4"]) #name::after { content: "4"; }',
+					':host([rarity="2"]) #name::after { content: "2"; }',
+					':host([rarity="3"]) #name::after { content: "3"; }',
+					':host([rarity="4"]) #name::after { content: "4"; }',
 					':host #name::after { content: "1"; }',
 					'#hours::after { content: "h"; }',
 					'.sub::after { content: "-"; }',
@@ -138,11 +138,11 @@ interface SkillBookElement extends HTMLElement {
 				this.dispatchEvent(new CustomEvent('change'));
 			}
 
-			get rarelity() {
-				return parseInt(this.getAttribute('rarelity') || '') || 1;
+			get rarity() {
+				return parseInt(this.getAttribute('rarity') || '') || 1;
 			}
-			set rarelity(value) {
-				this.setAttribute('rarelity', value + '');
+			set rarity(value) {
+				this.setAttribute('rarity', value + '');
 			}
 
 			get hours() {

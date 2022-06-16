@@ -1,11 +1,11 @@
 declare const PARTS_NAMES: string[];
 declare const PARTS_LVUP: {
-	rarelity: number;
+	rarity: number;
 	list: {
-		rarelity: number;
+		rarity: number;
 		num: number;
 		money: number;
-		ex?: { rarelity: number; num: number };
+		ex?: { rarity: number; num: number };
 	}[];
 }[];
 
@@ -16,10 +16,10 @@ function DrawPartsLvUp(parent: HTMLElement) {
 			table.classList.add('parts');
 
 			const caption = document.createElement('caption');
-			caption.classList.add(`rarelity${item.rarelity}`);
-			caption.textContent = (0 < index && item.rarelity + 1 !== PARTS_LVUP[index - 1].rarelity)
-				? `★${item.rarelity}～★${PARTS_LVUP[index - 1].rarelity - 1} 装備`
-				: `★${item.rarelity} 装備`;
+			caption.classList.add(`rarity${item.rarity}`);
+			caption.textContent = (0 < index && item.rarity + 1 !== PARTS_LVUP[index - 1].rarity)
+				? `★${item.rarity}～★${PARTS_LVUP[index - 1].rarity - 1} 装備`
+				: `★${item.rarity} 装備`;
 			table.appendChild(caption);
 
 			const tr = Common.tr(
@@ -47,10 +47,10 @@ function DrawPartsLvUp(parent: HTMLElement) {
 				total += item.money;
 
 				const tr = Common.tr(
-					{ class: `rarelity${item.rarelity}` },
+					{ class: `rarity${item.rarity}` },
 					...[
 						`+${++lv}`,
-						PARTS_NAMES[item.rarelity - 1],
+						PARTS_NAMES[item.rarity - 1],
 						item.num,
 						item.money,
 						total,
@@ -68,9 +68,9 @@ function DrawPartsLvUp(parent: HTMLElement) {
 					(<HTMLTableCellElement> tr.children[4]).rowSpan = 2;
 
 					const trEx = Common.tr(
-						{ class: `rarelity${item.ex.rarelity}` },
+						{ class: `rarity${item.ex.rarity}` },
 						...[
-							PARTS_NAMES[item.ex.rarelity],
+							PARTS_NAMES[item.ex.rarity],
 							item.ex.num,
 						].map((data) => {
 							return Common.td(data + '');

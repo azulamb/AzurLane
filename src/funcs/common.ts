@@ -15,7 +15,7 @@ const Common = {
 		});
 		return tr;
 	},
-	td: (content: string | HTMLElement, option?: { class?: string | string[]; colSpan?: number; rowSpan?: number; isHTML?: boolean }) => {
+	td: (content: string | HTMLElement | HTMLElement[], option?: { class?: string | string[]; colSpan?: number; rowSpan?: number; isHTML?: boolean }) => {
 		const td = document.createElement('td');
 		if (typeof content === 'string') {
 			if (option && option.isHTML) {
@@ -24,7 +24,13 @@ const Common = {
 				td.textContent = content;
 			}
 		} else {
-			td.appendChild(content);
+			if (Array.isArray(content)) {
+				for (const element of content) {
+					td.appendChild(element);
+				}
+			} else {
+				td.appendChild(content);
+			}
 		}
 		if (option) {
 			if (option.class) {

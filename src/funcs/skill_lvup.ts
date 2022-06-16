@@ -2,7 +2,7 @@
 
 declare const SKILL_EXP: number[];
 declare const BOOKS: {
-	rarelity: number;
+	rarity: number;
 	hours: number;
 	exp: number;
 	bonus: number;
@@ -13,7 +13,7 @@ function DrawSkillLvUp(parent: SkillExpElement) {
 		parent.exp = SKILL_EXP;
 		BOOKS.forEach((item) => {
 			const book = new (<{ new (): SkillBookElement }> customElements.get('skill-book'))();
-			book.rarelity = item.rarelity;
+			book.rarity = item.rarity;
 			book.hours = item.hours;
 			book.exp = item.exp;
 			book.bonus = item.bonus;

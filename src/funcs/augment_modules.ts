@@ -18,8 +18,8 @@ function AugmentModules(parent: HTMLElement) {
 		const theadLine = Common.tr(
 			{},
 			Common.td('LV', { rowSpan: 2 }),
-			...['R', 'SR', 'SSR'].map((rarelity) => {
-				return Common.td(rarelity, { colSpan: 3 });
+			...['R', 'SR', 'SSR'].map((rarity) => {
+				return Common.td(rarity, { colSpan: 3 });
 			}),
 		);
 		const subTheadLine = Common.tr(

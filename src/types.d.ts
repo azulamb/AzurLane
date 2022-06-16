@@ -1,10 +1,10 @@
-type RARELITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
+type RARITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
 type SHIP_TYPE =
 	| 'Destroyer'
 	| 'LightCruiser'
 	| 'HeavyCruiser'
 	| 'LargeCruiser'
-	| 'Battlecruiser'
+	| 'BattleCruiser'
 	| 'Battleship'
 	| 'LightAircraftCarrier'
 	| 'AircraftCarrier'
@@ -14,3 +14,4 @@ type SHIP_TYPE =
 	| 'Submarine'
 	| 'Repair'
 	| 'Munition';
+type ALL_SHIP_TYPE = SHIP_TYPE | 'Cruiser' | 'LightCarrier' | 'Carrier';

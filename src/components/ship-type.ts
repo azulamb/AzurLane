@@ -1,7 +1,7 @@
 /* */
 
 interface ShipTypeElement extends HTMLElement {
-	type: SHIP_TYPE | 'Cruiser' | 'LightCarrier' | 'Carrier' | '';
+	type: ALL_SHIP_TYPE | '';
 }
 
 ((script, init) => {
@@ -12,13 +12,13 @@ interface ShipTypeElement extends HTMLElement {
 		init(script);
 	});
 })(<HTMLScriptElement> document.currentScript, (script: HTMLScriptElement) => {
-	const SHIP_TYPES: (SHIP_TYPE | 'Cruiser' | 'LightCarrier' | 'Carrier')[] = [
+	const SHIP_TYPES: ALL_SHIP_TYPE[] = [
 		'Destroyer',
 		'Cruiser',
 		'LightCruiser',
 		'HeavyCruiser',
 		'LargeCruiser',
-		'Battlecruiser',
+		'BattleCruiser',
 		'Battleship',
 		'LightCarrier',
 		'Carrier',
@@ -31,6 +31,25 @@ interface ShipTypeElement extends HTMLElement {
 		'Repair',
 		'Munition',
 	];
+	const NAMES: { [key in ALL_SHIP_TYPE]: string } = {
+		Destroyer: '駆逐艦',
+		Cruiser: '巡洋艦',
+		LightCruiser: '軽巡洋艦',
+		HeavyCruiser: '重巡洋艦',
+		LargeCruiser: '超巡洋艦',
+		BattleCruiser: '巡洋戦艦',
+		Battleship: '戦艦',
+		LightCarrier: '軽空母',
+		Carrier: '空母',
+		LightAircraftCarrier: '軽空母',
+		AircraftCarrier: '空母',
+		AviationBattleship: '航空戦艦',
+		SubmarineCarrier: '潜水母艦',
+		Monitor: 'モニター艦',
+		Submarine: '潜水艦',
+		Repair: '工作艦',
+		Munition: '運送艦',
+	};
 	((component, tagname = 'ship-type') => {
 		if (customElements.get(tagname)) {
 			return;
@@ -53,14 +72,14 @@ interface ShipTypeElement extends HTMLElement {
 					':host([type="LightCruiser"]) { --back: #D9AB59; }',
 					':host([type="HeavyCruiser"]) { --back: #D9AB59; }',
 					':host([type="LargeCruiser"]) { --back: #EF8748; }',
-					':host([type="Battlecruiser"]) { --back: #EC645E; }',
+					':host([type="BattleCruiser"]) { --back: #EC645E; }',
 					':host([type="Battleship"]) { --back: #EC645E; }',
 					':host([type="LightCarrier"]) { --back: #375285; }',
 					':host([type="Carrier"]) { --back: #375285; }',
 					':host([type="LightAircraftCarrier"]) { --back: #375285; }',
 					':host([type="AircraftCarrier"]) { --back: #375285; }',
 					':host([type="AviationBattleship"]) { --back: #EC645E; }',
-					':host([type="SubmarineCarrier"]) { --back: #EC645E; }',
+					':host([type="SubmarineCarrier"]) { --back: #90B253; }',
 					':host([type="Monitor"]) { --back: #EC645E; }',
 					':host([type="Submarine"]) { --back: #90B253; }',
 					':host([type="Repair"]) { --back: #90B253; }',
@@ -69,7 +88,7 @@ interface ShipTypeElement extends HTMLElement {
 					':host( :not([type="Destroyer"]):not([type="Submarine"]) ) path.Destroyer { display: none; }',
 					':host( :not([type="Cruiser"]):not([type="LightCruiser"]):not([type="HeavyCruiser"]) ) path.Cruiser { display: none; }',
 					':host( :not([type="HeavyCruiser"]) ) path.HeavyCruiser { display: none; }',
-					':host( :not([type="Battleship"]):not([type="Battlecruiser"]):not([type="LargeCruiser"]):not([type="Monitor"]) ) path.Battleship { display: none; }',
+					':host( :not([type="Battleship"]):not([type="BattleCruiser"]):not([type="LargeCruiser"]):not([type="Monitor"]) ) path.Battleship { display: none; }',
 					':host( :not([type="LightCarrier"]):not([type="Carrier"]):not([type="LightAircraftCarrier"]):not([type="AircraftCarrier"]):not([type="AviationBattleship"]):not([type="SubmarineCarrier"]) ) path.Carrier { display: none; }',
 					':host( :not([type="Munition"]) ) path.Munition { display: none; }',
 					':host( :not([type="Repair"]) ) path.Repair { display: none; }',
@@ -94,8 +113,6 @@ interface ShipTypeElement extends HTMLElement {
 						});
 					}
 					return path;
-					//					<path d="" fill="#666"/>
-					//					<path d="" fill="#808080"/>
 				};
 				// Frame
 				svg.appendChild(createPath('m0 0h26v16h-22l-4-4z', '--frame'));
@@ -238,6 +255,10 @@ interface ShipTypeElement extends HTMLElement {
 			set type(value) {
 				if (SHIP_TYPES.includes(value)) {
 					this.setAttribute('type', value);
+					this.title = NAMES[value];
+				} else {
+					this.removeAttribute('type');
+					this.title = '';
 				}
 			}
 		},

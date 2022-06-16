@@ -26,7 +26,14 @@ const Common = {
             }
         }
         else {
-            td.appendChild(content);
+            if (Array.isArray(content)) {
+                for (const element of content) {
+                    td.appendChild(element);
+                }
+            }
+            else {
+                td.appendChild(content);
+            }
         }
         if (option) {
             if (option.class) {
@@ -157,13 +164,13 @@ class Meowfficer {
         'Destroyer',
         'Medium',
         'Cruiser',
-        'SS',
-        'Submarine',
         'Large',
         'Main',
         'Battleship',
         'Carrier',
         'Special',
+        'SS',
+        'Submarine',
         'Union',
         'Royal',
         'Sakura',
@@ -858,7 +865,7 @@ class Meowfficer {
         'LightCruiser',
         'HeavyCruiser',
         'LargeCruiser',
-        'Battlecruiser',
+        'BattleCruiser',
         'Battleship',
         'LightCarrier',
         'Carrier',
@@ -871,6 +878,25 @@ class Meowfficer {
         'Repair',
         'Munition',
     ];
+    const NAMES = {
+        Destroyer: '駆逐艦',
+        Cruiser: '巡洋艦',
+        LightCruiser: '軽巡洋艦',
+        HeavyCruiser: '重巡洋艦',
+        LargeCruiser: '超巡洋艦',
+        BattleCruiser: '巡洋戦艦',
+        Battleship: '戦艦',
+        LightCarrier: '軽空母',
+        Carrier: '空母',
+        LightAircraftCarrier: '軽空母',
+        AircraftCarrier: '空母',
+        AviationBattleship: '航空戦艦',
+        SubmarineCarrier: '潜水母艦',
+        Monitor: 'モニター艦',
+        Submarine: '潜水艦',
+        Repair: '工作艦',
+        Munition: '運送艦',
+    };
     ((component, tagname = 'ship-type') => {
         if (customElements.get(tagname)) {
             return;
@@ -889,14 +915,14 @@ class Meowfficer {
                 ':host([type="LightCruiser"]) { --back: #D9AB59; }',
                 ':host([type="HeavyCruiser"]) { --back: #D9AB59; }',
                 ':host([type="LargeCruiser"]) { --back: #EF8748; }',
-                ':host([type="Battlecruiser"]) { --back: #EC645E; }',
+                ':host([type="BattleCruiser"]) { --back: #EC645E; }',
                 ':host([type="Battleship"]) { --back: #EC645E; }',
                 ':host([type="LightCarrier"]) { --back: #375285; }',
                 ':host([type="Carrier"]) { --back: #375285; }',
                 ':host([type="LightAircraftCarrier"]) { --back: #375285; }',
                 ':host([type="AircraftCarrier"]) { --back: #375285; }',
                 ':host([type="AviationBattleship"]) { --back: #EC645E; }',
-                ':host([type="SubmarineCarrier"]) { --back: #EC645E; }',
+                ':host([type="SubmarineCarrier"]) { --back: #90B253; }',
                 ':host([type="Monitor"]) { --back: #EC645E; }',
                 ':host([type="Submarine"]) { --back: #90B253; }',
                 ':host([type="Repair"]) { --back: #90B253; }',
@@ -904,7 +930,7 @@ class Meowfficer {
                 ':host( :not([type="Destroyer"]):not([type="Submarine"]) ) path.Destroyer { display: none; }',
                 ':host( :not([type="Cruiser"]):not([type="LightCruiser"]):not([type="HeavyCruiser"]) ) path.Cruiser { display: none; }',
                 ':host( :not([type="HeavyCruiser"]) ) path.HeavyCruiser { display: none; }',
-                ':host( :not([type="Battleship"]):not([type="Battlecruiser"]):not([type="LargeCruiser"]):not([type="Monitor"]) ) path.Battleship { display: none; }',
+                ':host( :not([type="Battleship"]):not([type="BattleCruiser"]):not([type="LargeCruiser"]):not([type="Monitor"]) ) path.Battleship { display: none; }',
                 ':host( :not([type="LightCarrier"]):not([type="Carrier"]):not([type="LightAircraftCarrier"]):not([type="AircraftCarrier"]):not([type="AviationBattleship"]):not([type="SubmarineCarrier"]) ) path.Carrier { display: none; }',
                 ':host( :not([type="Munition"]) ) path.Munition { display: none; }',
                 ':host( :not([type="Repair"]) ) path.Repair { display: none; }',
@@ -954,6 +980,11 @@ class Meowfficer {
         set type(value) {
             if (SHIP_TYPES.includes(value)) {
                 this.setAttribute('type', value);
+                this.title = NAMES[value];
+            }
+            else {
+                this.removeAttribute('type');
+                this.title = '';
             }
         }
     }, script.dataset.tagname);
@@ -988,7 +1019,7 @@ function DrawMeowfficers(parent) {
             const abilities = Common.td('', { class: 'abilities' });
             const shipType = new (customElements.get('ship-type'))();
             shipType.type = data.target;
-            const tr = Common.tr({ class: ['rarelity', `back_${data.rarelity}`] }, Common.td('', { class: ['icon', name] }), Common.td(data.name), Common.td('', { class: data.nation }), Common.td('', { class: `type${data.type}` }), Common.td(shipType), sp, abilities);
+            const tr = Common.tr({ class: ['rarity', `back_${data.rarity}`] }, Common.td('', { class: ['icon', name] }), Common.td(data.name), Common.td('', { class: data.nation }), Common.td('', { class: `type${data.type}` }), Common.td(shipType), sp, abilities);
             data.abilities.forEach((ability) => {
                 const data = Meowfficer.search(ability);
                 if (!data) {
