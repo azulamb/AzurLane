@@ -626,7 +626,7 @@ class Meowfficer {
     };
     static search(typeTarget) {
         for (const ability of this.ABILITIES) {
-            if (ability.type + (ability.target || '') === typeTarget) {
+            if (ability.type + (ability.target || '') === typeTarget || ability.type === typeTarget) {
                 return ability;
             }
         }
