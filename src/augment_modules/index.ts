@@ -1,4 +1,4 @@
-/// <reference path="../components/section-pages.ts" />
+/// <reference path="../modules/section-pages.ts" />
 /// <reference path="../funcs/augment_module_list.ts" />
 
 Promise.all([

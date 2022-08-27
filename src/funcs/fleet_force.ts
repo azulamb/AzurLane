@@ -1,4 +1,4 @@
-/// <reference path="../components/check-box.ts" />
+/// <reference path="../modules/check-box.ts" />
 
 declare const FLEET_FORCE: { id: string; name: string }[];
 

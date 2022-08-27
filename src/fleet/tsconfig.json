@@ -1,0 +1,19 @@
+{
+	"compilerOptions": {
+		"outFile": "../../docs/fleet/app.js",
+		"module": "amd",
+		"target": "es2022",
+		"moduleResolution": "node",
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"preserveConstEnums": false,
+		"keyofStringsOnly": true,
+		"sourceMap": false
+	},
+	"include": [
+		"../types.d.ts",
+		"../funcs/common.ts",
+		"./index.ts"
+	]
+}

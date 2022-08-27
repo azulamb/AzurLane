@@ -3,11 +3,17 @@
 		"build_main": "tsc -p ./src/main",
 		"build_meowfficer": "tsc -p ./src/meowfficer",
 		"build_augment_modules": "tsc -p ./src/augment_modules",
-		"build": "deno task build_main & deno task build_meowfficer & deno task build_augment_modules"
+		"build_fleet": "tsc -p ./src/fleet",
+		"build_components": "tsc -p ./src/components",
+		"build_components_types": "tsc -p src/components/tsconfig.types.json --emitDeclarationOnly",
+		"build": "deno task build_main & deno task build_meowfficer & deno task build_augment_modules & deno task build_components_types & deno task build_fleet & deno task build_components",
+		"kansen": "deno run --allow-read --allow-write --allow-net ./scripts/kansen_list.ts",
+		"install_server": "deno install --allow-net --allow-read https://deno.land/std@0.65.0/http/file_server.ts",
+		"server": "file_server docs"
 	},
 	"lint": {
 		"files": {
-			"include": ["./src"]
+			"include": ["./src", "./scripts"]
 		},
 		"rules": {
 		  "tags": ["recommended"],
@@ -17,7 +23,7 @@
 	},
 	"fmt": {
 		"files": {
-			"include": ["./src"]
+			"include": ["./src", "./scripts"]
 		},
 		"options": {
 			"useTabs": true,

@@ -1,7 +1,7 @@
 /// <reference path="../types.d.ts" />
 /// <reference path="../funcs/Common.ts" />
-/// <reference path="../components/meowfficer-ability.ts" />
-/// <reference path="../components/ship-type.ts" />
+/// <reference path="../modules/meowfficer-ability.ts" />
+/// <reference path="../modules/ship-type.ts" />
 
 type NATIONS = 'IronBlood';
 declare const MEOWFFICERS: {

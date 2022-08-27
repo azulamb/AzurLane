@@ -1,0 +1,3006 @@
+{
+	"uss": {
+		"allen_m_sumner": {
+			"name": "アレン・M・サムナー",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"eldridge": {
+			"name": "エルドリッジ",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"ingraham": {
+			"name": "イングラハム",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"bristol": {
+			"name": "ブリストル",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"charles_ausburne": {
+			"name": "チャールズ・オースバーン",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"cooper": {
+			"name": "クーパー",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"laffey": {
+			"name": "ラフィー",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"maury": {
+			"name": "モーリー",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"morrison": {
+			"name": "モリソン",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"mullany": {
+			"name": "マラニー",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"nicholas": {
+			"name": "ニコラス",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"stephen_potter": {
+			"name": "ステフェン・ポッター",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"aylwin": {
+			"name": "エールウィン",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"bache": {
+			"name": "バッチ",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"bailey": {
+			"name": "ベイリー",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"benson": {
+			"name": "ベンソン",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"bush": {
+			"name": "ブッシュ",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"dewey": {
+			"name": "デューイ",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"fletcher": {
+			"name": "フレッチャー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"gridley": {
+			"name": "グリッドレイ",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"halsey_powell": {
+			"name": "ハルゼー・パウエル",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"hammann": {
+			"name": "ハムマン",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"hazelwood": {
+			"name": "ヘイゼルウッド",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"hobby": {
+			"name": "ホビー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"jenkins": {
+			"name": "ジェンキンス",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"kalk": {
+			"name": "カーク",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"kimberly": {
+			"name": "キンバリー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"radford": {
+			"name": "ラドフォード",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"sims": {
+			"name": "シムス",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"smalley": {
+			"name": "スモーリー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"stanly": {
+			"name": "スタンリー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"thatcher": {
+			"name": "サッチャー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"aulick": {
+			"name": "オーリック",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"cassin": {
+			"name": "カッシン",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"craven": {
+			"name": "クレイヴン",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"downes": {
+			"name": "ダウンズ",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"foote": {
+			"name": "フート",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"mccall": {
+			"name": "マッコール",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"spence": {
+			"name": "スペンス",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"montpelier": {
+			"name": "モントピリア",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"reno": {
+			"name": "リノ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"san_diego": {
+			"name": "サンディエゴ",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"retrofit": true
+		},
+		"seattle": {
+			"name": "シアトル",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"biloxi": {
+			"name": "ビロクシ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"birmingham": {
+			"name": "バーミンガム",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"boise": {
+			"name": "ボイシ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"clevelad": {
+			"name": "リトル・クリーブランド",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"cleveland": {
+			"name": "クリーブランド",
+			"mu": true,
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"columbia": {
+			"name": "コロンビア",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"denver": {
+			"name": "デンバー",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"helena": {
+			"name": "ヘレナ",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"lena": {
+			"name": "リトル・ヘレナ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"lil_sandy": {
+			"name": "リトル・サンディエゴ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"st_louis": {
+			"name": "セントルイス",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"atlanta": {
+			"name": "アトランタ",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"brooklyn": {
+			"name": "ブルックリン",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"concord": {
+			"name": "コンコード",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"honolulu": {
+			"name": "ホノルル",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"juneau": {
+			"name": "ジュノー",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"marblehead": {
+			"name": "マーブルヘッド",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"memphis": {
+			"name": "メンフィス",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"phoenix": {
+			"name": "フェニックス",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"san_juan": {
+			"name": "サンフアン",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"omaha": {
+			"name": "オマハ",
+			"type": "light_cruiser",
+			"rarity": "N"
+		},
+		"raleigh": {
+			"name": "ローリー",
+			"type": "light_cruiser",
+			"rarity": "N"
+		},
+		"richmond": {
+			"name": "リッチモンド",
+			"type": "light_cruiser",
+			"rarity": "N"
+		},
+		"anchorage": {
+			"name": "アンカレッジ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"baltimore": {
+			"name": "ボルチモア",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"bremerton": {
+			"name": "ブレマートン",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"minneapolis": {
+			"name": "ミネアポリス",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"new_orleans": {
+			"name": "ニューオリンズ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"san_francisco": {
+			"name": "サンフランシスコ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"astoria": {
+			"name": "アストリア",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"houston": {
+			"name": "ヒューストン",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"indianapolis": {
+			"name": "インディアナポリス",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"quincy": {
+			"name": "クインシー",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"vincennes": {
+			"name": "ヴィンセンス",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"wichita": {
+			"name": "ウィチタ",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"chicago": {
+			"name": "シカゴ",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"northampton": {
+			"name": "ノーザンプトン",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"portland": {
+			"name": "ポートランド",
+			"type": "heavy_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"pensacola": {
+			"name": "ペンサコーラ",
+			"type": "heavy_cruiser",
+			"rarity": "N"
+		},
+		"salt_lake_city": {
+			"name": "ソルトレイクシティ",
+			"type": "heavy_cruiser",
+			"rarity": "N"
+		},
+		"new_jersey": {
+			"name": "ニュージャージー",
+			"type": "battleship",
+			"rarity": "UR"
+		},
+		"alabama": {
+			"name": "アラバマ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"massachusetts": {
+			"name": "マサチューセッツ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"north_carolina": {
+			"name": "ノースカロライナ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"south_dakota": {
+			"name": "サウスダコタ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"washington": {
+			"name": "ワシントン",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"georgia": {
+			"name": "ジョージア",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"arizona": {
+			"name": "アリゾナ",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"colorado": {
+			"name": "コロラド",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"maryland": {
+			"name": "メリーランド",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"west_virginia": {
+			"name": "ウェストバージニア",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"california": {
+			"name": "カリフォルニア",
+			"type": "battleship",
+			"rarity": "R"
+		},
+		"pennsylvania": {
+			"name": "ペンシルバニア",
+			"type": "battleship",
+			"rarity": "R"
+		},
+		"tennessee": {
+			"name": "テネシー",
+			"type": "battleship",
+			"rarity": "R"
+		},
+		"nevada": {
+			"name": "ネバダ",
+			"type": "battleship",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"oklahoma": {
+			"name": "オクラホマ",
+			"type": "battleship",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"independence": {
+			"name": "インディペンデンス",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"princeton": {
+			"name": "プリンストン",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"bataan": {
+			"name": "バターン",
+			"type": "light_aircraft_carrier",
+			"rarity": "R"
+		},
+		"casablanca": {
+			"name": "カサブランカ",
+			"type": "light_aircraft_carrier",
+			"rarity": "R"
+		},
+		"long_island": {
+			"name": "ロング・アイランド",
+			"type": "light_aircraft_carrier",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"bogue": {
+			"name": "ボーグ",
+			"type": "light_aircraft_carrier",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"langley": {
+			"name": "ラングレー",
+			"type": "light_aircraft_carrier",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"ranger": {
+			"name": "レンジャー",
+			"type": "light_aircraft_carrier",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"bunker_hill": {
+			"name": "バンカーヒル",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"enterprise": {
+			"name": "エンタープライズ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"essex": {
+			"name": "エセックス",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"intrepid": {
+			"name": "イントレピッド",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"shangri_la": {
+			"name": "シャングリラ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"ticonderoga": {
+			"name": "タイコンデロガ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"hornet": {
+			"name": "ホーネット",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"lexington": {
+			"name": "レキシントン",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"little_enterprise": {
+			"name": "リトル・エンタープライズ",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"saratoga": {
+			"name": "サラトガ",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"yorktown": {
+			"name": "ヨークタウン",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"wasp": {
+			"name": "ワスプ",
+			"type": "aircraft_carrier",
+			"rarity": "R"
+		},
+		"vestal": {
+			"name": "ヴェスタル",
+			"type": "repair_ship",
+			"rarity": "SR"
+		},
+		"albacore": {
+			"name": "アルバコア",
+			"type": "submarine",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"archerfish": {
+			"name": "アーチャーフィッシュ",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"cavalla": {
+			"name": "カヴァラ",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"bluegill": {
+			"name": "ブルーギル",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"dace": {
+			"name": "デイス",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"nautilus": {
+			"name": "ノーチラス",
+			"type": "submarine",
+			"rarity": "SR"
+		}
+	},
+	"hms": {
+		"jervis": {
+			"name": "ジャーヴィス",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"amazon": {
+			"name": "アマゾン",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"eskimo": {
+			"name": "エスキモー",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"glowworm": {
+			"name": "グローウォーム",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"grenville": {
+			"name": "グレンヴィル",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"icarus": {
+			"name": "イカロス",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"javelin": {
+			"name": "ジャベリン",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"matchless": {
+			"name": "マッチレス",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"musketeer": {
+			"name": "マスケティーア",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"vampire": {
+			"name": "ヴァンパイア",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"acasta": {
+			"name": "アカスタ",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"ardent": {
+			"name": "アーデント",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"echo": {
+			"name": "エコー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"fortune": {
+			"name": "フォーチュン",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"hardy": {
+			"name": "ハーディー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"hunter": {
+			"name": "ハンター",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"jersey": {
+			"name": "ジャージー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"juno": {
+			"name": "ジュノー",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"jupiter": {
+			"name": "ジュピター",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"beagle": {
+			"name": "ビーグル",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"bulldog": {
+			"name": "ブルドッグ",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"comet": {
+			"name": "コメット",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"crescent": {
+			"name": "クレセント",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"cygnet": {
+			"name": "シグニット",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"foxhound": {
+			"name": "フォックスハウンド",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"plymouth": {
+			"name": "プリマス",
+			"type": "light_cruiser",
+			"rarity": "UR"
+		},
+		"belfast": {
+			"name": "ベルファスト",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"charybdis": {
+			"name": "カリブディス",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"dido": {
+			"name": "ダイドー",
+			"mu": true,
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"hermione": {
+			"name": "ハーマイオニー",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"neptune": {
+			"name": "ネプチューン",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"sirius": {
+			"name": "シリアス",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"swiftsure": {
+			"name": "スウィフトシュア",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"aurora": {
+			"name": "オーロラ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"bellona": {
+			"name": "ベローナ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"black_prince": {
+			"name": "ブラックプリンス",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"edinburgh": {
+			"name": "エディンバラ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"gloucester": {
+			"name": "グロスター",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"little_bel": {
+			"name": "ベルちゃん",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"penelope": {
+			"name": "ペネロピ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"sheffield": {
+			"name": "シェフィールド",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"mu": true
+		},
+		"enterprise": {
+			"name": "エンタープライズ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"ajax": {
+			"name": "エイジャックス",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"arethusa": {
+			"name": "アリシューザ",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"curacoa": {
+			"name": "キュラソー",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"curlew": {
+			"name": "カーリュー",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"fiji": {
+			"name": "フィジー",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"galatea": {
+			"name": "ガラティア",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"glasgow": {
+			"name": "グラスゴー",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"jamaica": {
+			"name": "ジャマイカ",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"newcastle": {
+			"name": "ニューカッスル",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"southampton": {
+			"name": "サウサンプトン",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"achilles": {
+			"name": "アキリーズ",
+			"type": "light_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"leander": {
+			"name": "リアンダー",
+			"type": "light_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"drake": {
+			"name": "ドレイク",
+			"type": "heavy_cruiser",
+			"rarity": "UR"
+		},
+		"cheshire": {
+			"name": "チェシャー",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"dorsetshire": {
+			"name": "ドーセットシャー",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"exeter": {
+			"name": "エクセター",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"little_cheshire": {
+			"name": "リトル・チェシャー",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"london": {
+			"name": "ロンドン",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"york": {
+			"name": "ヨーク",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"kent": {
+			"name": "ケント",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"norfolk": {
+			"name": "ノーフォーク",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"shropshire": {
+			"name": "シュロップシャー",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"suffolk": {
+			"name": "サフォーク",
+			"type": "heavy_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"sussex": {
+			"name": "サセックス",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"vanguard": {
+			"name": "ヴァンガード",
+			"type": "battleship",
+			"rarity": "UR"
+		},
+		"duke_of_york": {
+			"name": "デューク・オブ・ヨーク",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"howe": {
+			"name": "ハウ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"king_george_v": {
+			"name": "キング・ジョージ5世",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"prince_of_wales": {
+			"name": "プリンス・オブ・ウェールズ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"warspite": {
+			"name": "ウォースパイト",
+			"type": "battleship",
+			"rarity": "SSR",
+			"retrofit": true
+		},
+		"monarch": {
+			"name": "モナーク",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"nelson": {
+			"name": "ネルソン",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"queen_elizabeth": {
+			"name": "クイーン・エリザベス",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"revenge": {
+			"name": "リヴェンジ",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"rodney": {
+			"name": "ロドニー",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"valiant": {
+			"name": "ヴァリアント",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"hood": {
+			"name": "フッド",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"little_renown": {
+			"name": "リトル・レナウン",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"renown": {
+			"name": "レナウン",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"repulse": {
+			"name": "レパルス",
+			"type": "battlecruiser",
+			"rarity": "R"
+		},
+		"centaur": {
+			"name": "セントー",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"perseus": {
+			"name": "パーシュース",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"chaser": {
+			"name": "チェイサー",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"unicorn": {
+			"name": "ユニコーン",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"hermes": {
+			"name": "ハーミーズ",
+			"type": "light_aircraft_carrier",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"formidable": {
+			"name": "フォーミダブル",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"illustrious": {
+			"name": "イラストリアス",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"indomitable": {
+			"name": "インドミタブル",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"victorious": {
+			"name": "ヴィクトリアス",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"ark_royal": {
+			"name": "アーク・ロイヤル",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"eagle": {
+			"name": "イーグル",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"glorious": {
+			"name": "グロリアス",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"little_illustrious": {
+			"name": "リトル・イラストリアス",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"abercrombie": {
+			"name": "アバークロンビー",
+			"type": "monitor",
+			"rarity": "SR"
+		},
+		"erebus": {
+			"name": "エレバス",
+			"type": "monitor",
+			"rarity": "SR"
+		},
+		"terror": {
+			"name": "テラー",
+			"type": "monitor",
+			"rarity": "SR"
+		}
+	},
+	"ijn": {
+		"shimakaze": {
+			"name": "島風",
+			"type": "destroyer",
+			"rarity": "UR"
+		},
+		"kawakaze": {
+			"name": "江風",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"kazagumo": {
+			"name": "風雲",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"kitakaze": {
+			"name": "北風",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"suzutsuki": {
+			"name": "涼月",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"umikaze": {
+			"name": "海風",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"yukikaze": {
+			"name": "雪風",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"yuudachi": {
+			"name": "夕立",
+			"type": "destroyer",
+			"rarity": "SSR",
+			"retrofit": true
+		},
+		"ayanami": {
+			"name": "綾波",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"fubuki": {
+			"name": "吹雪",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"hanazuki": {
+			"name": "花月",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"harutsuki": {
+			"name": "春月",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"hibiki": {
+			"name": "響",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"kasumi": {
+			"name": "霞",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"makinami": {
+			"name": "巻波",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"naganami": {
+			"name": "長波",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"niizuki": {
+			"name": "新月",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"nowaki": {
+			"name": "野分",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"shigure": {
+			"name": "時雨",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"shirayuki": {
+			"name": "白雪",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"yamakaze": {
+			"name": "山風",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"yoizuki": {
+			"name": "宵月",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"akatsuki": {
+			"name": "暁",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"arashio": {
+			"name": "荒潮",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"ariake": {
+			"name": "有明",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"asashio": {
+			"name": "朝潮",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"fumizuki": {
+			"name": "文月",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"hamakaze": {
+			"name": "浜風",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"hatakaze": {
+			"name": "旗風",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"hatsuharu": {
+			"name": "初春",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"hatsushimo": {
+			"name": "初霜",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"ikazuchi": {
+			"name": "雷",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"inazuma": {
+			"name": "電",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"isokaze": {
+			"name": "磯風",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"kagerou": {
+			"name": "陽炎",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"kamikaze": {
+			"name": "神風",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"kiyonami": {
+			"name": "清波",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"kuroshio": {
+			"name": "黒潮",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"matsukaze": {
+			"name": "松風",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"michishio": {
+			"name": "満潮",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"nagatsuki": {
+			"name": "長月",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"oite": {
+			"name": "追風",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"ooshio": {
+			"name": "大潮",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"oyashio": {
+			"name": "親潮",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"shiratsuyu": {
+			"name": "白露",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"tanikaze": {
+			"name": "谷風",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"urakaze": {
+			"name": "浦風",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"uranami": {
+			"name": "浦波",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"wakaba": {
+			"name": "若葉",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"yuugure": {
+			"name": "夕暮",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"kisaragi": {
+			"name": "如月",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"mikazuki": {
+			"name": "三日月",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"minazuki": {
+			"name": "水無月",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"mutsuki": {
+			"name": "睦月",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"shiranui": {
+			"name": "不知火",
+			"type": "destroyer",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"uzuki": {
+			"name": "卯月",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"noshiro": {
+			"name": "能代",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"agano": {
+			"name": "阿賀野",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"jintsuu": {
+			"name": "神通",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"kinu": {
+			"name": "鬼怒",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"mikuma": {
+			"name": "三隈",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"yuubari": {
+			"name": "夕張",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"mogami": {
+			"name": "最上",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": "heavy_cruiser"
+		},
+		"isuzu": {
+			"name": "五十鈴",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"naka": {
+			"name": "那珂",
+			"type": "light_cruiser",
+			"rarity": "R"
+		},
+		"sendai": {
+			"name": "川内",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"abukuma": {
+			"name": "阿武隈",
+			"type": "light_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"nagara": {
+			"name": "長良",
+			"type": "light_cruiser",
+			"rarity": "N"
+		},
+		"yura": {
+			"name": "由良",
+			"type": "light_cruiser",
+			"rarity": "N"
+		},
+		"atago": {
+			"name": "愛宕",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"chikuma": {
+			"name": "筑摩",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"choukai": {
+			"name": "鳥海",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"ibuki": {
+			"name": "伊吹",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"maya": {
+			"name": "摩耶",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"takao": {
+			"name": "高雄",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"kumano": {
+			"name": "熊野",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"nachi": {
+			"name": "那智",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"suzuya": {
+			"name": "鈴谷",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"ashigara": {
+			"name": "足柄",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"myoukou": {
+			"name": "妙高",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"aoba": {
+			"name": "青葉",
+			"type": "heavy_cruiser",
+			"rarity": "N"
+		},
+		"furutaka": {
+			"name": "古鷹",
+			"type": "heavy_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"kako": {
+			"name": "加古",
+			"type": "heavy_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"kinugasa": {
+			"name": "衣笠",
+			"type": "heavy_cruiser",
+			"rarity": "N"
+		},
+		"azuma": {
+			"name": "吾妻",
+			"type": "large_cruiser",
+			"rarity": "UR"
+		},
+		"kashino": {
+			"name": "樫野",
+			"type": "munition_ship",
+			"rarity": "SR"
+		},
+		"mikasa": {
+			"name": "三笠",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"nagato": {
+			"name": "長門",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"suruga": {
+			"name": "駿河",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"tosa": {
+			"name": "土佐",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"izumo": {
+			"name": "出雲",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"kii": {
+			"name": "紀伊",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"mutsu": {
+			"name": "陸奥",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"fusou": {
+			"name": "扶桑",
+			"type": "battleship",
+			"rarity": "R",
+			"retrofit": "aviation_battleship"
+		},
+		"hyuuga": {
+			"name": "日向",
+			"type": "battleship",
+			"rarity": "R",
+			"retrofit": "aviation_battleship"
+		},
+		"ise": {
+			"name": "伊勢",
+			"type": "battleship",
+			"rarity": "R",
+			"retrofit": "aviation_battleship"
+		},
+		"yamashiro": {
+			"name": "山城",
+			"type": "battleship",
+			"rarity": "R",
+			"retrofit": "aviation_battleship"
+		},
+		"amagi": {
+			"name": "天城",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"amagichan": {
+			"name": "天城ちゃん",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"haruna": {
+			"name": "榛名",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"hiei": {
+			"name": "比叡",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"hieichan": {
+			"name": "比叡ちゃん",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"kirishima": {
+			"name": "霧島",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"kongou": {
+			"name": "金剛",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"ryuuhou": {
+			"name": "龍鳳",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"chitose": {
+			"name": "千歳",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"chiyoda": {
+			"name": "千代田",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"houshou": {
+			"name": "鳳翔",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"ryuujou": {
+			"name": "龍驤",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"hiyou": {
+			"name": "飛鷹",
+			"type": "light_aircraft_carrier",
+			"rarity": "R"
+		},
+		"junyou": {
+			"name": "隼鷹",
+			"type": "light_aircraft_carrier",
+			"rarity": "R"
+		},
+		"shouhou": {
+			"name": "祥鳳",
+			"type": "light_aircraft_carrier",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"shinano": {
+			"name": "信濃",
+			"type": "aircraft_carrier",
+			"rarity": "UR"
+		},
+		"hakuryuu": {
+			"name": "白龍",
+			"type": "aircraft_carrier",
+			"rarity": "UR"
+		},
+		"akagi": {
+			"name": "赤城",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"kaga": {
+			"name": "加賀",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"battleship": true
+		},
+		"katsuragi": {
+			"name": "葛城",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"shoukaku": {
+			"name": "翔鶴",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"taihou": {
+			"name": "大鳳",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"zuikaku": {
+			"name": "瑞鶴",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"akagichan": {
+			"name": "赤城ちゃん",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"hiryuu": {
+			"name": "飛龍",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"souryuu": {
+			"name": "蒼龍",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"akashi": {
+			"name": "明石",
+			"type": "repair_ship",
+			"rarity": "SSR"
+		},
+		"i19": {
+			"name": "伊19",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"i168": {
+			"name": "伊168",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"i25": {
+			"name": "伊25",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"i26": {
+			"name": "伊26",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"i56": {
+			"name": "伊56",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"i58": {
+			"name": "伊58",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"i13": {
+			"name": "伊13",
+			"type": "submarine_carrier",
+			"rarity": "SSR"
+		}
+	},
+	"kms": {
+		"z1": {
+			"name": "Z1",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"z2": {
+			"name": "Z2",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z16": {
+			"name": "Z16",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z23": {
+			"name": "Z23",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"z24": {
+			"name": "Z24",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z25": {
+			"name": "Z25",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z26": {
+			"name": "Z26",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z28": {
+			"name": "Z28",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z35": {
+			"name": "Z35",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z36": {
+			"name": "Z36",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z46": {
+			"name": "Z46",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"z18": {
+			"name": "Z18",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"z19": {
+			"name": "Z19",
+			"type": "destroyer",
+			"rarity": "R"
+		},
+		"z20": {
+			"name": "Z20",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"z21": {
+			"name": "Z21",
+			"type": "destroyer",
+			"rarity": "N"
+		},
+		"emden": {
+			"name": "エムデン",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"magdeburg": {
+			"name": "マクデブルク",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"mainz": {
+			"name": "マインツ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"elbing": {
+			"name": "エルビング",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"Nuernberg": {
+			"name": "ニュルンベルク",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"leipzig": {
+			"name": "ライプツィヒ",
+			"type": "light_cruiser",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"Karlsruhe": {
+			"name": "カールスルーエ",
+			"type": "light_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"Koeln": {
+			"name": "ケルン",
+			"type": "light_cruiser",
+			"rarity": "N",
+			"retrofit": true
+		},
+		"Koenigsberg": {
+			"name": "ケーニヒスベルク",
+			"type": "light_cruiser",
+			"rarity": "N"
+		},
+		"prinz_adalbert": {
+			"name": "プリンツ・アーダルベルト",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"prinz_eugen": {
+			"name": "プリンツ・オイゲン",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"prinz_heinrich": {
+			"name": "プリンツ・ハインリヒ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"roon": {
+			"name": "ローン",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"admiral_graf_spee": {
+			"name": "アドミラル・グラーフ・シュペー",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"admiral_hipper": {
+			"name": "アドミラル・ヒッパー",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"mu": true
+		},
+		"bluecher": {
+			"name": "ブリュッヒャー",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"deutschland": {
+			"name": "ドイッチュラント",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"little_prinz_eugen": {
+			"name": "プリンツ・オイゲンちゃん",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"yorck": {
+			"name": "ヨルク",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"aegir": {
+			"name": "エーギル",
+			"type": "large_cruiser",
+			"rarity": "UR"
+		},
+		"ulrich_von_hutten": {
+			"name": "ウルリッヒ・フォン・フッテン",
+			"type": "battleship",
+			"rarity": "UR"
+		},
+		"friedrich_der_grosse": {
+			"name": "フリードリヒ・デア・グローセ",
+			"type": "battleship",
+			"rarity": "UR"
+		},
+		"bismarck": {
+			"name": "ビスマルク",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"tirpitz": {
+			"name": "ティルピッツ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"Thueringen": {
+			"name": "テューリンゲン",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"bruenhilde": {
+			"name": "ブリュンヒルデ",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"Luetzow": {
+			"name": "リュッツオウ",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"odin": {
+			"name": "オーディン",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"prinz_rupprecht": {
+			"name": "プリンツ・ループレヒト",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"gneisenau": {
+			"name": "グナイゼナウ",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"scharnhorst": {
+			"name": "シャルンホルスト",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"seydlitz": {
+			"name": "ザイドリッツ",
+			"type": "battlecruiser",
+			"rarity": "SR"
+		},
+		"elbe": {
+			"name": "エルベ",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"weser": {
+			"name": "ウェーザー",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"august_von_parseval": {
+			"name": "アウグスト・フォン・パーセヴァル",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"graf_zeppelin": {
+			"name": "グラーフ・ツェッペリン",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"peter_strasser": {
+			"name": "ペーター・シュトラッサー",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"zeppy": {
+			"name": "ツェッペリンちゃん",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"u37": {
+			"name": "U37",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"u47": {
+			"name": "U47",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"u81": {
+			"name": "U81",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"u96": {
+			"name": "U96",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"u101": {
+			"name": "U101",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"u73": {
+			"name": "U73",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"u110": {
+			"name": "U110",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"u410": {
+			"name": "U410",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"u552": {
+			"name": "U552",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"u556": {
+			"name": "U556",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"u557": {
+			"name": "U557",
+			"type": "submarine",
+			"rarity": "SR"
+		},
+		"u1206": {
+			"name": "U1206",
+			"type": "submarine",
+			"rarity": "SR"
+		}
+	},
+	"pran": {
+		"an_shan": {
+			"name": "鞍山",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": "ddg"
+		},
+		"chang_chun": {
+			"name": "長春",
+			"type": "destroyer",
+			"rarity": "SR",
+			"retrofit": "ddg"
+		},
+		"fu_shun": {
+			"name": "撫順",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"tai_yuan": {
+			"name": "太原",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"harbin": {
+			"name": "ハルビン",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"chao_ho": {
+			"name": "肇和",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"hai_chi": {
+			"name": "海圻",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"hai_tien": {
+			"name": "海天",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"ning_hai": {
+			"name": "寧海",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"ping_hai": {
+			"name": "平海",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"yat_sen": {
+			"name": "逸仙",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"ying_swei": {
+			"name": "応瑞",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"chen_hai": {
+			"name": "鎮海",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		}
+	},
+	"rn": {
+		"pompeo_magno": {
+			"name": "ポンペオ・マーニョ",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"alfredo_oriani": {
+			"name": "アルフレード・オリアーニ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"carabiniere": {
+			"name": "カラビニエーレ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"emanuele_pessagno": {
+			"name": "エマヌエーレ・ペッサーニョ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"libeccio": {
+			"name": "リベッチオ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"maestrale": {
+			"name": "マエストラーレ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"nicoloso_da_recco": {
+			"name": "ニコロソ・ダ・レッコ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"vincenzo_gioberti": {
+			"name": "ヴィンチェンツォ・ジョベルティ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"duca_degli_abruzzi": {
+			"name": "ドゥーカ・デッリ・アブルッツィ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"giuseppe_garibaldi": {
+			"name": "ジュゼッペ・ガリバルディ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"pola": {
+			"name": "ポーラ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"zara": {
+			"name": "ザラ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"bolzano": {
+			"name": "ボルツァーノ",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"trieste": {
+			"name": "トリエステ",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"trento": {
+			"name": "トレント",
+			"type": "heavy_cruiser",
+			"rarity": "R"
+		},
+		"littorio": {
+			"name": "リットリオ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"roma": {
+			"name": "ローマ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"vittorio_veneto": {
+			"name": "ヴィットリオ・ヴェネト",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"marco_polo": {
+			"name": "マルコ・ポーロ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"giulio_cesare": {
+			"name": "ジュリオ・チェザーレ",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"conte_di_cavour": {
+			"name": "コンテ・ディ・カブール",
+			"type": "battleship",
+			"rarity": "R"
+		},
+		"aquila": {
+			"name": "アクィラ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"impero": {
+			"name": "インペロ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"leonardo_da_vinci": {
+			"name": "レオナルド・ダ・ヴィンチ",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"torricelli": {
+			"name": "トリチェリ",
+			"type": "submarine",
+			"rarity": "SR"
+		}
+	},
+	"sn": {
+		"kiev": {
+			"name": "キエフ",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"tashkent": {
+			"name": "タシュケント",
+			"type": "destroyer",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"gremyashchy": {
+			"name": "グレミャーシュチ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"gromky": {
+			"name": "グロームキィ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"grozny": {
+			"name": "グロズヌイ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"minsk": {
+			"name": "ミンスク",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"soobrazitelny": {
+			"name": "ソーブラジーテリヌイ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"stremitelny": {
+			"name": "ストレミテルヌイ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"avrora": {
+			"name": "アヴローラ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"chapayev": {
+			"name": "チャパエフ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"kirov": {
+			"name": "キーロフ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"murmansk": {
+			"name": "ムルマンスク",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"pamiat_merkuria": {
+			"name": "パーミャチ・メルクーリヤ",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"retrofit": true
+		},
+		"tallinn": {
+			"name": "タリン",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"kronshtadt": {
+			"name": "クロンシュタット",
+			"type": "large_cruiser",
+			"rarity": "UR"
+		},
+		"sovetskaya_belorussiya": {
+			"name": "ソビエツカヤ・ベラルーシア",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"sovetskaya_rossiya": {
+			"name": "ソビエツカヤ・ロシア",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"arkhangelsk": {
+			"name": "アルハンゲリスク",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"gangut": {
+			"name": "ガングート",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"chkalov": {
+			"name": "チカロフ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"volga": {
+			"name": "ヴォルガ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		}
+	},
+	"ffnf": {
+		"le_terrible": {
+			"name": "ル・テリブル",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"le_triomphant": {
+			"name": "ル・トリオンファン",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"le_temeraire": {
+			"name": "ル・テレメール",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"lopiniatre": {
+			"name": "ルピニャート",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"maille_breze": {
+			"name": "マイレ・ブレゼ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"forbin": {
+			"name": "フォルバン",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"emile_bertin": {
+			"name": "エミール・ベルタン",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"retrofit": true
+		},
+		"jeanne_darc": {
+			"name": "ジャンヌ・ダルク",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"saint_louis": {
+			"name": "サン・ルイ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"brest": {
+			"name": "ブレスト",
+			"type": "large_cruiser",
+			"rarity": "UR"
+		},
+		"champagne": {
+			"name": "シャンパーニュ",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"richelieu": {
+			"name": "リシュリュー",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"bearn": {
+			"name": "ベアルン",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
+		"surcouf": {
+			"name": "シュルクーフ",
+			"type": "submarine",
+			"rarity": "SR"
+		}
+	},
+	"mnf": {
+		"le_malin": {
+			"name": "ル・マラン",
+			"mu": true,
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"lindomptable": {
+			"name": "ランドンターブル",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"tartu": {
+			"name": "タルテュ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"vauquelin": {
+			"name": "ヴォークラン",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"le_mars": {
+			"name": "ル・マルス",
+			"type": "destroyer",
+			"rarity": "R",
+			"retrofit": true
+		},
+		"la_galissonniere": {
+			"name": "ラ・ガリソニエール",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"algerie": {
+			"name": "アルジェリー",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"foch": {
+			"name": "フォッシュ",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"gascogne": {
+			"name": "ガスコーニュ",
+			"type": "battleship",
+			"rarity": "SSR",
+			"mu": true
+		},
+		"jean_bart": {
+			"name": "ジャン・バール",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"dunkerque": {
+			"name": "ダンケルク",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"joffre": {
+			"name": "ジョッフル",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		}
+	},
+	"meta": {
+		"helena": {
+			"name": "ヘレナ(META)",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"memphis": {
+			"name": "メンフィス(META)",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"trento": {
+			"name": "トレント(META)",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"fusou": {
+			"name": "扶桑(META)",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"yamashiro": {
+			"name": "山城(META)",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"gneisenau": {
+			"name": "グナイゼナウ(META)",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"scharnhorst": {
+			"name": "シャルンホルスト(META)",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"repulse": {
+			"name": "レパルス(META)",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"hiyou": {
+			"name": "飛鷹(META)",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"junyou": {
+			"name": "隼鷹(META)",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"hiryuu": {
+			"name": "飛龍(META)",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"ark_royal": {
+			"name": "アーク・ロイヤル(META)",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"souryuu": {
+			"name": "蒼龍(META)",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		}
+	},
+	"other": {
+		"specialized_bulin_custom_mk_iii": {
+			"name": "特装型ブリMKⅢ",
+			"type": "destroyer",
+			"rarity": "UR"
+		},
+		"white_heart": {
+			"name": "ホワイトハート",
+			"type": "destroyer",
+			"rarity": "SSR",
+			"collabo": "neptunia"
+		},
+		"nekone": {
+			"name": "ネコネ",
+			"type": "destroyer",
+			"rarity": "SSR",
+			"collabo": "utawarerumono"
+		},
+		"shirakami_fubuki": {
+			"name": "白上フブキ",
+			"type": "destroyer",
+			"rarity": "SSR",
+			"collabo": "hololive"
+		},
+		"marie_rose": {
+			"name": "マリー・ローズ",
+			"type": "destroyer",
+			"rarity": "SSR",
+			"collabo": "venusvacation"
+		},
+		"prototype_bulin_mk_ii": {
+			"name": "試作型ブリMKⅡ",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
+		"blanc": {
+			"name": "ブラン",
+			"type": "destroyer",
+			"rarity": "SR",
+			"collabo": "neptunia"
+		},
+		"kizuna_ai": {
+			"name": "キズナアイ",
+			"type": "destroyer",
+			"rarity": "SR",
+			"collabo": "kizunaai"
+		},
+		"natsuiro_matsuri": {
+			"name": "夏色まつり",
+			"type": "destroyer",
+			"rarity": "SR",
+			"collabo": "hololive"
+		},
+		"universal_bulin": {
+			"name": "汎用型ブリ",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"purple_heart": {
+			"name": "パープルハート",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"collabo": "neptunia"
+		},
+		"rurutie": {
+			"name": "ルルティエ",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"collabo": "utawarerumono"
+		},
+		"misaki": {
+			"name": "みさき",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"collabo": "venusvacation"
+		},
+		"haruka_amami": {
+			"name": "天海春香",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"collabo": "theidolmaster"
+		},
+		"rikka_takarada": {
+			"name": "宝多六花",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"collabo": "ssss"
+		},
+		"neptune": {
+			"name": "ネプテューヌ",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"collabo": "neptunia"
+		},
+		"monica": {
+			"name": "モニカ",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"collabo": "venusvacation"
+		},
+		"hass": {
+			"name": "はっす",
+			"type": "light_cruiser",
+			"rarity": "SR",
+			"collabo": "ssss"
+		},
+		"black_heart": {
+			"name": "ブラックハート",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "neptunia"
+		},
+		"kuon": {
+			"name": "クオン",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "utawarerumono"
+		},
+		"elegant_kizuna_ai": {
+			"name": "キズナアイ・エレガント",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "kizunaai"
+		},
+		"kasumi": {
+			"name": "かすみ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "venusvacation"
+		},
+		"azusa_miura": {
+			"name": "三浦あずさ",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "theidolmaster"
+		},
+		"yume_minami": {
+			"name": "南夢芽",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "ssss"
+		},
+		"noire": {
+			"name": "ノワール",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"collabo": "neptunia"
+		},
+		"nakiri_ayame": {
+			"name": "百鬼あやめ",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"collabo": "hololive"
+		},
+		"namiko": {
+			"name": "なみこ",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"collabo": "ssss"
+		},
+		"ritsuko_akizuki": {
+			"name": "秋月律子",
+			"type": "munition_ship",
+			"rarity": "SR",
+			"collabo": "theidolmaster"
+		},
+		"super_gamer_kizuna_ai": {
+			"name": "キズナアイ・スーパーゲーマー",
+			"type": "battleship",
+			"rarity": "SSR",
+			"collabo": "kizunaai"
+		},
+		"honoka": {
+			"name": "ほのか",
+			"type": "battleship",
+			"rarity": "SSR",
+			"collabo": "venusvacation"
+		},
+		"iori_minase": {
+			"name": "水瀬伊織",
+			"type": "battleship",
+			"rarity": "SSR",
+			"collabo": "theidolmaster"
+		},
+		"akane_shinjo": {
+			"name": "新条アカネ",
+			"type": "battleship",
+			"rarity": "SSR",
+			"collabo": "ssss"
+		},
+		"nagisa": {
+			"name": "なぎさ",
+			"type": "battleship",
+			"rarity": "SR",
+			"collabo": "venusvacation"
+		},
+		"mujina": {
+			"name": "ムジナ",
+			"type": "battleship",
+			"rarity": "SR",
+			"collabo": "ssss"
+		},
+		"uruuru": {
+			"name": "ウルール",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "utawarerumono"
+		},
+		"saraana": {
+			"name": "サラァナ",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "utawarerumono"
+		},
+		"murasaki_shion": {
+			"name": "紫咲シオン",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "hololive"
+		},
+		"green_heart": {
+			"name": "グリーンハート",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "neptunia"
+		},
+		"anniversary_kizuna_ai": {
+			"name": "キズナアイ・アニバーサリー",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "kizunaai"
+		},
+		"tokino_sora": {
+			"name": "ときのそら",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "hololive"
+		},
+		"chihaya_kisaragi": {
+			"name": "如月千早",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "theidolmaster"
+		},
+		"chise_asukagawa": {
+			"name": "飛鳥川ちせ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "ssss"
+		},
+		"vert": {
+			"name": "ベール",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "neptunia"
+		},
+		"fumiruiru": {
+			"name": "フミルィル",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "utawarerumono"
+		},
+		"ookami_mio": {
+			"name": "大神ミオ",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "hololive"
+		},
+		"nyotengu": {
+			"name": "女天狗",
+			"type": "aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "venusvacation"
+		},
+		"minato_aqua": {
+			"name": "湊あくあ",
+			"type": "submarine",
+			"rarity": "SSR",
+			"collabo": "hololive"
+		},
+		"ami_futami": {
+			"name": "双海亜美",
+			"type": "submarine",
+			"rarity": "SR",
+			"collabo": "theidolmaster"
+		},
+		"mami_futami": {
+			"name": "双海真美",
+			"type": "submarine",
+			"rarity": "SR",
+			"collabo": "theidolmaster"
+		}
+	}
+}

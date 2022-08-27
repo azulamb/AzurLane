@@ -1,6 +1,6 @@
 /// <reference path="../types.d.ts" />
-/// <reference path="../components/vanguard-type.ts" />
-/// <reference path="../components/ship-type.ts" />
+/// <reference path="../modules/vanguard-type.ts" />
+/// <reference path="../modules/ship-type.ts" />
 
 type GENERAL_AUGMENT_MODULE_KEY =
 	| 'Kunai'
