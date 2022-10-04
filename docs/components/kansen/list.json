@@ -304,7 +304,8 @@
 		"juneau": {
 			"name": "ジュノー",
 			"type": "light_cruiser",
-			"rarity": "R"
+			"rarity": "R",
+			"retrofit": true
 		},
 		"marblehead": {
 			"name": "マーブルヘッド",
@@ -992,7 +993,8 @@
 		"shropshire": {
 			"name": "シュロップシャー",
 			"type": "heavy_cruiser",
-			"rarity": "R"
+			"rarity": "R",
+			"retrofit": true
 		},
 		"suffolk": {
 			"name": "サフォーク",
@@ -1213,6 +1215,11 @@
 			"rarity": "SSR",
 			"retrofit": true
 		},
+		"wakatsuki": {
+			"name": "若月",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
 		"ayanami": {
 			"name": "綾波",
 			"type": "destroyer",
@@ -1283,6 +1290,11 @@
 		},
 		"yoizuki": {
 			"name": "宵月",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"miyuki": {
+			"name": "深雪",
 			"type": "destroyer",
 			"rarity": "SR"
 		},
@@ -1473,6 +1485,11 @@
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
+		"sakawa": {
+			"name": "酒匂",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
 		"agano": {
 			"name": "阿賀野",
 			"type": "light_cruiser",
@@ -1626,6 +1643,11 @@
 			"name": "樫野",
 			"type": "munition_ship",
 			"rarity": "SR"
+		},
+		"musashi": {
+			"name": "武蔵",
+			"type": "battleship",
+			"rarity": "UR"
 		},
 		"mikasa": {
 			"name": "三笠",
@@ -2644,6 +2666,11 @@
 		}
 	},
 	"meta": {
+		"hunter": {
+			"name": "ハンター",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
 		"helena": {
 			"name": "ヘレナ(META)",
 			"type": "light_cruiser",
@@ -2681,6 +2708,11 @@
 		},
 		"repulse": {
 			"name": "レパルス(META)",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
+		"renown": {
+			"name": "レナウン",
 			"type": "battlecruiser",
 			"rarity": "SSR"
 		},
