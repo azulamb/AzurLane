@@ -13,5 +13,6 @@ type SHIP_TYPE =
 	| 'Monitor'
 	| 'Submarine'
 	| 'Repair'
-	| 'Munition';
+	| 'Munition'
+	| 'SailingFrigate';
 type ALL_SHIP_TYPE = SHIP_TYPE | 'Cruiser' | 'LightCarrier' | 'Carrier';

@@ -41,9 +41,10 @@ type KANSEN_TYPE =
 	| 'monitor'
 	| 'repair_ship'
 	| 'submarine'
-	| 'submarine_carrier';
+	| 'submarine_carrier'
+	| 'sailing_frigate';
 type KANSEN_FLEET_TYPE = 'main' | 'vanguard' | 'submarine';
-type AFFILIATION_TYPE = 'uss' | 'hms' | 'ijn' | 'kms' | 'pran' | 'rn' | 'sn' | 'ffnf' | 'mnf' | 'meta' | 'other';
+type AFFILIATION_TYPE = 'uss' | 'hms' | 'ijn' | 'kms' | 'pran' | 'rn' | 'sn' | 'ffnf' | 'mnf' | 'mot' | 'meta' | 'other';
 type ALL_AFFILIATION_TYPE =
 	| 'union'
 	| 'eagleunion'
@@ -71,6 +72,8 @@ type ALL_AFFILIATION_TYPE =
 	| 'vichya'
 	| 'vichyadominion'
 	| 'vichya_dominion'
+	| 'mot'
+	| 'tempesta'
 	| 'venus'
 	| 'venusvacation'
 	| 'venus_vacation'
@@ -149,6 +152,7 @@ interface KanSenElement extends HTMLElement {
 		'repair_ship',
 		'submarine',
 		'submarine_carrier',
+		'sailing_frigate',
 	];
 	const KANSEN_FLEET_TYPES: KANSEN_FLEET_TYPE[] = ['main', 'vanguard', 'submarine'];
 	const KANSEN_FLEET_MAIN = [
@@ -172,6 +176,7 @@ interface KanSenElement extends HTMLElement {
 	const KANSEN_FLEET_SUBMARINE = [
 		'submarine',
 		'submarine_carrier',
+		'sailing_frigate',
 	];
 	const KANSEN_OPTIONS: KANSEN_OPTION[] = ['mu', 'battleship', 'main', 'vanguard'];
 	const CONVERT_TABLE: { [keys: string]: AFFILIATION_TYPE } = {
@@ -210,6 +215,8 @@ interface KanSenElement extends HTMLElement {
 		vichya: 'mnf',
 		vichyadominion: 'mnf',
 		vichya_dominion: 'mnf',
+		mot: 'mot',
+		tempesta: 'mot',
 		meta: 'meta',
 	};
 	const AFFILIATION_TYPES: ALL_AFFILIATION_TYPE[] = [
@@ -248,6 +255,8 @@ interface KanSenElement extends HTMLElement {
 		'vichya',
 		'vichyadominion',
 		'vichya_dominion',
+		'mot',
+		'tempesta',
 		'meta',
 		'other',
 		'venus',

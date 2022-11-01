@@ -39,6 +39,7 @@
         'repair_ship',
         'submarine',
         'submarine_carrier',
+        'sailing_frigate',
     ];
     const KANSEN_FLEET_TYPES = ['main', 'vanguard', 'submarine'];
     const KANSEN_FLEET_MAIN = [
@@ -62,6 +63,7 @@
     const KANSEN_FLEET_SUBMARINE = [
         'submarine',
         'submarine_carrier',
+        'sailing_frigate',
     ];
     const KANSEN_OPTIONS = ['mu', 'battleship', 'main', 'vanguard'];
     const CONVERT_TABLE = {
@@ -100,6 +102,8 @@
         vichya: 'mnf',
         vichyadominion: 'mnf',
         vichya_dominion: 'mnf',
+        mot: 'mot',
+        tempesta: 'mot',
         meta: 'meta',
     };
     const AFFILIATION_TYPES = [
@@ -138,6 +142,8 @@
         'vichya',
         'vichyadominion',
         'vichya_dominion',
+        'mot',
+        'tempesta',
         'meta',
         'other',
         'venus',

@@ -660,6 +660,11 @@
 			"type": "destroyer",
 			"rarity": "SSR"
 		},
+		"janus": {
+			"name": "ジェーナス",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
 		"amazon": {
 			"name": "アマゾン",
 			"type": "destroyer",
@@ -873,6 +878,11 @@
 		},
 		"enterprise": {
 			"name": "エンタープライズ",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"manchester": {
+			"name": "マンチェスター",
 			"type": "light_cruiser",
 			"rarity": "SR"
 		},
@@ -1095,6 +1105,11 @@
 		},
 		"perseus": {
 			"name": "パーシュース",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"albion": {
+			"name": "アルビオン",
 			"type": "light_aircraft_carrier",
 			"rarity": "SSR"
 		},
@@ -1602,6 +1617,11 @@
 			"type": "heavy_cruiser",
 			"rarity": "SR"
 		},
+		"haguro": {
+			"name": "羽黒",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
 		"ashigara": {
 			"name": "足柄",
 			"type": "heavy_cruiser",
@@ -2060,6 +2080,11 @@
 		},
 		"yorck": {
 			"name": "ヨルク",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"little_spee": {
+			"name": "シュペーちゃん",
 			"type": "heavy_cruiser",
 			"rarity": "SR"
 		},
@@ -2739,6 +2764,13 @@
 		"souryuu": {
 			"name": "蒼龍(META)",
 			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		}
+	},
+	"mot": {
+		"royal_fortune": {
+			"name": "ロイヤル・フォーチュン",
+			"type": "sailing_frigate",
 			"rarity": "SSR"
 		}
 	},
