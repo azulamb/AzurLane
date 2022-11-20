@@ -300,14 +300,14 @@ const Common = {
                 ':host([type="Repair"]) { --back: #90B253; }',
                 ':host([type="Munition"]) { --back: #90B253; }',
                 ':host([type="SailingFrigate"]) { --back: #705744; }',
-                ':host( :not([type="Destroyer"]):not([type="Submarine"]) ) path.Destroyer { display: none; }',
-                ':host( :not([type="Cruiser"]):not([type="LightCruiser"]):not([type="HeavyCruiser"]) ) path.Cruiser { display: none; }',
-                ':host( :not([type="HeavyCruiser"]) ) path.HeavyCruiser { display: none; }',
-                ':host( :not([type="Battleship"]):not([type="BattleCruiser"]):not([type="LargeCruiser"]):not([type="Monitor"]) ) path.Battleship { display: none; }',
-                ':host( :not([type="LightCarrier"]):not([type="Carrier"]):not([type="LightAircraftCarrier"]):not([type="AircraftCarrier"]):not([type="AviationBattleship"]):not([type="SubmarineCarrier"]) ) path.Carrier { display: none; }',
-                ':host( :not([type="Munition"]) ) path.Munition { display: none; }',
-                ':host( :not([type="Repair"]) ) path.Repair { display: none; }',
-                ':host( :not([type="SailingFrigate"]) ) path.SailingFrigate { display: none; }',
+                ':host(:not([type="Destroyer"]):not([type="Submarine"])) path.Destroyer { display: none; }',
+                ':host(:not([type="Cruiser"]):not([type="LightCruiser"]):not([type="HeavyCruiser"])) path.Cruiser { display: none; }',
+                ':host(:not([type="HeavyCruiser"])) path.HeavyCruiser { display: none; }',
+                ':host(:not([type="Battleship"]):not([type="BattleCruiser"]):not([type="LargeCruiser"]):not([type="Monitor"])) path.Battleship { display: none; }',
+                ':host(:not([type="LightCarrier"]):not([type="Carrier"]):not([type="LightAircraftCarrier"]):not([type="AircraftCarrier"]):not([type="AviationBattleship"]):not([type="SubmarineCarrier"])) path.Carrier { display: none; }',
+                ':host(:not([type="Munition"])) path.Munition { display: none; }',
+                ':host(:not([type="Repair"])) path.Repair { display: none; }',
+                ':host(:not([type="SailingFrigate"])) path.SailingFrigate { display: none; }',
             ].join('');
             if (this.hasAttribute('type')) {
                 this.type = this.type;

@@ -2242,6 +2242,38 @@
 			"name": "U1206",
 			"type": "submarine",
 			"rarity": "SR"
+		},
+		"karlsruhe": {
+			"name": "",
+			"type": "",
+			"rarity": "",
+			"retrofit": true
+		},
+		"koeln": {
+			"name": "",
+			"type": "",
+			"rarity": "",
+			"retrofit": true
+		},
+		"koenigsberg": {
+			"name": "",
+			"type": "",
+			"rarity": ""
+		},
+		"luetzow": {
+			"name": "",
+			"type": "",
+			"rarity": ""
+		},
+		"nuernberg": {
+			"name": "",
+			"type": "",
+			"rarity": ""
+		},
+		"thueringen": {
+			"name": "",
+			"type": "",
+			"rarity": ""
 		}
 	},
 	"pran": {

@@ -56,7 +56,7 @@ for await (const dirEntry of Deno.readDir(targetDir)) {
 		const fileName: string = file.split('.')[0];
 
 		const key = fileName.replace(/(_vanguard|_main)$/, '').replace(/(_retrofit|_mu|_battleship)$/, '');
-		console.log(key);
+		//console.log(key);
 		if (!kansen[affiliation][key]) {
 			kansen[affiliation][key] = { name: '', type: '', rarity: '' };
 		} else {
@@ -78,6 +78,12 @@ for await (const dirEntry of Deno.readDir(targetDir)) {
 		}
 		if (fileName.match(/_retrofit/) && !kansen[affiliation][key].retrofit) {
 			kansen[affiliation][key].retrofit = true;
+		}
+		const key2 = key.replace( /[A-Z]/g, ( c ) => {
+			return String.fromCharCode( c.charCodeAt( 0 ) | 32 );
+		} );
+		if (key!==key2) {
+			console.warn(`WARNING: ${key}`);
 		}
 	}
 }
@@ -117,7 +123,7 @@ for await (const dirEntry of Deno.readDir(mdir)) {
 	));
 }*/
 
-console.log(kansen);
+//console.log(kansen);
 console.log(join(targetDir, '../meowfficer'));
 
 const sortAffiliationKeys = ['uss', 'hms', 'ijn', 'kms', 'pran', 'rn', 'sn', 'ffnf', 'mnf', 'meta'];

@@ -44,6 +44,7 @@ interface FleetFormationElement extends HTMLElement {
 			class extends HTMLElement implements FleetFormationElement {
 				protected contents: HTMLElement;
 				protected dialog: HTMLDialogElement;
+				protected filter: HTMLElement;
 				protected meowfficers: SVGImageElement[] = [];
 				protected kansens: SVGImageElement[] = [];
 				protected fleetTitle: SVGTextContentElement;
@@ -84,7 +85,11 @@ interface FleetFormationElement extends HTMLElement {
 						'dialog > div > button > span { background: rgba(0,0,0,0.6); display: block; width: 100%; height: 1rem; color: #fff; position: absolute; bottom: 0; overflow: auto; white-space: nowrap; scrollbar-width: none; }',
 						'dialog > div > button > span::-webkit-scrollbar { display: none; }',
 						'dialog > button { position: absolute; left: calc(100% - 5vw - 1rem); top: calc(5vh - 1rem); width: 2rem; height: 2rem; border-radius: 50%; padding: 0; border: none; outline: none; font-size: 2rem; box-sizing: border-box; }',
+						'dialog > button.filter { left: calc(5vw + 1rem); background: #2d344b; color: #efefef; border: 1px solid #efefef; font-size: 1rem; width: auto; height: auto; line-height: 1.5rem; border-radius: 1px; display: block; padding: 0.25rem 0.5rem; }',
+						'dialog > button.filter::before { content: "Filter"; font-size: 1rem; }',
 						'dialog::backdrop { background: rgba(0, 0, 0, 0.7); }',
+						'#filter { width: 100%; height: 0; overflow: hidden; }',
+						'#filter.open { height: auto; }',
 						'button { cursor: pointer; }',
 					].join('');
 
@@ -196,17 +201,27 @@ interface FleetFormationElement extends HTMLElement {
 						event.stopPropagation();
 						this.dialog.close();
 					});
+					const openFilter = document.createElement('button');
+					openFilter.classList.add('filter');
+					openFilter.addEventListener('click', (event) => {
+						event.stopPropagation();
+						this.filter.classList.toggle('open');
+					});
 					const dialog = document.createElement('div');
 					dialog.addEventListener('click', (event) => {
 						event.stopPropagation();
 					});
 					this.dialog = document.createElement('dialog');
 					this.dialog.appendChild(dialog);
+					this.dialog.appendChild(openFilter);
 					this.dialog.appendChild(close);
 					this.dialog.addEventListener('click', (event) => {
 						event.stopPropagation();
 						this.dialog.close();
 					});
+
+					this.filter = document.createElement('div');
+					this.filter.id = 'filter';
 
 					this.contents = document.createElement('div');
 					this.contents.appendChild(this.canvas);
@@ -233,6 +248,7 @@ interface FleetFormationElement extends HTMLElement {
 
 				protected renderDialogContents(contents: HTMLElement, buttons: HTMLButtonElement[], callback: (button: HTMLButtonElement) => unknown) {
 					contents.innerHTML = '';
+					contents.appendChild(this.filter);
 					const button = document.createElement('button');
 					contents.appendChild(button);
 					button.addEventListener('click', () => {
