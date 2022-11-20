@@ -2003,7 +2003,7 @@
 			"type": "light_cruiser",
 			"rarity": "SR"
 		},
-		"Nuernberg": {
+		"nuernberg": {
 			"name": "ニュルンベルク",
 			"type": "light_cruiser",
 			"rarity": "SR"
@@ -2014,19 +2014,19 @@
 			"rarity": "R",
 			"retrofit": true
 		},
-		"Karlsruhe": {
+		"karlsruhe": {
 			"name": "カールスルーエ",
 			"type": "light_cruiser",
 			"rarity": "N",
 			"retrofit": true
 		},
-		"Koeln": {
+		"koeln": {
 			"name": "ケルン",
 			"type": "light_cruiser",
 			"rarity": "N",
 			"retrofit": true
 		},
-		"Koenigsberg": {
+		"koenigsberg": {
 			"name": "ケーニヒスベルク",
 			"type": "light_cruiser",
 			"rarity": "N"
@@ -2113,7 +2113,7 @@
 			"type": "battleship",
 			"rarity": "SSR"
 		},
-		"Thueringen": {
+		"thueringen": {
 			"name": "テューリンゲン",
 			"type": "battleship",
 			"rarity": "SR"
@@ -2123,7 +2123,7 @@
 			"type": "battlecruiser",
 			"rarity": "SSR"
 		},
-		"Luetzow": {
+		"luetzow": {
 			"name": "リュッツオウ",
 			"type": "battlecruiser",
 			"rarity": "SSR"
@@ -2242,38 +2242,6 @@
 			"name": "U1206",
 			"type": "submarine",
 			"rarity": "SR"
-		},
-		"karlsruhe": {
-			"name": "",
-			"type": "",
-			"rarity": "",
-			"retrofit": true
-		},
-		"koeln": {
-			"name": "",
-			"type": "",
-			"rarity": "",
-			"retrofit": true
-		},
-		"koenigsberg": {
-			"name": "",
-			"type": "",
-			"rarity": ""
-		},
-		"luetzow": {
-			"name": "",
-			"type": "",
-			"rarity": ""
-		},
-		"nuernberg": {
-			"name": "",
-			"type": "",
-			"rarity": ""
-		},
-		"thueringen": {
-			"name": "",
-			"type": "",
-			"rarity": ""
 		}
 	},
 	"pran": {

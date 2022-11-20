@@ -79,10 +79,10 @@ for await (const dirEntry of Deno.readDir(targetDir)) {
 		if (fileName.match(/_retrofit/) && !kansen[affiliation][key].retrofit) {
 			kansen[affiliation][key].retrofit = true;
 		}
-		const key2 = key.replace( /[A-Z]/g, ( c ) => {
-			return String.fromCharCode( c.charCodeAt( 0 ) | 32 );
-		} );
-		if (key!==key2) {
+		const key2 = key.replace(/[A-Z]/g, (c) => {
+			return String.fromCharCode(c.charCodeAt(0) | 32);
+		});
+		if (key !== key2) {
 			console.warn(`WARNING: ${key}`);
 		}
 	}
