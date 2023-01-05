@@ -13,6 +13,8 @@
 	<script src="./app.js" defer></script>
 	<style>
 section-pages{--home-icon: url(./favicon.svg);}
+table#siren_operation_shop tr > td:first-child {min-width:1rem;}
+table#siren_operation_shop input[type="number"]{width:100%;box-sizing:border-box;}
 table.awaking tr.money{background:rgb(255,223,0,0.5);}
 table.augment_module_lvup td.money{background:rgb(255,223,0,0.5);}
 table.augment_module_lvup td.core{min-width:1.5rem;text-align:center;}
@@ -46,6 +48,21 @@ const BOOKS = [
 	{ rarity: 1, hours: 2, exp: 100, bonus: 150 },
 ];
 const SKILL_EXP = [ 100, 200, 400, 800, 1400, 2200, 3200, 4400, 5800 ];
+const SIREN_OPERATION_SHOP = [
+	{ price: 100, amount: 30, name: '大作戦指令書' },
+	{ price: 1000, amount: 1, name: '秘密海域情報記録装置' },
+	{ price: 500, amount: 2, name: '支援教科書T4' },
+	{ price: 500, amount: 2, name: '防御教科書T4' },
+	{ price: 500, amount: 2, name: '攻撃教科書T4' },
+	{ price: 250, amount: 10, name: '資金x1000' },
+	{ price: 80, amount: 3, name: '海域座標記録装置R5' },
+	{ price: 160, amount: 2, name: '海域座標記録装置R6' },
+	{ price: 400, amount: 2, name: 'セイレーン座標記録装置R5' },
+	{ price: 800, amount: 1, name: 'セイレーン座標記録装置R6' },
+	{ price: 50, amount: 6, name: '上級調整サンプル(攻撃)' },
+	{ price: 50, amount: 6, name: '上級調整サンプル(耐久)' },
+	{ price: 50, amount: 6, name: '上級調整サンプル(回復)' },
+];
 const AWAKING = [
 	{
 		N: { money: 600, chips: 60 },
@@ -320,6 +337,12 @@ const FLEET_FORCE = [
 			<h3>スキル</h3>
 			<div>
 				<skill-exp id="skill_lvup"></skill-exp>
+			</div>
+
+			<h3>セイレーン作戦</h3>
+			<div>
+				<h4>ショップ</h4>
+				<table id="siren_operation_shop"></table>
 			</div>
 
 			<h3>認識覚醒</h3>

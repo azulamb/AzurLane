@@ -28,7 +28,15 @@ type NATION_TYPE =
 	| 'tempesta'
 	| 'universal';
 type EQUIP_RARITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
-type EQUIP_GROUP = 'destroyer_guns' | 'anti_submarine_warfare' | 'cargo';
+type EQUIP_GROUP =
+	| 'destroyer_gun'
+	| 'heavy_cruiser_gun'
+	| 'submarine_torpedo'
+	| 'fighter'
+	| 'dive_bomber'
+	| 'torpedo_bomber'
+	| 'anti_submarine_warfare'
+	| 'cargo';
 
 interface EquipData {
 	tier: number;
@@ -69,7 +77,12 @@ const sortTypeKeys: SHIP_TYPE[] = [
 ];
 
 const sortGroupKeys: EQUIP_GROUP[] = [
-	'destroyer_guns',
+	'destroyer_gun',
+	'heavy_cruiser_gun',
+	'submarine_torpedo',
+	'fighter',
+	'dive_bomber',
+	'torpedo_bomber',
 	'anti_submarine_warfare',
 	'cargo',
 ];

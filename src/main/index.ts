@@ -8,6 +8,7 @@
 /// <reference path="../funcs/augment_modules.ts" />
 /// <reference path="../funcs/parts_lvup.ts" />
 /// <reference path="../funcs/fleet_force.ts" />
+/// <reference path="../funcs/siren_operation_shop.ts" />
 
 Promise.all([
 	customElements.whenDefined('section-pages'),
@@ -47,5 +48,6 @@ Promise.all([
 		DrawPartsLvUp(<HTMLElement> document.getElementById('parts_lvup'));
 		AugmentModules(<HTMLElement> document.getElementById('augment_modules'));
 		DrawFleetForce(<HTMLElement> document.getElementById('freet_force'));
+		DrawSirenOperationShop(<HTMLTableElement> document.getElementById('siren_operation_shop'));
 	}, 100);
 });
