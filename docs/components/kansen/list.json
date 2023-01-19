@@ -113,7 +113,8 @@
 			"name": "ハムマン",
 			"type": "destroyer",
 			"rarity": "R",
-			"retrofit": true
+			"retrofit": true,
+			"ii": "SR"
 		},
 		"hazelwood": {
 			"name": "ヘイゼルウッド",
@@ -411,7 +412,8 @@
 		"northampton": {
 			"name": "ノーザンプトン",
 			"type": "heavy_cruiser",
-			"rarity": "R"
+			"rarity": "R",
+			"ii": "SSR"
 		},
 		"portland": {
 			"name": "ポートランド",
@@ -548,7 +550,8 @@
 			"name": "ラングレー",
 			"type": "light_aircraft_carrier",
 			"rarity": "N",
-			"retrofit": true
+			"retrofit": true,
+			"ii": "SR"
 		},
 		"ranger": {
 			"name": "レンジャー",
@@ -589,7 +592,8 @@
 		"hornet": {
 			"name": "ホーネット",
 			"type": "aircraft_carrier",
-			"rarity": "SR"
+			"rarity": "SR",
+			"ii": "SSR"
 		},
 		"lexington": {
 			"name": "レキシントン",
@@ -610,7 +614,8 @@
 		"yorktown": {
 			"name": "ヨークタウン",
 			"type": "aircraft_carrier",
-			"rarity": "SR"
+			"rarity": "SR",
+			"ii": "UR"
 		},
 		"wasp": {
 			"name": "ワスプ",
@@ -1110,6 +1115,11 @@
 		},
 		"albion": {
 			"name": "アルビオン",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"theseus": {
+			"name": "シーシュース",
 			"type": "light_aircraft_carrier",
 			"rarity": "SSR"
 		},
@@ -2302,7 +2312,8 @@
 		"yat_sen": {
 			"name": "逸仙",
 			"type": "light_cruiser",
-			"rarity": "SR"
+			"rarity": "SR",
+			"retrofit": true
 		},
 		"ying_swei": {
 			"name": "応瑞",
@@ -2311,6 +2322,11 @@
 		},
 		"chen_hai": {
 			"name": "鎮海",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"hwah_jah": {
+			"name": "華甲",
 			"type": "light_aircraft_carrier",
 			"rarity": "SR"
 		}
@@ -2496,6 +2512,11 @@
 		},
 		"kirov": {
 			"name": "キーロフ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"kuybyshev": {
+			"name": "クイビシェフ",
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
@@ -2696,6 +2717,11 @@
 			"type": "destroyer",
 			"rarity": "SR"
 		},
+		"fortune": {
+			"name": "フォーチュン(META)",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
 		"helena": {
 			"name": "ヘレナ(META)",
 			"type": "light_cruiser",
@@ -2710,6 +2736,11 @@
 			"name": "トレント(META)",
 			"type": "heavy_cruiser",
 			"rarity": "SR"
+		},
+		"arizona": {
+			"name": "アリゾナ(META)",
+			"type": "battleship",
+			"rarity": "SSR"
 		},
 		"fusou": {
 			"name": "扶桑(META)",
@@ -2862,6 +2893,11 @@
 			"rarity": "SSR",
 			"collabo": "ssss"
 		},
+		"reisalin_stout": {
+			"name": "ライザリン・シュタウト",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
 		"neptune": {
 			"name": "ネプテューヌ",
 			"type": "light_cruiser",
@@ -2934,6 +2970,16 @@
 			"rarity": "SR",
 			"collabo": "ssss"
 		},
+		"lila_decyrus": {
+			"name": "リラ・ディザイアす",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"kala_ideas": {
+			"name": "カラ・イデアス",
+			"type": "large_cruiser",
+			"rarity": "SSR"
+		},
 		"ritsuko_akizuki": {
 			"name": "秋月律子",
 			"type": "munition_ship",
@@ -2964,6 +3010,11 @@
 			"rarity": "SSR",
 			"collabo": "ssss"
 		},
+		"patricia_abelheim": {
+			"name": "パトリツィア・アーベルハイム",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
 		"nagisa": {
 			"name": "なぎさ",
 			"type": "battleship",
@@ -2975,6 +3026,11 @@
 			"type": "battleship",
 			"rarity": "SR",
 			"collabo": "ssss"
+		},
+		"klaudia_valentz": {
+			"name": "クラウディア・バレンツ",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR"
 		},
 		"uruuru": {
 			"name": "ウルール",
@@ -3047,6 +3103,11 @@
 			"type": "aircraft_carrier",
 			"rarity": "SR",
 			"collabo": "venusvacation"
+		},
+		"serri_glaus": {
+			"name": "セリ・グロース",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
 		},
 		"minato_aqua": {
 			"name": "湊あくあ",

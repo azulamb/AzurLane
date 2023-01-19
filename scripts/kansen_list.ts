@@ -9,6 +9,7 @@ interface KansenData {
 	battleship?: boolean;
 	research?: boolean;
 	retrofit?: boolean | string;
+	ii?: string;
 }
 
 const meta = import.meta;
@@ -55,7 +56,8 @@ for await (const dirEntry of Deno.readDir(targetDir)) {
 		imgs.push(join(dir, file));
 		const fileName: string = file.split('.')[0];
 
-		const key = fileName.replace(/(_vanguard|_main)$/, '').replace(/(_retrofit|_mu|_battleship)$/, '');
+		const isBulin = fileName === 'prototype_bulin_mk_ii' || fileName === 'specialized_bulin_custom_mk_iii';
+		const key = isBulin ? fileName : fileName.replace(/(_vanguard|_main)$/, '').replace(/(_retrofit|_mu|_battleship|_ii)$/, '');
 		//console.log(key);
 		if (!kansen[affiliation][key]) {
 			kansen[affiliation][key] = { name: '', type: '', rarity: '' };
@@ -78,6 +80,9 @@ for await (const dirEntry of Deno.readDir(targetDir)) {
 		}
 		if (fileName.match(/_retrofit/) && !kansen[affiliation][key].retrofit) {
 			kansen[affiliation][key].retrofit = true;
+		}
+		if (fileName.match(/_ii/) && !kansen[affiliation][key].ii && !isBulin) {
+			kansen[affiliation][key].ii = '';
 		}
 		const key2 = key.replace(/[A-Z]/g, (c) => {
 			return String.fromCharCode(c.charCodeAt(0) | 32);
