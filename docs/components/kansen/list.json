@@ -2320,6 +2320,11 @@
 			"type": "light_cruiser",
 			"rarity": "SR"
 		},
+		"ting_an": {
+			"name": "定安",
+			"type": "munition_ship",
+			"rarity": "SR"
+		},
 		"chen_hai": {
 			"name": "鎮海",
 			"type": "light_aircraft_carrier",
