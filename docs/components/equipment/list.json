@@ -64,22 +64,13 @@
 				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
-		"gloster_sea_gladiator": {
-			"group": "fighter",
-			"name": "シーグラディエーター",
+		"triple_152mm_bl_6_mk_xxiii": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲",
 			"nation": "royal_navy",
 			"list": [
-				{"tier":1,"star":1,"rarity":"N"},
-				{"tier":2,"star":2,"rarity":"N"},
-				{"tier":3,"star":3,"rarity":"R"}
-			]
-		},
-		"triple_152mm_main_gun": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"triple_25mm_aa_gun_mount": {
@@ -96,6 +87,16 @@
 			"nation": "",
 			"list": [
 				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"triple_356mm_14_50_mk_11": {
+			"group": "battleship_guns",
+			"name": "356mm三連装砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
 		"twin_120mm_model_1926": {
@@ -724,6 +725,16 @@
 			"nation": "eagle_union",
 			"list": [
 				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"gloster_sea_gladiator": {
+			"group": "fighter",
+			"name": "シーグラディエーター",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
 		"messerschmitt_bf-109t": {
