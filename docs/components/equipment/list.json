@@ -54,25 +54,6 @@
 				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
-		"610mm_twin_torpedo_mount": {
-			"group": "torpedoes",
-			"name": "610mm連装魚雷",
-			"nation": "sakura_empire",
-			"list": [
-				{"tier":1,"star":1,"rarity":"N"},
-				{"tier":2,"star":2,"rarity":"N"},
-				{"tier":3,"star":3,"rarity":"R"}
-			]
-		},
-		"triple_152mm_bl_6_mk_xxiii": {
-			"group": "light_cruiser_gun",
-			"name": "152mm三連装砲",
-			"nation": "royal_navy",
-			"list": [
-				{"tier":1,"star":2,"rarity":"N"},
-				{"tier":3,"star":4,"rarity":"SR"}
-			]
-		},
 		"610mm_quadruple_torpedo_mount": {
 			"group": "torpedoes",
 			"name": "610mm四連装魚雷",
@@ -81,6 +62,16 @@
 				{"tier":1,"star":3,"rarity":"R"},
 				{"tier":2,"star":4,"rarity":"SR"},
 				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"610mm_twin_torpedo_mount": {
+			"group": "torpedoes",
+			"name": "610mm連装魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
 		"triple_25mm_aa_gun_mount": {
@@ -97,16 +88,6 @@
 			"nation": "",
 			"list": [
 				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"triple_356mm_14_50_mk_11": {
-			"group": "battleship_guns",
-			"name": "356mm三連装砲",
-			"nation": "eagle_union",
-			"list": [
-				{"tier":1,"star":1,"rarity":"N"},
-				{"tier":2,"star":2,"rarity":"N"},
-				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
 		"610mm_triple_torpedo_mount": {
@@ -135,16 +116,6 @@
 				{"tier":0,"star":0,"rarity":""}
 			]
 		},
-		"twin_150mm_tbtsk_c_36": {
-			"group": "light_cruiser_gun",
-			"name": "150mmTbtsKC/36連装砲",
-			"nation": "iron_blood",
-			"list": [
-				{"tier":1,"star":2,"rarity":"N"},
-				{"tier":2,"star":3,"rarity":"R"},
-				{"tier":3,"star":4,"rarity":"SR"}
-			]
-		},
 		"twin_113mm_aa_qf_mark_i": {
 			"group": "anti_air_gun",
 			"name": "113mm連装高角砲",
@@ -153,16 +124,6 @@
 				{"tier":1,"star":3,"rarity":"R"},
 				{"tier":2,"star":4,"rarity":"SR"},
 				{"tier":3,"star":5,"rarity":"SSR"}
-			]
-		},
-		"fairey_swordfish": {
-			"group": "torpedo_bomber",
-			"name": "ソードフィッシュ",
-			"nation": "royal_navy",
-			"list": [
-				{"tier":1,"star":2,"rarity":"N"},
-				{"tier":2,"star":3,"rarity":"R"},
-				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"twin_25mm_aa_gun_mount": {
@@ -535,6 +496,25 @@
 				{"tier":3,"star":5,"rarity":"SSR"}
 			]
 		},
+		"triple_152mm_bl_6_mk_xxiii": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_150mm_tbtsk_c_36": {
+			"group": "light_cruiser_gun",
+			"name": "150mmTbtsKC/36連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
 		"prototype_quadruple_330mm_mle_1931_cb_only_main_gun_mount": {
 			"group": "heavy_cruiser_gun",
 			"kansen": [],
@@ -761,6 +741,16 @@
 				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
+		"triple_356mm_14_50_mk_11": {
+			"group": "battleship_guns",
+			"name": "356mm三連装砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
 		"submarine-mounted_mark_14_torpedo": {
 			"group": "submarine_torpedo",
 			"name": "潜水艦用Mark14魚雷",
@@ -841,6 +831,16 @@
 			"nation": "iron_blood",
 			"list": [
 				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"fairey_swordfish": {
+			"group": "torpedo_bomber",
+			"name": "ソードフィッシュ",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"grumman_tbf_avenger": {

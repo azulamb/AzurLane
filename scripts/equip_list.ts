@@ -30,7 +30,9 @@ type NATION_TYPE =
 type EQUIP_RARITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
 type EQUIP_GROUP =
 	| 'destroyer_gun'
+	| 'light_cruiser_gun'
 	| 'heavy_cruiser_gun'
+	| 'battleship_guns'
 	| 'submarine_torpedo'
 	| 'fighter'
 	| 'dive_bomber'
@@ -78,7 +80,9 @@ const sortTypeKeys: SHIP_TYPE[] = [
 
 const sortGroupKeys: EQUIP_GROUP[] = [
 	'destroyer_gun',
+	'light_cruiser_gun',
 	'heavy_cruiser_gun',
+	'battleship_guns',
 	'submarine_torpedo',
 	'fighter',
 	'dive_bomber',
