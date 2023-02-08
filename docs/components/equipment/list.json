@@ -73,6 +73,16 @@
 				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
+		"610mm_quadruple_torpedo_mount": {
+			"group": "torpedoes",
+			"name": "610mm四連装魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
 		"triple_25mm_aa_gun_mount": {
 			"group": "",
 			"name": "",
@@ -99,6 +109,16 @@
 				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
+		"610mm_triple_torpedo_mount": {
+			"group": "torpedoes",
+			"name": "610mm三連装魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
 		"twin_120mm_model_1926": {
 			"group": "",
 			"name": "",
@@ -115,12 +135,34 @@
 				{"tier":0,"star":0,"rarity":""}
 			]
 		},
-		"twin_150mm_tbtsk_c_36_main_gun_mount": {
-			"group": "",
-			"name": "",
-			"nation": "",
+		"twin_150mm_tbtsk_c_36": {
+			"group": "light_cruiser_gun",
+			"name": "150mmTbtsKC/36連装砲",
+			"nation": "iron_blood",
 			"list": [
-				{"tier":1,"star":0,"rarity":""}
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_113mm_aa_qf_mark_i": {
+			"group": "anti_air_gun",
+			"name": "113mm連装高角砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"fairey_swordfish": {
+			"group": "torpedo_bomber",
+			"name": "ソードフィッシュ",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"twin_25mm_aa_gun_mount": {
@@ -737,6 +779,16 @@
 				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
+		"grumman_f4f_wildcat": {
+			"group": "fighter",
+			"name": "F4Fワイルドキャット",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
 		"messerschmitt_bf-109t": {
 			"group": "fighter",
 			"name": "BF-109T艦上戦闘機",
@@ -751,6 +803,16 @@
 			"nation": "iron_blood",
 			"list": [
 				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"mitsubishi_a6m2_zero": {
+			"group": "fighter",
+			"name": "零戦二一型",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"supermarine_seafire": {
@@ -786,7 +848,9 @@
 			"name": "TBFアベンジャー",
 			"nation": "eagle_union",
 			"list": [
-				{"tier":1,"star":2,"rarity":"N"}
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"nakajima_b5n_type_97": {
