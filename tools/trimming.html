@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ja" style="font-size:20px;">
+<head>
+	<meta charset="utf-8">
+	<title>Trimming</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+	<link href="./style.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-precomposed.png">
+	<script src="./app.js" defer></script>
+	<style>
+html{height:100%;}
+body{height:100%;margin:0;display:grid;grid-template-columns:70% 30%;}
+	</style>
+	<script>
+(() => {
+	const DATASET = [
+		{
+			name: 'kansen',
+			values: {
+				x: 172,
+				y: 164,
+				w: 160,
+				h: 160,
+				a: 104,
+				b: 204,
+				c: 7,
+				d: 4,
+			},
+		},
+		{
+			name: 'weapon',
+			values: {
+				x: 716,
+				y: 389,
+				w: 616,
+				h: 241,
+				a: 1,
+				b: 1,
+				c: 1,
+				d: 1,
+			},
+		},
+	];
+	customElements.define('drop-image', class extends HTMLElement {
+		constructor() {
+			super();
+
+			const shadow = this.attachShadow({ mode: 'open' });
+
+			const style = document.createElement('style');
+			style.innerHTML = [
+				':host { display: block; }',
+				':host > div { width: 100%; height: 100%; position: relative; }',
+				'canvas { display: block; pointer-events: none; object-fit: contain; width: 100%; height: 100%; }',
+				'svg { pointer-events: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; }',
+				'rect { pointer-events: auto; stroke: red; stroke-width: 4px; fill: transparent; cursor: pointer; }',
+				'dialog { padding: 0; border: 0; }',
+				'dialog::backdrop { background: rgba(0, 0, 0, 0.8); }',
+				'dialog img { display: block; }',
+			].join('');
+
+			this.dialog = document.createElement('dialog');
+			this.dialog.addEventListener('click', () => {
+				this.dialog.close();
+			});
+
+			const canvas = document.createElement('canvas');
+			const context = canvas.getContext('2d');
+
+			this.svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+
+			const contents = document.createElement('div');
+			contents.appendChild(canvas);
+			contents.appendChild(this.svg);
+
+			contents.addEventListener('dragover', (event) => {
+				event.preventDefault();
+				event.dataTransfer.dropEffect = 'copy';
+			});
+
+			/*contents.addEventListener('dragleave', (event) => {
+			});*/
+
+			contents.addEventListener('drop', (event) => {
+				event.preventDefault();
+				const files = event.dataTransfer.files;
+				if (files && 0 < files.length) {
+					this.onDropFile(files[0]).then((image) => {
+						const width = image.naturalWidth;
+						const height = image.naturalHeight;
+						canvas.width = width;
+						canvas.height = height;
+						this.svg.setAttributeNS( null, 'width', width + 'px' );
+						this.svg.setAttributeNS( null, 'height', height + 'px' );
+						this.svg.setAttributeNS( null, 'viewBox', '0 0 ' + width + ' ' + height );
+						context.drawImage(image, 0, 0);
+						this.image = image;
+					});
+				}
+			});
+			shadow.appendChild(style);
+			shadow.appendChild(contents);
+			shadow.appendChild(this.dialog);
+		}
+
+		onDropFile(file) {
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onabort = reject;
+				reader.onerror = reject;
+				reader.onload = () => {
+					const image = document.createElement('img');
+					image.onabort = reject;
+					image.onerror = reject;
+					image.onload = () => {
+						resolve(image);
+					};
+					image.src = reader.result;
+				};
+				reader.readAsDataURL(file);
+			});
+		}
+
+		drawTrimmingRect(x, y, w, h, a, b, c, d) {
+			this.svg.innerHTML = '';
+
+			for (let t = 0 ;t < d; ++t) {
+				for (let s = 0 ;s < c; ++s) {
+					const X = x + (w + a) * s;
+					const Y = y + (h + b) * t;
+					const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+					rect.setAttributeNS(null, 'x', X + '');
+					rect.setAttributeNS(null, 'y', Y + '');
+					rect.setAttributeNS(null, 'width', w + '');
+					rect.setAttributeNS(null, 'height', h + '');
+					this.svg.appendChild(rect);
+					rect.addEventListener('click', () => {
+						this.onTrimming(X, Y, w, h);
+					});
+				}
+			}
+		}
+
+		onTrimming(x, y, w, h) {
+			if (!this.image) {
+				return;
+			}
+			const canvas = document.createElement('canvas');
+			canvas.width = w;
+			canvas.height = h;
+			const context = canvas.getContext('2d');
+			context.drawImage(this.image, x, y, w, h, 0, 0, w, h);
+
+			const image = document.createElement('img');
+			image.onabort = console.error;
+			image.onerror = console.error;
+			image.onload = () => {
+				this.dialog.innerHTML = '';
+				this.dialog.appendChild(image);
+				image.addEventListener('click', (event) => {
+					event.stopPropagation();
+				});
+				this.dialog.showModal();
+			};
+			image.src = canvas.toDataURL();
+		}
+	});
+	function createLabel(text) {
+		const label = document.createElement('label');
+		label.textContent = text;
+		return label;
+	}
+	function createNumberInput(min) {
+		const input = document.createElement('input');
+		input.type = 'number';
+		if (min) {
+			input.min = min;
+		}
+		input.step = 1;
+		input.value = '1';
+		return input;
+	}
+	customElements.define('trimming-config', class extends HTMLElement {
+		constructor() {
+			super();
+
+			const shadow = this.attachShadow({ mode: 'open' });
+
+			const style = document.createElement('style');
+			style.innerHTML = [
+				':host { display: block; }',
+				':host > div { width: 100%; display: grid; grid-template-columns: 4rem 1fr;}',
+			].join('');
+
+			this.inputs = {
+				x: createNumberInput(),
+				y: createNumberInput(),
+				w: createNumberInput(1),
+				h: createNumberInput(1),
+				a: createNumberInput(1),
+				b: createNumberInput(1),
+				c: createNumberInput(1),
+				d: createNumberInput(1),
+			};
+
+			const select = document.createElement('select');
+			select.style.gridArea = '1 / 1 / 1 / 3';
+			select.addEventListener('change', () => {
+				this.onUpdateDataset(select.selectedIndex);
+			});
+			select.appendChild(document.createElement('option'));
+			for (const item of DATASET) {
+				const option = document.createElement('option');
+				select.appendChild(option);
+				option.textContent = item.name;
+				option.value = item.name;
+			}
+			this.onUpdateDataset(0);
+
+			const contents = document.createElement('div');
+			contents.appendChild(select);
+			contents.appendChild(createLabel('StartX:'));
+			contents.appendChild(this.inputs.x);
+			contents.appendChild(createLabel('StartY:'));
+			contents.appendChild(this.inputs.y);
+			contents.appendChild(createLabel('Width:'));
+			contents.appendChild(this.inputs.w);
+			contents.appendChild(createLabel('Height:'));
+			contents.appendChild(this.inputs.h);
+			contents.appendChild(createLabel('DiffX:'));
+			contents.appendChild(this.inputs.a);
+			contents.appendChild(createLabel('DiffY:'));
+			contents.appendChild(this.inputs.b);
+			contents.appendChild(createLabel('CountX:'));
+			contents.appendChild(this.inputs.c);
+			contents.appendChild(createLabel('CountY:'));
+			contents.appendChild(this.inputs.d);
+
+			shadow.appendChild(style);
+			shadow.appendChild(contents);
+
+			Promise.all([
+				new Promise((resolve) => {
+					document.addEventListener('DOMContentLoaded', resolve);
+				}),
+				customElements.whenDefined('drop-image'),
+			]).then(() => {
+				return document.querySelector('drop-image');
+			}).then((dropImage) => {
+				let timer;
+				Object.keys(this.inputs).forEach((key) => {
+					this.inputs[key].addEventListener('change', () => {
+						if (timer) {
+							clearTimeout(timer);
+						}
+						timer = setTimeout(() => {
+							this.onUpdate(dropImage);
+						}, 50);
+					});
+				});
+				select.addEventListener('change', () => {
+					if (timer) {
+						clearTimeout(timer);
+					}
+					timer = setTimeout(() => {
+						this.onUpdate(dropImage);
+					}, 50);
+				});
+			});
+		}
+
+		onUpdateDataset(index) {
+			console.log(index);
+			const data = DATASET[index - 1] || {
+				name: 'default',
+				values: {
+					x: 0,
+					y: 0,
+					w: 10,
+					h: 10,
+					a: 10,
+					b: 10,
+					c: 1,
+					d: 1,
+				},
+			};
+			this.inputs.x.value = data.values.x + '';
+			this.inputs.y.value = data.values.y + '';
+			this.inputs.w.value = data.values.w + '';
+			this.inputs.h.value = data.values.h + '';
+			this.inputs.a.value = data.values.a + '';
+			this.inputs.b.value = data.values.b + '';
+			this.inputs.c.value = data.values.c + '';
+			this.inputs.d.value = data.values.d + '';
+		}
+
+		onUpdate(dropImage) {
+			dropImage.drawTrimmingRect(
+				parseInt(this.inputs.x.value),
+				parseInt(this.inputs.y.value),
+				parseInt(this.inputs.w.value),
+				parseInt(this.inputs.h.value),
+				parseInt(this.inputs.a.value),
+				parseInt(this.inputs.b.value),
+				parseInt(this.inputs.c.value),
+				parseInt(this.inputs.d.value),
+			);
+		}
+	});
+})();
+	</script>
+</head>
+<body>
+	<drop-image></drop-image>
+	<trimming-config></trimming-config>
+</body>
+</html>

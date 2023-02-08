@@ -1,0 +1,928 @@
+{
+	"data": {
+		"destroyer_gun": {
+			"kansen": ["class:uss_atlanta","class:hms_dido","class:hms_ceres","secondary:ijn_isuzu","primary:secondary:Emden","pran_harbin","sn_pamiat_merkuria_retrofit","secondary:hai_tien","secondary:ijn_azuma","secondary:ffnf_brest","secondary:kms_odin","secondary:meta_scharnhorst"],
+			"ship": ["secondary:heavy_cruiser","secondary:monitor","secondary:battleship","destroyer","munition_ship","submarine"]
+		},
+		"heavy_cruiser_gun": {
+			"kansen": ["heavy_cruiser","large_cruiser"],
+			"ship": ["pran_hai_tien"]
+		},
+		"submarine_torpedo": {
+			"kansen": ["submarine_carrier","submarine"],
+			"ship": []
+		},
+		"fighter": {
+			"kansen": [],
+			"ship": ["light_aircraft_carrier","aircraft_carrier"]
+		},
+		"dive_bomber": {
+			"kansen": [],
+			"ship": ["light_aircraft_carrier","aircraft_carrier"]
+		},
+		"torpedo_bomber": {
+			"kansen": [],
+			"ship": ["light_aircraft_carrier","aircraft_carrier"]
+		},
+		"anti_submarine_warfare": {
+			"kansen": [],
+			"ship": ["destroyer","light_cruiser"]
+		},
+		"cargo": {
+			"kansen": [],
+			"ship": ["munition_ship"]
+		}
+	},
+	"list": {
+		"quadruple_28mm_chicago_piano": {
+			"group": "anti_air_gun",
+			"name": "四連装28mm対空機銃「シカゴピアノ」",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"quadruple_40mm_pom-pom": {
+			"group": "anti_air_gun",
+			"name": "QF 2ポンド四連装ポンポン砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"610mm_twin_torpedo_mount": {
+			"group": "torpedoes",
+			"name": "610mm連装魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"gloster_sea_gladiator": {
+			"group": "fighter",
+			"name": "シーグラディエーター",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_152mm_main_gun": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"triple_25mm_aa_gun_mount": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"triple_283mm_sk_c_34": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"twin_120mm_model_1926": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"twin_128mm_45_sk_c_41": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":0,"star":0,"rarity":""}
+			]
+		},
+		"twin_150mm_tbtsk_c_36_main_gun_mount": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"twin_25mm_aa_gun_mount": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"type_0_fighter_model_21": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"type_92_electric_submarine_torpedo": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"type_99_dive_bomber": {
+			"group": "",
+			"name": "",
+			"nation": "",
+			"list": [
+				{"tier":1,"star":0,"rarity":""}
+			]
+		},
+		"12-pounder_long_uns": {
+			"group": "destroyer_gun",
+			"name": "12ポンドロングキャノン",
+			"nation": "tempesta",
+			"ship": ["sailing_frigate"],
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"prototype_twin_130mm_model_1936_main_gun_mount": {
+			"group": "destroyer_gun",
+			"name": "試作型130mm連装砲Model 1936",
+			"nation": "dragon_empery",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"quadruple_130mm_mle_1932": {
+			"group": "destroyer_gun",
+			"name": "130mm副砲Mle1932",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"single_100mm_type_88": {
+			"group": "destroyer_gun",
+			"name": "100mm八八式砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"single_102mm_qf_mk_v": {
+			"group": "destroyer_gun",
+			"name": "102mm単装砲(副砲)",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_120mm_10th_year_type": {
+			"group": "destroyer_gun",
+			"name": "120mm高角砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"single_120mm_11th_year_type": {
+			"group": "destroyer_gun",
+			"name": "120mm十一年式砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"single_120mm_qf_mark_ix": {
+			"group": "destroyer_gun",
+			"name": "120mm単装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_120mm_type_3": {
+			"group": "destroyer_gun",
+			"name": "120mm単装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_127mm_5_38_mk_21": {
+			"group": "destroyer_gun",
+			"name": "127mm単装砲初期型",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"single_127mm_5_38_mk_30": {
+			"group": "destroyer_gun",
+			"name": "127mm単装砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"R"},
+				{"tier":3,"star":3,"rarity":"SR"}
+			]
+		},
+		"single_127mm_sk_c_34": {
+			"group": "destroyer_gun",
+			"name": "127mm単装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_127mm_type_3_mod_b": {
+			"group": "destroyer_gun",
+			"name": "127mm両用砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"single_130mm_b13_pattern_1936": {
+			"group": "destroyer_gun",
+			"name": "130mm単装砲",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"single_130mm_mle_1924": {
+			"group": "destroyer_gun",
+			"name": "130mm単装砲Mle1924",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"}
+			]
+		},
+		"single_138_6mm_mle_1927": {
+			"group": "destroyer_gun",
+			"name": "138.6mm単装砲Mle1927",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"single_138_6mm_mle_1929": {
+			"group": "destroyer_gun",
+			"name": "138.6mm単装砲Mle1929",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"single_76mm_3_50_caliber_gun": {
+			"group": "destroyer_gun",
+			"name": "76mm砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_102mm_bl_4_mk_ix": {
+			"group": "destroyer_gun",
+			"name": "102mm三連装砲(副砲)",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_100mm_type_98": {
+			"group": "destroyer_gun",
+			"name": "100mm二連装九八式高角砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_102mm_qf_mk_xvi": {
+			"group": "destroyer_gun",
+			"name": "102mm連装砲(副砲)",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_102mm_qf_mk_xvi_another": {
+			"group": "destroyer_gun",
+			"name": "102mm連装副砲MarkXVI",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_114mm_qf_mk_iv": {
+			"group": "destroyer_gun",
+			"name": "114mm連装両用砲MarkIV",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_120mm_model_1933": {
+			"group": "destroyer_gun",
+			"name": "120mm連装砲Model1933",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_120mm_model_1936": {
+			"group": "destroyer_gun",
+			"name": "120mm連装砲Model1936",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_120mm_qf_mark_xi": {
+			"group": "destroyer_gun",
+			"name": "120mm連装両用砲MarkXI",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_120mm_qf_mark_xii": {
+			"group": "destroyer_gun",
+			"name": "120mm連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_127mm_5_38_mk_32": {
+			"group": "destroyer_gun",
+			"name": "127mm連装副砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_127mm_5_38_mk_38": {
+			"group": "destroyer_gun",
+			"name": "127mm連装両用砲MK12",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_127mm_km40": {
+			"group": "destroyer_gun",
+			"name": "127mmKM40連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_127mm_type_3": {
+			"group": "destroyer_gun",
+			"name": "127mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_127mm_type_3_mod_B": {
+			"group": "destroyer_gun",
+			"name": "127mm連装砲改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_128mm_sk_c_41": {
+			"group": "destroyer_gun",
+			"name": "128mmSKC41連装両用砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_130mm_b-2lm": {
+			"group": "destroyer_gun",
+			"name": "130mm連装砲B-2LM",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_130mm_mle_1935": {
+			"group": "destroyer_gun",
+			"name": "130mm連装砲Mle1935",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"}
+			]
+		},
+		"twin_134mm_qf_mark_ii": {
+			"group": "destroyer_gun",
+			"name": "134mm連装高角砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_135mm_model_1938": {
+			"group": "destroyer_gun",
+			"name": "135mm連装砲Model1938",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"prototype_quadruple_330mm_mle_1931_cb_only_main_gun_mount": {
+			"group": "heavy_cruiser_gun",
+			"kansen": [],
+			"name": "試作型四連装330mm砲Mle1931(超巡用)",
+			"nation": "iris_libre",
+			"ship": ["large_cruiser"],
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_203mm_8_55_mk_13": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm三連装砲Mk13",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_203mm_8_55_mk_15": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm三連装砲改",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_203mm_8_55_mk_15_shs": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm三連装砲Mk15",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_203mm_8_55_mk_9": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm三連装砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_203mm_bl_mk_ix_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試作型203mm三連装砲MarkIX",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_203mm_mle_1934_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試製203mm三連装砲",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_203mm_sk_c_34_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試作203mmSKC三連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_234mm_bl_9_2_mk_xii_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試作型234mm三連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
+			]
+		},
+		"triple_283mm_sk_c_28": {
+			"group": "heavy_cruiser_gun",
+			"kansen": ["class:kms_deutschland","class:kms_p"],
+			"name": "283mmSKC28三連装砲",
+			"nation": "iron_blood",
+			"ship": ["large_cruiser"],
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"S"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_305mm_b-50": {
+			"group": "heavy_cruiser_gun",
+			"kansen": [],
+			"name": "B-50 三联装305mm主炮Mk-15",
+			"nation": "",
+			"ship": ["large_cruiser"],
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_305mm_sk_c_39_prototype_large_cruiser": {
+			"group": "heavy_cruiser_gun",
+			"kansen": [],
+			"name": "試作型三連装305mmSKC39主砲(超巡)",
+			"nation": "iron_blood",
+			"ship": ["large_cruiser"],
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_310mm_type_0_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試作型三連装310mm砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_203mm_3rd_year_type": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_203mm_3rd_year_type_no_2": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_203mm_3rd_year_type_no_3_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試製203mm連装砲(3号)",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_203mm_bl_8_mk_viii": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_203mm_mle_1924": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲Mle1924",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"twin_203mm_mle_1924_submarine-mount": {
+			"group": "heavy_cruiser_gun",
+			"kansen": ["ffnf_surcouf"],
+			"name": "潜水艦用203mm連装砲Mle1924",
+			"nation": "iris_libre",
+			"ship": [],
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_203mm_mle_1931": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲Mle1931",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_203mm_model_1924": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲Model1924",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"twin_203mm_model_1927": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mm連装砲Model1927",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_203mm_sk_c_34": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mmSKC連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_203mm_skc_Improved": {
+			"group": "heavy_cruiser_gun",
+			"name": "203mmSKC連装砲改",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_234mm_bl_9_2-mk_xii_prototype": {
+			"group": "heavy_cruiser_gun",
+			"name": "試作型234mm連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"submarine-mounted_mark_14_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用Mark14魚雷",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"messerschmitt_bf-109t": {
+			"group": "fighter",
+			"name": "BF-109T艦上戦闘機",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"messerschmitt_me-155a": {
+			"group": "fighter",
+			"name": "Me-155A艦上戦闘機",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"supermarine_seafire": {
+			"group": "fighter",
+			"name": "シーファイア",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"curtiss_sb2c_helldiver": {
+			"group": "dive_bomber",
+			"name": "SB2Cヘルダイバー",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"junkers_ju-87c": {
+			"group": "dive_bomber",
+			"name": "Ju-87C急降下爆撃機",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"grumman_tbf_avenger": {
+			"group": "torpedo_bomber",
+			"name": "TBFアベンジャー",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"nakajima_b5n_type_97": {
+			"group": "torpedo_bomber",
+			"name": "九七式艦攻",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"basic_depth_charge": {
+			"group": "anti_submarine_warfare",
+			"name": "従来型爆雷投射機",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N","nation":"royal_navy"},
+				{"tier":3,"star":3,"rarity":"R","nation":"royal_navy"}
+			]
+		},
+		"basic_sonar": {
+			"group": "anti_submarine_warfare",
+			"name": "従来型ソナー",
+			"nation": "universal",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R","nation":"universal"},
+				{"tier":3,"star":4,"rarity":"SR","nation":"universal"}
+			]
+		},
+		"consolidated_pby-5a_catalina": {
+			"group": "anti_submarine_warfare",
+			"name": "PBY-5Aカタリナ",
+			"nation": "eagle_union",
+			"ship": ["destroyer","light_cruiser","heavy_cruiser","large_cruiser"],
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"corn_lantern": {
+			"group": "anti_submarine_warfare",
+			"limit": 1,
+			"name": "トウモロコシの灯籠",
+			"nation": "hololive",
+			"ship": ["all"],
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"fairey_swordfish_mk_ii-asv_asw": {
+			"group": "anti_submarine_warfare",
+			"kansen": ["hms_warspite_retrofit"],
+			"name": "ソードフィッシュMarkⅡ-ASV(対潜)",
+			"nation": "royal_navy",
+			"ship": ["light_aircraft_carrier"],
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"flettner_fl_282_kolibri": {
+			"group": "anti_submarine_warfare",
+			"kansen": ["kms_koeln_retrofit"],
+			"name": "Fl 282",
+			"nation": "iron_blood",
+			"ship": [],
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"general_motors_tbm-3_avenger_asw": {
+			"group": "anti_submarine_warfare",
+			"kansen": ["hms_warspite_retrofit"],
+			"name": "TBM-3アベンジャー(対潜)",
+			"nation": "eagle_union",
+			"ship": ["light_aircraft_carrier"],
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"hedgehog": {
+			"group": "anti_submarine_warfare",
+			"name": "対潜迫撃砲「ヘッジホッグ」",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"improved_depth_charge": {
+			"group": "anti_submarine_warfare",
+			"name": "改良型爆雷投射機",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"improved_sonar": {
+			"group": "anti_submarine_warfare",
+			"name": "改良型ソナー",
+			"nation": "universal",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"40cm_type_94_naval_gun_parts_cargo": {
+			"group": "cargo",
+			"name": "九四式四十糎砲(積載)",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"aviation_materials_cargo": {
+			"group": "cargo",
+			"limit": 1,
+			"name": "航空戦資材(積載)",
+			"nation": "universal",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"small-caliber_naval_gun_parts_cargo": {
+			"group": "cargo",
+			"limit": 1,
+			"name": "小口径主砲砲戦資材(積載)",
+			"nation": "",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"torpedo_materials_cargo": {
+			"group": "cargo",
+			"limit": 1,
+			"name": "雷撃戦資材(積載)",
+			"nation": "universal",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		}	
+	}
+}

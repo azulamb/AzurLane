@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja" style="font-size:20px;">
+<head>
+	<meta charset="utf-8">
+	<title>Merge</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<link rel="icon" href="./favicon.svg" type="image/svg+xml">
+	<link href="./style.css" rel="stylesheet">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="apple-touch-icon" sizes="152x152" href="./apple-touch-icon-precomposed.png">
+	<script src="./app.js" defer></script>
+	<style>
+html{height:100%;}
+body{width:100%;height:100%;margin:0;display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:20% 80%;}
+	</style>
+	<script>
+(() => {
+	const DATASET = [
+		{
+			name: 'kansen',
+			values: {
+				x: 172,
+				y: 164,
+				w: 160,
+				h: 160,
+				a: 104,
+				b: 204,
+				c: 7,
+				d: 4,
+			},
+		},
+		{
+			name: 'weapon',
+			values: {
+				x: 716,
+				y: 389,
+				w: 616,
+				h: 241,
+				a: 1,
+				b: 1,
+				c: 1,
+				d: 1,
+			},
+		},
+	];
+	customElements.define('drop-image', class extends HTMLElement {
+		constructor() {
+			super();
+
+			const shadow = this.attachShadow({ mode: 'open' });
+
+			const style = document.createElement('style');
+			style.innerHTML = [
+				':host { display: block; --border: transparent; }',
+				':host([selected]) { --border: red; }',
+				':host > div { width: 100%; height: 100%; position: relative; box-sizing: border-box; border: 5px solid var(--border);}',
+				'img { display: block; pointer-events: none; object-fit: contain; width: 100%; height: 100%; }',
+			].join('');
+
+			this.image = document.createElement('img');
+
+			const contents = document.createElement('div');
+			contents.appendChild(this.image);
+
+			contents.addEventListener('dragover', (event) => {
+				event.preventDefault();
+				event.dataTransfer.dropEffect = 'copy';
+			});
+
+			/*contents.addEventListener('dragleave', (event) => {
+			});*/
+
+			contents.addEventListener('drop', (event) => {
+				event.preventDefault();
+				const files = event.dataTransfer.files;
+				if (files && 0 < files.length) {
+					this.onDropFile(files[0], this.image).then((image) => {
+						this.dispatchEvent(new CustomEvent('image', { detail: image }));
+					});
+				}
+			});
+
+			shadow.appendChild(style);
+			shadow.appendChild(contents);
+		}
+
+		onDropFile(file, image) {
+			this.setAttribute('name', file.name);
+			return new Promise((resolve, reject) => {
+				const reader = new FileReader();
+				reader.onabort = reject;
+				reader.onerror = reject;
+				reader.onload = () => {
+					image.onabort = reject;
+					image.onerror = reject;
+					image.onload = () => {
+						resolve(image);
+					};
+					image.src = reader.result;
+				};
+				reader.readAsDataURL(file);
+			});
+		}
+
+		getImage() {
+			return this.image;
+		}
+
+		get selected() {
+			return this.hasAttribute('selected');
+		}
+
+		set selected(value) {
+			if (!value) {
+				this.removeAttribute('selected');
+			} else {
+				for (const element of document.querySelectorAll('drop-image')) {
+					element.selected = false;
+				}
+				this.setAttribute('selected', '');
+			}
+		}
+	});
+	customElements.define('merge-image', class extends HTMLElement {
+		constructor() {
+			super();
+
+			const shadow = this.attachShadow({ mode: 'open' });
+
+			const style = document.createElement('style');
+			style.innerHTML = [
+				':host { display: block; }',
+				':host > div { width: 100%; height: 100%; position: relative; }',
+				'canvas { display: block; pointer-events: none; object-fit: contain; width: 100%; height: 100%; }',
+			].join('');
+
+			this.canvas = document.createElement('canvas');
+			this.context = this.canvas.getContext('2d', { willReadFrequently: true });
+
+			const contents = document.createElement('div');
+			contents.appendChild(this.canvas);
+			contents.draggable = true;
+
+			let pixels = null;
+			let size = 1;
+			contents.addEventListener('drag', (event) => {
+				if (!pixels) {
+					return;
+				}
+				const result = this.getPosition(this.canvas, event);
+				if (0 <= result.x && result.x < this.canvas.width && 0 <= result.y && result.y < this.canvas.height) {
+					const diff = Math.floor(size / 2);
+					for (let b = 0 ; b < size; ++b) {
+						for (let a = 0 ; a < size; ++a) {
+							const x = Math.floor(result.x) + a - diff;
+							const y = Math.floor(result.y) + b - diff;
+							const base = (y * this.canvas.width + x) * 4;
+							this.context.fillStyle = pixels[base + 3] === 255 ? `rgb(${pixels[base]}, ${pixels[base + 1]}, ${pixels[base + 2]})` : `rgba(${pixels[base]}, ${pixels[base + 1]}, ${pixels[base + 2]}, ${1 - Math.floor(pixels[base + 3] / 255) / 255})`;
+							this.context.fillRect(x, y, 1, 1);
+						}
+					}
+				}
+			});
+
+			const empty = document.createElement('img');
+			empty.src = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAUAAarVyFEAAAAASUVORK5CYII=';
+			contents.addEventListener('dragstart', (event) => {
+				event.dataTransfer.setDragImage(empty, 0, 0);
+
+				const image = document.querySelector('drop-image[selected]').getImage();
+				if (!image || image.naturalWidth <= 0) {
+					return;
+				}
+				const canvas = document.createElement('canvas');
+				canvas.width = this.canvas.width;
+				canvas.height = this.canvas.height;
+				const context = canvas.getContext('2d');
+				context.drawImage(image, 0, 0);
+				pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+			});
+
+			contents.addEventListener("dragend", (event) => {
+				pixels = null;
+				this.onUpdateCanvas();
+			});
+
+			contents.addEventListener('dragover', (event) => {
+				event.preventDefault();
+			});
+
+			contents.addEventListener('drop', (event) => {
+				event.preventDefault();
+			});
+
+			contents.addEventListener('click', (event) => {
+				const result = this.getPosition(this.canvas, event);
+			});
+
+			shadow.appendChild(style);
+			shadow.appendChild(contents);
+
+			Promise.all([
+				new Promise((resolve) => {
+					document.addEventListener('DOMContentLoaded', resolve);
+				}),
+				customElements.whenDefined('drop-image'),
+			]).then(() => {
+				const base = document.querySelector('drop-image.base');
+				const dropImages = [... document.querySelectorAll('drop-image')].filter((element) => {
+					return element !== base;
+				});
+				dropImages.unshift(base);
+				this.dropImages = {
+					base: dropImages[0],
+					draw: dropImages[1],
+				};
+
+				this.dropImages.draw.selected = true;
+				this.dropImages.base.addEventListener('image', (event) => {
+					this.onUpdateImage(true, event.detail);
+				});
+				this.dropImages.draw.addEventListener('image', (event) => {
+					this.onUpdateImage(false, event.detail);
+				});
+
+				window.onmousewheel = (event) => {
+					if (event.wheelDelta < 0) {
+						size = Math.max(1, Math.floor(size / 2));
+					} else if(0 < event.wheelDelta) {
+						size = Math.min(8, size * 2);
+					}
+					console.log(size);
+				};
+			});
+		}
+
+		updateDiff(tmpContext) {
+			const canvas = document.getElementById(this.getAttribute('diff'));
+			const width = canvas.width;
+			const height = canvas.height;
+
+			const context = canvas.getContext('2d');
+			context.clearRect(0, 0, width, height);
+			context.fillStyle = 'red';
+
+			const basePixels = (() => {
+				/*const canvas = document.createElement('canvas');
+				canvas.width = width;
+				canvas.height = height;
+				const context = canvas.getContext('2d');
+				context.drawImage(this.dropImages.base.getImage(), 0, 0);
+				return context.getImageData(0, 0, width, height).data;*/
+				return this.context.getImageData(0, 0, width, height).data;
+			})();
+
+			const pixels = tmpContext.getImageData(0, 0, width, height).data;
+			for (let y = 0 ; y < height ; ++y) {
+				for (let x = 0 ; x < width ; ++x) {
+					const base = (y * width + x) * 4;
+					if (
+						basePixels[base] !== pixels[base] ||
+						basePixels[base + 1] !== pixels[base + 1] ||
+						basePixels[base + 2] !== pixels[base + 2] ||
+						basePixels[base + 3] !== pixels[base + 3]
+					) {
+						context.fillRect(x, y, 1, 1);
+					}
+				}
+			}
+			this.updateDownload();
+		}
+
+		updateDownload() {
+			document.getElementById('download').href = this.canvas.toDataURL();
+		}
+
+		onUpdateImage(isBase, image) {
+			const canvas = document.getElementById(this.getAttribute('diff'));
+			if(isBase) {
+				this.canvas.width = canvas.width = image.naturalWidth;
+				this.canvas.height = canvas.height = image.naturalHeight;
+				this.context.drawImage(this.dropImages.base.getImage(), 0, 0);
+				document.getElementById('download').download = this.dropImages.base.getAttribute('name');
+			}
+			const width = canvas.width;
+			const height = canvas.height;
+
+			const tmpContext = (() => {
+				const tmp = document.createElement('canvas');
+				tmp.width = width;
+				tmp.height = height;
+				return tmp.getContext('2d');
+			})();
+			tmpContext.clearRect(0, 0, width, height);
+			tmpContext.drawImage(this.dropImages.draw.getImage(), 0, 0);
+
+			this.updateDiff(tmpContext);
+		}
+
+		onUpdateCanvas() {
+			const width = this.canvas.width;
+			const height = this.canvas.height;
+
+			const tmpContext = (() => {
+				const tmp = document.createElement('canvas');
+				tmp.width = width;
+				tmp.height = height;
+				return tmp.getContext('2d');
+			})();
+			tmpContext.clearRect(0, 0, width, height);
+			tmpContext.drawImage(this.dropImages.draw.getImage(), 0, 0);
+
+			this.updateDiff(tmpContext);
+		}
+
+		getPosition(canvas, event) {
+			const width = canvas.width;
+			const height = canvas.height;
+			const WIDTH = canvas.clientWidth;
+			const HEIGHT = canvas.clientHeight;
+			const x = event.offsetX;
+			const y = event.offsetY;
+
+			if (height / width < HEIGHT / WIDTH) {
+				const scale = width / WIDTH;
+				const h = (HEIGHT - WIDTH * height / width) / 2;
+				return { x: x * scale, y: (y - h) * scale };
+			} else {
+				const scale = height / HEIGHT;
+				const w = (WIDTH - HEIGHT * width / height) / 2;
+				return { x: (x - w) * scale, y: y * scale };
+			}
+		}
+	});
+})();
+	</script>
+</head>
+<body>
+	<drop-image class="base"></drop-image>
+	<a id="download" style="display:block;">
+		<canvas id="diff" style="width:100%;height:100%;object-fit:contain;box-sizing:border-box;border:5px solid transparent;"></canvas>
+	</a>
+	<drop-image></drop-image>
+	<merge-image diff="diff" style="grid-area:2 / 1 / 3 / 4;"></merge-image>
+</body>
+</html>

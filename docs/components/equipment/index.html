@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja" style="font-size:20px;">
+<head>
+	<meta charset="utf-8">
+	<title>Equipment list</title>
+	<style>
+img { display: block; width: 200px; }
+	</style>
+	<script>
+Promise.all([
+	fetch('./list.json').then((response) => { return response.json(); }),
+	new Promise((resolve) => { document.addEventListener('DOMContentLoaded', resolve); }),
+]).then((results) => {
+	return results[0];
+}).then((result) => {
+	const group = [
+		'destroyer_gun',
+		'light_cruiser_gun',
+		'heavy_cruiser_gun',
+		'large_cruiser_gun',
+		'battleship_gun',
+		'torpedoes',
+		'submarine_torpedoes',
+		'anti_air_gun',
+		'fighter',
+		'dive_bomber',
+		'torpedo_bomber',
+		'auxiliary_equipment',
+		'anti_submarine_warfare',
+		'cargo',
+		'seaplanes',
+	];
+	const list = [];
+	Object.keys(result.list).forEach((key) => {
+		const data = result.list[key];
+		for (const item of data.list) {
+			list.push({
+				key: key,
+				name: data.name,
+				tier: item.tier,
+				star: item.star,
+				rarity: item.rarity,
+				group: data.group,
+				nation: data.nation,
+				image: `./${ key }_t${ item.tier }.png`,
+			});
+		}
+	});
+	console.log(list);
+
+	const parent = document.getElementById('list');
+	for (const item of list) {
+		const name = document.createElement('td');
+		name.textContent = item.name;
+		const image = document.createElement('td');
+		image.innerHTML = `<img src=${item.image}>`;
+
+		const tr = document.createElement('tr');
+		tr.appendChild(name);
+		tr.appendChild(image);
+		parent.appendChild(tr);
+	}
+});
+	</script>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<td>name</td>
+				<td>image</td>
+			</tr>
+		</thead>
+		<tbody id="list">
+		</tbody>
+	</table>
+</body>
+</html>
