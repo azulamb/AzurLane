@@ -653,6 +653,116 @@
 				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
+		"533mm_quadruple_homing_torpedo_mount": {
+			"group": "torpedo",
+			"name": "533mm四連装磁気魚雷",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"533mm_quadruple_torpedo_mount": {
+			"group": "torpedo",
+			"name": "533mm四連装魚雷",
+			"nation": "universal",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"533mm_quadruple_torpedo_mount_mk_17": {
+			"group": "torpedo",
+			"name": "533mm四連装魚雷Mk17",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"533mm_quadruple_torpedo_mount_mk_ix": {
+			"group": "torpedo",
+			"name": "533mm四連装魚雷MarkIX",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"533mm_quintuple_homing_torpedo_mount": {
+			"group": "torpedo",
+			"name": "533mm五連装磁気魚雷",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":4,"rarity":"SR"},
+				{"tier":2,"star":5,"rarity":"SSR"},
+				{"tier":3,"star":6,"rarity":"UR"}
+			]
+		},
+		"533mm_quintuple_torpedo_mount": {
+			"group": "torpedo",
+			"name": "533mm五連装魚雷",
+			"nation": "universal",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"533mm_quintuple_torpedo_mount_mk_17": {
+			"group": "torpedo",
+			"name": "533mm五連装魚雷Mk17",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"533mm_quintuple_torpedo_mount_mk_ix": {
+			"group": "torpedo",
+			"name": "533mm五連装魚雷MarkIX",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"533mm_triple_homing_torpedo_mount": {
+			"group": "torpedo",
+			"name": "533mm三連装磁気魚雷",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"533mm_triple_torpedo_mount": {
+			"group": "torpedo",
+			"name": "533mm三連装魚雷",
+			"nation": "universal",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"550mm_triple_torpedo_launcher": {
+			"group": "torpedo",
+			"name": "550mm三連装魚雷発射管",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"550mm_twin_torpedo_launcher": {
+			"group": "torpedo",
+			"name": "550mm連装魚雷発射管",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
 		"610mm_quadruple_torpedo_mount": {
 			"group": "torpedo",
 			"name": "610mm四連装魚雷",
@@ -661,6 +771,22 @@
 				{"tier":1,"star":3,"rarity":"R"},
 				{"tier":2,"star":4,"rarity":"SR"},
 				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"610mm_quadruple_torpedo_mount_kai": {
+			"group": "torpedo",
+			"name": "610mm四連装魚雷改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"610mm_quintuple_torpedo_mount": {
+			"group": "torpedo",
+			"name": "610mm五連装魚雷改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
 			]
 		},
 		"610mm_triple_torpedo_mount": {
