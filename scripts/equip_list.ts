@@ -32,13 +32,18 @@ type EQUIP_GROUP =
 	| 'destroyer_gun'
 	| 'light_cruiser_gun'
 	| 'heavy_cruiser_gun'
-	| 'battleship_guns'
+	| 'large_cruiser_gun'
+	| 'battleship_gun'
+	| 'torpedo'
 	| 'submarine_torpedo'
+	| 'anti_air_gun'
 	| 'fighter'
 	| 'dive_bomber'
 	| 'torpedo_bomber'
+	| 'auxiliary_equipment'
 	| 'anti_submarine_warfare'
-	| 'cargo';
+	| 'cargo'
+	| 'seaplanes';
 
 interface EquipData {
 	tier: number;
@@ -82,13 +87,18 @@ const sortGroupKeys: EQUIP_GROUP[] = [
 	'destroyer_gun',
 	'light_cruiser_gun',
 	'heavy_cruiser_gun',
-	'battleship_guns',
+	'large_cruiser_gun',
+	'battleship_gun',
+	'torpedo',
 	'submarine_torpedo',
+	'anti_air_gun',
 	'fighter',
 	'dive_bomber',
 	'torpedo_bomber',
+	'auxiliary_equipment',
 	'anti_submarine_warfare',
 	'cargo',
+	'seaplanes',
 ];
 
 const meta = import.meta;

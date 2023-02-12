@@ -5,6 +5,7 @@
 	<title>Equipment list</title>
 	<style>
 img { display: block; width: 200px; }
+.hide { display: none; }
 	</style>
 	<script>
 Promise.all([
@@ -19,8 +20,8 @@ Promise.all([
 		'heavy_cruiser_gun',
 		'large_cruiser_gun',
 		'battleship_gun',
-		'torpedoes',
-		'submarine_torpedoes',
+		'torpedo',
+		'submarine_torpedo',
 		'anti_air_gun',
 		'fighter',
 		'dive_bomber',
@@ -30,6 +31,41 @@ Promise.all([
 		'cargo',
 		'seaplanes',
 	];
+	const GROUP_NAME = {
+		destroyer_gun: '小口径艦砲',
+		light_cruiser_gun: '中口径艦砲',
+		heavy_cruiser_gun: '中口径艦砲',
+		large_cruiser_gun: '中口径艦砲',
+		battleship_gun: '大口径艦砲',
+		torpedo: '水上艦魚雷',
+		submarine_torpedo: '潜水艦魚雷',
+		anti_air_gun: '対空',
+		fighter: '戦闘機',
+		dive_bomber: '爆撃機',
+		torpedo_bomber: '攻撃機',
+		auxiliary_equipment: '設備',
+		anti_submarine_warfare: '設備',
+		cargo: '設備',
+		seaplanes: 'その他',
+	};
+	const EQUIP_NAME = {
+		destroyer_gun: '駆逐主砲',
+		light_cruiser_gun: '軽巡主砲',
+		heavy_cruiser_gun: '重巡主砲',
+		large_cruiser_gun: '超巡主砲',
+		battleship_gun: '戦艦主砲',
+		torpedo: '水上艦魚雷',
+		submarine_torpedo: '潜水艦魚雷',
+		anti_air_gun: '対空',
+		fighter: '戦闘機',
+		dive_bomber: '爆撃機',
+		torpedo_bomber: '攻撃機',
+		auxiliary_equipment: '設備',
+		anti_submarine_warfare: '対潜設備',
+		cargo: '運送設備',
+		seaplanes: '水上機',
+	};
+	const search = new URLSearchParams(location.search);
 	const list = [];
 	Object.keys(result.list).forEach((key) => {
 		const data = result.list[key];
@@ -52,22 +88,86 @@ Promise.all([
 	for (const item of list) {
 		const name = document.createElement('td');
 		name.textContent = item.name;
+		const type = document.createElement('td');
+		type.textContent = GROUP_NAME[item.group] || item.group;
 		const image = document.createElement('td');
 		image.innerHTML = `<img src=${item.image}>`;
 
 		const tr = document.createElement('tr');
+		tr.dataset.group = item.group;
 		tr.appendChild(name);
+		tr.appendChild(type);
 		tr.appendChild(image);
 		parent.appendChild(tr);
+	}
+	const filter = document.getElementById('filter');
+	const option = document.createElement('option');
+	option.value = '';
+	option.textContent = '全て';
+	filter.appendChild(option);
+	let prev = '';
+	for (const equip of group) {
+		const big = GROUP_NAME[equip];
+		if (big !== prev) {
+			prev = big;
+			const option = document.createElement('option');
+			const keys = Object.keys(GROUP_NAME).filter((key) => {
+				return GROUP_NAME[key] === big;
+			});
+			keys.sort();
+			option.value = keys.join(',');
+			option.textContent = big;
+			if (option.value === search.get('filter')) {
+				option.selected = true;
+			}
+			filter.appendChild(option);
+		}
+		if (big === EQUIP_NAME[equip]) {
+			continue;
+		}
+		const option = document.createElement('option');
+		option.value = equip;
+		option.textContent = `　${EQUIP_NAME[equip]}`;
+		if (option.value === search.get('filter')) {
+			option.selected = true;
+		}
+		filter.appendChild(option);
+	}
+	filter.addEventListener('change', () => {
+		const value = filter.options[filter.selectedIndex].value;
+		if (!value) {
+			Filter();
+			return;
+		}
+		const equips = value.split(',');
+		Filter(...equips);
+	});
+	function Filter(...equips) {
+		if (equips.length <= 0) {
+			for (const item of parent.children) {
+				item.classList.remove('hide');
+			}
+			history.replaceState(null, document.title, location.pathname);
+		} else {
+			for (const item of parent.children) {
+				item.classList[equips.includes(item.dataset.group) ? 'remove' : 'add']('hide');
+			}
+			history.replaceState(null, document.title, `${location.pathname}?filter=${equips.join(',')}`);
+		}
+	}
+	if (search.get('filter')) {
+		Filter(...search.get('filter').split(','));
 	}
 });
 	</script>
 </head>
 <body>
+	<select id="filter"></select>
 	<table>
 		<thead>
 			<tr>
 				<td>name</td>
+				<td>type</td>
 				<td>image</td>
 			</tr>
 		</thead>

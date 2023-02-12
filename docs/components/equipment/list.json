@@ -34,130 +34,6 @@
 		}
 	},
 	"list": {
-		"quadruple_28mm_chicago_piano": {
-			"group": "anti_air_gun",
-			"name": "四連装28mm対空機銃「シカゴピアノ」",
-			"nation": "eagle_union",
-			"list": [
-				{"tier":1,"star":2,"rarity":"N"},
-				{"tier":2,"star":3,"rarity":"R"},
-				{"tier":3,"star":4,"rarity":"SR"}
-			]
-		},
-		"quadruple_40mm_pom-pom": {
-			"group": "anti_air_gun",
-			"name": "QF 2ポンド四連装ポンポン砲",
-			"nation": "royal_navy",
-			"list": [
-				{"tier":1,"star":2,"rarity":"N"},
-				{"tier":2,"star":3,"rarity":"R"},
-				{"tier":3,"star":4,"rarity":"SR"}
-			]
-		},
-		"610mm_quadruple_torpedo_mount": {
-			"group": "torpedoes",
-			"name": "610mm四連装魚雷",
-			"nation": "sakura_empire",
-			"list": [
-				{"tier":1,"star":3,"rarity":"R"},
-				{"tier":2,"star":4,"rarity":"SR"},
-				{"tier":3,"star":5,"rarity":"SSR"}
-			]
-		},
-		"610mm_twin_torpedo_mount": {
-			"group": "torpedoes",
-			"name": "610mm連装魚雷",
-			"nation": "sakura_empire",
-			"list": [
-				{"tier":1,"star":1,"rarity":"N"},
-				{"tier":2,"star":2,"rarity":"N"},
-				{"tier":3,"star":3,"rarity":"R"}
-			]
-		},
-		"triple_25mm_aa_gun_mount": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"triple_283mm_sk_c_34": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"610mm_triple_torpedo_mount": {
-			"group": "torpedoes",
-			"name": "610mm三連装魚雷",
-			"nation": "sakura_empire",
-			"list": [
-				{"tier":1,"star":2,"rarity":"N"},
-				{"tier":2,"star":3,"rarity":"R"},
-				{"tier":3,"star":4,"rarity":"SR"}
-			]
-		},
-		"twin_120mm_model_1926": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"twin_128mm_45_sk_c_41": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":0,"star":0,"rarity":""}
-			]
-		},
-		"twin_113mm_aa_qf_mark_i": {
-			"group": "anti_air_gun",
-			"name": "113mm連装高角砲",
-			"nation": "royal_navy",
-			"list": [
-				{"tier":1,"star":3,"rarity":"R"},
-				{"tier":2,"star":4,"rarity":"SR"},
-				{"tier":3,"star":5,"rarity":"SSR"}
-			]
-		},
-		"twin_25mm_aa_gun_mount": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"type_0_fighter_model_21": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"type_92_electric_submarine_torpedo": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
-		"type_99_dive_bomber": {
-			"group": "",
-			"name": "",
-			"nation": "",
-			"list": [
-				{"tier":1,"star":0,"rarity":""}
-			]
-		},
 		"12-pounder_long_uns": {
 			"group": "destroyer_gun",
 			"name": "12ポンドロングキャノン",
@@ -369,6 +245,14 @@
 				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
+		"twin_120mm_model_1926": {
+			"group": "destroyer_gun",
+			"name": "120mm連装砲",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
 		"twin_120mm_model_1933": {
 			"group": "destroyer_gun",
 			"name": "120mm連装砲Model1933",
@@ -447,6 +331,14 @@
 			"nation": "sakura_empire",
 			"list": [
 				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_128mm_45_sk_c_41": {
+			"group": "destroyer_gun",
+			"name": "128mmSKC41連装両用砲改",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
 		"twin_128mm_sk_c_41": {
@@ -741,10 +633,50 @@
 				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
+		"triple_283mm_sk_c_34": {
+			"group": "battleship_gun",
+			"name": "283mmSKC34三連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
 		"triple_356mm_14_50_mk_11": {
-			"group": "battleship_guns",
+			"group": "battleship_gun",
 			"name": "356mm三連装砲",
 			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"610mm_quadruple_torpedo_mount": {
+			"group": "torpedo",
+			"name": "610mm四連装魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"610mm_triple_torpedo_mount": {
+			"group": "torpedo",
+			"name": "610mm三連装魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"610mm_twin_torpedo_mount": {
+			"group": "torpedo",
+			"name": "610mm連装魚雷",
+			"nation": "sakura_empire",
 			"list": [
 				{"tier":1,"star":1,"rarity":"N"},
 				{"tier":2,"star":2,"rarity":"N"},
@@ -757,6 +689,66 @@
 			"nation": "eagle_union",
 			"list": [
 				{"tier":1,"star":2,"rarity":"N"}
+			]
+		},
+		"submarine-mounted_type_92_battery-powered_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用九二式電動魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"quadruple_28mm_chicago_piano": {
+			"group": "anti_air_gun",
+			"name": "四連装28mm対空機銃「シカゴピアノ」",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"quadruple_40mm_pom-pom": {
+			"group": "anti_air_gun",
+			"name": "QF 2ポンド四連装ポンポン砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_25mm_aa_type_96": {
+			"group": "anti_air_gun",
+			"name": "25mm三連装対空機銃",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_113mm_aa_qf_mark_i": {
+			"group": "anti_air_gun",
+			"name": "113mm連装高角砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_25mm_aa_type_96": {
+			"group": "anti_air_gun",
+			"name": "25mm連装対空機銃",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
 		"gloster_sea_gladiator": {
@@ -809,6 +801,16 @@
 			"group": "fighter",
 			"name": "シーファイア",
 			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"aichi_d3a_type_99": {
+			"group": "dive_bomber",
+			"name": "九九式艦爆",
+			"nation": "sakura_empire",
 			"list": [
 				{"tier":1,"star":2,"rarity":"N"},
 				{"tier":2,"star":3,"rarity":"R"},
