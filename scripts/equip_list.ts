@@ -43,6 +43,7 @@ type EQUIP_GROUP =
 	| 'auxiliary_equipment'
 	| 'anti_submarine_warfare'
 	| 'cargo'
+	| 'missile'
 	| 'seaplanes';
 
 interface EquipData {
@@ -98,6 +99,7 @@ const sortGroupKeys: EQUIP_GROUP[] = [
 	'auxiliary_equipment',
 	'anti_submarine_warfare',
 	'cargo',
+	'missile',
 	'seaplanes',
 ];
 

@@ -745,6 +745,22 @@
 				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
+		"533mm_triple_torpedo_mount_mk_17": {
+			"group": "torpedo",
+			"name": "533mm三連装魚雷Mk17",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"533mm_triple_torpedo_mount_mk_ix": {
+			"group": "torpedo",
+			"name": "533mm三連装魚雷MarkIX",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
 		"550mm_triple_torpedo_launcher": {
 			"group": "torpedo",
 			"name": "550mm三連装魚雷発射管",
@@ -796,6 +812,14 @@
 			"list": [
 				{"tier":1,"star":2,"rarity":"N"},
 				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"610mm_triple_torpedo_mount_kai": {
+			"group": "torpedo",
+			"name": "610mm三連装魚雷改",
+			"nation": "sakura_empire",
+			"list": [
 				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
@@ -1125,6 +1149,65 @@
 			"nation": "universal",
 			"list": [
 				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"sy-1_missile": {
+			"group": "missile",
+			"name": " SY-1対艦ミサイル",
+			"nation": "dragon_empery",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"aichi_e16a_zuiun": {
+			"group": "seaplanes",
+			"name": "瑞雲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"aichi_m6a_seiran": {
+			"group": "seaplanes",
+			"name": "晴嵐",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"fba_19": {
+			"group": "seaplanes",
+			"name": "FBA 19",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"kawanishi_n1k1_kyoufuu": {
+			"group": "seaplanes",
+			"name": "強風",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"nakajima_a6m2-n": {
+			"group": "seaplanes",
+			"name": "二式水戦",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"yokosuka_suisei_model_21": {
+			"group": "seaplanes",
+			"name": " 彗星二一型",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		}	
 	}
