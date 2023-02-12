@@ -833,12 +833,102 @@
 				{"tier":3,"star":3,"rarity":"R"}
 			]
 		},
+		"submarine-mounted_550mm_24v_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用550mm24V魚雷",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_g7a_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用G7a魚雷",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_g7e_acoustic_homing_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用G7e音響追跡魚雷",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"submarine-mounted_mark_12_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用Mark12魚雷\"Ferry\"",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
 		"submarine-mounted_mark_14_torpedo": {
 			"group": "submarine_torpedo",
 			"name": "潜水艦用Mark14魚雷",
 			"nation": "eagle_union",
 			"list": [
-				{"tier":1,"star":2,"rarity":"N"}
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_mark_16_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用Mark16魚雷",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"R"},
+				{"tier":2,"star":3,"rarity":"SR"},
+				{"tier":3,"star":4,"rarity":"SSR"}
+			]
+		},
+		"submarine-mounted_mark_18_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用Mark18魚雷",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_mark_20s_bidder_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用Mark20(S)魚雷\"Bidder\"",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"submarine-mounted_mark_28_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用Mark28魚雷",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"submarine-mounted_mark_viii_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用MarkVIII魚雷",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_si_270_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用533mm魚雷Si 270",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"}
 			]
 		},
 		"submarine-mounted_type_92_battery-powered_torpedo": {
@@ -849,6 +939,40 @@
 				{"tier":1,"star":2,"rarity":"N"},
 				{"tier":2,"star":3,"rarity":"R"},
 				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_type_92_battery-powered_torpedo_kai": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用九二式電動魚雷改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"submarine-mounted_type_95_kai_pure_oxygen_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用九五式酸素魚雷改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
+			]
+		},
+		"submarine-mounted_type_95_oxygen_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用九五式酸素魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"submarine-mounted_type_96_oxygen_torpedo": {
+			"group": "submarine_torpedo",
+			"name": "潜水艦用九六式酸素魚雷",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
 		"quadruple_28mm_chicago_piano": {
