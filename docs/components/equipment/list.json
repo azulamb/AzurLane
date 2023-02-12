@@ -985,6 +985,86 @@
 				{"tier":1,"star":2,"rarity":"N"}
 			]
 		},
+		"aichi_b7a_ryuusei": {
+			"group": "torpedo_bomber",
+			"name": "流星",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"arado_ar_195": {
+			"group": "torpedo_bomber",
+			"name": "Ar-195",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"blackburn_firebrand": {
+			"group": "torpedo_bomber",
+			"name": "ファイアブランド",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"blackburn_firecrest": {
+			"group": "torpedo_bomber",
+			"name": "ファイアクレスト",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"braeguet_br_810": {
+			"group": "torpedo_bomber",
+			"name": "ブレゲー BR.810攻撃機",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"douglas_tbd_devastator": {
+			"group": "torpedo_bomber",
+			"name": "TBDデバステイター",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"douglas_tbd_devastator_vt-8": {
+			"group": "torpedo_bomber",
+			"name": "TBDデバステイター（VT-8中隊）",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"fairey_albacore": {
+			"group": "torpedo_bomber",
+			"name": "フェアリーアルバコア",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"fairey_barracuda": {
+			"group": "torpedo_bomber",
+			"name": "バラクーダ",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
 		"fairey_swordfish": {
 			"group": "torpedo_bomber",
 			"name": "ソードフィッシュ",
@@ -993,6 +1073,30 @@
 				{"tier":1,"star":2,"rarity":"N"},
 				{"tier":2,"star":3,"rarity":"R"},
 				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"fairey_swordfish_818_squadron": {
+			"group": "torpedo_bomber",
+			"name": "ソードフィッシュ（818中隊）",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"fieseler_fi_167": {
+			"group": "torpedo_bomber",
+			"name": "Fi-167",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"general_motors_tbm_avenger_vt-18_squadron": {
+			"group": "torpedo_bomber",
+			"name": "TBMアベンジャー（VT-18中隊）",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
 		"grumman_tbf_avenger": {
@@ -1005,6 +1109,30 @@
 				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
+		"junkers_ju-87_d-4": {
+			"group": "torpedo_bomber",
+			"name": "Ju-87 D-4",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"levasseur_pl_7": {
+			"group": "torpedo_bomber",
+			"name": "ピエール・ルヴァッスールPL.7攻撃機",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"nakajima_b5n2_type_97": {
+			"group": "torpedo_bomber",
+			"name": "九七式艦攻改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
 		"nakajima_b5n_type_97": {
 			"group": "torpedo_bomber",
 			"name": "九七式艦攻",
@@ -1013,6 +1141,48 @@
 				{"tier":1,"star":1,"rarity":"N"},
 				{"tier":2,"star":2,"rarity":"N"},
 				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"nakajima_b6n2_tenzan_model_12a": {
+			"group": "torpedo_bomber",
+			"name": "天山改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"nakajima_b6n_tenzan": {
+			"group": "torpedo_bomber",
+			"name": "天山",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"nakajima_c6n_saiun_model_21_prototype": {
+			"group": "torpedo_bomber",
+			"name": "試作型彩雲（艦攻型・特別計画艦仕様）",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"prototype_vit-2_vk-107": {
+			"group": "torpedo_bomber",
+			"name": "試作型VIT-2（VK107）",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"westland_wyvern": {
+			"group": "torpedo_bomber",
+			"name": "ワイヴァーン",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
 			]
 		},
 		"basic_depth_charge": {
