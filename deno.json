@@ -17,9 +17,9 @@
 			"include": ["./src", "./scripts", "./tools"]
 		},
 		"rules": {
-		  "tags": ["recommended"],
-		  "include": [],
-		  "exclude": ["require-await"]
+			"tags": ["recommended"],
+			"include": [],
+			"exclude": ["require-await"]
 		}
 	},
 	"fmt": {

@@ -388,6 +388,122 @@
 				{"tier":3,"star":5,"rarity":"SSR"}
 			]
 		},
+		"prototype_quadruple_152mm_main_gun_mount": {
+			"group": "light_cruiser_gun",
+			"name": "試作型四連装152mm砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
+			]
+		},
+		"single_140mm_3rd_year_type": {
+			"group": "light_cruiser_gun",
+			"name": "140mm単装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_150mm_6_47_caliber_gun": {
+			"group": "light_cruiser_gun",
+			"name": "150mm主砲",
+			"nation": "dragon_empery",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"}
+			]
+		},
+		"single_150mm_sk_c_28": {
+			"group": "light_cruiser_gun",
+			"name": "150mmSKC/28単装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"single_150mm_tbtsk_c_36": {
+			"group": "light_cruiser_gun",
+			"name": "150mmTbtsKC36単装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"single_152mm_41st_year_type)": {
+			"group": "light_cruiser_gun",
+			"name": "152mm単装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_152mm_6_45_pattern_1892": {
+			"group": "light_cruiser_gun",
+			"name": "152mm単装砲",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_152mm_bl_6_mk_xii": {
+			"group": "light_cruiser_gun",
+			"name": "152mm単装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"single_155mm_mle_1920": {
+			"group": "light_cruiser_gun",
+			"name": "155mm単装副砲Mle1920",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_150mm_sk_c_25": {
+			"group": "light_cruiser_gun",
+			"name": "150mmSKC/25三連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_152mm_6_47_mk_16": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_152mm_6_47_mk_16_mod_1": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲Mk16",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_152mm_6_47_mk_17_dp_prototype": {
+			"group": "light_cruiser_gun",
+			"name": "試作型三連装152mm両用砲Mk17",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
 		"triple_152mm_bl_6_mk_xxiii": {
 			"group": "light_cruiser_gun",
 			"name": "152mm三連装砲",
@@ -395,6 +511,94 @@
 			"list": [
 				{"tier":1,"star":2,"rarity":"N"},
 				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_152mm_bl_6_mk_xxv_prototype": {
+			"group": "light_cruiser_gun",
+			"name": "試製152mm三連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_152mm_mk-5": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲B-38 MK5",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_152mm_mle_1930": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲Mle1930",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_152mm_model_1934": {
+			"group": "light_cruiser_gun",
+			"name": "152mm三連装砲Model1934",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_155mm_3rd_year_type-5": {
+			"group": "light_cruiser_gun",
+			"name": "155mm三連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_155mm_3rd_year_type_kai": {
+			"group": "light_cruiser_gun",
+			"name": "試作型155mm三連装砲改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_180mm_b-1-p_pattern_1932": {
+			"group": "light_cruiser_gun",
+			"name": "180mm三連装砲B-1-P Model1932",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_140mm_3rd_year_type": {
+			"group": "light_cruiser_gun",
+			"name": "140mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_150mm_sk_c_28": {
+			"group": "light_cruiser_gun",
+			"name": "150mmSKC28連装副砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_150mm_sk_c_28_prototype": {
+			"group": "light_cruiser_gun",
+			"name": "試作型150mmSKC28連装砲改",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
 		"twin_150mm_tbtsk_c_36": {
@@ -405,6 +609,68 @@
 				{"tier":1,"star":2,"rarity":"N"},
 				{"tier":2,"star":3,"rarity":"R"},
 				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_152mm_41st_year_type": {
+			"group": "light_cruiser_gun",
+			"name": "152mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_152mm_6_53_mk_15": {
+			"group": "light_cruiser_gun",
+			"name": "152mm連装砲Mk15",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_152mm_6_53_mk_18": {
+			"group": "light_cruiser_gun",
+			"name": "152mm連装砲",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_152mm_bl_6_mk_xxii": {
+			"group": "light_cruiser_gun",
+			"name": "152mm連装副砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_152mm_bl_6_mk_xxiii": {
+			"group": "light_cruiser_gun",
+			"name": "152mm連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"R"},
+				{"tier":3,"star":3,"rarity":"SR"}
+			]
+		},
+		"twin_152mm_pattern_1892": {
+			"group": "light_cruiser_gun",
+			"name": "152mm連装砲Model1892",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_155mm_mle_1920": {
+			"group": "light_cruiser_gun",
+			"name": "155mm連装砲Mle1920",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
 			]
 		},
 		"prototype_quadruple_330mm_mle_1931_cb_only_main_gun_mount": {
@@ -1307,6 +1573,14 @@
 			"nation": "royal_navy",
 			"list": [
 				{"tier":0,"star":6,"rarity":"UR"}
+			]
+		},
+		"battle_tracto_max_special_main_gun": {
+			"group": "auxiliary_equipment",
+			"name": "バトルトラクトマックス",
+			"nation": "ssss",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
 		"basic_depth_charge": {

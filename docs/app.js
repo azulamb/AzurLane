@@ -1494,27 +1494,14 @@ function DrawFleetForce(parent) {
     });
 }
 function DrawSirenOperationShop(parent) {
-    function createTd(contents) {
-        const td = document.createElement('td');
-        if (contents) {
-            if (typeof contents === 'string') {
-                td.textContent = contents;
-            }
-            else {
-                td.appendChild(contents);
-            }
-        }
-        return td;
-    }
     setTimeout(() => {
         const list = [];
         const tfoot = document.createElement('tfoot');
         const update = ((parent) => {
-            const tr = document.createElement('tr');
-            const total = createTd('合計');
+            const tr = Common.tr({});
+            const total = Common.td('合計');
             total.colSpan = 2;
-            const td = createTd();
-            td.colSpan = 2;
+            const td = Common.td('', { colSpan: 2 });
             tr.appendChild(total);
             tr.appendChild(td);
             parent.appendChild(tr);
@@ -1529,11 +1516,11 @@ function DrawSirenOperationShop(parent) {
             };
         })(tfoot);
         const thead = ((parent) => {
-            const tr = document.createElement('tr');
-            tr.appendChild(createTd());
-            tr.appendChild(createTd('名前'));
-            tr.appendChild(createTd('値段'));
-            tr.appendChild(createTd('個数'));
+            const tr = Common.tr({});
+            tr.appendChild(Common.td(''));
+            tr.appendChild(Common.td('名前'));
+            tr.appendChild(Common.td('値段'));
+            tr.appendChild(Common.td('個数'));
             parent.appendChild(tr);
             return parent;
         })(document.createElement('thead'));
@@ -1552,11 +1539,11 @@ function DrawSirenOperationShop(parent) {
             amount.max = data.amount + '';
             amount.value = data.amount + '';
             amount.addEventListener('change', update);
-            const tr = document.createElement('tr');
-            tr.appendChild(createTd(label));
-            tr.appendChild(createTd(data.name));
-            tr.appendChild(createTd(data.price + ''));
-            tr.appendChild(createTd(amount));
+            const tr = Common.tr({});
+            tr.appendChild(Common.td(label));
+            tr.appendChild(Common.td(data.name));
+            tr.appendChild(Common.td(data.price + ''));
+            tr.appendChild(Common.td(amount));
             tbody.appendChild(tr);
             list.push({
                 check: check,
@@ -1568,6 +1555,47 @@ function DrawSirenOperationShop(parent) {
         parent.appendChild(tbody);
         parent.appendChild(tfoot);
         update();
+    }, 0);
+}
+function DrawSirenOperationPortShop(parent) {
+    function addShopTable(key) {
+        const list = SIREN_PORT_SHOP_ITEMS[key];
+        const tbody = document.createElement('tbody');
+        for (const item of list) {
+            for (let i = 0; i < item.count; ++i) {
+                const input = document.createElement('input');
+                input.type = 'checkbox';
+                const label = document.createElement('label');
+                label.appendChild(input);
+                tbody.appendChild(Common.tr({}, Common.td(label), Common.td(SIREN_SHOP_ITEMS[item.item]), Common.td(item.amount + ''), Common.td(`${item.coin || ''}`), Common.td(`${item.token || ''}`)));
+            }
+        }
+        const header = Common.tr({}, Common.td(''), Common.td('名前'), Common.td('個数'), Common.td('コイン'), Common.td('トークン'));
+        const thead = document.createElement('thead');
+        thead.appendChild(header);
+        const table = document.createElement('table');
+        table.classList.add('siren_operation_port_shop');
+        table.appendChild(thead);
+        table.appendChild(tbody);
+        return table;
+    }
+    setTimeout(() => {
+        const h1 = document.createElement('h5');
+        h1.textContent = SIREN_PORTS.ny_city;
+        const h2 = document.createElement('h5');
+        h2.textContent = SIREN_PORTS.liverpool;
+        const h3 = document.createElement('h5');
+        h3.textContent = SIREN_PORTS.gibraltar;
+        const h4 = document.createElement('h5');
+        h4.textContent = SIREN_PORTS.st_petersburg;
+        parent.appendChild(h1);
+        parent.appendChild(addShopTable('ny_city'));
+        parent.appendChild(h2);
+        parent.appendChild(addShopTable('liverpool'));
+        parent.appendChild(h3);
+        parent.appendChild(addShopTable('gibraltar'));
+        parent.appendChild(h4);
+        parent.appendChild(addShopTable('st_petersburg'));
     }, 0);
 }
 Promise.all([
@@ -1608,5 +1636,6 @@ Promise.all([
         AugmentModules(document.getElementById('augment_modules'));
         DrawFleetForce(document.getElementById('freet_force'));
         DrawSirenOperationShop(document.getElementById('siren_operation_shop'));
+        DrawSirenOperationPortShop(document.getElementById('siren_operation_port_shop'));
     }, 100);
 });

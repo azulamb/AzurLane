@@ -26,7 +26,8 @@ type NATION_TYPE =
 	| 'northern_parliament'
 	| 'sardegna_empire'
 	| 'tempesta'
-	| 'universal';
+	| 'universal'
+	| 'ssss';
 type EQUIP_RARITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
 type EQUIP_GROUP =
 	| 'destroyer_gun'

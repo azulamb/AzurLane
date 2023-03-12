@@ -1,29 +1,16 @@
 declare const SIREN_OPERATION_SHOP: { price: number; amount: number; name: string }[];
 
 function DrawSirenOperationShop(parent: HTMLTableElement) {
-	function createTd(contents?: string | HTMLElement) {
-		const td = document.createElement('td');
-		if (contents) {
-			if (typeof contents === 'string') {
-				td.textContent = contents;
-			} else {
-				td.appendChild(contents);
-			}
-		}
-		return td;
-	}
-
 	setTimeout(() => {
 		const list: { check: HTMLInputElement; price: number; amount: HTMLInputElement }[] = [];
 
 		const tfoot = document.createElement('tfoot');
 		const update = ((parent) => {
-			const tr = document.createElement('tr');
+			const tr = Common.tr({});
 
-			const total = createTd('合計');
+			const total = Common.td('合計');
 			total.colSpan = 2;
-			const td = createTd();
-			td.colSpan = 2;
+			const td = Common.td('', { colSpan: 2 });
 			tr.appendChild(total);
 			tr.appendChild(td);
 
@@ -40,12 +27,12 @@ function DrawSirenOperationShop(parent: HTMLTableElement) {
 		})(tfoot);
 
 		const thead = ((parent) => {
-			const tr = document.createElement('tr');
+			const tr = Common.tr({});
 
-			tr.appendChild(createTd());
-			tr.appendChild(createTd('名前'));
-			tr.appendChild(createTd('値段'));
-			tr.appendChild(createTd('個数'));
+			tr.appendChild(Common.td(''));
+			tr.appendChild(Common.td('名前'));
+			tr.appendChild(Common.td('値段'));
+			tr.appendChild(Common.td('個数'));
 
 			parent.appendChild(tr);
 			return parent;
@@ -68,11 +55,11 @@ function DrawSirenOperationShop(parent: HTMLTableElement) {
 			amount.value = data.amount + '';
 			amount.addEventListener('change', update);
 
-			const tr = document.createElement('tr');
-			tr.appendChild(createTd(label));
-			tr.appendChild(createTd(data.name));
-			tr.appendChild(createTd(data.price + ''));
-			tr.appendChild(createTd(amount));
+			const tr = Common.tr({});
+			tr.appendChild(Common.td(label));
+			tr.appendChild(Common.td(data.name));
+			tr.appendChild(Common.td(data.price + ''));
+			tr.appendChild(Common.td(amount));
 
 			tbody.appendChild(tr);
 			list.push({

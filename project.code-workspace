@@ -3,5 +3,9 @@
 		{
 			"path": "./"
 		}
-	]
+	],
+	"settings": {
+		"deno.enable": false,
+		"deno.enablePaths": ["./scripts"]
+	}
 }

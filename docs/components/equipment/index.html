@@ -95,12 +95,15 @@ Promise.all([
 		type.textContent = GROUP_NAME[item.group] || item.group;
 		const image = document.createElement('td');
 		image.innerHTML = `<img src=${item.image}>`;
+		const nation = document.createElement('td');
+		nation.innerHTML = item.nation;
 
 		const tr = document.createElement('tr');
 		tr.dataset.group = item.group;
 		tr.appendChild(name);
 		tr.appendChild(type);
 		tr.appendChild(image);
+		tr.appendChild(nation);
 		parent.appendChild(tr);
 	}
 	const filter = document.getElementById('filter');
@@ -172,6 +175,7 @@ Promise.all([
 				<td>name</td>
 				<td>type</td>
 				<td>image</td>
+				<td>nation</td>
 			</tr>
 		</thead>
 		<tbody id="list">
