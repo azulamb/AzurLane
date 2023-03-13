@@ -899,6 +899,52 @@
 				{"tier":0,"star":5,"rarity":"SSR"}
 			]
 		},
+		"quadruple_330mm_mle_1931": {
+			"group": "battleship_gun",
+			"name": "330mm四連装砲Mle1931",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"quadruple_340mm_mle_1912": {
+			"group": "battleship_gun",
+			"name": "340mm四連装砲Mle1912",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"quadruple_356mm_14_50_mark_b_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型356mm四連装砲MkB",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"quadruple_356mm_bl_14_mk_vii": {
+			"group": "battleship_gun",
+			"name": "356mm四連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"quadruple_380mm_mle_1935": {
+			"group": "battleship_gun",
+			"name": "380mm四連装砲Mle1935",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
 		"triple_283mm_sk_c_34": {
 			"group": "battleship_gun",
 			"name": "283mmSKC34三連装砲",
@@ -909,6 +955,30 @@
 				{"tier":3,"star":4,"rarity":"SR"}
 			]
 		},
+		"triple_305mm_pattern_1907": {
+			"group": "battleship_gun",
+			"name": "305mm三連装砲Model1907",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_305mm_sk_c_39_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型305mmSKC39三連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"triple_320mm_model_1934": {
+			"group": "battleship_gun",
+			"name": "320mm三連装砲Model1934",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
 		"triple_356mm_14_50_mk_11": {
 			"group": "battleship_gun",
 			"name": "356mm三連装砲",
@@ -917,6 +987,247 @@
 				{"tier":1,"star":1,"rarity":"N"},
 				{"tier":2,"star":2,"rarity":"N"},
 				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"triple_381mm_bl_15_mk_iii_prototype": {
+			"group": "battleship_gun",
+			"name": "試製381mm三連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"triple_381mm_model_1934": {
+			"group": "battleship_gun",
+			"name": "381mm三連装砲Model1934",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_406mm_16_45_mk_6": {
+			"group": "battleship_gun",
+			"name": "406mm三連装砲MK6",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_406mm_16_50_mark_d_mod_0_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型406mm三連装砲MkD",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"triple_406mm_16_50_mk_2": {
+			"group": "battleship_gun",
+			"name": "406mm三連装砲Mk2",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_406mm_16_50_mk_7": {
+			"group": "battleship_gun",
+			"name": "406mm三連装砲MK7",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
+			]
+		},
+		"triple_406mm_bl_16_mk_i": {
+			"group": "battleship_gun",
+			"name": "406mm三連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"triple_406mm_mk-1": {
+			"group": "battleship_gun",
+			"name": "406mm三連装砲B-37 MK-1",
+			"nation": "northern_parliament",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"}
+			]
+		},
+		"triple_406mm_mle_1938_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型406mm/50三連装砲",
+			"nation": "iris_libre",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"triple_406mm_model_1940_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型三連装406mm主砲Model1940",
+			"nation": "sardegna_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"triple_410mm_10th_year_type_prototype": {
+			"group": "battleship_gun",
+			"name": "試製410mm三連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"triple_460mm_type_94": {
+			"group": "battleship_gun",
+			"name": "460mm三連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
+			]
+		},
+		"twin_305mm_41st_year_type": {
+			"group": "battleship_gun",
+			"name": "305mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_356mm_41st_year_type": {
+			"group": "battleship_gun",
+			"name": "356mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":1,"rarity":"N"},
+				{"tier":2,"star":2,"rarity":"N"},
+				{"tier":3,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_356mm_41st_year_type_kai": {
+			"group": "battleship_gun",
+			"name": "毘式356mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_356mm_bl_14_mk_vii": {
+			"group": "battleship_gun",
+			"name": "356mm連装砲MarkVII",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_380mm_sk_c_34": {
+			"group": "battleship_gun",
+			"name": "380mmSKC連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":1,"star":3,"rarity":"R"},
+				{"tier":2,"star":4,"rarity":"SR"},
+				{"tier":3,"star":5,"rarity":"SSR"}
+			]
+		},
+		"twin_381mm_bl_15_mk_i": {
+			"group": "battleship_gun",
+			"name": "381mm連装砲",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_381mm_bl_15_mk_ii": {
+			"group": "battleship_gun",
+			"name": "381mm連装砲改",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"twin_406mm_16_45_mk_1": {
+			"group": "battleship_gun",
+			"name": "406mm連装砲Mk1",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":3,"rarity":"R"}
+			]
+		},
+		"twin_406mm_16_45_mk_5": {
+			"group": "battleship_gun",
+			"name": "406mm連装砲MK5",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_406mm_16_45_mk_8": {
+			"group": "battleship_gun",
+			"name": "406mm連装砲Mk8",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_406mm_16_56_mk_4_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型406mm連装砲Mk4",
+			"nation": "royal_navy",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"twin_406mm_sk_c_34_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型406mmSKC連装砲",
+			"nation": "iron_blood",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"twin_410mm_3rd_year_type": {
+			"group": "battleship_gun",
+			"name": "410mm連装砲",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":1,"star":2,"rarity":"N"},
+				{"tier":2,"star":3,"rarity":"R"},
+				{"tier":3,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_410mm_3rd_year_type_kai": {
+			"group": "battleship_gun",
+			"name": "410mm連装砲改",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":4,"rarity":"SR"}
+			]
+		},
+		"twin_410mm_type_3_shell": {
+			"group": "battleship_gun",
+			"name": "410mm連装砲(三式弾)",
+			"nation": "sakura_empire",
+			"list": [
+				{"tier":0,"star":5,"rarity":"SRR"}
+			]
+		},
+		"twin_457mm_mark_a_prototype": {
+			"group": "battleship_gun",
+			"name": "試作型457mm連装砲MKA",
+			"nation": "eagle_union",
+			"list": [
+				{"tier":0,"star":6,"rarity":"UR"}
 			]
 		},
 		"533mm_quadruple_homing_torpedo_mount": {
@@ -1721,7 +2032,7 @@
 		},
 		"sy-1_missile": {
 			"group": "missile",
-			"name": " SY-1対艦ミサイル",
+			"name": "SY-1対艦ミサイル",
 			"nation": "dragon_empery",
 			"list": [
 				{"tier":0,"star":5,"rarity":"SSR"}
@@ -1772,7 +2083,7 @@
 		},
 		"yokosuka_suisei_model_21": {
 			"group": "seaplanes",
-			"name": " 彗星二一型",
+			"name": "彗星二一型",
 			"nation": "sakura_empire",
 			"list": [
 				{"tier":0,"star":5,"rarity":"SSR"}
