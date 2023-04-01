@@ -717,6 +717,11 @@
 			"type": "destroyer",
 			"rarity": "SR"
 		},
+		"hero": {
+			"name": "ヒーロー",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
 		"acasta": {
 			"name": "アカスタ",
 			"type": "destroyer",
@@ -837,6 +842,11 @@
 		},
 		"swiftsure": {
 			"name": "スウィフトシュア",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"scylla": {
+			"name": "シラ",
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
@@ -1058,6 +1068,11 @@
 			"type": "battleship",
 			"rarity": "SSR"
 		},
+		"royal_oak": {
+			"name": " ロイヤル・オーク",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
 		"nelson": {
 			"name": "ネルソン",
 			"type": "battleship",
@@ -1134,11 +1149,21 @@
 			"rarity": "SR",
 			"retrofit": true
 		},
+		"argus": {
+			"name": "アーガス",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
 		"hermes": {
 			"name": "ハーミーズ",
 			"type": "light_aircraft_carrier",
 			"rarity": "N",
 			"retrofit": true
+		},
+		"implacable": {
+			"name": "インプラカブル",
+			"type": "aircraft_carrier",
+			"rarity": "UR"
 		},
 		"formidable": {
 			"name": "フォーミダブル",
@@ -2525,6 +2550,11 @@
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
+		"voroshilov": {
+			"name": "ヴォロシーロフ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
 		"murmansk": {
 			"name": "ムルマンスク",
 			"type": "light_cruiser",
@@ -2538,6 +2568,11 @@
 		},
 		"tallinn": {
 			"name": "タリン",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
+		"kursk": {
+			"name": "クルスク",
 			"type": "heavy_cruiser",
 			"rarity": "SSR"
 		},
@@ -2563,6 +2598,11 @@
 		},
 		"gangut": {
 			"name": "ガングート",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"sevastopol": {
+			"name": "セヴァストポリ",
 			"type": "battleship",
 			"rarity": "SR"
 		},
@@ -2737,6 +2777,16 @@
 			"type": "light_cruiser",
 			"rarity": "SR"
 		},
+		"sheffield": {
+			"name": "シェフィールド(META)",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
+		"la_galissonniere": {
+			"name": "ラ・ガリソニエール(META)",
+			"type": "light_cruiser",
+			"rarity": "SR"
+		},
 		"trento": {
 			"name": "トレント(META)",
 			"type": "heavy_cruiser",
@@ -2744,6 +2794,11 @@
 		},
 		"arizona": {
 			"name": "アリゾナ(META)",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"queen_elizabeth": {
+			"name": "クイーン・エリザベス(META)",
 			"type": "battleship",
 			"rarity": "SSR"
 		},

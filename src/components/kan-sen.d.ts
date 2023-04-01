@@ -23,7 +23,6 @@ interface KANSEN_JSON {
 }
 type KANSEN_RARITY = 'N' | 'R' | 'SR' | 'SSR' | 'UR';
 type KANSEN_ALL_RARITY = KANSEN_RARITY | 'PR' | 'DR';
-// deno-fmt-ignore
 type KANSEN_TYPE =
 	| 'destroyer'
 	| 'ddg'
@@ -43,7 +42,6 @@ type KANSEN_TYPE =
 	| 'sailing_frigate';
 type KANSEN_FLEET_TYPE = 'main' | 'vanguard' | 'submarine';
 type AFFILIATION_TYPE = 'uss' | 'hms' | 'ijn' | 'kms' | 'pran' | 'rn' | 'sn' | 'ffnf' | 'mnf' | 'mot' | 'meta' | 'other';
-// deno-fmt-ignore
 type ALL_AFFILIATION_TYPE =
 	| 'union'
 	| 'eagleunion'

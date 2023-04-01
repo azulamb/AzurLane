@@ -1,4 +1,4 @@
-declare const SIREN_OPERATION_SHOP: { price: number; amount: number; name: string }[];
+declare const SIREN_OPERATION_SHOP: { price: number; amount: number; name: string; img?: string }[];
 
 function DrawSirenOperationShop(parent: HTMLTableElement) {
 	setTimeout(() => {
@@ -46,6 +46,10 @@ function DrawSirenOperationShop(parent: HTMLTableElement) {
 			check.addEventListener('change', update);
 			const label = document.createElement('label');
 			label.appendChild(check);
+			label.classList.add('icon');
+			if (data.img) {
+				label.style.backgroundImage = `url(./operation_siren/${data.img}.png)`;
+			}
 
 			const amount = document.createElement('input');
 			amount.type = 'number';

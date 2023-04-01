@@ -1532,6 +1532,10 @@ function DrawSirenOperationShop(parent) {
             check.addEventListener('change', update);
             const label = document.createElement('label');
             label.appendChild(check);
+            label.classList.add('icon');
+            if (data.img) {
+                label.style.backgroundImage = `url(./operation_siren/${data.img}.png)`;
+            }
             const amount = document.createElement('input');
             amount.type = 'number';
             amount.step = '1';
@@ -1558,18 +1562,78 @@ function DrawSirenOperationShop(parent) {
     }, 0);
 }
 function DrawSirenOperationPortShop(parent) {
+    function load() {
+        try {
+            const data = JSON.parse(localStorage.getItem('siren_shop_items') || '{}');
+            if (typeof data !== 'object') {
+                throw new Error('Invalid data.');
+            }
+            if (!data.now || typeof data.now !== 'string') {
+                throw new Error('Invalid data.');
+            }
+            const now = new Date(data.now);
+            if (Number.isNaN(now.valueOf())) {
+                throw new Error('Invalid data.');
+            }
+            if (typeof data.items !== 'object') {
+                data.items = {};
+            }
+            return data;
+        }
+        catch (error) {
+            return {
+                now: new Date().toISOString(),
+                items: {},
+            };
+        }
+    }
+    function save(key, check) {
+        const now = new Date();
+        const data = load();
+        let allUpdate = false;
+        if (new Date(data.now).getMonth() !== now.getMonth()) {
+            data.now = now.toISOString();
+            data.items = {};
+            allUpdate = true;
+        }
+        data.items[key] = check;
+        localStorage.setItem('siren_shop_items', JSON.stringify(data));
+        return allUpdate;
+    }
     function addShopTable(key) {
         const list = SIREN_PORT_SHOP_ITEMS[key];
+        const inputs = [];
+        function update() {
+            const items = load().items;
+            for (const input of inputs) {
+                if (items[input.name]) {
+                    input.checked = true;
+                }
+                else {
+                    input.checked = false;
+                }
+            }
+        }
         const tbody = document.createElement('tbody');
         for (const item of list) {
             for (let i = 0; i < item.count; ++i) {
                 const input = document.createElement('input');
+                inputs.push(input);
                 input.type = 'checkbox';
+                input.name = `${key}_${item.item}_${item.amount}_${i}`;
+                input.addEventListener('change', () => {
+                    if (save(input.name, input.checked)) {
+                        update();
+                    }
+                });
                 const label = document.createElement('label');
+                label.classList.add('icon');
+                label.style.backgroundImage = `url(./operation_siren/${item.item}.png)`;
                 label.appendChild(input);
                 tbody.appendChild(Common.tr({}, Common.td(label), Common.td(SIREN_SHOP_ITEMS[item.item]), Common.td(item.amount + ''), Common.td(`${item.coin || ''}`), Common.td(`${item.token || ''}`)));
             }
         }
+        update();
         const header = Common.tr({}, Common.td(''), Common.td('名前'), Common.td('個数'), Common.td('コイン'), Common.td('トークン'));
         const thead = document.createElement('thead');
         thead.appendChild(header);

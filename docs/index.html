@@ -38,6 +38,8 @@ table.parts tr.rarity5 td.parts.ex::after{background-image:url(./resource/parts_
 #condition > div > div:last-child::before{content:'ケッコン:';}
 #freet_force { width: 15rem; }
 #freet_force > check-box { display: block; }
+label.icon { width: 2rem; height: 2rem; display: block; background-size: contain; background-repeat: no-repeat; position: relative; }
+label.icon > input { position: absolute; bottom: 0; right: 0; }
 notification-like{--start-color:var(--back-base);}
 	</style>
 	<script>
@@ -49,19 +51,19 @@ const BOOKS = [
 ];
 const SKILL_EXP = [ 100, 200, 400, 800, 1400, 2200, 3200, 4400, 5800 ];
 const SIREN_OPERATION_SHOP = [
-	{ price: 100, amount: 30, name: '大作戦指令書' },
-	{ price: 1000, amount: 1, name: '秘密海域情報記録装置' },
-	{ price: 500, amount: 2, name: '支援教科書T4' },
-	{ price: 500, amount: 2, name: '防御教科書T4' },
-	{ price: 500, amount: 2, name: '攻撃教科書T4' },
-	{ price: 250, amount: 10, name: '資金x1000' },
-	{ price: 80, amount: 3, name: '海域座標記録装置R5' },
-	{ price: 160, amount: 2, name: '海域座標記録装置R6' },
-	{ price: 400, amount: 2, name: 'セイレーン座標記録装置R5' },
-	{ price: 800, amount: 1, name: 'セイレーン座標記録装置R6' },
-	{ price: 50, amount: 6, name: '上級調整サンプル(攻撃)' },
-	{ price: 50, amount: 6, name: '上級調整サンプル(耐久)' },
-	{ price: 50, amount: 6, name: '上級調整サンプル(回復)' },
+	{ price: 100, amount: 30, name: '大作戦指令書', img: 'high-efficiency_combat_logistics_plan' },
+	{ price: 1000, amount: 1, name: '秘密海域情報記録装置', img: 'hidden_zone_data_logger' },
+	{ price: 500, amount: 2, name: '支援教科書T4', img: 'support_skill_book_t4' },
+	{ price: 500, amount: 2, name: '防御教科書T4', img: 'defensive_skill_book_t4' },
+	{ price: 500, amount: 2, name: '攻撃教科書T4', img: 'offensive_skill_book_t4' },
+	{ price: 250, amount: 10, name: '資金x1000', img: 'coins' },
+	{ price: 80, amount: 3, name: '海域座標記録装置R5', img: 'coordinate_logger_r5' },
+	{ price: 160, amount: 2, name: '海域座標記録装置R6', img: 'coordinate_logger_r6' },
+	{ price: 400, amount: 2, name: 'セイレーン座標記録装置R5', img: 'siren_coordinate_logger_r5' },
+	{ price: 800, amount: 1, name: 'セイレーン座標記録装置R6', img: 'siren_coordinate_logger_r6' },
+	{ price: 50, amount: 6, name: '上級調整サンプル(攻撃)', img: 'quality_tuning_sample_offense' },
+	{ price: 50, amount: 6, name: '上級調整サンプル(耐久)', img: 'quality_tuning_sample_survival' },
+	{ price: 50, amount: 6, name: '上級調整サンプル(回復)', img: 'quality_tuning_sample_combat' },
 ];
 const AWAKING = [
 	{
