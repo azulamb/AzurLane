@@ -57,7 +57,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 			};
 		}
 	}
-	function save(key: string, check: boolean) {
+	function save(key?: string, check?: boolean) {
 		const now = new Date();
 		const data = load();
 		let allUpdate = false;
@@ -66,7 +66,9 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 			data.items = {};
 			allUpdate = true;
 		}
-		data.items[key] = check;
+		if (key !== undefined) {
+			data.items[key] = !!check;
+		}
 		localStorage.setItem('siren_shop_items', JSON.stringify(data));
 		return allUpdate;
 	}
@@ -114,6 +116,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 			}
 		}
 
+		save();
 		update();
 
 		const header = Common.tr(

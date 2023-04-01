@@ -1596,7 +1596,9 @@ function DrawSirenOperationPortShop(parent) {
             data.items = {};
             allUpdate = true;
         }
-        data.items[key] = check;
+        if (key !== undefined) {
+            data.items[key] = !!check;
+        }
         localStorage.setItem('siren_shop_items', JSON.stringify(data));
         return allUpdate;
     }
@@ -1633,6 +1635,7 @@ function DrawSirenOperationPortShop(parent) {
                 tbody.appendChild(Common.tr({}, Common.td(label), Common.td(SIREN_SHOP_ITEMS[item.item]), Common.td(item.amount + ''), Common.td(`${item.coin || ''}`), Common.td(`${item.token || ''}`)));
             }
         }
+        save();
         update();
         const header = Common.tr({}, Common.td(''), Common.td('名前'), Common.td('個数'), Common.td('コイン'), Common.td('トークン'));
         const thead = document.createElement('thead');
