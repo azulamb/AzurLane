@@ -130,7 +130,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		const thead = document.createElement('thead');
 		thead.appendChild(header);
 		const table = document.createElement('table');
-		table.classList.add('siren_operation_port_shop');
+		table.classList.add('siren_operation_port_shop', key);
 		table.appendChild(thead);
 		table.appendChild(tbody);
 
@@ -138,21 +138,51 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 	}
 
 	setTimeout(() => {
+		function click(target: string) {
+			parent.dataset.target = target;
+		}
 		const h1 = document.createElement('h5');
 		h1.textContent = SIREN_PORTS.ny_city;
+		h1.dataset.target = 'ny_city';
+		h1.addEventListener('click', () => {
+			click(<string> h1.dataset.target);
+		});
 		const h2 = document.createElement('h5');
 		h2.textContent = SIREN_PORTS.liverpool;
+		h2.dataset.target = 'liverpool';
+		h2.addEventListener('click', () => {
+			click(<string> h2.dataset.target);
+		});
 		const h3 = document.createElement('h5');
 		h3.textContent = SIREN_PORTS.gibraltar;
+		h3.dataset.target = 'gibraltar';
+		h3.addEventListener('click', () => {
+			click(<string> h3.dataset.target);
+		});
 		const h4 = document.createElement('h5');
 		h4.textContent = SIREN_PORTS.st_petersburg;
-		parent.appendChild(h1);
-		parent.appendChild(addShopTable('ny_city'));
-		parent.appendChild(h2);
-		parent.appendChild(addShopTable('liverpool'));
-		parent.appendChild(h3);
-		parent.appendChild(addShopTable('gibraltar'));
-		parent.appendChild(h4);
-		parent.appendChild(addShopTable('st_petersburg'));
+		h4.dataset.target = 'st_petersburg';
+		h4.addEventListener('click', () => {
+			click(<string> h4.dataset.target);
+		});
+
+		click('ny_city');
+
+		const tab = document.createElement('div');
+		tab.classList.add('tab');
+		tab.appendChild(h1);
+		tab.appendChild(h2);
+		tab.appendChild(h3);
+		tab.appendChild(h4);
+
+		const contents = document.createElement('div');
+		contents.classList.add('tab_contents');
+		contents.appendChild(addShopTable('ny_city'));
+		contents.appendChild(addShopTable('liverpool'));
+		contents.appendChild(addShopTable('gibraltar'));
+		contents.appendChild(addShopTable('st_petersburg'));
+
+		parent.appendChild(tab);
+		parent.appendChild(contents);
 	}, 0);
 }
