@@ -38,10 +38,10 @@ table.parts tr.rarity5 td.parts.ex::after{background-image:url(./resource/parts_
 #condition > div > div:last-child::before{content:'ケッコン:';}
 #freet_force { width: 15rem; }
 #freet_force > check-box { display: block; }
-label.icon { width: 3rem; height: 3rem; display: block; background-size: contain; background-repeat: no-repeat; position: relative; }
+label.icon { width: 3rem; height: 3rem; display: block; background-size: contain; background-repeat: no-repeat; position: relative; cursor: pointer; }
 label.icon > input { position: absolute; bottom: 0; right: 0; }
 .tab { display: flex; justify-content: space-evenly; }
-.tab > * { width: 100%; margin: 0; text-align: center; }
+.tab > * { width: 100%; margin: 0; text-align: center; user-select: none; cursor: pointer; }
 .tab_contents > * { display: none; }
 [data-target="ny_city"] > .tab_contents > .ny_city, [data-target="liverpool"] > .tab_contents > .liverpool, [data-target="gibraltar"] > .tab_contents > .gibraltar, [data-target="st_petersburg"] > .tab_contents > .st_petersburg { display: revert; }
 [data-target="ny_city"] > .tab > [data-target="ny_city"], [data-target="liverpool"] > .tab > [data-target="liverpool"], [data-target="gibraltar"] > .tab > [data-target="gibraltar"], [data-target="st_petersburg"] > .tab > [data-target="st_petersburg"] { background: rgba(12,66,141,0.35); }
