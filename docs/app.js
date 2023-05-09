@@ -1705,6 +1705,8 @@ function DrawSirenOperationPortShop(parent) {
             button.title = title;
             if (day + 1 <= now.getDate() && now.getDate() <= day + 3) {
                 button.classList.add('now');
+                const progress = day + 3 - now.getDate();
+                button.dataset.progress = `${progress}`;
             }
             else if (day + 3 < now.getDate()) {
                 button.disabled = true;

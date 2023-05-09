@@ -48,8 +48,12 @@ label.icon > input { position: absolute; bottom: 0; right: 0; }
 [data-target="ny_city"] > .tab > [data-target="ny_city"], [data-target="liverpool"] > .tab > [data-target="liverpool"], [data-target="gibraltar"] > .tab > [data-target="gibraltar"], [data-target="st_petersburg"] > .tab > [data-target="st_petersburg"] { background: rgba(12,66,141,0.35); }
 notification-like{--start-color:var(--back-base);}
 .schedule { display: flex; margin: 1rem; justify-content: center; gap: 0.2rem; }
-.schedule > button { width: 1rem; height: 1rem; box-sizing: border-box; border: none; border-radius: 0.2rem; padding: 0; }
-.schedule > button.now { background: rgba(12,66,141,0.35); }
+.schedule > button { width: 1rem; height: 1rem; box-sizing: border-box; border: none; border-radius: 0.2rem; padding: 0; overflow: hidden; }
+.schedule > button.now { position: relative; background-color: transparent;/*background: rgba(12,66,141,0.35);*/ }
+.schedule > button.now::after { content: ''; display: block; width: 100%; height: var(--progress); position: absolute; bottom: 0; background: rgba(12,66,141,0.35); }
+.schedule > button.now[data-progress="0"]::after { --progress: 100%; }
+.schedule > button.now[data-progress="1"]::after { --progress: calc(200% / 3); }
+.schedule > button.now[data-progress="2"]::after { --progress: calc(100% / 3); }
 	</style>
 	<script>
 const BOOKS = [
