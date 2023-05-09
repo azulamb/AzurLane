@@ -72,7 +72,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		localStorage.setItem('siren_shop_items', JSON.stringify(data));
 		return allUpdate;
 	}
-	function addShopTable(key: 'ny_city' | 'liverpool' | 'gibraltar' | 'st_petersburg') {
+	function addShopTable(key: 'ny_city' | 'liverpool' | 'gibraltar' | 'st_petersburg', token: boolean) {
 		const list = SIREN_PORT_SHOP_ITEMS[key];
 		const inputs: HTMLInputElement[] = [];
 		function update() {
@@ -89,6 +89,10 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		const tbody = document.createElement('tbody');
 		for (const item of list) {
 			for (let i = 0; i < item.count; ++i) {
+				const value = token ? (<SIREN_PORT_SHOP_ITEM_TOKEN> item).token : (<SIREN_PORT_SHOP_ITEM_COIN> item).coin;
+				if (!value) {
+					continue;
+				}
 				const input = document.createElement('input');
 				inputs.push(input);
 				input.type = 'checkbox';
@@ -109,8 +113,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 						Common.td(label),
 						Common.td(SIREN_SHOP_ITEMS[item.item]),
 						Common.td(item.amount + ''),
-						Common.td(`${(<SIREN_PORT_SHOP_ITEM_COIN> item).coin || ''}`),
-						Common.td(`${(<SIREN_PORT_SHOP_ITEM_TOKEN> item).token || ''}`),
+						Common.td(`${value}`),
 					),
 				);
 			}
@@ -124,8 +127,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 			Common.td(''),
 			Common.td('名前'),
 			Common.td('個数'),
-			Common.td('コイン'),
-			Common.td('トークン'),
+			Common.td(token ? 'トークン' : 'コイン'),
 		);
 		const thead = document.createElement('thead');
 		thead.appendChild(header);
@@ -177,11 +179,33 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 
 		const contents = document.createElement('div');
 		contents.classList.add('tab_contents');
-		contents.appendChild(addShopTable('ny_city'));
-		contents.appendChild(addShopTable('liverpool'));
-		contents.appendChild(addShopTable('gibraltar'));
-		contents.appendChild(addShopTable('st_petersburg'));
+		contents.appendChild(addShopTable('ny_city', false));
+		contents.appendChild(addShopTable('ny_city', true));
+		contents.appendChild(addShopTable('liverpool', false));
+		contents.appendChild(addShopTable('liverpool', true));
+		contents.appendChild(addShopTable('gibraltar', false));
+		contents.appendChild(addShopTable('gibraltar', true));
+		contents.appendChild(addShopTable('st_petersburg', false));
+		contents.appendChild(addShopTable('st_petersburg', true));
 
+		const schedule = document.createElement('schedule');
+		schedule.classList.add('schedule');
+		const now = new Date();
+		const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+		for (let day = 0; day < lastDay; day += 3) {
+			const button = document.createElement('button');
+			const title = day + 1 < lastDay ? `${day + 1}-${day + 3}` : `${lastDay}`;
+			button.title = title;
+			if (day + 1 <= now.getDate() && now.getDate() <= day + 3) {
+				button.classList.add('now');
+			} else if (day + 3 < now.getDate()) {
+				button.disabled = true;
+			}
+			button.textContent = <string> title.split('-').shift();
+			schedule.appendChild(button);
+		}
+
+		parent.appendChild(schedule);
 		parent.appendChild(tab);
 		parent.appendChild(contents);
 	}, 0);

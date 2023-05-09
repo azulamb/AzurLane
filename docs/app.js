@@ -1602,7 +1602,7 @@ function DrawSirenOperationPortShop(parent) {
         localStorage.setItem('siren_shop_items', JSON.stringify(data));
         return allUpdate;
     }
-    function addShopTable(key) {
+    function addShopTable(key, token) {
         const list = SIREN_PORT_SHOP_ITEMS[key];
         const inputs = [];
         function update() {
@@ -1619,6 +1619,10 @@ function DrawSirenOperationPortShop(parent) {
         const tbody = document.createElement('tbody');
         for (const item of list) {
             for (let i = 0; i < item.count; ++i) {
+                const value = token ? item.token : item.coin;
+                if (!value) {
+                    continue;
+                }
                 const input = document.createElement('input');
                 inputs.push(input);
                 input.type = 'checkbox';
@@ -1632,12 +1636,12 @@ function DrawSirenOperationPortShop(parent) {
                 label.classList.add('icon');
                 label.style.backgroundImage = `url(./operation_siren/${item.item}.png)`;
                 label.appendChild(input);
-                tbody.appendChild(Common.tr({}, Common.td(label), Common.td(SIREN_SHOP_ITEMS[item.item]), Common.td(item.amount + ''), Common.td(`${item.coin || ''}`), Common.td(`${item.token || ''}`)));
+                tbody.appendChild(Common.tr({}, Common.td(label), Common.td(SIREN_SHOP_ITEMS[item.item]), Common.td(item.amount + ''), Common.td(`${value}`)));
             }
         }
         save();
         update();
-        const header = Common.tr({}, Common.td(''), Common.td('名前'), Common.td('個数'), Common.td('コイン'), Common.td('トークン'));
+        const header = Common.tr({}, Common.td(''), Common.td('名前'), Common.td('個数'), Common.td(token ? 'トークン' : 'コイン'));
         const thead = document.createElement('thead');
         thead.appendChild(header);
         const table = document.createElement('table');
@@ -1683,10 +1687,32 @@ function DrawSirenOperationPortShop(parent) {
         tab.appendChild(h4);
         const contents = document.createElement('div');
         contents.classList.add('tab_contents');
-        contents.appendChild(addShopTable('ny_city'));
-        contents.appendChild(addShopTable('liverpool'));
-        contents.appendChild(addShopTable('gibraltar'));
-        contents.appendChild(addShopTable('st_petersburg'));
+        contents.appendChild(addShopTable('ny_city', false));
+        contents.appendChild(addShopTable('ny_city', true));
+        contents.appendChild(addShopTable('liverpool', false));
+        contents.appendChild(addShopTable('liverpool', true));
+        contents.appendChild(addShopTable('gibraltar', false));
+        contents.appendChild(addShopTable('gibraltar', true));
+        contents.appendChild(addShopTable('st_petersburg', false));
+        contents.appendChild(addShopTable('st_petersburg', true));
+        const schedule = document.createElement('schedule');
+        schedule.classList.add('schedule');
+        const now = new Date();
+        const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+        for (let day = 0; day < lastDay; day += 3) {
+            const button = document.createElement('button');
+            const title = day + 1 < lastDay ? `${day + 1}-${day + 3}` : `${lastDay}`;
+            button.title = title;
+            if (day + 1 <= now.getDate() && now.getDate() <= day + 3) {
+                button.classList.add('now');
+            }
+            else if (day + 3 < now.getDate()) {
+                button.disabled = true;
+            }
+            button.textContent = title.split('-').shift();
+            schedule.appendChild(button);
+        }
+        parent.appendChild(schedule);
         parent.appendChild(tab);
         parent.appendChild(contents);
     }, 0);

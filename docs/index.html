@@ -42,10 +42,14 @@ label.icon { width: 3rem; height: 3rem; display: block; background-size: contain
 label.icon > input { position: absolute; bottom: 0; right: 0; }
 .tab { display: flex; justify-content: space-evenly; }
 .tab > * { width: 100%; margin: 0; text-align: center; user-select: none; cursor: pointer; }
+.tab_contents { display: flex; align-items: flex-start; }
 .tab_contents > * { display: none; }
 [data-target="ny_city"] > .tab_contents > .ny_city, [data-target="liverpool"] > .tab_contents > .liverpool, [data-target="gibraltar"] > .tab_contents > .gibraltar, [data-target="st_petersburg"] > .tab_contents > .st_petersburg { display: revert; }
 [data-target="ny_city"] > .tab > [data-target="ny_city"], [data-target="liverpool"] > .tab > [data-target="liverpool"], [data-target="gibraltar"] > .tab > [data-target="gibraltar"], [data-target="st_petersburg"] > .tab > [data-target="st_petersburg"] { background: rgba(12,66,141,0.35); }
 notification-like{--start-color:var(--back-base);}
+.schedule { display: flex; margin: 1rem; justify-content: center; gap: 0.2rem; }
+.schedule > button { width: 1rem; height: 1rem; box-sizing: border-box; border: none; border-radius: 0.2rem; padding: 0; }
+.schedule > button.now { background: rgba(12,66,141,0.35); }
 	</style>
 	<script>
 const BOOKS = [
@@ -363,9 +367,9 @@ const SIREN_PORT_SHOP_ITEMS = {
 		{ item: 'coordinate_logger_r3', amount: 1, count: 1, coin: 3000 },
 		{ item: 'coordinate_logger_r4', amount: 1, count: 1, coin: 9000 },
 		{ item: 'siren_coordinate_logger_r4', amount: 1, count: 1, coin: 36000 },
-		{ item: 'tuning_sample_offense', amount: 1, count: 1, token: 10 },
-		{ item: 'tuning_sample_survival', amount: 1, count: 1, token: 10 },
-		{ item: 'tuning_sample_combat', amount: 1, count: 1, token: 10 },
+		{ item: 'tuning_sample_offense', amount: 1, count: 1, token: 10 }, // 2?
+		{ item: 'tuning_sample_survival', amount: 1, count: 1, token: 10 }, // 2?
+		{ item: 'tuning_sample_combat', amount: 1, count: 1, token: 10 }, // 2?
 		{ item: 'development_materials_container_t1', amount: 2, count: 1, token: 2 },
 		{ item: 'development_materials_container_t1', amount: 5, count: 1, token: 5 },
 		{ item: 'development_materials_container_t2', amount: 2, count: 1, token: 10 },
