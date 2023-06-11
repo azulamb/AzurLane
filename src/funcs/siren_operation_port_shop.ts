@@ -138,6 +138,21 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 
 		return table;
 	}
+	function countWeekdaysInMonth(weekday: number, year: number, month: number) {
+		const last = new Date(year, month, 0);
+		const lastDay = last.getDate();
+		if (lastDay === 28) {
+			return 4;
+		}
+		const lastWeekDay = last.getDay();
+		const firstWeekDay = (7 + lastWeekDay - (lastDay % 7) + 1) % 7;
+
+		if (firstWeekDay <= lastWeekDay) {
+			return firstWeekDay <= weekday && weekday <= lastWeekDay ? 5 : 4;
+		}
+
+		return weekday <= lastWeekDay || firstWeekDay <= weekday ? 5 : 4;
+	}
 
 	setTimeout(() => {
 		function click(target: string) {
@@ -188,26 +203,51 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		contents.appendChild(addShopTable('st_petersburg', false));
 		contents.appendChild(addShopTable('st_petersburg', true));
 
-		const schedule = document.createElement('schedule');
-		schedule.classList.add('schedule');
 		const now = new Date();
-		const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-		for (let day = 0; day < lastDay; day += 3) {
-			const button = document.createElement('button');
-			const title = day + 1 < lastDay ? `${day + 1}-${day + 3}` : `${lastDay}`;
-			button.title = title;
-			if (day + 1 <= now.getDate() && now.getDate() <= day + 3) {
-				button.classList.add('now');
-				const progress = day + 3 - now.getDate();
-				button.dataset.progress = `${progress}`;
-			} else if (day + 3 < now.getDate()) {
-				button.disabled = true;
+
+		const schedule = document.createElement('div');
+		schedule.classList.add('schedule');
+		const updateSchedule = () => {
+			schedule.innerHTML = '';
+			const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+			for (let day = 0; day < lastDay; day += 3) {
+				const button = document.createElement('button');
+				const title = day + 1 < lastDay ? `${day + 1}-${day + 3}` : `${lastDay}`;
+				button.title = title;
+				if (day + 1 <= now.getDate() && now.getDate() <= day + 3) {
+					button.classList.add('now');
+					const progress = day + 3 - now.getDate();
+					button.dataset.progress = `${progress}`;
+				} else if (day + 3 < now.getDate()) {
+					button.disabled = true;
+				}
+				button.textContent = <string> title.split('-').shift();
+				schedule.appendChild(button);
 			}
-			button.textContent = <string> title.split('-').shift();
-			schedule.appendChild(button);
+		};
+		updateSchedule();
+		schedule.addEventListener('click', updateSchedule);
+
+		const strongholds = document.createElement('div');
+		strongholds.classList.add('strongholds');
+		function updateStrongholds() {
+			strongholds.innerHTML = '';
+			const strongholdsCount = countWeekdaysInMonth(1, now.getFullYear(), now.getMonth() + 1) + 1 + (now.getDay() === 1 ? 0 : 1);
+			const firstWeekDay = (7 + now.getDay() - (now.getDate() % 7) + 1) % 7;
+			for (let stronghold = 0; stronghold < strongholdsCount; ++stronghold) {
+				const span = document.createElement('span');
+				span.textContent = '🌀';
+				strongholds.appendChild(span);
+				if (now.getDate() < firstWeekDay + (stronghold - 1) * 7) {
+					span.classList.add('no');
+				}
+			}
 		}
+		updateStrongholds();
+		strongholds.addEventListener('click', updateStrongholds);
 
 		parent.appendChild(schedule);
+		parent.appendChild(strongholds);
 		parent.appendChild(tab);
 		parent.appendChild(contents);
 	}, 0);
