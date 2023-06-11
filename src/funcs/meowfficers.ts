@@ -1,5 +1,5 @@
 /// <reference path="../types.d.ts" />
-/// <reference path="../funcs/Common.ts" />
+/// <reference path="./common.ts" />
 /// <reference path="../modules/meowfficer-ability.ts" />
 /// <reference path="../modules/ship-type.ts" />
 

@@ -1,3 +1,5 @@
+/// <reference path="./common.ts" />
+
 declare const SIREN_SHOP_ITEMS: { [keys: string]: string };
 declare const SIREN_PORTS: {
 	ny_city: string;

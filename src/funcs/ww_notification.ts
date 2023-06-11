@@ -1,3 +1,5 @@
+/// <reference path="../modules/calc-time.ts" />
+
 interface DateNotificationElement extends HTMLElement {
 	readonly date: Date;
 	enable: boolean;
@@ -61,7 +63,7 @@ class WebWorkerNotification {
 
 	protected onUpdate() {
 		const now = Date.now();
-		let list = [];
+		let list: DateNotificationElement[] = [];
 		for (const item of this.list) {
 			if (item.enable) {
 				const time = item.date.getTime();
