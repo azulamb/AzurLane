@@ -1708,10 +1708,10 @@ function DrawSirenOperationPortShop(parent) {
         contents.appendChild(addShopTable('gibraltar', true));
         contents.appendChild(addShopTable('st_petersburg', false));
         contents.appendChild(addShopTable('st_petersburg', true));
-        const now = new Date();
         const schedule = document.createElement('div');
         schedule.classList.add('schedule');
         const updateSchedule = () => {
+            const now = new Date();
             schedule.innerHTML = '';
             const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
             for (let day = 0; day < lastDay; day += 3) {
@@ -1735,6 +1735,7 @@ function DrawSirenOperationPortShop(parent) {
         const strongholds = document.createElement('div');
         strongholds.classList.add('strongholds');
         function updateStrongholds() {
+            const now = new Date();
             strongholds.innerHTML = '';
             const strongholdsCount = countWeekdaysInMonth(1, now.getFullYear(), now.getMonth() + 1) + 1 + (now.getDay() === 1 ? 0 : 1);
             const firstWeekDay = (7 + now.getDay() - (now.getDate() % 7) + 1) % 7;
