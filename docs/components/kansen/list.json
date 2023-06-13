@@ -1207,6 +1207,11 @@
 			"type": "aircraft_carrier",
 			"rarity": "SR"
 		},
+		"little_formidable": {
+			"name": "リトル・フォーミダブル",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
 		"abercrombie": {
 			"name": "アバークロンビー",
 			"type": "monitor",
@@ -1899,6 +1904,11 @@
 			"rarity": "SR",
 			"retrofit": true
 		},
+		"taihou-chan": {
+			"name": "太鳳ちゃん",
+			"type": "aircraft_carrier",
+			"rarity": "SR"
+		},
 		"akashi": {
 			"name": "明石",
 			"type": "repair_ship",
@@ -1941,6 +1951,11 @@
 		}
 	},
 	"kms": {
+		"otto_von_alvensleben": {
+			"name": "オットー・フォン・アルフェンスレーベン",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
 		"z1": {
 			"name": "Z1",
 			"type": "destroyer",
@@ -2030,6 +2045,11 @@
 		},
 		"mainz": {
 			"name": "マインツ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"regensburg": {
+			"name": "レーゲンスブルク",
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
@@ -2138,6 +2158,11 @@
 			"type": "battleship",
 			"rarity": "UR"
 		},
+		"bismarck_zwei": {
+			"name": "ビスマルクZWEI",
+			"type": "battleship",
+			"rarity": "UR"
+		},
 		"bismarck": {
 			"name": "ビスマルク",
 			"type": "battleship",
@@ -2195,6 +2220,11 @@
 		},
 		"weser": {
 			"name": "ウェーザー",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"jade": {
+			"name": "ヤーデ",
 			"type": "light_aircraft_carrier",
 			"rarity": "SR"
 		},
@@ -2855,6 +2885,16 @@
 		"souryuu": {
 			"name": "蒼龍(META)",
 			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
+		"vestal": {
+			"name": "ヴェスタル",
+			"type": "repair_ship",
+			"rarity": "SR"
+		},
+		"u556": {
+			"name": "U-556",
+			"type": "submarine",
 			"rarity": "SSR"
 		}
 	},
