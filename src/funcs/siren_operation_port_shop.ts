@@ -233,9 +233,10 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		strongholds.classList.add('strongholds');
 		function updateStrongholds() {
 			const now = new Date();
+			const first = new Date(now.getFullYear(), now.getMonth(), 1);
 			strongholds.innerHTML = '';
 			const strongholdsCount = countWeekdaysInMonth(1, now.getFullYear(), now.getMonth() + 1) + 1 + (now.getDay() === 1 ? 0 : 1);
-			const firstWeekDay = (7 + now.getDay() - (now.getDate() % 7) + 1) % 7;
+			const firstWeekDay = first.getDate(); //(7 + now.getDay() - (now.getDate() % 7) + 1) % 7;
 			for (let stronghold = 0; stronghold < strongholdsCount; ++stronghold) {
 				const span = document.createElement('span');
 				span.textContent = '🌀';
