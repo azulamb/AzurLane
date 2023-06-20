@@ -1738,7 +1738,7 @@ function DrawSirenOperationPortShop(parent) {
             const now = new Date();
             const first = new Date(now.getFullYear(), now.getMonth(), 1);
             strongholds.innerHTML = '';
-            const strongholdsCount = countWeekdaysInMonth(1, now.getFullYear(), now.getMonth() + 1) + 1 + (now.getDay() === 1 ? 0 : 1);
+            const strongholdsCount = countWeekdaysInMonth(1, now.getFullYear(), now.getMonth() + 1) + 1 + (first.getDate() === 1 ? 0 : 1);
             const firstWeekDay = first.getDate();
             for (let stronghold = 0; stronghold < strongholdsCount; ++stronghold) {
                 const span = document.createElement('span');
