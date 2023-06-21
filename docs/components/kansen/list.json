@@ -2788,7 +2788,7 @@
 	},
 	"meta": {
 		"hunter": {
-			"name": "ハンター",
+			"name": "ハンター(META)",
 			"type": "destroyer",
 			"rarity": "SR"
 		},
@@ -2816,6 +2816,11 @@
 			"name": "ラ・ガリソニエール(META)",
 			"type": "light_cruiser",
 			"rarity": "SR"
+		},
+		"algerie": {
+			"name": "アルジェリー(META)",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
 		},
 		"trento": {
 			"name": "トレント(META)",
@@ -2858,7 +2863,7 @@
 			"rarity": "SSR"
 		},
 		"renown": {
-			"name": "レナウン",
+			"name": "レナウン(META)",
 			"type": "battlecruiser",
 			"rarity": "SSR"
 		},
@@ -2888,12 +2893,12 @@
 			"rarity": "SSR"
 		},
 		"vestal": {
-			"name": "ヴェスタル",
+			"name": "ヴェスタル(META)",
 			"type": "repair_ship",
 			"rarity": "SR"
 		},
 		"u556": {
-			"name": "U-556",
+			"name": "U-556(META)",
 			"type": "submarine",
 			"rarity": "SSR"
 		}
