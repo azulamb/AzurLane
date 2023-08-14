@@ -2,6 +2,8 @@
 
 自分用の値をまとめたり若干の計算をしたりするためのWebツール。
 
+https://azulamb.github.io/AzurLane/
+
 ## コマンド
 
 * `build`
