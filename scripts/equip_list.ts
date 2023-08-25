@@ -1,4 +1,4 @@
-import { dirname, fromFileUrl, join } from 'https://deno.land/std@0.142.0/path/mod.ts';
+import { dirname, fromFileUrl, join } from '$std/path/mod.ts';
 
 type SHIP_TYPE =
 	| 'destroyer'

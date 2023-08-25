@@ -1,4 +1,4 @@
-import { dirname, fromFileUrl, join } from 'https://deno.land/std@0.142.0/path/mod.ts';
+import { dirname, fromFileUrl, join } from '$std/path/mod.ts';
 import { createCanvas, ImageData, loadImage, SkImage } from 'https://deno.land/x/canvas@v1.4.1/mod.ts';
 
 interface KansenData {

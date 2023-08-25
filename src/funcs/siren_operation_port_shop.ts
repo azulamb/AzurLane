@@ -30,6 +30,31 @@ interface ShopData {
 	now: string;
 	items: { [keys: string]: boolean };
 }
+function onFocusPage(callback: () => unknown) {
+	let timer = 0;
+	document.addEventListener('visibilitychange', () => {
+		if (document.visibilityState === 'hidden') {
+			return;
+		}
+		if (timer) {
+			return;
+		}
+		timer = setTimeout(() => {
+			timer = 0;
+			callback();
+		}, 50);
+	});
+	window.addEventListener('focus', () => {
+		if (timer) {
+			return;
+		}
+		timer = setTimeout(() => {
+			timer = 0;
+			callback();
+		}, 50);
+	});
+}
+
 function DrawSirenOperationPortShop(parent: HTMLElement) {
 	function load(): ShopData {
 		try {
@@ -227,7 +252,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 			}
 		};
 		updateSchedule();
-		schedule.addEventListener('click', updateSchedule);
+		onFocusPage(updateSchedule);
 
 		const strongholds = document.createElement('div');
 		strongholds.classList.add('strongholds');
@@ -247,7 +272,7 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 			}
 		}
 		updateStrongholds();
-		strongholds.addEventListener('click', updateStrongholds);
+		onFocusPage(updateStrongholds);
 
 		parent.appendChild(schedule);
 		parent.appendChild(strongholds);

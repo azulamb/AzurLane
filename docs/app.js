@@ -1561,6 +1561,30 @@ function DrawSirenOperationShop(parent) {
         update();
     }, 0);
 }
+function onFocusPage(callback) {
+    let timer = 0;
+    document.addEventListener("visibilitychange", () => {
+        if (document.visibilityState === 'hidden') {
+            return;
+        }
+        if (timer) {
+            return;
+        }
+        timer = setTimeout(() => {
+            timer = 0;
+            callback();
+        }, 50);
+    });
+    window.addEventListener("focus", () => {
+        if (timer) {
+            return;
+        }
+        timer = setTimeout(() => {
+            timer = 0;
+            callback();
+        }, 50);
+    });
+}
 function DrawSirenOperationPortShop(parent) {
     function load() {
         try {
@@ -1731,7 +1755,7 @@ function DrawSirenOperationPortShop(parent) {
             }
         };
         updateSchedule();
-        schedule.addEventListener('click', updateSchedule);
+        onFocusPage(updateSchedule);
         const strongholds = document.createElement('div');
         strongholds.classList.add('strongholds');
         function updateStrongholds() {
@@ -1750,7 +1774,7 @@ function DrawSirenOperationPortShop(parent) {
             }
         }
         updateStrongholds();
-        strongholds.addEventListener('click', updateStrongholds);
+        onFocusPage(updateStrongholds);
         parent.appendChild(schedule);
         parent.appendChild(strongholds);
         parent.appendChild(tab);
