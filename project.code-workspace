@@ -6,6 +6,8 @@
 	],
 	"settings": {
 		"deno.enable": false,
-		"deno.enablePaths": ["./scripts"]
+		"deno.enablePaths": [
+			"./scripts"
+		]
 	}
 }

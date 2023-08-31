@@ -484,7 +484,8 @@
 		"west_virginia": {
 			"name": "ウェストバージニア",
 			"type": "battleship",
-			"rarity": "SR"
+			"rarity": "SR",
+			"retrofit": true
 		},
 		"california": {
 			"name": "カリフォルニア",
@@ -512,6 +513,11 @@
 			"type": "battleship",
 			"rarity": "N",
 			"retrofit": true
+		},
+		"kearsarge": {
+			"name": "キアサージ",
+			"type": "aviation_battleship",
+			"rarity": "UR"
 		},
 		"independence": {
 			"name": "インディペンデンス",
@@ -1545,6 +1551,11 @@
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
+		"shimanto": {
+			"name": "四万十",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
 		"agano": {
 			"name": "阿賀野",
 			"type": "light_cruiser",
@@ -1956,6 +1967,11 @@
 			"type": "destroyer",
 			"rarity": "SSR"
 		},
+		"felix_schultz": {
+			"name": "フィリックス・シュルツ",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
 		"z1": {
 			"name": "Z1",
 			"type": "destroyer",
@@ -2106,6 +2122,11 @@
 			"type": "heavy_cruiser",
 			"rarity": "SSR",
 			"mu": true
+		},
+		"hindenburg": {
+			"name": "ヒンデンブルク",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
 		},
 		"admiral_graf_spee": {
 			"name": "アドミラル・グラーフ・シュペー",
@@ -2397,6 +2418,11 @@
 			"type": "destroyer",
 			"rarity": "SSR"
 		},
+		"attilio_regolo": {
+			"name": "アッティリオ・レゴロ",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
 		"alfredo_oriani": {
 			"name": "アルフレード・オリアーニ",
 			"type": "destroyer",
@@ -2452,6 +2478,11 @@
 			"type": "heavy_cruiser",
 			"rarity": "SSR"
 		},
+		"gorizia": {
+			"name": "ゴリツィア",
+			"type": "heavy_cruiser",
+			"rarity": "SSR"
+		},
 		"bolzano": {
 			"name": "ボルツァーノ",
 			"type": "heavy_cruiser",
@@ -2489,6 +2520,11 @@
 		},
 		"giulio_cesare": {
 			"name": "ジュリオ・チェザーレ",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"andrea_doria": {
+			"name": "アンドレア・ドーリア",
 			"type": "battleship",
 			"rarity": "SR"
 		},
@@ -2690,10 +2726,25 @@
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
+		"guichen": {
+			"name": "ギシャン",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"marseillaise": {
+			"name": "マルセイエーズ",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
 		"saint_louis": {
 			"name": "サン・ルイ",
 			"type": "heavy_cruiser",
 			"rarity": "SSR"
+		},
+		"suffren": {
+			"name": "シュフラン",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
 		},
 		"brest": {
 			"name": "ブレスト",
@@ -2710,6 +2761,16 @@
 			"type": "battleship",
 			"rarity": "SSR"
 		},
+		"lyon": {
+			"name": "リヨン",
+			"type": "battleship",
+			"rarity": "SR"
+		},
+		"painleve": {
+			"name": "パンルヴェ",
+			"type": "aircraft_carrier",
+			"rarity": "SSR"
+		},
 		"bearn": {
 			"name": "ベアルン",
 			"type": "aircraft_carrier",
@@ -2722,6 +2783,11 @@
 		}
 	},
 	"mnf": {
+		"kersaint": {
+			"name": "ケルサン",
+			"type": "destroyer",
+			"rarity": ""
+		},
 		"le_malin": {
 			"name": "ル・マラン",
 			"mu": true,
@@ -2775,6 +2841,16 @@
 			"type": "battleship",
 			"rarity": "SSR"
 		},
+		"flandre": {
+			"name": "フランドル",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"clemenceau": {
+			"name": "クレマンソー",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
 		"dunkerque": {
 			"name": "ダンケルク",
 			"type": "battlecruiser",
@@ -2794,6 +2870,11 @@
 		},
 		"fortune": {
 			"name": "フォーチュン(META)",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"hatakaze": {
+			"name": "旗風(META)",
 			"type": "destroyer",
 			"rarity": "SR"
 		},
@@ -3085,6 +3166,12 @@
 			"type": "large_cruiser",
 			"rarity": "SSR"
 		},
+		"princess_hime": {
+			"name": "ひめ",
+			"type": "munition_ship",
+			"rarity": "SSR",
+			"collabo": "ssss"
+		},
 		"ritsuko_akizuki": {
 			"name": "秋月律子",
 			"type": "munition_ship",
@@ -3132,10 +3219,28 @@
 			"rarity": "SR",
 			"collabo": "ssss"
 		},
+		"tamaki": {
+			"name": "たまき",
+			"type": "battlecruiser",
+			"rarity": "SSR",
+			"collabo": "venusvacation"
+		},
+		"the_2nd": {
+			"name": "2代目",
+			"type": "aviation_battleship",
+			"rarity": "SSR",
+			"collabo": "ssss"
+		},
 		"klaudia_valentz": {
 			"name": "クラウディア・バレンツ",
 			"type": "light_aircraft_carrier",
 			"rarity": "SSR"
+		},
+		"luna": {
+			"name": "ルナ",
+			"type": "light_aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "venusvacation"
 		},
 		"uruuru": {
 			"name": "ウルール",
