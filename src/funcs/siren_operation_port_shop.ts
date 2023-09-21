@@ -219,30 +219,6 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		contents.appendChild(addShopTable('st_petersburg', false));
 		contents.appendChild(addShopTable('st_petersburg', true));
 
-		const schedule = document.createElement('div');
-		schedule.classList.add('schedule');
-		const updateSchedule = () => {
-			const now = new Date();
-			schedule.innerHTML = '';
-			const lastDay = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-			for (let day = 0; day < lastDay; day += 3) {
-				const button = document.createElement('button');
-				const title = day + 1 < lastDay ? `${day + 1}-${day + 3}` : `${lastDay}`;
-				button.title = title;
-				if (day + 1 <= now.getDate() && now.getDate() <= day + 3) {
-					button.classList.add('now');
-					const progress = day + 3 - now.getDate();
-					button.dataset.progress = `${progress}`;
-				} else if (day + 3 < now.getDate()) {
-					button.disabled = true;
-				}
-				button.textContent = <string> title.split('-').shift();
-				schedule.appendChild(button);
-			}
-		};
-		updateSchedule();
-		onFocusPage(updateSchedule);
-
 		const strongholds = document.createElement('div');
 		strongholds.classList.add('strongholds');
 		function updateStrongholds() {
@@ -263,7 +239,6 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 		updateStrongholds();
 		onFocusPage(updateStrongholds);
 
-		parent.appendChild(schedule);
 		parent.appendChild(strongholds);
 		parent.appendChild(tab);
 		parent.appendChild(contents);
