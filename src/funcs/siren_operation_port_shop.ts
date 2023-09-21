@@ -8,12 +8,14 @@ declare const SIREN_PORTS: {
 	st_petersburg: string;
 };
 interface SIREN_PORT_SHOP_ITEM_COIN {
+	progress: number;
 	item: string;
 	amount: number;
 	count: number;
 	coin: 300;
 }
 interface SIREN_PORT_SHOP_ITEM_TOKEN {
+	progress: number;
 	item: string;
 	amount: number;
 	count: number;
@@ -101,56 +103,43 @@ function DrawSirenOperationPortShop(parent: HTMLElement) {
 	}
 	function addShopTable(key: 'ny_city' | 'liverpool' | 'gibraltar' | 'st_petersburg', token: boolean) {
 		const list = SIREN_PORT_SHOP_ITEMS[key];
-		const inputs: HTMLInputElement[] = [];
-		function update() {
-			const items = load().items;
-			for (const input of inputs) {
-				if (items[input.name]) {
-					input.checked = true;
-				} else {
-					input.checked = false;
-				}
-			}
-		}
 
 		const tbody = document.createElement('tbody');
 		for (const item of list) {
-			for (let i = 0; i < item.count; ++i) {
-				const value = token ? (<SIREN_PORT_SHOP_ITEM_TOKEN> item).token : (<SIREN_PORT_SHOP_ITEM_COIN> item).coin;
-				if (!value) {
-					continue;
-				}
-				const input = document.createElement('input');
-				inputs.push(input);
-				input.type = 'checkbox';
-				input.name = `${key}_${item.item}_${item.amount}_${i}`;
-				input.addEventListener('change', () => {
-					if (save(input.name, input.checked)) {
-						update();
-					}
-				});
-				const label = document.createElement('label');
-				label.classList.add('icon');
-				label.style.backgroundImage = `url(./operation_siren/${item.item}.png)`;
-				label.appendChild(input);
-
-				tbody.appendChild(
-					Common.tr(
-						{},
-						Common.td(label),
-						Common.td(SIREN_SHOP_ITEMS[item.item]),
-						Common.td(item.amount + ''),
-						Common.td(`${value}`),
-					),
-				);
+			const value = token ? (<SIREN_PORT_SHOP_ITEM_TOKEN> item).token : (<SIREN_PORT_SHOP_ITEM_COIN> item).coin;
+			if (!value) {
+				continue;
 			}
+
+			const input = document.createElement('input');
+			input.type = 'checkbox';
+			input.checked = true;
+			input.name = `${key}_${item.item}_${item.progress}`;
+			input.addEventListener('change', () => {
+			});
+
+			const label = document.createElement('label');
+			label.classList.add('icon');
+			label.style.backgroundImage = `url(./operation_siren/${item.item}.png)`;
+			label.appendChild(input);
+
+			tbody.appendChild(
+				Common.tr(
+					{},
+					Common.td(`${item.progress}`),
+					Common.td(label),
+					Common.td(SIREN_SHOP_ITEMS[item.item] || ''),
+					Common.td(item.count + ''),
+					Common.td(`${value}`),
+				),
+			);
 		}
 
 		save();
-		update();
 
 		const header = Common.tr(
 			{},
+			Common.td('Lv'),
 			Common.td(''),
 			Common.td('名前'),
 			Common.td('個数'),

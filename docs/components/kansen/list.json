@@ -1281,6 +1281,11 @@
 			"type": "destroyer",
 			"rarity": "SSR"
 		},
+		"hatsuzuki": {
+			"name": "初月",
+			"type": "destroyer",
+			"rarity": "SSR"
+		},
 		"ayanami": {
 			"name": "綾波",
 			"type": "destroyer",
@@ -1356,6 +1361,11 @@
 		},
 		"miyuki": {
 			"name": "深雪",
+			"type": "destroyer",
+			"rarity": "SR"
+		},
+		"asanagi": {
+			"name": "朝凪",
 			"type": "destroyer",
 			"rarity": "SR"
 		},
@@ -1623,6 +1633,11 @@
 			"type": "light_cruiser",
 			"rarity": "N"
 		},
+		"unzen": {
+			"name": "雲仙",
+			"type": "heavy_cruiser",
+			"rarity": "UR"
+		},
 		"atago": {
 			"name": "愛宕",
 			"type": "heavy_cruiser",
@@ -1747,6 +1762,11 @@
 		},
 		"kii": {
 			"name": "紀伊",
+			"type": "battleship",
+			"rarity": "SSR"
+		},
+		"owari": {
+			"name": "尾張",
 			"type": "battleship",
 			"rarity": "SSR"
 		},
@@ -2880,6 +2900,11 @@
 		},
 		"helena": {
 			"name": "ヘレナ(META)",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
+		"jintsuu": {
+			"name": "神通(META)",
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
