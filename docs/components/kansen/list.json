@@ -35,7 +35,8 @@
 			"name": "ラフィー",
 			"type": "destroyer",
 			"rarity": "SR",
-			"retrofit": true
+			"retrofit": true,
+			"ii": "UR"
 		},
 		"maury": {
 			"name": "モーリー",
@@ -382,7 +383,8 @@
 		"houston": {
 			"name": "ヒューストン",
 			"type": "heavy_cruiser",
-			"rarity": "SR"
+			"rarity": "SR",
+			"ii": "SSR"
 		},
 		"indianapolis": {
 			"name": "インディアナポリス",
@@ -401,6 +403,11 @@
 		},
 		"wichita": {
 			"name": "ウィチタ",
+			"type": "heavy_cruiser",
+			"rarity": "SR"
+		},
+		"louisville": {
+			"name": "ルイビル",
 			"type": "heavy_cruiser",
 			"rarity": "SR"
 		},
@@ -430,6 +437,11 @@
 			"name": "ソルトレイクシティ",
 			"type": "heavy_cruiser",
 			"rarity": "N"
+		},
+		"guam": {
+			"name": "グアム",
+			"type": "large_cruiser",
+			"rarity": "UR"
 		},
 		"new_jersey": {
 			"name": "ニュージャージー",
@@ -514,6 +526,11 @@
 			"rarity": "N",
 			"retrofit": true
 		},
+		"constellation": {
+			"name": "コンステレーション",
+			"type": "battlecruiser",
+			"rarity": "SSR"
+		},
 		"kearsarge": {
 			"name": "キアサージ",
 			"type": "aviation_battleship",
@@ -527,6 +544,11 @@
 		},
 		"princeton": {
 			"name": "プリンストン",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
+		"san_jacinto": {
+			"name": "サン・ジャシント",
 			"type": "light_aircraft_carrier",
 			"rarity": "SR"
 		},
@@ -646,6 +668,11 @@
 		},
 		"cavalla": {
 			"name": "カヴァラ",
+			"type": "submarine",
+			"rarity": "SSR"
+		},
+		"flasher": {
+			"name": "フラッシャー",
 			"type": "submarine",
 			"rarity": "SSR"
 		},
@@ -1599,6 +1626,11 @@
 			"type": "light_cruiser",
 			"rarity": "SR",
 			"retrofit": "heavy_cruiser"
+		},
+		"natori": {
+			"name": "名取",
+			"type": "light_cruiser",
+			"rarity": "SR"
 		},
 		"isuzu": {
 			"name": "五十鈴",
@@ -2908,6 +2940,11 @@
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
+		"kirov": {
+			"name": "キーロフ(META)",
+			"type": "light_cruiser",
+			"rarity": "SSR"
+		},
 		"memphis": {
 			"name": "メンフィス(META)",
 			"type": "light_cruiser",
@@ -2983,6 +3020,11 @@
 			"type": "light_aircraft_carrier",
 			"rarity": "SR"
 		},
+		"princeton": {
+			"name": "プリンストン(META)",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR"
+		},
 		"hiryuu": {
 			"name": "飛龍(META)",
 			"type": "aircraft_carrier",
@@ -2998,6 +3040,11 @@
 			"type": "aircraft_carrier",
 			"rarity": "SSR"
 		},
+		"erebus": {
+			"name": "エレバス(META)",
+			"type": "monitor",
+			"rarity": "SR"
+		},
 		"vestal": {
 			"name": "ヴェスタル(META)",
 			"type": "repair_ship",
@@ -3010,10 +3057,35 @@
 		}
 	},
 	"mot": {
+		"golden_hind": {
+			"name": "ゴールデン・ハインド",
+			"type": "sailing_frigate_vanguard",
+			"rarity": "SSR"
+		},
+		"mary_celeste": {
+			"name": "メアリー・セレスタ",
+			"type": "sailing_frigate_submarine",
+			"rarity": "SSR"
+		},
+		"sao_martinho": {
+			"name": "サン・マルチーニョ",
+			"type": "sailing_frigate_main",
+			"rarity": "SSR"
+		},
 		"royal_fortune": {
 			"name": "ロイヤル・フォーチュン",
-			"type": "sailing_frigate",
+			"type": "sailing_frigate_submarine",
 			"rarity": "SSR"
+		},
+		"adventure_galley": {
+			"name": "アドヴェンチャー・ギャレー",
+			"type": "sailing_frigate_vanguard",
+			"rarity": "SR"
+		},
+		"whydah": {
+			"name": "ウィダー",
+			"type": "sailing_frigate_submarine",
+			"rarity": "SR"
 		}
 	},
 	"other": {
@@ -3109,6 +3181,12 @@
 			"type": "light_cruiser",
 			"rarity": "SSR"
 		},
+		"asuka": {
+			"name": "飛鳥",
+			"type": "light_cruiser",
+			"rarity": "SSR",
+			"collabo": "senran_kagura"
+		},
 		"neptune": {
 			"name": "ネプテューヌ",
 			"type": "light_cruiser",
@@ -3163,6 +3241,12 @@
 			"rarity": "SSR",
 			"collabo": "ssss"
 		},
+		"ikaruga": {
+			"name": "斑鳩",
+			"type": "heavy_cruiser",
+			"rarity": "SSR",
+			"collabo": "senran_kagura"
+		},
 		"noire": {
 			"name": "ノワール",
 			"type": "heavy_cruiser",
@@ -3185,6 +3269,12 @@
 			"name": "リラ・ディザイアす",
 			"type": "heavy_cruiser",
 			"rarity": "SR"
+		},
+		"yuyaki": {
+			"name": "夕焼",
+			"type": "heavy_cruiser",
+			"rarity": "SR",
+			"collabo": "senran_kagura"
 		},
 		"kala_ideas": {
 			"name": "カラ・イデアス",
@@ -3231,6 +3321,12 @@
 			"name": "パトリツィア・アーベルハイム",
 			"type": "battleship",
 			"rarity": "SSR"
+		},
+		"fubuki": {
+			"name": "雪不帰",
+			"type": "battleship",
+			"rarity": "SSR",
+			"collabo": "senran_kagura"
 		},
 		"nagisa": {
 			"name": "なぎさ",
@@ -3285,6 +3381,12 @@
 			"rarity": "SR",
 			"collabo": "hololive"
 		},
+		"murasaki": {
+			"name": "紫",
+			"type": "light_aircraft_carrier",
+			"rarity": "SR",
+			"collabo": "senran_kagura"
+		},
 		"green_heart": {
 			"name": "グリーンハート",
 			"type": "aircraft_carrier",
@@ -3314,6 +3416,12 @@
 			"type": "aircraft_carrier",
 			"rarity": "SSR",
 			"collabo": "ssss"
+		},
+		"yumi": {
+			"name": "雪泉",
+			"type": "aircraft_carrier",
+			"rarity": "SSR",
+			"collabo": "senran_kagura"
 		},
 		"vert": {
 			"name": "ベール",
@@ -3349,6 +3457,12 @@
 			"type": "submarine",
 			"rarity": "SSR",
 			"collabo": "hololive"
+		},
+		"homura": {
+			"name": "焔",
+			"type": "submarine",
+			"rarity": "SSR",
+			"collabo": "senran_kagura"
 		},
 		"ami_futami": {
 			"name": "双海亜美",
